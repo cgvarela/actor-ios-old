@@ -1,0 +1,3 @@
+[submodule "actor-model"]
+	path = actor-model
+	url = https://github.com/actorapp/actor-model
