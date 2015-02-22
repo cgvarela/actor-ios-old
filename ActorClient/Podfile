@@ -1,0 +1,16 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+target 'ActorClient' do
+
+# ABPhoneField dependency
+pod 'RMPhoneFormat', :git => 'https://github.com/bomjkolyadun/RMPhoneFormat'
+
+#pod 'SHSPhoneComponent'
+
+end
+
+target 'ActorClientTests' do
+
+end
+
