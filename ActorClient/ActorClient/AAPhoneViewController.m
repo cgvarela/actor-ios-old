@@ -9,6 +9,7 @@
 #import "ABPhoneField.h"
 #import "AAPhoneViewController.h"
 #import "AACountriesViewController.h"
+#import "AASmsViewController.h"
 
 @interface AAPhoneViewController ()
 
@@ -27,7 +28,7 @@
     self.countryNameLabel.text = [ABPhoneField countryNameByCountryCode][currentIso];
 }
 
-//MARK: - Table View
+//MARK: - Scroll View
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -35,6 +36,8 @@
     UIView *view = self.tableView.tableHeaderView.subviews.firstObject;
     view.layer.transform = CATransform3DMakeTranslation(0, scrollView.contentOffset.y, 0);
 }
+
+//MARK: - Table View
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -56,6 +59,7 @@
 {
     [super awakeFromNib];
     
+    // iPhone 3.5" should have shorter header
     if ([UIScreen mainScreen].bounds.size.height == 480) {
         self.tableView.tableHeaderView.frame = CGRectMake(0, 0, self.tableView.tableHeaderView.frame.size.width, 90);
     }
@@ -64,9 +68,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSString *isoCode = self.phoneTextField.currentIso;
-    self.currentIso = isoCode;
+    self.currentIso = self.phoneTextField.currentIso;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,10 +79,15 @@
 
 //MARK: - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"segue_countries"]) {
         AACountriesViewController *controller = segue.destinationViewController;
         controller.currentIso = self.currentIso;
+    }
+    if ([segue.identifier isEqualToString:@"segue_next"]) {
+        AASmsViewController *controller = segue.destinationViewController;
+        controller.formattedPhoneNumber = self.phoneTextField.formattedPhoneNumber;
     }
 }
 

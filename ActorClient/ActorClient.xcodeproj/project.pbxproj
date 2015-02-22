@@ -18,6 +18,7 @@
 		2537F8671A9753DD004A02E9 /* ABPhoneField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8661A9753DD004A02E9 /* ABPhoneField.m */; };
 		2537F86C1A9762F6004A02E9 /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = 2537F86A1A9762F6004A02E9 /* PhoneFormats.dat */; };
 		2537F86D1A9762F6004A02E9 /* ABPhoneFieldCodes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2537F86B1A9762F6004A02E9 /* ABPhoneFieldCodes.txt */; };
+		2563889D1A99BDF200A5E0E3 /* AASmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */; };
 		259D452F1A99440400BC2B4D /* AACountriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259D452E1A99440400BC2B4D /* AACountriesViewController.m */; };
 		494FCA96F490BCF15D1DF9C7 /* libPods-ActorClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B939F305AF573D79345536 /* libPods-ActorClient.a */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,8 @@
 		2537F8661A9753DD004A02E9 /* ABPhoneField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPhoneField.m; sourceTree = "<group>"; };
 		2537F86A1A9762F6004A02E9 /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhoneFormats.dat; sourceTree = "<group>"; };
 		2537F86B1A9762F6004A02E9 /* ABPhoneFieldCodes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ABPhoneFieldCodes.txt; sourceTree = "<group>"; };
+		2563889B1A99BDF200A5E0E3 /* AASmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASmsViewController.h; sourceTree = "<group>"; };
+		2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASmsViewController.m; sourceTree = "<group>"; };
 		259D452D1A99440400BC2B4D /* AACountriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACountriesViewController.h; sourceTree = "<group>"; };
 		259D452E1A99440400BC2B4D /* AACountriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACountriesViewController.m; sourceTree = "<group>"; };
 		53958141732573CD5EF08D97 /* Pods-ActorClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActorClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActorClient/Pods-ActorClient.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 		2537F82F1A966B9D004A02E9 /* ActorClient */ = {
 			isa = PBXGroup;
 			children = (
+				2563889E1A99C09D00A5E0E3 /* Model */,
 				2537F8591A972AF6004A02E9 /* Auth */,
 				2537F8341A966B9D004A02E9 /* AppDelegate.h */,
 				2537F8351A966B9D004A02E9 /* AppDelegate.m */,
@@ -148,6 +152,8 @@
 				2537F85E1A9730FF004A02E9 /* AAPhoneViewController.m */,
 				259D452D1A99440400BC2B4D /* AACountriesViewController.h */,
 				259D452E1A99440400BC2B4D /* AACountriesViewController.m */,
+				2563889B1A99BDF200A5E0E3 /* AASmsViewController.h */,
+				2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */,
 			);
 			name = Auth;
 			sourceTree = "<group>";
@@ -171,6 +177,13 @@
 				2537F86B1A9762F6004A02E9 /* ABPhoneFieldCodes.txt */,
 			);
 			name = ABPhoneField;
+			sourceTree = "<group>";
+		};
+		2563889E1A99C09D00A5E0E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		5ECF8802A848CEB880DD2E81 /* Pods */ = {
@@ -332,6 +345,7 @@
 				2537F85F1A9730FF004A02E9 /* AAPhoneViewController.m in Sources */,
 				2537F8331A966B9D004A02E9 /* main.m in Sources */,
 				259D452F1A99440400BC2B4D /* AACountriesViewController.m in Sources */,
+				2563889D1A99BDF200A5E0E3 /* AASmsViewController.m in Sources */,
 				2537F8641A974160004A02E9 /* AAHiddenNavigationBar.m in Sources */,
 				2537F8671A9753DD004A02E9 /* ABPhoneField.m in Sources */,
 			);
