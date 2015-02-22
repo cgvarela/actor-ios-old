@@ -47,7 +47,7 @@
     }
     
     NSInteger rightCountDigits = [self countDigitsRighterThatCursor:textField];
-    NSString *number = [[self digitsPhoneNumber] substringFromIndex:self.phoneFormatter.defaultCallingCode.length - 1];
+    NSString *number = [[self phoneNumber] substringFromIndex:self.phoneFormatter.defaultCallingCode.length - 1];
     textField.text = [[self.phoneFormatter format:number] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [self setCursor:textField whereHaveDigitsFromRight:rightCountDigits];
 }
@@ -85,7 +85,7 @@
     }
 }
 
-- (NSString *)digitsPhoneNumber
+- (NSString *)phoneNumber
 {
     NSArray *arr = [[self.phoneFormatter.defaultCallingCode stringByAppendingString:self.text] componentsSeparatedByCharactersInSet:[NSCharacterSet decimalDigitCharacterSet].invertedSet];
     return [arr componentsJoinedByString:@""];
@@ -93,7 +93,7 @@
 
 - (NSString *)formattedPhoneNumber
 {
-    return [self.phoneFormatter format:[self digitsPhoneNumber]];
+    return [self.phoneFormatter format:[self phoneNumber]];
 }
 
 //MARK: - View

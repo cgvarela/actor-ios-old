@@ -18,5 +18,7 @@
 + (NSArray *)sortedIsoCodes;
 
 @property (nonatomic, strong) NSString *currentIso;
+@property (nonatomic, readonly) NSString *phoneNumber;
+@property (nonatomic, readonly) NSString *formattedPhoneNumber;
 
 @end
