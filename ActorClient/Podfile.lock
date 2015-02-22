@@ -2,16 +2,16 @@ PODS:
   - RMPhoneFormat (1.0)
 
 DEPENDENCIES:
-  - RMPhoneFormat (from `https://github.com/bomjkolyadun/RMPhoneFormat`)
+  - RMPhoneFormat (from `https://github.com/actorapp/RMPhoneFormat`)
 
 EXTERNAL SOURCES:
   RMPhoneFormat:
-    :git: https://github.com/bomjkolyadun/RMPhoneFormat
+    :git: https://github.com/actorapp/RMPhoneFormat
 
 CHECKOUT OPTIONS:
   RMPhoneFormat:
     :commit: 806f4f94be3d19e57f3fdfd4200e6af43787b109
-    :git: https://github.com/bomjkolyadun/RMPhoneFormat
+    :git: https://github.com/actorapp/RMPhoneFormat
 
 SPEC CHECKSUMS:
   RMPhoneFormat: e60e142b738b39528bbe586699b3dc5c04b88b2a
