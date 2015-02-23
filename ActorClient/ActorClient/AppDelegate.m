@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "CocoaMessenger.h"
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -28,6 +30,9 @@
     
     [UITableViewCell appearance].tintColor = BAR_COLOR;
     [UITableView appearance].sectionIndexColor = BAR_COLOR;
+    
+    [MagicalRecord setupAutoMigratingCoreDataStack];
+    [CocoaMessenger messenger];
     
     return YES;
 }

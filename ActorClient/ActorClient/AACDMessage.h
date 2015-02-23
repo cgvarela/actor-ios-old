@@ -1,5 +1,5 @@
 //
-//  AADialog.h
+//  AAMessage.h
 //  ActorModel
 //
 //  Created by Антон Буков on 17.02.15.
@@ -10,10 +10,11 @@
 #import <CoreData/CoreData.h>
 
 
-@interface DBDialog : NSManagedObject
+@interface AACDMessage : NSManagedObject
 
+@property (nonatomic, retain) NSData * value;
 @property (nonatomic) int64_t key;
 @property (nonatomic) int64_t sortKey;
-@property (nonatomic, retain) NSData * value;
+@property (nonatomic) int32_t zone_id;
 
 @end

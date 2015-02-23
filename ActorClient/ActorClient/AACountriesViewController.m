@@ -50,7 +50,7 @@
     return _letters;
 }
 
-//MARK: - Scroll View
+#pragma mark - Scroll View
 
 /*- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -59,7 +59,7 @@
     self.tableView.tableHeaderView.frame = rect;
 }*/
 
-//MARK: - Table View
+#pragma mark - Table View
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
@@ -113,7 +113,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-//MARK: - Search Bar
+#pragma mark - Search Bar
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
@@ -146,14 +146,14 @@
     [self.tableView reloadData];
 }
 
-//MARK: - View
+#pragma mark - View
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 }
 
-//MARK: - Navigation
+#pragma mark - Navigation
 
 - (void)willMoveToParentViewController:(UIViewController *)parent
 {

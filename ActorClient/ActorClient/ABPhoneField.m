@@ -14,13 +14,7 @@
 @interface ABPhoneField () <UITextFieldDelegate>
 
 @property (nonatomic, strong) RMPhoneFormat *phoneFormatter;
-//@property (nonatomic, assign) id<UITextFieldDelegate> nextDelegate;
-
 @property (nonatomic, strong) NSString *localIso;
-@property (nonatomic, readonly) NSString *currentCode;
-@property (nonatomic, readonly) NSString *currentName;
-@property (nonatomic, readonly) NSInteger currentMinLength;
-@property (nonatomic, readonly) NSString *localLangName;
 
 @end
 
@@ -32,7 +26,7 @@
     self.phoneFormatter = [[RMPhoneFormat alloc] initWithDefaultCountry:_currentIso];
 }
 
-//MARK: - Text Field
+#pragma mark - Text Field
 
 - (void)phoneChanged:(UITextField *)textField
 {
@@ -47,7 +41,7 @@
     }
     
     NSInteger rightCountDigits = [self countDigitsRighterThatCursor:textField];
-    NSString *number = [[self phoneNumber] substringFromIndex:self.phoneFormatter.defaultCallingCode.length - 1];
+    NSString *number = [[self phoneNumber] substringFromIndex:self.phoneFormatter.defaultCallingCode.length];
     textField.text = [[self.phoneFormatter format:number] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [self setCursor:textField whereHaveDigitsFromRight:rightCountDigits];
 }
@@ -96,7 +90,7 @@
     return [self.phoneFormatter format:[self phoneNumber]];
 }
 
-//MARK: - View
+#pragma mark - View
 
 + (NSArray *)linesOfResource
 {
@@ -178,7 +172,6 @@
     [super awakeFromNib];
     
     [self addTarget:self action:@selector(phoneChanged:) forControlEvents:(UIControlEventEditingChanged)];
-    //super.delegate = self;
     
     self.localIso = [self isoFromCarrier];
     if (self.localIso.length == 0)
@@ -187,31 +180,5 @@
         self.localIso = @"en8";
     self.currentIso = self.localIso;
 }
-/*
-- (id<UITextFieldDelegate>)delegate
-{
-    return self.nextDelegate;
-}
 
-- (void)setDelegate:(id<UITextFieldDelegate>)delegate
-{
-    self.nextDelegate = delegate;
-}
-
-#pragma mark - Message Forwarding
-
-- (BOOL)respondsToSelector:(SEL)aSelector
-{
-    if ([super respondsToSelector:aSelector])
-        return YES;
-    return [self.nextDelegate respondsToSelector:aSelector];
-}
-
-- (id)forwardingTargetForSelector:(SEL)aSelector
-{
-    if ([self.nextDelegate respondsToSelector:aSelector])
-        return self.nextDelegate;
-    return [super forwardingTargetForSelector:aSelector];
-}
-*/
 @end

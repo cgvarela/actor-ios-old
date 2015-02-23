@@ -7,11 +7,15 @@ pod 'RMPhoneFormat', :git => 'https://github.com/actorapp/RMPhoneFormat'
 #pod 'SHSPhoneComponent'
 
 # Model
+pod 'MMMutableMethods', :git => 'https://github.com/k06a/MMMutableMethods', :branch => 'dev'
 pod 'J2ObjC', :git => 'https://github.com/actorapp/j2objc'
 pod 'RegexKitLite', :inhibit_warnings => true
 pod 'CocoaAsyncSocket'
 pod 'Objective-LevelDB', :inhibit_warnings => true
 pod 'MagicalRecord', :inhibit_warnings => true
+
+# UI
+pod 'SVProgressHUD'
 
 end
 

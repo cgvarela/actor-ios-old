@@ -34,7 +34,8 @@
 - (jlong)getLongWithNSString:(NSString *)key
                     withLong:(jlong)def
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:key] longLongValue];
+    NSNumber *object = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    return object ? object.longLongValue : def;
 }
 
 - (void)putIntWithNSString:(NSString *)key
@@ -47,7 +48,8 @@
 - (jint)getIntWithNSString:(NSString *)key
                    withInt:(jint)def
 {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:key] intValue];
+    NSNumber *object = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    return object ? object.intValue : def;
 }
 
 - (void)putBoolWithNSString:(NSString *)key
@@ -60,7 +62,8 @@
 - (jboolean)getBoolWithNSString:(NSString *)key
                     withBoolean:(jboolean)def
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+    NSNumber *object = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    return object ? object.boolValue : def;
 }
 
 - (void)putBytesWithNSString:(NSString *)key

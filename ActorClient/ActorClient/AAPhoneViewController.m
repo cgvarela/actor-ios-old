@@ -6,6 +6,15 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <NSObject+MMAnonymousClass.h>
+
+#import "J2ObjC_source.h"
+#import "java/lang/Exception.h"
+#import "im/actor/model/concurrency/Command.h"
+#import "im/actor/model/concurrency/CommandCallback.h"
+#import "CocoaMessenger.h"
+
 #import "ABPhoneField.h"
 #import "AAPhoneViewController.h"
 #import "AACountriesViewController.h"
@@ -24,11 +33,12 @@
 - (void)setCurrentIso:(NSString *)currentIso
 {
     _currentIso = currentIso;
-    self.countryPrefixLabel.text = [ABPhoneField callingCodeByCountryCode][currentIso];
+    self.phoneTextField.currentIso = currentIso;
+    self.countryPrefixLabel.text = [@"+" stringByAppendingString:[ABPhoneField callingCodeByCountryCode][currentIso]];
     self.countryNameLabel.text = [ABPhoneField countryNameByCountryCode][currentIso];
 }
 
-//MARK: - Scroll View
+#pragma mark - Scroll View
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -37,7 +47,7 @@
     view.layer.transform = CATransform3DMakeTranslation(0, scrollView.contentOffset.y, 0);
 }
 
-//MARK: - Table View
+#pragma mark - Table View
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -53,7 +63,7 @@
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
-//MARK: - View
+#pragma mark - View
 
 - (void)awakeFromNib
 {
@@ -77,7 +87,38 @@
     [self.phoneTextField becomeFirstResponder];
 }
 
-//MARK: - Navigation
+#pragma mark - Navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"segue_next"]) {
+        if (self.phoneTextField.phoneNumber.length < [[ABPhoneField phoneMinLengthByCountryCode][self.currentIso] integerValue])
+        {
+            NSLog(@"Phone number too short");
+            return NO;
+        }
+        
+        [SVProgressHUD show];
+        id<AMCommand> cmd = [[CocoaMessenger messenger] requestSmsWithLong:self.phoneTextField.phoneNumber.longLongValue];
+        [cmd startWithAMCommandCallback:MM_CREATE_ALWAYS(^(Class class){
+            [class addMethod:@selector(onResultWithId:)
+                fromProtocol:@protocol(AMCommandCallback)
+                    blockImp:^(id this,id res){
+                        [self performSegueWithIdentifier:identifier sender:sender];
+                        [SVProgressHUD dismiss];
+                    }];
+            [class addMethod:@selector(onErrorWithJavaLangException:)
+                fromProtocol:@protocol(AMCommandCallback)
+                    blockImp:^(id this,JavaLangException *e){
+                        NSLog(@"onErrorWithJavaLangException: %@",e);
+                        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Error: %@",e.getLocalizedMessage]];
+                    }];
+        })];
+        
+        return NO;
+    }
+    return YES;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

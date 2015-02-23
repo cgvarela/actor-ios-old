@@ -34,7 +34,7 @@
     return _buffer;
 }
 
-//MARK: - GCD Async Socket
+#pragma mark - GCD Async Socket
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
@@ -72,7 +72,7 @@
     [self.callback onConnectionDie];
 }
 
-//MARK: - Tcp Connection
+#pragma mark - Tcp Connection
 
 - (void)tryToGetMessageFromBuffer
 {
