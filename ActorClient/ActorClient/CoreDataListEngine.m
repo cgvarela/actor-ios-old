@@ -12,6 +12,19 @@
 #import "java/util/ArrayList.h"
 #import "CoreDataListEngine.h"
 
+#import "im/actor/model/entity/Dialog.h"
+#import "AACDDialog.h"
+
+id<AMListEngine> createDialogListEngine()
+{
+    return [[CoreDataListEngine alloc] initWithMOS:[AACDDialog class] serializer:^NSData *(AMDialog *object) {
+        return object.toByteArray.toNSData;
+    } deserializer:^AMDialog *(NSData *data) {
+        IOSByteArray *byteArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
+        return byteArray.length ? [AMDialog fromBytesWithByteArray:byteArray] : nil;
+    }];
+}
+
 @interface CoreDataListEngine ()
 
 @property (nonatomic, strong) Class mos;

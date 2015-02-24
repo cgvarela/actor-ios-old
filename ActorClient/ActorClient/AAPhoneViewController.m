@@ -8,6 +8,7 @@
 
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <NSObject+MMAnonymousClass.h>
+#import <MMAnonymousClass.h>
 
 #import "J2ObjC_source.h"
 #import "java/lang/Exception.h"
@@ -98,21 +99,21 @@
             return NO;
         }
         
-        [SVProgressHUD show];
+        [SVProgressHUD showWithMaskType:(SVProgressHUDMaskTypeBlack)];
         id<AMCommand> cmd = [[CocoaMessenger messenger] requestSmsWithLong:self.phoneTextField.phoneNumber.longLongValue];
-        [cmd startWithAMCommandCallback:MM_CREATE_ALWAYS(^(Class class){
-            [class addMethod:@selector(onResultWithId:)
-                fromProtocol:@protocol(AMCommandCallback)
-                    blockImp:^(id this,id res){
-                        [self performSegueWithIdentifier:identifier sender:sender];
-                        [SVProgressHUD dismiss];
-                    }];
-            [class addMethod:@selector(onErrorWithJavaLangException:)
-                fromProtocol:@protocol(AMCommandCallback)
-                    blockImp:^(id this,JavaLangException *e){
-                        NSLog(@"onErrorWithJavaLangException: %@",e);
-                        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Error: %@",e.getLocalizedMessage]];
-                    }];
+        [cmd startWithAMCommandCallback:MM_ANON(^(MMAnonymousClass *anon){
+            [anon addMethod:@selector(onResultWithId:)
+               fromProtocol:@protocol(AMCommandCallback)
+                  blockImp:^(id this,id res){
+                       [self performSegueWithIdentifier:identifier sender:sender];
+                       [SVProgressHUD dismiss];
+                   }];
+            [anon addMethod:@selector(onErrorWithJavaLangException:)
+               fromProtocol:@protocol(AMCommandCallback)
+                   blockImp:^(id this,JavaLangException *e){
+                       NSLog(@"onErrorWithJavaLangException: %@",e);
+                       [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Error: %@",e.getLocalizedMessage]];
+                   }];
         })];
         
         return NO;

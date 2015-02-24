@@ -17,9 +17,44 @@
 #import "java/io/ObjectInputStream.h"
 #import "java/io/ObjectOutputStream.h"
 #import "java/util/ArrayList.h"
-#import "LevelDBKeyValueEngine.h"
+#import "LevelDBKeyValueStorage.h"
 
-@interface LevelDBKeyValueEngine ()
+#import "im/actor/model/entity/User.h"
+#import "im/actor/model/entity/Group.h"
+#import "im/actor/model/entity/Peer.h"
+
+id<AMKeyValueStorage> createUserLevelDBKeyValueStorage()
+{
+    return [[LevelDBKeyValueStorage alloc] initWithName:@"user_kv" serializer:^NSData *(AMUser *object) {
+        return [object toByteArray].toNSData;
+    } deserializer:^id<AMKeyValueItem>(NSData *data) {
+        IOSByteArray *bytesArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
+        return [AMUser fromBytesWithByteArray:bytesArray];
+    }];
+}
+
+id<AMKeyValueStorage> createGroupLevelDBKeyValueStorage()
+{
+    return [[LevelDBKeyValueStorage alloc] initWithName:@"group_kv" serializer:^NSData *(AMGroup *object) {
+        return [object toByteArray].toNSData;
+    } deserializer:^id<AMKeyValueItem>(NSData *data) {
+        IOSByteArray *bytesArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
+        return [AMGroup fromBytesWithByteArray:bytesArray];
+    }];
+}
+
+id<AMKeyValueStorage> createPendingMessageLevelDBKeyValueStorage(AMPeer *peer)
+{
+    NSString *name = [NSString stringWithFormat:@"pendingMessages_%@", @(peer.getPeerId)];
+    return [[LevelDBKeyValueStorage alloc] initWithName:name serializer:^NSData *(AMGroup *object) {
+        return [object toByteArray].toNSData;
+    } deserializer:^id<AMKeyValueItem>(NSData *data) {
+        IOSByteArray *bytesArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
+        return [AMGroup fromBytesWithByteArray:bytesArray];
+    }];
+}
+
+@interface LevelDBKeyValueStorage ()
 
 @property (nonatomic, strong) LevelDB *ldb;
 @property (nonatomic, strong) NSString *name;
@@ -28,7 +63,7 @@
 
 @end
 
-@implementation LevelDBKeyValueEngine
+@implementation LevelDBKeyValueStorage
 
 - (LevelDB *)ldb
 {
@@ -58,6 +93,15 @@
         self.deserializer = deserializer;
     }
     return self;
+}
+
+- (void)addOrUpdateItemWithLong:(jlong)id_
+                  withByteArray:(IOSByteArray *)data
+{
+    @synchronized (self) {
+        NSData *key = [NSData dataWithBytes:&id_ length:sizeof(id_)];
+        [self.ldb setObject:data.toNSData forKey:key];
+    }
 }
 
 - (void)addOrUpdateItemWithAMKeyValueItem:(id<AMKeyValueItem>)item
@@ -106,17 +150,6 @@
     @synchronized (self) {
         [self.ldb removeAllObjects];
     }
-}
-
-- (id<JavaUtilList>)getAll
-{
-    JavaUtilArrayList *list = [[JavaUtilArrayList alloc] init];
-    @synchronized (self) {
-        [self.ldb enumerateKeysAndObjectsUsingBlock:^(LevelDBKey *key, id value, BOOL *stop) {
-            [list addWithId:value];
-        }];
-    }
-    return list;
 }
 
 - (id)getValueWithLong:(jlong)id_

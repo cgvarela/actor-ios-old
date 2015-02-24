@@ -6,16 +6,22 @@
 //
 //
 
-#import "im/actor/model/mvvm/KeyValueItem.h"
-#import "im/actor/model/mvvm/KeyValueEngine.h"
+#import "im/actor/model/storage/KeyValueItem.h"
+#import "im/actor/model/storage/KeyValueStorage.h"
 
-@interface LevelDBKeyValueEngine : NSObject <AMKeyValueEngine>
+@class AMPeer;
+id<AMKeyValueStorage> createUserLevelDBKeyValueStorage();
+id<AMKeyValueStorage> createGroupLevelDBKeyValueStorage();
+id<AMKeyValueStorage> createPendingMessageLevelDBKeyValueStorage(AMPeer *peer);
+
+@interface LevelDBKeyValueStorage : NSObject <AMKeyValueStorage>
 
 - (instancetype)initWithName:(NSString *)name
                   serializer:(NSData *(^)(id<AMKeyValueItem> object))serializer
                 deserializer:(id<AMKeyValueItem>(^)(NSData *data))deserializer;
 
-- (void)addOrUpdateItemWithAMKeyValueItem:(id<AMKeyValueItem>)item;
+- (void)addOrUpdateItemWithLong:(jlong)id_
+                  withByteArray:(IOSByteArray *)data;
 
 - (void)addOrUpdateItemsWithJavaUtilList:(id<JavaUtilList>)values;
 
@@ -24,8 +30,6 @@
 - (void)removeItemsWithLongArray:(IOSLongArray *)ids;
 
 - (void)clear;
-
-- (id<JavaUtilList>)getAll;
 
 - (id)getValueWithLong:(jlong)id_;
 

@@ -43,9 +43,9 @@
     if (self.endpoint.getType.ordinal == AMConnectionEndpoint_Type_TCP_TLS) {
         [sock startTLS:@{//(id)kCFStreamSSLAllowsExpiredCertificates:@NO,
                          //(id)kCFStreamSSLAllowsExpiredRoots:@NO,
-                         //(id)kCFStreamSSLAllowsAnyRoot:@NO,
+                         //(id)kCFStreamSSLAllowsAnyRoot:@YES,
                          //(id)kCFStreamSSLValidatesCertificateChain:@YES,
-                         (id)kCFStreamSSLPeerName:@"actor.im",
+                         (id)kCFStreamSSLPeerName:@"mtproto-api.actor.im",
                          //(id)kCFStreamSSLLevel:(id)kCFStreamSocketSecurityLevelNegotiatedSSL,
                          }];
     } else {

@@ -9,9 +9,10 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "NSObject+MMAnonymousClass.h"
 #import "java/lang/Runnable.h"
+#import "java/util/HashMap.h"
 #import "im/actor/model/cocoa/CocoaThreading.h"
 #import "im/actor/model/MainThread.h"
-#import "im/actor/model/MessengerCallback.h"
+#import "im/actor/model/LocaleProvider.h"
 #import "im/actor/model/ConfigurationBuilder.h"
 
 #import "CocoaLogger.h"
@@ -20,32 +21,20 @@
 
 #import "CocoaMessenger.h"
 
-@interface CocoaMessenger () <AMMessengerCallback>
-
-//@property (nonatomic, strong) NSManagedObjectContext *context;
+@interface CocoaMessenger ()
 
 @end
 
 @implementation CocoaMessenger
 
-/*- (NSManagedObjectContext *)context
-{
-    if (_context == nil) {
-        NSPersistentStoreCoordinator *coordinator = [NSPersistentStoreCoordinator MR_coordinatorWithInMemoryStore];
-        [NSManagedObjectContext MR_contextWithStoreCoordinator:coordinator];
-    }
-    return _context;
-}*/
-
 - (instancetype)init
 {
-    self = [super initWithAMConfiguration:^{
+    self = [super initWithConfig:^{
         AMConfigurationBuilder *confBuilder = [[AMConfigurationBuilder alloc] init];
         [confBuilder setLog:[[CocoaLogger alloc] init]];
         [confBuilder setNetworking:[[CocoaNetworking alloc] init]];
         [confBuilder setThreading:[[AMCocoaThreading alloc] init]];
         [confBuilder setStorage:[[CocoaStorage alloc] init]];
-        [confBuilder setCallback:self];
         [confBuilder setMainThread:MM_CREATE(MM_REUSE,^(Class class){
             [class addMethod:@selector(runOnUiThread:)
                 fromProtocol:@protocol(AMMainThread)
@@ -55,7 +44,26 @@
                         });
                     }];
         })];
-        [confBuilder addEndpoint:@"tcp://mtproto-api.actor.im:8080"];
+        [confBuilder addEndpoint:@"tls://mtproto-api.actor.im:443"];
+        [confBuilder setLocale:MM_CREATE(MM_REUSE, ^(Class class) {
+            [class addMethod:@selector(loadLocale)
+                fromProtocol:@protocol(AMLocaleProvider)
+                    blockImp:^(id this){
+                        static JavaUtilHashMap *map = nil;
+                        if (map == nil) {
+                            map = [[JavaUtilHashMap alloc] init];
+                            NSError *error = nil;
+                            NSString *text = [NSString stringWithContentsOfFile:@"AppText.properties" encoding:NSUTF8StringEncoding error:&error];
+                            for (NSString *line in [text componentsSeparatedByString:@"\n"]) {
+                                NSArray *tokens = [line componentsSeparatedByString:@"="];
+                                if (tokens.count == 2)
+                                    [map putWithId:tokens[0] withId:tokens[1]];
+                            }
+                            
+                        }
+                        return map;
+                    }];
+        })];
         return [confBuilder build];
     }()];
     return self;
@@ -69,43 +77,6 @@
         msgr = [[CocoaMessenger alloc] init];
     });
     return msgr;
-}
-
-#pragma mark - Messenger Callback
-
-- (void)onUserOnline:(jint)uid
-{
-    
-}
-
-- (void)onUserOffline:(jint)uid
-{
-    
-}
-
-- (void)onUserLastSeen:(jint)uid withLastSeen:(jlong)lastSeen
-{
-    
-}
-
-- (void)onGroupOnline:(jint)gid withUserCount:(jint)count
-{
-    
-}
-
-- (void)onTypingStart:(jint)uid
-{
-    
-}
-
-- (void)onTypingEnd:(jint)uid
-{
-    
-}
-
-- (void)onGroupTyping:(jint)gid withUsers:(IOSIntArray *)uids
-{
-    
 }
 
 @end

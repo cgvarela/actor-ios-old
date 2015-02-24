@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14D72i" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14D87h" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AACDDialog" representedClassName="AACDDialog" syncable="YES">
         <attribute name="key" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="sortKey" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
@@ -7,12 +7,11 @@
     </entity>
     <entity name="AACDMessage" representedClassName="AACDMessage" syncable="YES">
         <attribute name="key" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
-        <attribute name="sortKey" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="zone_id" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="AACDDialog" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="AACDMessage" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="AACDMessage" positionX="0" positionY="0" width="128" height="90"/>
     </elements>
 </model>

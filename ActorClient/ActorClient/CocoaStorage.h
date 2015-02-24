@@ -12,12 +12,14 @@
 
 - (id<AMPreferencesStorage>)createPreferencesStorage;
 
-- (id<AMKeyValueEngine>)createUsersEngine;
+- (id<AMKeyValueStorage>)createUsersEngine;
+
+- (id<AMKeyValueStorage>)createGroupsEngine;
 
 - (id<AMListEngine>)createDialogsEngine;
 
 - (id<AMListEngine>)createMessagesEngineWithAMPeer:(AMPeer *)peer;
 
-- (id<AMKeyValueEngine>)pendingMessagesWithAMPeer:(AMPeer *)peer;
+- (id<AMKeyValueStorage>)pendingMessagesWithAMPeer:(AMPeer *)peer;
 
 @end

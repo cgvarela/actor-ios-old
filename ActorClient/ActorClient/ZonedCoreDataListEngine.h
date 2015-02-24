@@ -6,8 +6,11 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
-#import "im/actor/model/mvvm/ListEngine.h"
-#import "im/actor/model/mvvm/ListEngineItem.h"
+#import "im/actor/model/storage/ListEngine.h"
+#import "im/actor/model/storage/ListEngineItem.h"
+
+@class AMPeer;
+id<AMListEngine> createMessageZonedCoreDataListEngine(AMPeer *peer);
 
 @interface ZonedCoreDataListEngine : NSObject <AMListEngine>
 
