@@ -19,41 +19,6 @@
 #import "java/util/ArrayList.h"
 #import "LevelDBKeyValueStorage.h"
 
-#import "im/actor/model/entity/User.h"
-#import "im/actor/model/entity/Group.h"
-#import "im/actor/model/entity/Peer.h"
-
-id<AMKeyValueStorage> createUserLevelDBKeyValueStorage()
-{
-    return [[LevelDBKeyValueStorage alloc] initWithName:@"user_kv" serializer:^NSData *(AMUser *object) {
-        return [object toByteArray].toNSData;
-    } deserializer:^id<AMKeyValueItem>(NSData *data) {
-        IOSByteArray *bytesArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
-        return [AMUser fromBytesWithByteArray:bytesArray];
-    }];
-}
-
-id<AMKeyValueStorage> createGroupLevelDBKeyValueStorage()
-{
-    return [[LevelDBKeyValueStorage alloc] initWithName:@"group_kv" serializer:^NSData *(AMGroup *object) {
-        return [object toByteArray].toNSData;
-    } deserializer:^id<AMKeyValueItem>(NSData *data) {
-        IOSByteArray *bytesArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
-        return [AMGroup fromBytesWithByteArray:bytesArray];
-    }];
-}
-
-id<AMKeyValueStorage> createPendingMessageLevelDBKeyValueStorage(AMPeer *peer)
-{
-    NSString *name = [NSString stringWithFormat:@"pendingMessages_%@", @(peer.getPeerId)];
-    return [[LevelDBKeyValueStorage alloc] initWithName:name serializer:^NSData *(AMGroup *object) {
-        return [object toByteArray].toNSData;
-    } deserializer:^id<AMKeyValueItem>(NSData *data) {
-        IOSByteArray *bytesArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
-        return [AMGroup fromBytesWithByteArray:bytesArray];
-    }];
-}
-
 @interface LevelDBKeyValueStorage ()
 
 @property (nonatomic, strong) LevelDB *ldb;

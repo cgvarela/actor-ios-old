@@ -9,11 +9,6 @@
 #import "im/actor/model/storage/KeyValueItem.h"
 #import "im/actor/model/storage/KeyValueStorage.h"
 
-@class AMPeer;
-id<AMKeyValueStorage> createUserLevelDBKeyValueStorage();
-id<AMKeyValueStorage> createGroupLevelDBKeyValueStorage();
-id<AMKeyValueStorage> createPendingMessageLevelDBKeyValueStorage(AMPeer *peer);
-
 @interface LevelDBKeyValueStorage : NSObject <AMKeyValueStorage>
 
 - (instancetype)initWithName:(NSString *)name

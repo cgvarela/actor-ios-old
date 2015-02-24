@@ -12,20 +12,6 @@
 #import "java/util/ArrayList.h"
 #import "ZonedCoreDataListEngine.h"
 
-#import "im/actor/model/entity/Peer.h"
-#import "im/actor/model/entity/Message.h"
-#import "AACDMessage.h"
-
-id<AMListEngine> createMessageZonedCoreDataListEngine(AMPeer *peer)
-{
-    return [[ZonedCoreDataListEngine alloc] initWithMOS:[AACDMessage class] zone_id:peer.getPeerId serializer:^NSData *(AMMessage *object) {
-        return object.toByteArray.toNSData;
-    } deserializer:^AMMessage *(NSData *data) {
-        IOSByteArray *byteArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
-        return [AMMessage fromBytesWithByteArray:byteArray];
-    }];
-}
-
 @interface ZonedCoreDataListEngine ()
 
 @property (nonatomic, strong) Class mos;

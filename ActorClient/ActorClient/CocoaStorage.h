@@ -20,6 +20,4 @@
 
 - (id<AMListEngine>)createMessagesEngineWithAMPeer:(AMPeer *)peer;
 
-- (id<AMKeyValueStorage>)pendingMessagesWithAMPeer:(AMPeer *)peer;
-
 @end

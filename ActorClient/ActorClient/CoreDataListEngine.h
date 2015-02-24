@@ -9,8 +9,6 @@
 #import "im/actor/model/storage/ListEngine.h"
 #import "im/actor/model/storage/ListEngineItem.h"
 
-id<AMListEngine> createDialogListEngine();
-
 @interface CoreDataListEngine : NSObject <AMListEngine>
 
 - (instancetype)initWithMOS:(Class)mos

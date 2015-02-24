@@ -9,9 +9,6 @@
 #import "im/actor/model/storage/ListEngine.h"
 #import "im/actor/model/storage/ListEngineItem.h"
 
-@class AMPeer;
-id<AMListEngine> createMessageZonedCoreDataListEngine(AMPeer *peer);
-
 @interface ZonedCoreDataListEngine : NSObject <AMListEngine>
 
 - (instancetype)initWithMOS:(Class)mos
