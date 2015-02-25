@@ -7,9 +7,7 @@
 //
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
-#import "NSObject+MMAnonymousClass.h"
-#import "java/lang/Runnable.h"
-#import "java/util/HashMap.h"
+#import <MMMutableMethods/NSObject+MMAnonymousClass.h>
 #import "im/actor/model/cocoa/CocoaThreading.h"
 #import "im/actor/model/ConfigurationBuilder.h"
 

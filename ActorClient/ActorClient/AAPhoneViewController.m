@@ -7,8 +7,8 @@
 //
 
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <NSObject+MMAnonymousClass.h>
-#import <MMAnonymousClass.h>
+#import <MMMutableMethods/NSObject+MMAnonymousClass.h>
+#import <MMMutableMethods/MMAnonymousClass.h>
 
 #import "J2ObjC_source.h"
 #import "java/lang/Exception.h"
