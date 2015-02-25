@@ -3,13 +3,10 @@ PODS:
   - J2ObjC (0.9.6):
     - J2ObjC/lib/jre (= 0.9.6)
   - J2ObjC/lib/jre (0.9.6)
-  - leveldb-library (1.18.1)
   - MagicalRecord (2.2):
     - MagicalRecord/Core (= 2.2)
   - MagicalRecord/Core (2.2)
   - MMMutableMethods (0.0.7)
-  - Objective-LevelDB (2.1.4):
-    - leveldb-library (~> 1.18)
   - RegexKitLite (4.0)
   - RMPhoneFormat (1.0)
   - SVProgressHUD (1.1.2)
@@ -19,7 +16,6 @@ DEPENDENCIES:
   - J2ObjC (from `https://github.com/actorapp/j2objc`)
   - MagicalRecord
   - MMMutableMethods (from `https://github.com/k06a/MMMutableMethods`, branch `dev`, tag `0.0.7`)
-  - Objective-LevelDB
   - RegexKitLite
   - RMPhoneFormat (from `https://github.com/actorapp/RMPhoneFormat`)
   - SVProgressHUD
@@ -49,10 +45,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   CocoaAsyncSocket: b0a1a89e7ea4c1c0ea4ec83f57d55117d3cdae06
   J2ObjC: 09602b92eb8f18d34a4954eec2af85156480c5e0
-  leveldb-library: 27d1c7bf65f324cc6f57e06fa9be32f02ac2b700
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MMMutableMethods: 8528410e0865a83ff5ba75d1c057eeec3b45c82a
-  Objective-LevelDB: 338540e996029ac890bdebac4bb05eb259a8bf14
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   RMPhoneFormat: e60e142b738b39528bbe586699b3dc5c04b88b2a
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438

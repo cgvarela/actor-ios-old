@@ -1,19 +1,19 @@
 //
-//  LevelDBKeyValueEngine.h
-//  
+//  CoreDataKeyValueStorage.h
+//  ActorClient
 //
-//  Created by Антон Буков on 17.02.15.
-//
+//  Created by Антон Буков on 25.02.15.
+//  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
 #import "im/actor/model/storage/KeyValueItem.h"
 #import "im/actor/model/storage/KeyValueStorage.h"
 
-@interface LevelDBKeyValueStorage : NSObject <AMKeyValueStorage>
+@interface CoreDataKeyValueStorage : NSObject <AMKeyValueStorage>
 
-- (instancetype)initWithName:(NSString *)name
-                  serializer:(NSData *(^)(id<AMKeyValueItem> object))serializer
-                deserializer:(id<AMKeyValueItem>(^)(NSData *data))deserializer;
+- (instancetype)initWithMOS:(Class)mos
+                 serializer:(NSData *(^)(id<AMKeyValueItem> object))serializer
+               deserializer:(id<AMKeyValueItem>(^)(NSData *data))deserializer;
 
 - (void)addOrUpdateItemWithLong:(jlong)id_
                   withByteArray:(IOSByteArray *)data;

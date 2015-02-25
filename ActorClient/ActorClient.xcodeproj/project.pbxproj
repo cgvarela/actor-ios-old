@@ -24,7 +24,6 @@
 		256388BF1A99C72D00A5E0E3 /* CocoaNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */; };
 		256388C11A99C72D00A5E0E3 /* CocoaTcpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */; };
 		256388C21A99C72D00A5E0E3 /* CoreDataListEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388AD1A99C72D00A5E0E3 /* CoreDataListEngine.m */; };
-		256388C41A99C72D00A5E0E3 /* LevelDBKeyValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B11A99C72D00A5E0E3 /* LevelDBKeyValueStorage.m */; };
 		256388C61A99C72D00A5E0E3 /* SASerializationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B51A99C72D00A5E0E3 /* SASerializationHelpers.m */; };
 		256388C71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m */; };
 		256388C91A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388BB1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m */; };
@@ -33,6 +32,11 @@
 		25639B8D1A9A81A500A5E0E3 /* CocoaLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 25639B8C1A9A81A500A5E0E3 /* CocoaLogger.m */; };
 		25639B901A9A835F00A5E0E3 /* CocoaMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 25639B8F1A9A835F00A5E0E3 /* CocoaMessenger.m */; };
 		259D452F1A99440400BC2B4D /* AACountriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259D452E1A99440400BC2B4D /* AACountriesViewController.m */; };
+		25C9C37B1A9D46D70061780E /* CoreDataKeyValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C37A1A9D46D70061780E /* CoreDataKeyValueStorage.m */; };
+		25C9C37E1A9D49C20061780E /* AACDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C37D1A9D49C20061780E /* AACDUser.m */; };
+		25C9C3811A9D49C20061780E /* AACDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3801A9D49C20061780E /* AACDGroup.m */; };
+		25C9C3841A9D4A900061780E /* CocoaLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3831A9D4A900061780E /* CocoaLocale.m */; };
+		25C9C3871A9D4B130061780E /* CocoaMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3861A9D4B130061780E /* CocoaMainThread.m */; };
 		25E1779B1A9D1382001CE95B /* AuthSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E174421A9D1381001CE95B /* AuthSession.m */; };
 		25E1779C1A9D1382001CE95B /* Avatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E174441A9D1381001CE95B /* Avatar.m */; };
 		25E1779D1A9D1382001CE95B /* AvatarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E174461A9D1381001CE95B /* AvatarImage.m */; };
@@ -491,8 +495,6 @@
 		256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaTcpConnection.m; sourceTree = "<group>"; };
 		256388AC1A99C72D00A5E0E3 /* CoreDataListEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataListEngine.h; sourceTree = "<group>"; };
 		256388AD1A99C72D00A5E0E3 /* CoreDataListEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataListEngine.m; sourceTree = "<group>"; };
-		256388B01A99C72D00A5E0E3 /* LevelDBKeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelDBKeyValueStorage.h; sourceTree = "<group>"; };
-		256388B11A99C72D00A5E0E3 /* LevelDBKeyValueStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelDBKeyValueStorage.m; sourceTree = "<group>"; };
 		256388B41A99C72D00A5E0E3 /* SASerializationHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASerializationHelpers.h; sourceTree = "<group>"; };
 		256388B51A99C72D00A5E0E3 /* SASerializationHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASerializationHelpers.m; sourceTree = "<group>"; };
 		256388B61A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsPreferencesStorage.h; sourceTree = "<group>"; };
@@ -507,6 +509,16 @@
 		25639B8F1A9A835F00A5E0E3 /* CocoaMessenger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaMessenger.m; sourceTree = "<group>"; };
 		259D452D1A99440400BC2B4D /* AACountriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACountriesViewController.h; sourceTree = "<group>"; };
 		259D452E1A99440400BC2B4D /* AACountriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACountriesViewController.m; sourceTree = "<group>"; };
+		25C9C3791A9D46D70061780E /* CoreDataKeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataKeyValueStorage.h; sourceTree = "<group>"; };
+		25C9C37A1A9D46D70061780E /* CoreDataKeyValueStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataKeyValueStorage.m; sourceTree = "<group>"; };
+		25C9C37C1A9D49C20061780E /* AACDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDUser.h; sourceTree = "<group>"; };
+		25C9C37D1A9D49C20061780E /* AACDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACDUser.m; sourceTree = "<group>"; };
+		25C9C37F1A9D49C20061780E /* AACDGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDGroup.h; sourceTree = "<group>"; };
+		25C9C3801A9D49C20061780E /* AACDGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACDGroup.m; sourceTree = "<group>"; };
+		25C9C3821A9D4A900061780E /* CocoaLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLocale.h; sourceTree = "<group>"; };
+		25C9C3831A9D4A900061780E /* CocoaLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaLocale.m; sourceTree = "<group>"; };
+		25C9C3851A9D4B130061780E /* CocoaMainThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaMainThread.h; sourceTree = "<group>"; };
+		25C9C3861A9D4B130061780E /* CocoaMainThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaMainThread.m; sourceTree = "<group>"; };
 		25E174411A9D1381001CE95B /* AuthSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthSession.h; sourceTree = "<group>"; };
 		25E174421A9D1381001CE95B /* AuthSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthSession.m; sourceTree = "<group>"; };
 		25E174431A9D1381001CE95B /* Avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Avatar.h; sourceTree = "<group>"; };
@@ -1346,7 +1358,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		25295CE61A9D357100A54CD0 /* coredata */ = {
+		25295CE61A9D357100A54CD0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				256388CE1A99C86400A5E0E3 /* CocoaStorage.xcdatamodeld */,
@@ -1354,8 +1366,12 @@
 				256388A01A99C72D00A5E0E3 /* AACDDialog.m */,
 				256388A31A99C72D00A5E0E3 /* AACDMessage.h */,
 				256388A41A99C72D00A5E0E3 /* AACDMessage.m */,
+				25C9C37F1A9D49C20061780E /* AACDGroup.h */,
+				25C9C3801A9D49C20061780E /* AACDGroup.m */,
+				25C9C37C1A9D49C20061780E /* AACDUser.h */,
+				25C9C37D1A9D49C20061780E /* AACDUser.m */,
 			);
-			name = coredata;
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		2537F8241A966B9D004A02E9 = {
@@ -1463,10 +1479,7 @@
 				256388D41A99C8A100A5E0E3 /* helpers */,
 				256388CB1A99C7B500A5E0E3 /* storage */,
 				256388D31A99C88D00A5E0E3 /* network */,
-				25639B8B1A9A81A500A5E0E3 /* CocoaLogger.h */,
-				25639B8C1A9A81A500A5E0E3 /* CocoaLogger.m */,
-				25639B8E1A9A835F00A5E0E3 /* CocoaMessenger.h */,
-				25639B8F1A9A835F00A5E0E3 /* CocoaMessenger.m */,
+				25C9C3881A9D4B860061780E /* cocoa */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1474,34 +1487,22 @@
 		256388CB1A99C7B500A5E0E3 /* storage */ = {
 			isa = PBXGroup;
 			children = (
-				25295CE61A9D357100A54CD0 /* coredata */,
-				256388A71A99C72D00A5E0E3 /* CocoaStorage.h */,
-				256388D11A99C88800A5E0E3 /* CocoaStorage.m */,
-				256388CC1A99C7C200A5E0E3 /* engines */,
-			);
-			name = storage;
-			sourceTree = "<group>";
-		};
-		256388CC1A99C7C200A5E0E3 /* engines */ = {
-			isa = PBXGroup;
-			children = (
+				25295CE61A9D357100A54CD0 /* CoreData */,
 				256388B61A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.h */,
 				256388B71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m */,
-				256388B01A99C72D00A5E0E3 /* LevelDBKeyValueStorage.h */,
-				256388B11A99C72D00A5E0E3 /* LevelDBKeyValueStorage.m */,
+				25C9C3791A9D46D70061780E /* CoreDataKeyValueStorage.h */,
+				25C9C37A1A9D46D70061780E /* CoreDataKeyValueStorage.m */,
 				256388AC1A99C72D00A5E0E3 /* CoreDataListEngine.h */,
 				256388AD1A99C72D00A5E0E3 /* CoreDataListEngine.m */,
 				256388BA1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.h */,
 				256388BB1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m */,
 			);
-			name = engines;
+			name = storage;
 			sourceTree = "<group>";
 		};
 		256388D31A99C88D00A5E0E3 /* network */ = {
 			isa = PBXGroup;
 			children = (
-				256388A51A99C72D00A5E0E3 /* CocoaNetworking.h */,
-				256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */,
 				256388AA1A99C72D00A5E0E3 /* CocoaTcpConnection.h */,
 				256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */,
 			);
@@ -1515,6 +1516,25 @@
 				256388B51A99C72D00A5E0E3 /* SASerializationHelpers.m */,
 			);
 			name = helpers;
+			sourceTree = "<group>";
+		};
+		25C9C3881A9D4B860061780E /* cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				25639B8B1A9A81A500A5E0E3 /* CocoaLogger.h */,
+				25639B8C1A9A81A500A5E0E3 /* CocoaLogger.m */,
+				25C9C3821A9D4A900061780E /* CocoaLocale.h */,
+				25C9C3831A9D4A900061780E /* CocoaLocale.m */,
+				25C9C3851A9D4B130061780E /* CocoaMainThread.h */,
+				25C9C3861A9D4B130061780E /* CocoaMainThread.m */,
+				256388A51A99C72D00A5E0E3 /* CocoaNetworking.h */,
+				256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */,
+				256388A71A99C72D00A5E0E3 /* CocoaStorage.h */,
+				256388D11A99C88800A5E0E3 /* CocoaStorage.m */,
+				25639B8E1A9A835F00A5E0E3 /* CocoaMessenger.h */,
+				25639B8F1A9A835F00A5E0E3 /* CocoaMessenger.m */,
+			);
+			name = cocoa;
 			sourceTree = "<group>";
 		};
 		25E1743C1A9D1381001CE95B /* src */ = {
@@ -2972,6 +2992,7 @@
 				25E177EB1A9D1382001CE95B /* RequestSubscribeFromGroupOnline.m in Sources */,
 				25E177CF1A9D1382001CE95B /* RequestGetDifference.m in Sources */,
 				25E177DC1A9D1382001CE95B /* RequestRegisterGooglePush.m in Sources */,
+				25C9C3841A9D4A900061780E /* CocoaLocale.m in Sources */,
 				25E179091A9D1382001CE95B /* MTProto.m in Sources */,
 				25E178FA1A9D1382001CE95B /* Pong.m in Sources */,
 				25E1784F1A9D1382001CE95B /* FutureTimeoutException.m in Sources */,
@@ -3157,6 +3178,7 @@
 				25E178211A9D1382001CE95B /* UpdateGroupOnline.m in Sources */,
 				25E178781A9D1382001CE95B /* BserObject.m in Sources */,
 				25E179111A9D1382001CE95B /* RpcCallback.m in Sources */,
+				25C9C37E1A9D49C20061780E /* AACDUser.m in Sources */,
 				25E178271A9D1382001CE95B /* UpdateMessageDelete.m in Sources */,
 				25E1790F1A9D1382001CE95B /* RpcScope.m in Sources */,
 				25E179291A9D1382001CE95B /* JavaUtil.m in Sources */,
@@ -3175,6 +3197,7 @@
 				25E178871A9D1382001CE95B /* FastThumb.m in Sources */,
 				25E1783C1A9D1382001CE95B /* UserOutPeer.m in Sources */,
 				25E178731A9D1382001CE95B /* TaskTimeout.m in Sources */,
+				25C9C3811A9D49C20061780E /* AACDGroup.m in Sources */,
 				25E1783D1A9D1382001CE95B /* UserState.m in Sources */,
 				25E1786E1A9D1382001CE95B /* TaskError.m in Sources */,
 				25E179171A9D1382001CE95B /* KeyValueEngine.m in Sources */,
@@ -3225,6 +3248,7 @@
 				25E1786D1A9D1382001CE95B /* TaskCancel.m in Sources */,
 				25E178101A9D1382001CE95B /* TextMessage.m in Sources */,
 				25E177F41A9D1382001CE95B /* ResponseAuth.m in Sources */,
+				25C9C3871A9D4B130061780E /* CocoaMainThread.m in Sources */,
 				25E1787B1A9D1382001CE95B /* BserWriter.m in Sources */,
 				25E177E31A9D1382001CE95B /* RequestSendEmailCode.m in Sources */,
 				25E178F61A9D1382001CE95B /* MTRpcRequest.m in Sources */,
@@ -3267,6 +3291,7 @@
 				25E177EC1A9D1382001CE95B /* RequestSubscribeFromOnline.m in Sources */,
 				25E178B11A9D1382001CE95B /* Auth.m in Sources */,
 				25E1788B1A9D1382001CE95B /* PhotoContent.m in Sources */,
+				25C9C37B1A9D46D70061780E /* CoreDataKeyValueStorage.m in Sources */,
 				25E178D81A9D1382001CE95B /* UpdateProcessor.m in Sources */,
 				25E1789D1A9D1382001CE95B /* MessageState.m in Sources */,
 				25E178591A9D1382001CE95B /* ActorDispatcher.m in Sources */,
@@ -3283,7 +3308,6 @@
 				256388C11A99C72D00A5E0E3 /* CocoaTcpConnection.m in Sources */,
 				25E178291A9D1382001CE95B /* UpdateMessageReadByMe.m in Sources */,
 				25E177DB1A9D1382001CE95B /* RequestRegisterApplePush.m in Sources */,
-				256388C41A99C72D00A5E0E3 /* LevelDBKeyValueStorage.m in Sources */,
 				25E1779C1A9D1382001CE95B /* Avatar.m in Sources */,
 				25E178701A9D1382001CE95B /* TaskRequest.m in Sources */,
 				25E178EF1A9D1382001CE95B /* ReceiverActor.m in Sources */,

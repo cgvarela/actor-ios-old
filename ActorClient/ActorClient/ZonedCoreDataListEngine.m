@@ -54,9 +54,10 @@
     
     @synchronized (self) {
         id object = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key = %@", @(self.zone_id), @(key)] inContext:self.context];
-        if (object == nil)
+        if (object == nil) {
             object = [self.mos MR_createInContext:self.context];
-        [object setValue:@(key) forKey:@"key"];
+            [object setValue:@(key) forKey:@"key"];
+        }
         [object setValue:@(sortKey) forKey:@"sortKey"];
         [object setValue:value forKey:@"value"];
     }
@@ -71,9 +72,10 @@
             id value = self.serializer(item);
             
             id object = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key = %@", @(self.zone_id), @(key)] inContext:self.context];
-            if (object == nil)
+            if (object == nil) {
                 object = [self.mos MR_createInContext:self.context];
-            [object setValue:@(key) forKey:@"key"];
+                [object setValue:@(key) forKey:@"key"];
+            }
             [object setValue:@(sortKey) forKey:@"sortKey"];
             [object setValue:value forKey:@"value"];
         }
