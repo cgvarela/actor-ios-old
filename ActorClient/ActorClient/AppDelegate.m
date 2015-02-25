@@ -30,6 +30,7 @@
     
     [UITableViewCell appearance].tintColor = BAR_COLOR;
     [UITableView appearance].sectionIndexColor = BAR_COLOR;
+    [UITabBar appearance].tintColor = BAR_COLOR;
     
     [MagicalRecord setupAutoMigratingCoreDataStack];
     [CocoaMessenger messenger];

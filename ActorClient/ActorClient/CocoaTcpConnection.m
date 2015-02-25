@@ -45,7 +45,7 @@
                          //(id)kCFStreamSSLAllowsExpiredRoots:@NO,
                          //(id)kCFStreamSSLAllowsAnyRoot:@YES,
                          //(id)kCFStreamSSLValidatesCertificateChain:@YES,
-                         (id)kCFStreamSSLPeerName:@"mtproto-api.actor.im",
+                         (id)kCFStreamSSLPeerName:@"actor.im",
                          //(id)kCFStreamSSLLevel:(id)kCFStreamSocketSecurityLevelNegotiatedSSL,
                          }];
     } else {

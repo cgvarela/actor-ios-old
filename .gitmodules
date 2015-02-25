@@ -1,3 +1,6 @@
 [submodule "actor-model"]
 	path = actor-model
 	url = https://github.com/actorapp/actor-model
+[submodule "ActorClient/RCBlurredImageView"]
+	path = ActorClient/RCBlurredImageView
+	url = https://github.com/k06a/RCBlurredImageView
