@@ -57,6 +57,7 @@
         }
         [object setValue:@(sortKey) forKey:@"sortKey"];
         [object setValue:value forKey:@"value"];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -76,6 +77,7 @@
             [object setValue:@(sortKey) forKey:@"sortKey"];
             [object setValue:value forKey:@"value"];
         }
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -90,6 +92,7 @@
     @synchronized (self) {
         id object = [self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context];
         [object MR_deleteEntity];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -100,6 +103,7 @@
         [keys addObject:@([ids longAtIndex:i])];
     @synchronized (self) {
         [self.mos MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"key IN %@",keys]];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -107,13 +111,14 @@
 {
     @synchronized (self) {
         [self.mos MR_truncateAll];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
 - (id)getValueWithLong:(jlong)id_
 {
     @synchronized (self) {
-        NSData *data = [self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context];
+        NSData *data = [[self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context] valueForKey:@"value"];
         return self.deserializer(data);
     }
 }

@@ -21,6 +21,7 @@
 @property (nonatomic, strong) GCDAsyncSocket *socket;
 
 @property (nonatomic, strong) NSMutableData *buffer;
+@property (nonatomic, strong) NSMutableData *outBuffer;
 @property (nonatomic, assign) uint32_t packetIndex;
 
 @end
@@ -32,6 +33,13 @@
     if (_buffer == nil)
         _buffer = [NSMutableData data];
     return _buffer;
+}
+
+- (NSMutableData *)outBuffer
+{
+    if (_outBuffer == nil)
+        _outBuffer = [NSMutableData data];
+    return _outBuffer;
 }
 
 #pragma mark - GCD Async Socket
@@ -50,6 +58,10 @@
                          }];
     } else {
         [sock readDataWithTimeout:-1 tag:0];
+        if (self.outBuffer.length > 0) {
+            [sock writeData:self.outBuffer withTimeout:-1 tag:0];
+            self.outBuffer = nil;
+        }
     }
 }
 
@@ -57,6 +69,10 @@
 {
     NSLog(@"socketDidSecure");
     [sock readDataWithTimeout:-1 tag:0];
+    if (self.outBuffer.length > 0) {
+        [sock writeData:self.outBuffer withTimeout:-1 tag:0];
+        self.outBuffer = nil;
+    }
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
@@ -124,13 +140,17 @@
 
 - (void)post:(IOSByteArray *)data withOffset:(jint)offset withLen:(jint)len
 {
-    NSMutableData *buffer = [NSMutableData dataWithCapacity:4+4+data.length+4];
+    NSMutableData *buffer = [NSMutableData dataWithCapacity:4+4+len+4];
     
     insert_uint(buffer, 4 + (uint32_t)data.length + 4);
     insert_uint(buffer, self.packetIndex++);
-    [buffer appendData:data.toNSData];
+    [buffer appendData:[data.toNSData subdataWithRange:NSMakeRange(offset, len)]];
     insert_uint(buffer, (uint32_t)crc32(0, buffer.bytes, (int32_t)buffer.length));
     
+    if (!self.socket.isConnected) {
+        [self.outBuffer appendData:buffer];
+        return;
+    }
     [self.socket writeData:buffer withTimeout:-1 tag:0];
 }
 

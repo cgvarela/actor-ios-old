@@ -7,6 +7,7 @@
 //
 
 #import "im/actor/model/storage/KeyValueItem.h"
+#import "im/actor/model/storage/KeyValueRecord.h"
 #import "im/actor/model/storage/KeyValueStorage.h"
 
 @interface CoreDataKeyValueStorage : NSObject <AMKeyValueStorage>

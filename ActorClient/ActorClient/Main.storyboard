@@ -10,7 +10,7 @@
         <!--Chats-->
         <scene sceneID="nmG-F7-WGQ">
             <objects>
-                <viewController id="akq-ZF-GgN" sceneMemberID="viewController">
+                <viewController id="akq-ZF-GgN" customClass="AAChatsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xer-1k-4z6"/>
                         <viewControllerLayoutGuide type="bottom" id="vwd-zH-u8V"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xyP-kg-VAU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xyP-kg-VAU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -106,7 +106,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="DGn-9o-J4K" secondAttribute="trailing" constant="10" id="C7E-YO-J6n"/>
                                                 <constraint firstItem="siW-Ym-szn" firstAttribute="bottom" secondItem="O1M-N8-DnE" secondAttribute="bottom" id="EAk-m1-IvP"/>
                                                 <constraint firstItem="DSJ-mN-tDB" firstAttribute="leading" secondItem="MUv-l5-dO5" secondAttribute="leading" constant="75" id="Ezp-Yp-edR"/>
-                                                <constraint firstItem="uXF-J1-H9K" firstAttribute="leading" secondItem="MUv-l5-dO5" secondAttribute="leading" constant="75" id="J6o-fy-bB7"/>
                                                 <constraint firstAttribute="trailing" secondItem="0MG-0R-kTO" secondAttribute="trailing" constant="10" id="JZy-17-DTl"/>
                                                 <constraint firstAttribute="trailing" secondItem="jNf-0Q-cPn" secondAttribute="trailing" constant="10" id="Jja-5Q-rqq"/>
                                                 <constraint firstItem="Het-gY-CGY" firstAttribute="top" secondItem="uXF-J1-H9K" secondAttribute="top" id="Lgd-Al-KDc"/>
@@ -117,19 +116,24 @@
                                                 <constraint firstAttribute="trailing" secondItem="Het-gY-CGY" secondAttribute="trailing" constant="10" id="Uw0-ew-wYD"/>
                                                 <constraint firstItem="DGn-9o-J4K" firstAttribute="bottom" secondItem="uXF-J1-H9K" secondAttribute="bottom" id="Wyq-Ry-gF3"/>
                                                 <constraint firstAttribute="bottom" secondItem="N6g-jv-E2z" secondAttribute="bottom" constant="5" id="X5J-4D-6rU"/>
-                                                <constraint firstItem="siW-Ym-szn" firstAttribute="leading" secondItem="MUv-l5-dO5" secondAttribute="leading" constant="75" id="bst-Ib-lGm"/>
+                                                <constraint firstItem="siW-Ym-szn" firstAttribute="leading" secondItem="N6g-jv-E2z" secondAttribute="trailing" constant="10" id="bTA-v7-SxT"/>
                                                 <constraint firstAttribute="bottom" secondItem="uXF-J1-H9K" secondAttribute="bottom" constant="10" id="hOH-Tv-eET"/>
                                                 <constraint firstItem="N6g-jv-E2z" firstAttribute="top" secondItem="MUv-l5-dO5" secondAttribute="top" constant="5" id="n8h-nh-GaO"/>
                                                 <constraint firstItem="uXF-J1-H9K" firstAttribute="top" secondItem="0MG-0R-kTO" secondAttribute="top" id="oRw-Xn-S4h"/>
                                                 <constraint firstItem="DGn-9o-J4K" firstAttribute="leading" secondItem="uXF-J1-H9K" secondAttribute="trailing" constant="8" id="oc7-ff-3ER"/>
                                                 <constraint firstItem="Het-gY-CGY" firstAttribute="bottom" secondItem="uXF-J1-H9K" secondAttribute="bottom" id="q4w-vQ-oYC"/>
                                                 <constraint firstItem="O1M-N8-DnE" firstAttribute="leading" secondItem="siW-Ym-szn" secondAttribute="trailing" constant="8" id="rFe-gw-Un2"/>
+                                                <constraint firstItem="uXF-J1-H9K" firstAttribute="leading" secondItem="N6g-jv-E2z" secondAttribute="trailing" constant="10" id="rTq-DY-Z1i"/>
                                                 <constraint firstItem="jNf-0Q-cPn" firstAttribute="top" secondItem="uXF-J1-H9K" secondAttribute="top" id="tfs-bR-Rdz"/>
                                                 <constraint firstItem="uXF-J1-H9K" firstAttribute="top" secondItem="siW-Ym-szn" secondAttribute="bottom" id="xsC-tb-Eie"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="akq-ZF-GgN" id="Oh5-gD-9jb"/>
+                                    <outlet property="delegate" destination="akq-ZF-GgN" id="413-04-ieN"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,6 +145,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="fY6-Gm-aSV"/>
+                    <connections>
+                        <outlet property="tableView" destination="xyP-kg-VAU" id="tLW-dL-E6B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYn-Fe-7lY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -224,7 +231,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="iWp-Tc-4Vc">
             <objects>
-                <tabBarController id="cBE-Lr-UCf" sceneMemberID="viewController">
+                <tabBarController id="cBE-Lr-UCf" customClass="AATabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Bne-E4-mAr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -245,7 +252,7 @@
         <scene sceneID="WLt-qC-p1b">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gka-Hp-iMx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contacts" image="TabIconContacts" selectedImage="TabIconContactsHighlighted" id="X8H-Ym-9Q8">
+                    <tabBarItem key="tabBarItem" title="Contacts" image="TabIconContacts" id="X8H-Ym-9Q8">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="TabIconContactsHighlighted"/>
                         </userDefinedRuntimeAttributes>
@@ -268,7 +275,7 @@
         <scene sceneID="U2N-MA-4Ka">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dpA-FH-rRe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chats" image="TabIconChats" selectedImage="TabIconChatsHighlighted" id="JXh-rX-iDK">
+                    <tabBarItem key="tabBarItem" title="Chats" image="TabIconChats" id="JXh-rX-iDK">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="TabIconChatsHighlighted"/>
                         </userDefinedRuntimeAttributes>
@@ -310,7 +317,7 @@
         <scene sceneID="qIn-tH-dax">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HP5-Y8-aBQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="TabIconSettings" selectedImage="TabIconSettingsHighlighted" id="tjS-YS-Z9r">
+                    <tabBarItem key="tabBarItem" title="Settings" image="TabIconSettings" id="tjS-YS-Z9r">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="TabIconSettingsHighlighted"/>
                         </userDefinedRuntimeAttributes>
@@ -333,13 +340,10 @@
     <resources>
         <image name="ChatsIconDelivered" width="29" height="29"/>
         <image name="ChatsIconRead" width="29" height="29"/>
-        <image name="ChatsIconSent" width="29" height="29"/>
+        <image name="ChatsIconSent" width="115" height="67"/>
         <image name="TabIconChats" width="32" height="32"/>
-        <image name="TabIconChatsHighlighted" width="32" height="32"/>
         <image name="TabIconContacts" width="32" height="32"/>
-        <image name="TabIconContactsHighlighted" width="32" height="32"/>
         <image name="TabIconSettings" width="32" height="32"/>
-        <image name="TabIconSettingsHighlighted" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

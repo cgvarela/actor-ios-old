@@ -26,7 +26,7 @@
 - (NSManagedObjectContext *)context
 {
     if (_context == nil) {
-        _context = [NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]];
+        _context = [NSManagedObjectContext MR_defaultContext];
     }
     return _context;
 }
@@ -53,15 +53,16 @@
             [object setValue:@(id_) forKey:@"key"];
         }
         [object setValue:data.toNSData forKey:@"value"];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
 - (void)addOrUpdateItemsWithJavaUtilList:(id<JavaUtilList>)values
 {
     @synchronized (self) {
-        for (id<AMKeyValueItem> item in values) {
-            jlong key = [item getEngineId];
-            NSData *value = self.serializer(item);
+        for (AMKeyValueRecord *record in values) {
+            jlong key = [record getId];
+            NSData *value = record.getData.toNSData;
             
             id object = [self.mos MR_findFirstByAttribute:@"key" withValue:@(key) inContext:self.context];
             if (object == nil) {
@@ -70,6 +71,7 @@
             }
             [object setValue:value forKey:@"value"];
         }
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -78,6 +80,7 @@
     @synchronized (self) {
         id object = [self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context];
         [object MR_deleteEntity];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -88,6 +91,7 @@
         [keys addObject:@([ids longAtIndex:i])];
     @synchronized (self) {
         [self.mos MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"key IN %@",keys]];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -95,13 +99,14 @@
 {
     @synchronized (self) {
         [self.mos MR_truncateAll];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
 - (id)getValueWithLong:(jlong)id_
 {
     @synchronized (self) {
-        NSData *data = [self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context];
+        NSData *data = [[self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context] valueForKey:@"value"];
         return self.deserializer(data);
     }
 }

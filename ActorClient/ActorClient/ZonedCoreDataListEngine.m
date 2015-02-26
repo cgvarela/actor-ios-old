@@ -60,6 +60,7 @@
         }
         [object setValue:@(sortKey) forKey:@"sortKey"];
         [object setValue:value forKey:@"value"];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -79,6 +80,7 @@
             [object setValue:@(sortKey) forKey:@"sortKey"];
             [object setValue:value forKey:@"value"];
         }
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -93,6 +95,7 @@
     @synchronized (self) {
         id object = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key = %@", @(self.zone_id), @(id_)] inContext:self.context];
         [object MR_deleteEntity];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -103,6 +106,7 @@
         [keys addObject:@([ids longAtIndex:i])];
     @synchronized (self) {
         [self.mos MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key IN %@", @(self.zone_id), keys] inContext:self.context];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 
@@ -110,6 +114,7 @@
 {
     @synchronized (self) {
         [self.mos MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@", @(self.zone_id)] inContext:self.context];
+        [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
 }
 

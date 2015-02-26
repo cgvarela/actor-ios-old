@@ -22,7 +22,7 @@
 
 @interface AAChatsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *frc;
 
 @end

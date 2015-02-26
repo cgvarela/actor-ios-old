@@ -12,6 +12,7 @@
 
 #import "J2ObjC_source.h"
 #import "java/lang/Exception.h"
+#import "im/actor/model/AuthState.h"
 #import "im/actor/model/concurrency/Command.h"
 #import "im/actor/model/concurrency/CommandCallback.h"
 #import "CocoaMessenger.h"
@@ -40,20 +41,19 @@
 
 - (IBAction)nextTapped:(UIBarButtonItem *)button
 {
-    [SVProgressHUD show];
+    [SVProgressHUD showWithMaskType:(SVProgressHUDMaskTypeBlack)];
     id<AMCommand> cmd = [[CocoaMessenger messenger] sendCodeWithInt:[self.codeTextField.text intValue]];
     [cmd startWithAMCommandCallback:MM_CREATE_ALWAYS(^(Class class){
         [class addMethod:@selector(onResultWithId:)
             fromProtocol:@protocol(AMCommandCallback)
-                blockImp:^(id this,id res){
-                    if ([res isEqualToString:@"LOGGED_IN"]) {
+                blockImp:^(id this,AMAuthStateEnum *res){
+                    if (res.ordinal == AMAuthState_LOGGED_IN) {
                         [SVProgressHUD showSuccessWithStatus:@"LOGGED_IN"];
-                        //[self performSegueWithIdentifier:@"segue_login" sender:nil];
+                        [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                     } else {
-                        [SVProgressHUD showSuccessWithStatus:res];
-                        //[self performSegueWithIdentifier:@"segue_reg" sender:nil];
+                        [SVProgressHUD showSuccessWithStatus:[res description]];
+                        [self performSegueWithIdentifier:@"segue_reg" sender:nil];
                     }
-                    //[SVProgressHUD dismiss];
                 }];
         [class addMethod:@selector(onErrorWithJavaLangException:)
             fromProtocol:@protocol(AMCommandCallback)
