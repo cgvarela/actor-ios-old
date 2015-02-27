@@ -11,6 +11,7 @@
 #import "J2ObjC_source.h"
 #import "im/actor/model/network/ConnectionEndpoint.h"
 #import "im/actor/model/network/ConnectionCallback.h"
+#import "im/actor/model/network/CreateConnectionCallback.h"
 #import "SASerializationHelpers.h"
 #import "CocoaTcpConnection.h"
 
@@ -18,6 +19,7 @@
 
 @property (nonatomic, strong) AMConnectionEndpoint *endpoint;
 @property (nonatomic, strong) id<AMConnectionCallback> callback;
+@property (nonatomic, strong) id<AMCreateConnectionCallback> createCallback;
 @property (nonatomic, strong) GCDAsyncSocket *socket;
 
 @property (nonatomic, strong) NSMutableData *buffer;
@@ -57,22 +59,24 @@
                          //(id)kCFStreamSSLLevel:(id)kCFStreamSocketSecurityLevelNegotiatedSSL,
                          }];
     } else {
-        [sock readDataWithTimeout:-1 tag:0];
-        if (self.outBuffer.length > 0) {
-            [sock writeData:self.outBuffer withTimeout:-1 tag:0];
-            self.outBuffer = nil;
-        }
+        [self socketOk];
     }
 }
 
 - (void)socketDidSecure:(GCDAsyncSocket *)sock
 {
     NSLog(@"socketDidSecure");
-    [sock readDataWithTimeout:-1 tag:0];
+    [self socketOk];
+}
+
+- (void)socketOk
+{
+    [self.socket readDataWithTimeout:-1 tag:0];
     if (self.outBuffer.length > 0) {
-        [sock writeData:self.outBuffer withTimeout:-1 tag:0];
+        [self.socket writeData:self.outBuffer withTimeout:-1 tag:0];
         self.outBuffer = nil;
     }
+    [self.createCallback onConnectionCreated:self];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
@@ -125,12 +129,15 @@
 - (instancetype)initWithConnectionId:(jint)connectionId
                   connectionEndpoint:(AMConnectionEndpoint *)endpoint
                   connectionCallback:(id<AMConnectionCallback>)callback
+                      createCallback:(id<AMCreateConnectionCallback>)createCallback
 {
     if (self = [super init]) {
         self.endpoint = endpoint;
         self.callback = callback;
+        self.createCallback = createCallback;
         self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
         NSError *error;
+        NSLog(@"connectToHost:onPort: %@ %@",self.endpoint.getHost,@(self.endpoint.getPort));
         [self.socket connectToHost:self.endpoint.getHost onPort:self.endpoint.getPort error:&error];
         if (error)
             NSLog(@"Socket connection error: %@", error);

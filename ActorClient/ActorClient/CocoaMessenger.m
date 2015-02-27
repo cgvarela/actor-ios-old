@@ -37,6 +37,7 @@
         [confBuilder setStorage:[[CocoaStorage alloc] init]];
         [confBuilder setMainThread:[[CocoaMainThread alloc] init]];
         [confBuilder addEndpoint:@"tls://mtproto-api.actor.im:443"];
+        //[confBuilder addEndpoint:@"tcp://mtproto-api.actor.im:8080"];
         [confBuilder setLocale:[[CocoaLocale alloc] init]];
         [confBuilder setPhoneBookProviderWithAMPhoneBookProvider:[[CocoaPhoneBookProvider alloc] init]];
         [confBuilder setCryptoProviderWithAMCryptoProvider:[[CocoaCryptoProvider alloc] init]];

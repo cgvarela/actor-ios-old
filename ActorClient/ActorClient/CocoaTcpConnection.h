@@ -16,7 +16,8 @@
 
 - (instancetype)initWithConnectionId:(jint)connectionId
                   connectionEndpoint:(AMConnectionEndpoint *)endpoint
-                  connectionCallback:(id<AMConnectionCallback>)callback;
+                  connectionCallback:(id<AMConnectionCallback>)callback
+                      createCallback:(id<AMCreateConnectionCallback>)createCallback;
 
 - (void)post:(IOSByteArray *)data withOffset:(jint)offset withLen:(jint)len;
 
