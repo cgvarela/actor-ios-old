@@ -1,5 +1,5 @@
 //
-//  AACDMessage.h
+//  AACDDownload.h
 //  ActorClient
 //
 //  Created by Антон Буков on 27.02.15.
@@ -10,11 +10,9 @@
 #import <CoreData/CoreData.h>
 
 
-@interface AACDMessage : NSManagedObject
+@interface AACDDownload : NSManagedObject
 
 @property (nonatomic) int64_t key;
-@property (nonatomic) int64_t sortKey;
 @property (nonatomic, retain) NSData * value;
-@property (nonatomic) int32_t zone_id;
 
 @end

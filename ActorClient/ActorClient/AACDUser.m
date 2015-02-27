@@ -2,7 +2,7 @@
 //  AACDUser.m
 //  ActorClient
 //
-//  Created by Антон Буков on 25.02.15.
+//  Created by Антон Буков on 27.02.15.
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
@@ -11,7 +11,5 @@
 
 @implementation AACDUser
 
-@dynamic key;
-@dynamic value;
 
 @end

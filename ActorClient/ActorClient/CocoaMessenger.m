@@ -16,6 +16,8 @@
 #import "CocoaMainThread.h"
 #import "CocoaNetworking.h"
 #import "CocoaStorage.h"
+#import "CocoaPhoneBookProvider.h"
+#import "CocoaCryptoProvider.h"
 
 #import "CocoaMessenger.h"
 
@@ -36,6 +38,8 @@
         [confBuilder setMainThread:[[CocoaMainThread alloc] init]];
         [confBuilder addEndpoint:@"tls://mtproto-api.actor.im:443"];
         [confBuilder setLocale:[[CocoaLocale alloc] init]];
+        [confBuilder setPhoneBookProviderWithAMPhoneBookProvider:[[CocoaPhoneBookProvider alloc] init]];
+        [confBuilder setCryptoProviderWithAMCryptoProvider:[[CocoaCryptoProvider alloc] init]];
         return [confBuilder build];
     }()];
     return self;

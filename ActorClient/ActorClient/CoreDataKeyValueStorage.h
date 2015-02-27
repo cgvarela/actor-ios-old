@@ -12,9 +12,7 @@
 
 @interface CoreDataKeyValueStorage : NSObject <AMKeyValueStorage>
 
-- (instancetype)initWithMOS:(Class)mos
-                 serializer:(NSData *(^)(id<AMKeyValueItem> object))serializer
-               deserializer:(IOSByteArray *(^)(NSData *data))deserializer;
+- (instancetype)initWithMOS:(Class)mos;
 
 - (void)addOrUpdateItemWithLong:(jlong)id_
                   withByteArray:(IOSByteArray *)data;
@@ -27,6 +25,6 @@
 
 - (void)clear;
 
-- (id)getValueWithLong:(jlong)id_;
+- (IOSByteArray *)getValueWithLong:(jlong)id_;
 
 @end

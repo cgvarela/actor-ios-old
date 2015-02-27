@@ -122,12 +122,9 @@
     }() stringFromDate:[NSDate dateWithTimeIntervalSince1970:dialog.getDate]];
     textLabel.text = dialog.getText;
     unreadLabel.text = [@(dialog.getUnreadCount) description];
-    sentView.hidden = !((dialog.getStatus.getValue == AMMessageState_SENT) ||
-                        (dialog.getStatus.getValue == AMMessageState_RECEIVED) ||
-                        (dialog.getStatus.getValue == AMMessageState_READ));
-    deliveredView.hidden = !((dialog.getStatus.getValue == AMMessageState_RECEIVED) ||
-                             (dialog.getStatus.getValue == AMMessageState_READ));
-    readView.hidden = !((dialog.getStatus.getValue == AMMessageState_READ));
+    sentView.hidden = !(dialog.getStatus.getValue == AMMessageState_SENT);
+    deliveredView.hidden = !(dialog.getStatus.getValue == AMMessageState_RECEIVED);
+    readView.hidden = !(dialog.getStatus.getValue == AMMessageState_READ);
 }
 
 #pragma mark - View

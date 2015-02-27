@@ -15,8 +15,6 @@
 @interface CoreDataKeyValueStorage ()
 
 @property (nonatomic, strong) Class mos;
-@property (nonatomic, strong) NSData *(^serializer)(id<AMKeyValueItem> object);
-@property (nonatomic, strong) IOSByteArray *(^deserializer)(NSData *data);
 @property (nonatomic, strong) NSManagedObjectContext *context;
 
 @end
@@ -32,13 +30,9 @@
 }
 
 - (instancetype)initWithMOS:(Class)mos
-                 serializer:(NSData *(^)(id<AMKeyValueItem> object))serializer
-               deserializer:(IOSByteArray *(^)(NSData *data))deserializer
 {
     if (self = [super init]) {
         self.mos = mos;
-        self.serializer = serializer;
-        self.deserializer = deserializer;
     }
     return self;
 }
@@ -103,11 +97,11 @@
     }
 }
 
-- (id)getValueWithLong:(jlong)id_
+- (IOSByteArray *)getValueWithLong:(jlong)id_
 {
     @synchronized (self) {
         NSData *data = [[self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context] valueForKey:@"value"];
-        return self.deserializer(data);
+        return data ? [IOSByteArray arrayWithBytes:data.bytes count:data.length] : nil;
     }
 }
 

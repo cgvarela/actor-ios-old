@@ -2,7 +2,7 @@
 //  AACDUser.h
 //  ActorClient
 //
-//  Created by Антон Буков on 25.02.15.
+//  Created by Антон Буков on 27.02.15.
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
@@ -12,7 +12,5 @@
 
 @interface AACDUser : NSManagedObject
 
-@property (nonatomic) int64_t key;
-@property (nonatomic, retain) NSData * value;
 
 @end

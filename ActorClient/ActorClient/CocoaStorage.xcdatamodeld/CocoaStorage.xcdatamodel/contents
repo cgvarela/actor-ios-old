@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14D87h" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AACDContact" representedClassName="AACDContact" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="sortKey" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
     <entity name="AACDDialog" representedClassName="AACDDialog" syncable="YES">
         <attribute name="key" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="sortKey" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
-    <entity name="AACDGroup" representedClassName="AACDGroup" syncable="YES">
+    <entity name="AACDDownload" representedClassName="AACDDownload" parentEntity="AACDKeyValue" syncable="YES"/>
+    <entity name="AACDGroup" representedClassName="AACDGroup" parentEntity="AACDKeyValue" syncable="YES"/>
+    <entity name="AACDKeyValue" representedClassName="AACDDownload" syncable="YES">
         <attribute name="key" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="zone_id" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
     <entity name="AACDMessage" representedClassName="AACDMessage" syncable="YES">
         <attribute name="key" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
@@ -16,14 +22,14 @@
         <attribute name="value" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="zone_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="AACDUser" representedClassName="AACDUser" syncable="YES">
-        <attribute name="key" optional="YES" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="Binary" syncable="YES"/>
-    </entity>
+    <entity name="AACDUser" representedClassName="AACDUser" parentEntity="AACDKeyValue" syncable="YES"/>
     <elements>
         <element name="AACDDialog" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="AACDGroup" positionX="27" positionY="63" width="128" height="88"/>
+        <element name="AACDDownload" positionX="63" positionY="90" width="128" height="45"/>
+        <element name="AACDGroup" positionX="27" positionY="63" width="128" height="45"/>
+        <element name="AACDKeyValue" positionX="45" positionY="72" width="128" height="75"/>
         <element name="AACDMessage" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="AACDUser" positionX="0" positionY="27" width="128" height="73"/>
+        <element name="AACDUser" positionX="0" positionY="27" width="128" height="43"/>
+        <element name="AACDContact" positionX="45" positionY="63" width="128" height="90"/>
     </elements>
 </model>
