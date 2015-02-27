@@ -1,8 +1,8 @@
 //
-//  AAChatsViewController.m
+//  AAContactsViewController.m
 //  ActorClient
 //
-//  Created by Антон Буков on 25.02.15.
+//  Created by Антон Буков on 27.02.15.
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
@@ -12,28 +12,28 @@
 #import "im/actor/model/entity/Peer.h"
 #import "im/actor/model/entity/PeerType.h"
 #import "im/actor/model/entity/Dialog.h"
+#import "im/actor/model/entity/Contact.h"
 #import "im/actor/model/entity/MessageState.h"
 #import "im/actor/model/entity/Avatar.h"
 #import "im/actor/model/entity/AvatarImage.h"
 #import "im/actor/model/entity/FileLocation.h"
-#import "AACDDialog.h"
-#import "AAChatsViewController.h"
+#import "AACDContact.h"
+#import "AAContactsViewController.h"
 #import "AAAvatarImageView.h"
 
-@interface AAChatsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface AAContactsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *frc;
 
 @end
 
-@implementation AAChatsViewController
+@implementation AAContactsViewController
 
 - (NSFetchedResultsController *)frc
 {
-    if (_frc == nil) {
-        _frc = [AACDDialog MR_fetchAllSortedBy:@"sortKey" ascending:NO withPredicate:nil groupBy:nil delegate:self];
-    }
+    if (_frc == nil)
+        _frc = [AACDContact MR_fetchAllSortedBy:@"sortKey" ascending:NO withPredicate:nil groupBy:nil delegate:self];
     return _frc;
 }
 
@@ -61,7 +61,7 @@
             [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
             break;
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withDialog:anObject update:YES];
+            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withContact:anObject update:YES];
             //[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
             break;
     }
@@ -81,51 +81,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell_chat" forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell_contact" forIndexPath:indexPath];
     
-    AACDDialog *dialog = [self.frc objectAtIndexPath:indexPath];
-    [self configureCell:cell withDialog:dialog update:NO];
+    AACDContact *contact = [self.frc objectAtIndexPath:indexPath];
+    [self configureCell:cell withContact:contact update:NO];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell withDialog:(AACDDialog *)dlg update:(BOOL)update
+- (void)configureCell:(UITableViewCell *)cell withContact:(AACDContact *)cntct update:(BOOL)update
 {
-    IOSByteArray *byteArray = [IOSByteArray arrayWithBytes:dlg.value.bytes count:dlg.value.length];
-    AMDialog *dialog = [AMDialog fromBytesWithByteArray:byteArray];
+    IOSByteArray *byteArray = [IOSByteArray arrayWithBytes:cntct.value.bytes count:cntct.value.length];
+    AMContact *contact = [AMContact fromBytesWithByteArray:byteArray];
     
     UIImageView *imageView = (id)[cell.contentView viewWithTag:1];
     UILabel *titleLabel = (id)[cell.contentView viewWithTag:2];
-    UILabel *timeLabel = (id)[cell.contentView viewWithTag:3];
-    UILabel *textLabel = (id)[cell.contentView viewWithTag:4];
-    UILabel *unreadLabel = (id)[cell.contentView viewWithTag:5];
-    UIView *sentView = (id)[cell.contentView viewWithTag:6];
-    UIView *deliveredView = (id)[cell.contentView viewWithTag:7];
-    UIView *readView = (id)[cell.contentView viewWithTag:8];
     
-    jlong color_id = ^jlong{
-        if (dialog.getPeer.getPeerType.ordinal == AMPeerType_PRIVATE)
-            return dialog.getPeer.getUid;
-        if (dialog.getPeer.getPeerType.ordinal == AMPeerType_GROUP)
-            return dialog.getPeer.getPeerId;
-        return 0;
-    }();
-    imageView.image = [AAAvatarImageView imageWithData:nil colorId:color_id title:dialog.getDialogTitle size:imageView.bounds.size];
-    //dialog.getDialogAvatar.getLargeImage.getFileLocation.get
-    titleLabel.text = dialog.getDialogTitle;
-    timeLabel.text = [^{
-        static NSDateFormatter *dateFormatter = nil;
-        if (dateFormatter == nil) {
-            dateFormatter = [[NSDateFormatter alloc] init];
-            dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"HH:mm" options:0 locale:[NSLocale currentLocale]];
-        }
-        return dateFormatter;
-    }() stringFromDate:[NSDate dateWithTimeIntervalSince1970:dialog.getDate]];
-    textLabel.text = dialog.getText;
-    unreadLabel.text = [@(dialog.getUnreadCount) description];
-    sentView.hidden = !(dialog.getStatus.getValue == AMMessageState_SENT);
-    deliveredView.hidden = !(dialog.getStatus.getValue == AMMessageState_RECEIVED);
-    readView.hidden = !(dialog.getStatus.getValue == AMMessageState_READ);
+    imageView.image = [AAAvatarImageView imageWithData:nil colorId:contact.getUid title:contact.getName size:imageView.bounds.size];
+    titleLabel.text = contact.getName;
 }
 
 #pragma mark - View
@@ -133,6 +106,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
 }
 
 /*

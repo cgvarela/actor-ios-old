@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250BDF4E1AA0B09B00DA014D /* AAContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */; };
 		2537F8331A966B9D004A02E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8321A966B9D004A02E9 /* main.m */; };
 		2537F8361A966B9D004A02E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8351A966B9D004A02E9 /* AppDelegate.m */; };
 		2537F8411A966B9D004A02E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2537F8401A966B9D004A02E9 /* Images.xcassets */; };
@@ -502,6 +503,8 @@
 
 /* Begin PBXFileReference section */
 		08B939F305AF573D79345536 /* libPods-ActorClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ActorClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		250BDF4C1AA0B09B00DA014D /* AAContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAContactsViewController.h; sourceTree = "<group>"; };
+		250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAContactsViewController.m; sourceTree = "<group>"; };
 		2537F82D1A966B9D004A02E9 /* ActorClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActorClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2537F8311A966B9D004A02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2537F8321A966B9D004A02E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1666,6 +1669,8 @@
 				25C9C38A1A9E05560061780E /* Main.storyboard */,
 				25C9C38C1A9E07310061780E /* AATabBarController.h */,
 				25C9C38D1A9E07310061780E /* AATabBarController.m */,
+				250BDF4C1AA0B09B00DA014D /* AAContactsViewController.h */,
+				250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */,
 				25C9C38F1A9E09C60061780E /* AAChatsViewController.h */,
 				25C9C3901A9E09C60061780E /* AAChatsViewController.m */,
 			);
@@ -3385,6 +3390,7 @@
 				25C9C75D1A9FF06B0061780E /* RequestChangeEmailTitle.m in Sources */,
 				25C9C74C1A9FF06B0061780E /* FileMessage.m in Sources */,
 				25C9C7F91A9FF06B0061780E /* RunnableExtension.m in Sources */,
+				250BDF4E1AA0B09B00DA014D /* AAContactsViewController.m in Sources */,
 				25C9C8791A9FF06B0061780E /* Modules.m in Sources */,
 				25C9C7A51A9FF06B0061780E /* ResponseVoid.m in Sources */,
 				25C9C82B1A9FF06B0061780E /* FileRemoteSource.m in Sources */,

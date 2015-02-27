@@ -156,7 +156,7 @@
         <!--Contacts-->
         <scene sceneID="Ghe-FD-bmJ">
             <objects>
-                <viewController id="XWG-lA-GHD" sceneMemberID="viewController">
+                <viewController id="XWG-lA-GHD" customClass="AAContactsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DaG-Sh-dSr"/>
                         <viewControllerLayoutGuide type="bottom" id="Hl4-fS-7O3"/>
@@ -165,11 +165,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NXX-v2-zgd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NXX-v2-zgd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_friend" rowHeight="48" id="Zdm-OE-JzQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_contact" rowHeight="48" id="Zdm-OE-JzQ">
                                         <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zdm-OE-JzQ" id="Byd-e3-8fZ">
@@ -212,6 +212,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XWG-lA-GHD" id="axq-6S-Ggm"/>
+                                    <outlet property="delegate" destination="XWG-lA-GHD" id="ezd-IZ-0OZ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,6 +227,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contacts" id="thd-sk-wFO"/>
+                    <connections>
+                        <outlet property="tableView" destination="NXX-v2-zgd" id="nxL-Q8-IpN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXM-eQ-MJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
