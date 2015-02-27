@@ -1,5 +1,6 @@
 PODS:
   - CocoaAsyncSocket (7.4.1)
+  - HockeySDK (3.6.2)
   - J2ObjC (0.9.6):
     - J2ObjC/lib/jre (= 0.9.6)
   - J2ObjC/lib/jre (0.9.6)
@@ -13,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - HockeySDK
   - J2ObjC (from `https://github.com/actorapp/j2objc`)
   - MagicalRecord
   - MMMutableMethods (from `https://github.com/k06a/MMMutableMethods`, branch `dev`, tag `0.0.7`)
@@ -44,6 +46,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: b0a1a89e7ea4c1c0ea4ec83f57d55117d3cdae06
+  HockeySDK: bfd1f5ac75938b07499c4ac12932244b72a2e70b
   J2ObjC: 09602b92eb8f18d34a4954eec2af85156480c5e0
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MMMutableMethods: 8528410e0865a83ff5ba75d1c057eeec3b45c82a

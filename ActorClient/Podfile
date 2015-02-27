@@ -16,6 +16,8 @@ pod 'MagicalRecord', :inhibit_warnings => true
 # UI
 pod 'SVProgressHUD'
 
+pod 'HockeySDK'
+
 end
 
 target 'ActorClientTests' do

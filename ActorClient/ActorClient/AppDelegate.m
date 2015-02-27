@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
+#import <HockeySDK/HockeySDK.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "CocoaMessenger.h"
 #import "AppDelegate.h"
@@ -34,6 +35,10 @@
     
     [MagicalRecord setupAutoMigratingCoreDataStack];
     [CocoaMessenger messenger];
+    
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"f4ffe94973085058c00c3985de4b97e5"]; // Alpha
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
     return YES;
 }
