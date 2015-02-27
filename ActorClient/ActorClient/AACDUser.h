@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "AACD_KeyValue.h"
 
 
-@interface AACDUser : NSManagedObject
+@interface AACDUser : AACD_KeyValue
 
 
 @end

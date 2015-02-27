@@ -32,7 +32,7 @@
 - (NSFetchedResultsController *)frc
 {
     if (_frc == nil) {
-        _frc = [AACDDialog MR_fetchAllSortedBy:@"sortKey" ascending:YES withPredicate:nil groupBy:nil delegate:self];
+        _frc = [AACDDialog MR_fetchAllSortedBy:@"sortKey" ascending:NO withPredicate:nil groupBy:nil delegate:self];
     }
     return _frc;
 }

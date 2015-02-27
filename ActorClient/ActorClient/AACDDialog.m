@@ -11,8 +11,5 @@
 
 @implementation AACDDialog
 
-@dynamic key;
-@dynamic sortKey;
-@dynamic value;
 
 @end

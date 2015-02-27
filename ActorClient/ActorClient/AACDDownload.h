@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "AACD_KeyValue.h"
 
 
-@interface AACDDownload : NSManagedObject
+@interface AACDDownload : AACD_KeyValue
 
-@property (nonatomic) int64_t key;
-@property (nonatomic, retain) NSData * value;
 
 @end

@@ -11,9 +11,6 @@
 
 @implementation AACDMessage
 
-@dynamic key;
-@dynamic sortKey;
-@dynamic value;
 @dynamic zone_id;
 
 @end

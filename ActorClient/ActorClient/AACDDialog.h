@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "AACD_List.h"
 
 
-@interface AACDDialog : NSManagedObject
+@interface AACDDialog : AACD_List
 
-@property (nonatomic) int64_t key;
-@property (nonatomic) int64_t sortKey;
-@property (nonatomic, retain) NSData * value;
 
 @end

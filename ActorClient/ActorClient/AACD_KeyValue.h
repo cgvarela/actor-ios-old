@@ -1,5 +1,5 @@
 //
-//  AACDGroup.h
+//  AACD_KeyValue.h
 //  ActorClient
 //
 //  Created by Антон Буков on 27.02.15.
@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "AACD_KeyValue.h"
 
 
-@interface AACDGroup : AACD_KeyValue
+@interface AACD_KeyValue : NSManagedObject
 
+@property (nonatomic) int64_t key;
+@property (nonatomic, retain) NSData * value;
 
 @end

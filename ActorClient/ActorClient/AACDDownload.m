@@ -11,7 +11,5 @@
 
 @implementation AACDDownload
 
-@dynamic key;
-@dynamic value;
 
 @end
