@@ -26,7 +26,7 @@
 - (NSManagedObjectContext *)context
 {
     if (_context == nil) {
-        _context = [NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]];
+        _context = [NSManagedObjectContext MR_defaultContext];
     }
     return _context;
 }

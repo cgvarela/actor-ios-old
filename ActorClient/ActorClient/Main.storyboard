@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xyP-kg-VAU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xyP-kg-VAU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -89,7 +89,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSJ-mN-tDB" customClass="AAUnhighlightableView">
-                                                    <rect key="frame" x="75" y="64" width="245" height="0.5"/>
+                                                    <rect key="frame" x="74.5" y="64" width="245.5" height="0.5"/>
                                                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="aJs-pA-LT5"/>
@@ -104,8 +104,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="O1M-N8-DnE" secondAttribute="trailing" constant="10" id="AVd-Lh-PXs"/>
                                                 <constraint firstItem="jNf-0Q-cPn" firstAttribute="bottom" secondItem="uXF-J1-H9K" secondAttribute="bottom" id="AYn-Q4-pGM"/>
                                                 <constraint firstAttribute="trailing" secondItem="DGn-9o-J4K" secondAttribute="trailing" constant="10" id="C7E-YO-J6n"/>
+                                                <constraint firstItem="DSJ-mN-tDB" firstAttribute="leading" secondItem="N6g-jv-E2z" secondAttribute="trailing" constant="10" id="Duo-vh-52T"/>
                                                 <constraint firstItem="siW-Ym-szn" firstAttribute="bottom" secondItem="O1M-N8-DnE" secondAttribute="bottom" id="EAk-m1-IvP"/>
-                                                <constraint firstItem="DSJ-mN-tDB" firstAttribute="leading" secondItem="MUv-l5-dO5" secondAttribute="leading" constant="75" id="Ezp-Yp-edR"/>
                                                 <constraint firstAttribute="trailing" secondItem="0MG-0R-kTO" secondAttribute="trailing" constant="10" id="JZy-17-DTl"/>
                                                 <constraint firstAttribute="trailing" secondItem="jNf-0Q-cPn" secondAttribute="trailing" constant="10" id="Jja-5Q-rqq"/>
                                                 <constraint firstItem="Het-gY-CGY" firstAttribute="top" secondItem="uXF-J1-H9K" secondAttribute="top" id="Lgd-Al-KDc"/>

@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) Class mos;
 @property (nonatomic, strong) NSData *(^serializer)(id<AMKeyValueItem> object);
-@property (nonatomic, strong) id<AMKeyValueItem>(^deserializer)(NSData *data);
+@property (nonatomic, strong) IOSByteArray *(^deserializer)(NSData *data);
 @property (nonatomic, strong) NSManagedObjectContext *context;
 
 @end
@@ -33,7 +33,7 @@
 
 - (instancetype)initWithMOS:(Class)mos
                  serializer:(NSData *(^)(id<AMKeyValueItem> object))serializer
-               deserializer:(id<AMKeyValueItem>(^)(NSData *data))deserializer
+               deserializer:(IOSByteArray *(^)(NSData *data))deserializer
 {
     if (self = [super init]) {
         self.mos = mos;

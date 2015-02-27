@@ -64,6 +64,7 @@
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextAddPath(context, CGPathCreateWithEllipseInRect((CGRect){CGPointZero,size}, NULL));
         CGContextClip(context);
+        CGContextSetAllowsAntialiasing(context, true);
         [[UIImage imageWithData:data] drawInRect:(CGRect){CGPointZero,size}];
         UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();

@@ -14,7 +14,7 @@
 
 - (instancetype)initWithMOS:(Class)mos
                  serializer:(NSData *(^)(id<AMKeyValueItem> object))serializer
-               deserializer:(id<AMKeyValueItem>(^)(NSData *data))deserializer;
+               deserializer:(IOSByteArray *(^)(NSData *data))deserializer;
 
 - (void)addOrUpdateItemWithLong:(jlong)id_
                   withByteArray:(IOSByteArray *)data;
