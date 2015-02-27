@@ -42,6 +42,8 @@
 		25C9C3911A9E09C60061780E /* AAChatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3901A9E09C60061780E /* AAChatsViewController.m */; };
 		25C9C3951A9E117D0061780E /* AAAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3941A9E117D0061780E /* AAAvatarImageView.m */; };
 		25C9C3991A9E15BF0061780E /* RCBlurredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3981A9E15BF0061780E /* RCBlurredImageView.m */; };
+		25C9C39F1A9FEA2C0061780E /* AAUnhighlightableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C39C1A9FEA2C0061780E /* AAUnhighlightableLabel.m */; };
+		25C9C3A01A9FEA2C0061780E /* AAUnhighlightableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */; };
 		25E1779B1A9D1382001CE95B /* AuthSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E174421A9D1381001CE95B /* AuthSession.m */; };
 		25E1779C1A9D1382001CE95B /* Avatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E174441A9D1381001CE95B /* Avatar.m */; };
 		25E1779D1A9D1382001CE95B /* AvatarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E174461A9D1381001CE95B /* AvatarImage.m */; };
@@ -533,6 +535,10 @@
 		25C9C3941A9E117D0061780E /* AAAvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAAvatarImageView.m; sourceTree = "<group>"; };
 		25C9C3971A9E15BF0061780E /* RCBlurredImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCBlurredImageView.h; path = RCBlurredImageView/RCBlurredImageView/RCBlurredImageView.h; sourceTree = SOURCE_ROOT; };
 		25C9C3981A9E15BF0061780E /* RCBlurredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCBlurredImageView.m; path = RCBlurredImageView/RCBlurredImageView/RCBlurredImageView.m; sourceTree = SOURCE_ROOT; };
+		25C9C39B1A9FEA2C0061780E /* AAUnhighlightableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAUnhighlightableLabel.h; sourceTree = "<group>"; };
+		25C9C39C1A9FEA2C0061780E /* AAUnhighlightableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAUnhighlightableLabel.m; sourceTree = "<group>"; };
+		25C9C39D1A9FEA2C0061780E /* AAUnhighlightableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAUnhighlightableView.h; sourceTree = "<group>"; };
+		25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAUnhighlightableView.m; sourceTree = "<group>"; };
 		25E174411A9D1381001CE95B /* AuthSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthSession.h; sourceTree = "<group>"; };
 		25E174421A9D1381001CE95B /* AuthSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthSession.m; sourceTree = "<group>"; };
 		25E174431A9D1381001CE95B /* Avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Avatar.h; sourceTree = "<group>"; };
@@ -1563,6 +1569,10 @@
 				2537F8631A974160004A02E9 /* AAHiddenNavigationBar.m */,
 				25C9C3931A9E117D0061780E /* AAAvatarImageView.h */,
 				25C9C3941A9E117D0061780E /* AAAvatarImageView.m */,
+				25C9C39B1A9FEA2C0061780E /* AAUnhighlightableLabel.h */,
+				25C9C39C1A9FEA2C0061780E /* AAUnhighlightableLabel.m */,
+				25C9C39D1A9FEA2C0061780E /* AAUnhighlightableView.h */,
+				25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -2832,6 +2842,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2537F8531A966B9D004A02E9 /* Build configuration list for PBXNativeTarget "ActorClient" */;
 			buildPhases = (
+				25C9C39A1A9FE7F70061780E /* Run Script Build Number Increment */,
 				6DAFB7212B826813ECA4122E /* Check Pods Manifest.lock */,
 				2537F8291A966B9D004A02E9 /* Sources */,
 				2537F82A1A966B9D004A02E9 /* Frameworks */,
@@ -2945,6 +2956,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ActorClient/Pods-ActorClient-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		25C9C39A1A9FE7F70061780E /* Run Script Build Number Increment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script Build Number Increment";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
 		6DAFB7212B826813ECA4122E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3202,6 +3227,7 @@
 				25E1790E1A9D1382001CE95B /* Response.m in Sources */,
 				25E178C61A9D1382001CE95B /* PlainReceiverActor.m in Sources */,
 				25E177CD1A9D1382001CE95B /* RequestGetAuthSessions.m in Sources */,
+				25C9C39F1A9FEA2C0061780E /* AAUnhighlightableLabel.m in Sources */,
 				25E178B91A9D1382001CE95B /* DialogHistory.m in Sources */,
 				25E178821A9D1382001CE95B /* Avatar.m in Sources */,
 				25E178041A9D1382001CE95B /* ResponseSeqDate.m in Sources */,
@@ -3269,6 +3295,7 @@
 				25E177CA1A9D1382001CE95B /* RequestEditUserLocalName.m in Sources */,
 				25E1780F1A9D1382001CE95B /* Sex.m in Sources */,
 				25E178DE1A9D1382001CE95B /* RandomUtils.m in Sources */,
+				25C9C3A01A9FEA2C0061780E /* AAUnhighlightableView.m in Sources */,
 				25E178561A9D1382001CE95B /* Environment.m in Sources */,
 				25E177A31A9D1382001CE95B /* ContactRecord.m in Sources */,
 				25E177E01A9D1382001CE95B /* RequestSearchContacts.m in Sources */,
@@ -3544,7 +3571,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PREFIX_HEADER = "ActorClient/ActorClient-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3559,6 +3586,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c9f683b0-cb3b-49a4-a9ab-1a8b9ef17cb3";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
