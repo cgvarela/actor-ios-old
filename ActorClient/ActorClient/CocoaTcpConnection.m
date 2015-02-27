@@ -12,7 +12,7 @@
 #import "im/actor/model/network/ConnectionEndpoint.h"
 #import "im/actor/model/network/ConnectionCallback.h"
 #import "im/actor/model/network/CreateConnectionCallback.h"
-#import "SASerializationHelpers.h"
+#import "AASerializationHelpers.h"
 #import "CocoaTcpConnection.h"
 
 @interface CocoaTcpConnection () <GCDAsyncSocketDelegate>

@@ -338,9 +338,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ChatsIconDelivered" width="29" height="29"/>
-        <image name="ChatsIconRead" width="29" height="29"/>
-        <image name="ChatsIconSent" width="115" height="67"/>
+        <image name="ChatsIconDelivered" width="25" height="11"/>
+        <image name="ChatsIconRead" width="25" height="11"/>
+        <image name="ChatsIconSent" width="25" height="11"/>
         <image name="TabIconChats" width="32" height="32"/>
         <image name="TabIconContacts" width="32" height="32"/>
         <image name="TabIconSettings" width="32" height="32"/>

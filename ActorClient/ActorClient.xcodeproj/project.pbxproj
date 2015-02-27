@@ -22,7 +22,7 @@
 		256388BF1A99C72D00A5E0E3 /* CocoaNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */; };
 		256388C11A99C72D00A5E0E3 /* CocoaTcpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */; };
 		256388C21A99C72D00A5E0E3 /* CoreDataListEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388AD1A99C72D00A5E0E3 /* CoreDataListEngine.m */; };
-		256388C61A99C72D00A5E0E3 /* SASerializationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B51A99C72D00A5E0E3 /* SASerializationHelpers.m */; };
+		256388C61A99C72D00A5E0E3 /* AASerializationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B51A99C72D00A5E0E3 /* AASerializationHelpers.m */; };
 		256388C71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m */; };
 		256388C91A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388BB1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m */; };
 		256388D01A99C86400A5E0E3 /* CocoaStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 256388CE1A99C86400A5E0E3 /* CocoaStorage.xcdatamodeld */; };
@@ -531,8 +531,8 @@
 		256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaTcpConnection.m; sourceTree = "<group>"; };
 		256388AC1A99C72D00A5E0E3 /* CoreDataListEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataListEngine.h; sourceTree = "<group>"; };
 		256388AD1A99C72D00A5E0E3 /* CoreDataListEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataListEngine.m; sourceTree = "<group>"; };
-		256388B41A99C72D00A5E0E3 /* SASerializationHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASerializationHelpers.h; sourceTree = "<group>"; };
-		256388B51A99C72D00A5E0E3 /* SASerializationHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASerializationHelpers.m; sourceTree = "<group>"; };
+		256388B41A99C72D00A5E0E3 /* AASerializationHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASerializationHelpers.h; sourceTree = "<group>"; };
+		256388B51A99C72D00A5E0E3 /* AASerializationHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASerializationHelpers.m; sourceTree = "<group>"; };
 		256388B61A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsPreferencesStorage.h; sourceTree = "<group>"; };
 		256388B71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsPreferencesStorage.m; sourceTree = "<group>"; };
 		256388BA1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZonedCoreDataListEngine.h; sourceTree = "<group>"; };
@@ -1615,6 +1615,8 @@
 				256388AD1A99C72D00A5E0E3 /* CoreDataListEngine.m */,
 				256388BA1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.h */,
 				256388BB1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m */,
+				256388A71A99C72D00A5E0E3 /* CocoaStorage.h */,
+				256388D11A99C88800A5E0E3 /* CocoaStorage.m */,
 			);
 			name = storage;
 			sourceTree = "<group>";
@@ -1624,6 +1626,8 @@
 			children = (
 				256388AA1A99C72D00A5E0E3 /* CocoaTcpConnection.h */,
 				256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */,
+				256388A51A99C72D00A5E0E3 /* CocoaNetworking.h */,
+				256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */,
 			);
 			name = network;
 			sourceTree = "<group>";
@@ -1631,8 +1635,8 @@
 		256388D41A99C8A100A5E0E3 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
-				256388B41A99C72D00A5E0E3 /* SASerializationHelpers.h */,
-				256388B51A99C72D00A5E0E3 /* SASerializationHelpers.m */,
+				256388B41A99C72D00A5E0E3 /* AASerializationHelpers.h */,
+				256388B51A99C72D00A5E0E3 /* AASerializationHelpers.m */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -1646,10 +1650,6 @@
 				25C9C3831A9D4A900061780E /* CocoaLocale.m */,
 				25C9C3851A9D4B130061780E /* CocoaMainThread.h */,
 				25C9C3861A9D4B130061780E /* CocoaMainThread.m */,
-				256388A51A99C72D00A5E0E3 /* CocoaNetworking.h */,
-				256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */,
-				256388A71A99C72D00A5E0E3 /* CocoaStorage.h */,
-				256388D11A99C88800A5E0E3 /* CocoaStorage.m */,
 				25FAD8B11A9FF38E004F5E19 /* CocoaPhoneBookProvider.h */,
 				25FAD8B21A9FF38E004F5E19 /* CocoaPhoneBookProvider.m */,
 				25FAD8B41A9FF8BD004F5E19 /* CocoaCryptoProvider.h */,
@@ -3195,7 +3195,7 @@
 				25C9C7591A9FF06B0061780E /* PublicKey.m in Sources */,
 				256388C91A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m in Sources */,
 				25C9C7AF1A9FF06B0061780E /* TextMessage.m in Sources */,
-				256388C61A99C72D00A5E0E3 /* SASerializationHelpers.m in Sources */,
+				256388C61A99C72D00A5E0E3 /* AASerializationHelpers.m in Sources */,
 				25C9C73B1A9FF06B0061780E /* Avatar.m in Sources */,
 				25C9C8921A9FF06B0061780E /* RandomUtils.m in Sources */,
 				25C9C7BA1A9FF06B0061780E /* UpdateEncryptedRead.m in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Anton Bukov. All rights reserved.
 //
 
-#import "SASerializationHelpers.h"
+#import "AASerializationHelpers.h"
 
 @implementation NSDictionary (AddKeyValue)
 - (instancetype)merged:(NSDictionary *)dict
