@@ -103,14 +103,7 @@
     UIView *deliveredView = (id)[cell.contentView viewWithTag:7];
     UIView *readView = (id)[cell.contentView viewWithTag:8];
     
-    jlong color_id = ^jlong{
-        if (dialog.getPeer.getPeerType.ordinal == AMPeerType_PRIVATE)
-            return dialog.getPeer.getUid;
-        if (dialog.getPeer.getPeerType.ordinal == AMPeerType_GROUP)
-            return dialog.getPeer.getPeerId;
-        return 0;
-    }();
-    imageView.image = [AAAvatarImageView imageWithData:nil colorId:color_id title:dialog.getDialogTitle size:imageView.bounds.size];
+    imageView.image = [AAAvatarImageView imageWithData:nil colorId:dialog.getPeer.getPeerId title:dialog.getDialogTitle size:imageView.bounds.size];
     //dialog.getDialogAvatar.getLargeImage.getFileLocation.get
     titleLabel.text = dialog.getDialogTitle;
     timeLabel.text = [^{

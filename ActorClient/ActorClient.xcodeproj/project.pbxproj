@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		250BDF4E1AA0B09B00DA014D /* AAContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */; };
+		250BDF5A1AA10F1800DA014D /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 250BDF591AA10F1800DA014D /* Messages.storyboard */; };
+		250BDF5D1AA1106D00DA014D /* AAMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */; };
+		250BDF601AA128D500DA014D /* AAReverseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF5F1AA128D500DA014D /* AAReverseTableView.m */; };
+		250BDF621AA1EE3E00DA014D /* CocoaStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF611AA1EE3E00DA014D /* CocoaStorage.m */; };
 		2537F8331A966B9D004A02E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8321A966B9D004A02E9 /* main.m */; };
 		2537F8361A966B9D004A02E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8351A966B9D004A02E9 /* AppDelegate.m */; };
 		2537F8411A966B9D004A02E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2537F8401A966B9D004A02E9 /* Images.xcassets */; };
@@ -27,7 +31,6 @@
 		256388C71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m */; };
 		256388C91A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388BB1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m */; };
 		256388D01A99C86400A5E0E3 /* CocoaStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 256388CE1A99C86400A5E0E3 /* CocoaStorage.xcdatamodeld */; };
-		256388D21A99C88800A5E0E3 /* CocoaStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388D11A99C88800A5E0E3 /* CocoaStorage.m */; };
 		25639B8D1A9A81A500A5E0E3 /* CocoaLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 25639B8C1A9A81A500A5E0E3 /* CocoaLogger.m */; };
 		25639B901A9A835F00A5E0E3 /* CocoaMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 25639B8F1A9A835F00A5E0E3 /* CocoaMessenger.m */; };
 		259D452F1A99440400BC2B4D /* AACountriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259D452E1A99440400BC2B4D /* AACountriesViewController.m */; };
@@ -505,6 +508,12 @@
 		08B939F305AF573D79345536 /* libPods-ActorClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ActorClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		250BDF4C1AA0B09B00DA014D /* AAContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAContactsViewController.h; sourceTree = "<group>"; };
 		250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAContactsViewController.m; sourceTree = "<group>"; };
+		250BDF591AA10F1800DA014D /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
+		250BDF5B1AA1106D00DA014D /* AAMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAMessagesViewController.h; sourceTree = "<group>"; };
+		250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAMessagesViewController.m; sourceTree = "<group>"; };
+		250BDF5E1AA128D500DA014D /* AAReverseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAReverseTableView.h; sourceTree = "<group>"; };
+		250BDF5F1AA128D500DA014D /* AAReverseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAReverseTableView.m; sourceTree = "<group>"; };
+		250BDF611AA1EE3E00DA014D /* CocoaStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaStorage.m; sourceTree = "<group>"; };
 		2537F82D1A966B9D004A02E9 /* ActorClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActorClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2537F8311A966B9D004A02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2537F8321A966B9D004A02E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -541,7 +550,6 @@
 		256388BA1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZonedCoreDataListEngine.h; sourceTree = "<group>"; };
 		256388BB1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZonedCoreDataListEngine.m; sourceTree = "<group>"; };
 		256388CF1A99C86400A5E0E3 /* CocoaStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CocoaStorage.xcdatamodel; sourceTree = "<group>"; };
-		256388D11A99C88800A5E0E3 /* CocoaStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CocoaStorage.m; path = "../../../secret-ios/ActorModel/ActorModel/CocoaStorage.m"; sourceTree = "<group>"; };
 		25639B8B1A9A81A500A5E0E3 /* CocoaLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLogger.h; sourceTree = "<group>"; };
 		25639B8C1A9A81A500A5E0E3 /* CocoaLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaLogger.m; sourceTree = "<group>"; };
 		25639B8E1A9A835F00A5E0E3 /* CocoaMessenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaMessenger.h; sourceTree = "<group>"; };
@@ -1480,6 +1488,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		250BDF581AA10EF000DA014D /* MessagesUI */ = {
+			isa = PBXGroup;
+			children = (
+				250BDF591AA10F1800DA014D /* Messages.storyboard */,
+				250BDF5B1AA1106D00DA014D /* AAMessagesViewController.h */,
+				250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */,
+			);
+			name = MessagesUI;
+			sourceTree = "<group>";
+		};
 		25295CE61A9D357100A54CD0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -1532,6 +1550,7 @@
 				25C9C3921A9E11430061780E /* ComponentsUI */,
 				2537F8591A972AF6004A02E9 /* AuthUI */,
 				25C9C3891A9E05400061780E /* MainUI */,
+				250BDF581AA10EF000DA014D /* MessagesUI */,
 				2537F8341A966B9D004A02E9 /* AppDelegate.h */,
 				2537F8351A966B9D004A02E9 /* AppDelegate.m */,
 				2537F8401A966B9D004A02E9 /* Images.xcassets */,
@@ -1619,7 +1638,7 @@
 				256388BA1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.h */,
 				256388BB1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m */,
 				256388A71A99C72D00A5E0E3 /* CocoaStorage.h */,
-				256388D11A99C88800A5E0E3 /* CocoaStorage.m */,
+				250BDF611AA1EE3E00DA014D /* CocoaStorage.m */,
 			);
 			name = storage;
 			sourceTree = "<group>";
@@ -1689,6 +1708,8 @@
 				25C9C39C1A9FEA2C0061780E /* AAUnhighlightableLabel.m */,
 				25C9C39D1A9FEA2C0061780E /* AAUnhighlightableView.h */,
 				25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */,
+				250BDF5E1AA128D500DA014D /* AAReverseTableView.h */,
+				250BDF5F1AA128D500DA014D /* AAReverseTableView.m */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -3131,6 +3152,7 @@
 				2537F8441A966B9D004A02E9 /* LaunchScreen.xib in Resources */,
 				2537F8411A966B9D004A02E9 /* Images.xcassets in Resources */,
 				25C9C38B1A9E05560061780E /* Main.storyboard in Resources */,
+				250BDF5A1AA10F1800DA014D /* Messages.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3198,6 +3220,7 @@
 				25C9C8DD1A9FF06B0061780E /* DataOutput.m in Sources */,
 				25C9C8D91A9FF06B0061780E /* Threading.m in Sources */,
 				25C9C7591A9FF06B0061780E /* PublicKey.m in Sources */,
+				250BDF621AA1EE3E00DA014D /* CocoaStorage.m in Sources */,
 				256388C91A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m in Sources */,
 				25C9C7AF1A9FF06B0061780E /* TextMessage.m in Sources */,
 				256388C61A99C72D00A5E0E3 /* AASerializationHelpers.m in Sources */,
@@ -3278,7 +3301,6 @@
 				25C9C7D81A9FF06B0061780E /* UploadConfig.m in Sources */,
 				25C9C8261A9FF06B0061780E /* ContactRecord.m in Sources */,
 				25C9C85E1A9FF06B0061780E /* Contacts.m in Sources */,
-				256388D21A99C88800A5E0E3 /* CocoaStorage.m in Sources */,
 				25C9C8121A9FF06B0061780E /* TaskResult.m in Sources */,
 				25C9C84B1A9FF06B0061780E /* FileSystemProvider.m in Sources */,
 				25C9C8D71A9FF06B0061780E /* TempStorage.m in Sources */,
@@ -3467,6 +3489,7 @@
 				25C9C8BA1A9FF06B0061780E /* RpcOk.m in Sources */,
 				25C9C84C1A9FF06B0061780E /* I18nEngine.m in Sources */,
 				25C9C8AC1A9FF06B0061780E /* MTRpcResponse.m in Sources */,
+				250BDF601AA128D500DA014D /* AAReverseTableView.m in Sources */,
 				25C9C8571A9FF06B0061780E /* LogCallback.m in Sources */,
 				25C9C7D91A9FF06B0061780E /* User.m in Sources */,
 				25C9C7D61A9FF06B0061780E /* UpdateUserOnline.m in Sources */,
@@ -3489,6 +3512,7 @@
 				25C9C8151A9FF06B0061780E /* TaskActor.m in Sources */,
 				25C9C8361A9FF06B0061780E /* TextContent.m in Sources */,
 				25C9C8861A9FF06B0061780E /* UsersFounded.m in Sources */,
+				250BDF5D1AA1106D00DA014D /* AAMessagesViewController.m in Sources */,
 				25C9C7DF1A9FF06B0061780E /* CocoaThreading.m in Sources */,
 				25C9C7C01A9FF06B0061780E /* UpdateGroupOnline.m in Sources */,
 				256388C11A99C72D00A5E0E3 /* CocoaTcpConnection.m in Sources */,
