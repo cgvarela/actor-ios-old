@@ -8,9 +8,17 @@
 
 #define MR_SHORTHAND 1
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <TAPKeyboardPop/UIViewController+TAPKeyboardPop.h>
 #import "J2ObjC_source.h"
 #import "im/actor/model/entity/Peer.h"
 #import "im/actor/model/entity/PeerType.h"
+#import "im/actor/model/entity/Message.h"
+#import "im/actor/model/entity/MessageState.h"
+#import "im/actor/model/entity/content/AbsContent.h"
+#import "CocoaMessenger.h"
+#import "CocoaStorage.h"
+#import "AABubbleFactory.h"
+
 #import "AAMessagesViewController.h"
 #import "AAReverseTableView.h"
 #import "AACDMessage.h"
@@ -40,7 +48,12 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tableView beginUpdates];
+    //[self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table View
@@ -52,7 +65,31 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[UITableViewCell alloc] init];
+    AMMessage *message = ((AACDMessage *)[self.frc objectAtIndexPath:indexPath]).message;
+    BOOL isMyMessage = (message.getSenderId == [CocoaMessenger messenger].myUid);
+    NSString *contentType = message.getContent.getContentType.name;
+    
+    NSString *indentifier = [NSString stringWithFormat:@"cell_bubble_%@",contentType];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+    AABubbleView *bubbleView = nil;
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:indentifier];
+        cell.contentView.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.transform = CGAffineTransformMakeScale(1,-1);
+        
+        bubbleView = [[[AABubbleFactory bubbleClassForContentType:contentType] alloc] init];
+        bubbleView.frame = CGRectInset(cell.contentView.bounds,3,3);
+        bubbleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        bubbleView.tag = 333;
+        [cell.contentView addSubview:bubbleView];
+    } else {
+        bubbleView = (id)[cell.contentView viewWithTag:333];
+    }
+    
+    [bubbleView configureWithMessage:message isMyMessage:isMyMessage];
+    
+    return cell;
 }
 
 #pragma mark - View
@@ -64,7 +101,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+ 
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.bottom = 44;
+    self.tableView.contentInset = insets;
+    
+    self.tableView.transform = CGAffineTransformMakeScale(1,-1);
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wall2"]];
 }
 
 /*

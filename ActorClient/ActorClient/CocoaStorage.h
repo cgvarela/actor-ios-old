@@ -7,6 +7,12 @@
 //
 
 #import "im/actor/model/Storage.h"
+#import "AACDMessage+Ext.h"
+#import "AACDContact+Ext.h"
+#import "AACDDialog+Ext.h"
+#import "AACDGroup.h"
+#import "AACDUser.h"
+#import "AACDDownload.h"
 
 @interface CocoaStorage : NSObject <AMStorage>
 

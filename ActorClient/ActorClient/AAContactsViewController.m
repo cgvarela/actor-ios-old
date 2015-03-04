@@ -17,8 +17,9 @@
 #import "im/actor/model/entity/Avatar.h"
 #import "im/actor/model/entity/AvatarImage.h"
 #import "im/actor/model/entity/FileLocation.h"
-#import "AACDContact.h"
+#import "CocoaStorage.h"
 #import "AAContactsViewController.h"
+#import "AAMessagesViewController.h"
 #import "AAAvatarImageView.h"
 
 @interface AAContactsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -89,6 +90,15 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AMContact *contact = ((AACDContact *)[self.frc objectAtIndexPath:indexPath]).contact;
+    
+    AAMessagesViewController *controller = [[UIStoryboard storyboardWithName:@"Messages" bundle:nil] instantiateInitialViewController];
+    controller.peer = [[AMPeer alloc] initWithAMPeerTypeEnum:AMPeerType_PRIVATE withInt:contact.getUid];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (void)configureCell:(UITableViewCell *)cell withContact:(AACDContact *)cntct update:(BOOL)update
 {
     IOSByteArray *byteArray = [IOSByteArray arrayWithBytes:cntct.value.bytes count:cntct.value.length];
@@ -107,6 +117,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
 /*

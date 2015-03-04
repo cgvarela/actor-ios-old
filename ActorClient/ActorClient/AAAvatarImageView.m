@@ -60,7 +60,7 @@
                       size:(CGSize)size
 {
     if (data) {
-        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(size.width*2,size.height*2), NO, [UIScreen mainScreen].scale);
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextAddPath(context, CGPathCreateWithEllipseInRect((CGRect){CGPointZero,size}, NULL));
         CGContextClip(context);

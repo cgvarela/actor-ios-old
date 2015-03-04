@@ -16,8 +16,9 @@
 #import "im/actor/model/entity/Avatar.h"
 #import "im/actor/model/entity/AvatarImage.h"
 #import "im/actor/model/entity/FileLocation.h"
-#import "AACDDialog.h"
+#import "CocoaStorage.h"
 #import "AAChatsViewController.h"
+#import "AAMessagesViewController.h"
 #import "AAAvatarImageView.h"
 
 @interface AAChatsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -89,10 +90,18 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AMDialog *dialog = ((AACDDialog *)[self.frc objectAtIndexPath:indexPath]).dialog;
+    
+    AAMessagesViewController *controller = [[UIStoryboard storyboardWithName:@"Messages" bundle:nil] instantiateInitialViewController];
+    controller.peer = dialog.getPeer;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (void)configureCell:(UITableViewCell *)cell withDialog:(AACDDialog *)dlg update:(BOOL)update
 {
-    IOSByteArray *byteArray = [IOSByteArray arrayWithBytes:dlg.value.bytes count:dlg.value.length];
-    AMDialog *dialog = [AMDialog fromBytesWithByteArray:byteArray];
+    AMDialog *dialog = dlg.dialog;
     
     UIImageView *imageView = (id)[cell.contentView viewWithTag:1];
     UILabel *titleLabel = (id)[cell.contentView viewWithTag:2];
@@ -126,6 +135,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
 /*

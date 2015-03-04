@@ -8,9 +8,13 @@ PODS:
     - MagicalRecord/Core (= 2.2)
   - MagicalRecord/Core (2.2)
   - MMMutableMethods (0.0.7)
+  - PHFComposeBarView (2.0.1):
+    - PHFDelegateChain (~> 1.0)
+  - PHFDelegateChain (1.0.1)
   - RegexKitLite (4.0)
   - RMPhoneFormat (1.0)
   - SVProgressHUD (1.1.2)
+  - TAPKeyboardPop (0.1.2)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
@@ -18,9 +22,11 @@ DEPENDENCIES:
   - J2ObjC (from `https://github.com/actorapp/j2objc`)
   - MagicalRecord
   - MMMutableMethods (from `https://github.com/k06a/MMMutableMethods`, branch `dev`, tag `0.0.7`)
+  - PHFComposeBarView
   - RegexKitLite
   - RMPhoneFormat (from `https://github.com/actorapp/RMPhoneFormat`)
   - SVProgressHUD
+  - TAPKeyboardPop (~> 0.1.2)
 
 EXTERNAL SOURCES:
   J2ObjC:
@@ -50,8 +56,11 @@ SPEC CHECKSUMS:
   J2ObjC: 09602b92eb8f18d34a4954eec2af85156480c5e0
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MMMutableMethods: 8528410e0865a83ff5ba75d1c057eeec3b45c82a
+  PHFComposeBarView: 0fa52137ecb23725d219dc90cf77c4c95aa29d05
+  PHFDelegateChain: f4d5a2847960b3dd16fc2f2196833f3a66704745
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   RMPhoneFormat: e60e142b738b39528bbe586699b3dc5c04b88b2a
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  TAPKeyboardPop: 1d57b5b8e7521454164c5e9e9e4e9cf19a375f37
 
 COCOAPODS: 0.35.0

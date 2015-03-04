@@ -12,6 +12,7 @@
 		250BDF5D1AA1106D00DA014D /* AAMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */; };
 		250BDF601AA128D500DA014D /* AAReverseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF5F1AA128D500DA014D /* AAReverseTableView.m */; };
 		250BDF621AA1EE3E00DA014D /* CocoaStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF611AA1EE3E00DA014D /* CocoaStorage.m */; };
+		250BDF651AA7140C00DA014D /* AABubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF641AA7140C00DA014D /* AABubbleView.m */; };
 		2537F8331A966B9D004A02E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8321A966B9D004A02E9 /* main.m */; };
 		2537F8361A966B9D004A02E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8351A966B9D004A02E9 /* AppDelegate.m */; };
 		2537F8411A966B9D004A02E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2537F8401A966B9D004A02E9 /* Images.xcassets */; };
@@ -23,6 +24,13 @@
 		2537F8671A9753DD004A02E9 /* ABPhoneField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8661A9753DD004A02E9 /* ABPhoneField.m */; };
 		2537F86C1A9762F6004A02E9 /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = 2537F86A1A9762F6004A02E9 /* PhoneFormats.dat */; };
 		2537F86D1A9762F6004A02E9 /* ABPhoneFieldCodes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2537F86B1A9762F6004A02E9 /* ABPhoneFieldCodes.txt */; };
+		253AF0F61AA76DA4002B57F4 /* AACDMessage+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF0F51AA76DA4002B57F4 /* AACDMessage+Ext.m */; };
+		253AF0F91AA76F51002B57F4 /* AACDDialog+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF0F81AA76F51002B57F4 /* AACDDialog+Ext.m */; };
+		253AF0FC1AA770DD002B57F4 /* AACDContact+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF0FB1AA770DD002B57F4 /* AACDContact+Ext.m */; };
+		253AF0FF1AA77521002B57F4 /* AABubbleView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF0FE1AA77521002B57F4 /* AABubbleView+Ext.m */; };
+		253AF1021AA7763A002B57F4 /* AATextBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF1011AA7763A002B57F4 /* AATextBubbleView.m */; };
+		253AF1061AA776FC002B57F4 /* AATextBubbleView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF1051AA776FC002B57F4 /* AATextBubbleView+Ext.m */; };
+		253AF1091AA777EF002B57F4 /* AABubbleFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF1081AA777EF002B57F4 /* AABubbleFactory.m */; };
 		2563889D1A99BDF200A5E0E3 /* AASmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */; };
 		256388BF1A99C72D00A5E0E3 /* CocoaNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */; };
 		256388C11A99C72D00A5E0E3 /* CocoaTcpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */; };
@@ -514,6 +522,8 @@
 		250BDF5E1AA128D500DA014D /* AAReverseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAReverseTableView.h; sourceTree = "<group>"; };
 		250BDF5F1AA128D500DA014D /* AAReverseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAReverseTableView.m; sourceTree = "<group>"; };
 		250BDF611AA1EE3E00DA014D /* CocoaStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaStorage.m; sourceTree = "<group>"; };
+		250BDF631AA7140C00DA014D /* AABubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AABubbleView.h; sourceTree = "<group>"; };
+		250BDF641AA7140C00DA014D /* AABubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AABubbleView.m; sourceTree = "<group>"; };
 		2537F82D1A966B9D004A02E9 /* ActorClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActorClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2537F8311A966B9D004A02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2537F8321A966B9D004A02E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -534,6 +544,20 @@
 		2537F8661A9753DD004A02E9 /* ABPhoneField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPhoneField.m; sourceTree = "<group>"; };
 		2537F86A1A9762F6004A02E9 /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhoneFormats.dat; sourceTree = "<group>"; };
 		2537F86B1A9762F6004A02E9 /* ABPhoneFieldCodes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ABPhoneFieldCodes.txt; sourceTree = "<group>"; };
+		253AF0F41AA76DA4002B57F4 /* AACDMessage+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AACDMessage+Ext.h"; sourceTree = "<group>"; };
+		253AF0F51AA76DA4002B57F4 /* AACDMessage+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AACDMessage+Ext.m"; sourceTree = "<group>"; };
+		253AF0F71AA76F51002B57F4 /* AACDDialog+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AACDDialog+Ext.h"; sourceTree = "<group>"; };
+		253AF0F81AA76F51002B57F4 /* AACDDialog+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AACDDialog+Ext.m"; sourceTree = "<group>"; };
+		253AF0FA1AA770DD002B57F4 /* AACDContact+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AACDContact+Ext.h"; sourceTree = "<group>"; };
+		253AF0FB1AA770DD002B57F4 /* AACDContact+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AACDContact+Ext.m"; sourceTree = "<group>"; };
+		253AF0FD1AA77521002B57F4 /* AABubbleView+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AABubbleView+Ext.h"; sourceTree = "<group>"; };
+		253AF0FE1AA77521002B57F4 /* AABubbleView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AABubbleView+Ext.m"; sourceTree = "<group>"; };
+		253AF1001AA7763A002B57F4 /* AATextBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AATextBubbleView.h; sourceTree = "<group>"; };
+		253AF1011AA7763A002B57F4 /* AATextBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATextBubbleView.m; sourceTree = "<group>"; };
+		253AF1041AA776FC002B57F4 /* AATextBubbleView+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AATextBubbleView+Ext.h"; sourceTree = "<group>"; };
+		253AF1051AA776FC002B57F4 /* AATextBubbleView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AATextBubbleView+Ext.m"; sourceTree = "<group>"; };
+		253AF1071AA777EF002B57F4 /* AABubbleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AABubbleFactory.h; sourceTree = "<group>"; };
+		253AF1081AA777EF002B57F4 /* AABubbleFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AABubbleFactory.m; sourceTree = "<group>"; };
 		2563889B1A99BDF200A5E0E3 /* AASmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASmsViewController.h; sourceTree = "<group>"; };
 		2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASmsViewController.m; sourceTree = "<group>"; };
 		256388A51A99C72D00A5E0E3 /* CocoaNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaNetworking.h; sourceTree = "<group>"; };
@@ -1491,6 +1515,7 @@
 		250BDF581AA10EF000DA014D /* MessagesUI */ = {
 			isa = PBXGroup;
 			children = (
+				253AF1031AA776CA002B57F4 /* Bubbles */,
 				250BDF591AA10F1800DA014D /* Messages.storyboard */,
 				250BDF5B1AA1106D00DA014D /* AAMessagesViewController.h */,
 				250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */,
@@ -1502,22 +1527,13 @@
 			isa = PBXGroup;
 			children = (
 				256388CE1A99C86400A5E0E3 /* CocoaStorage.xcdatamodeld */,
-				25FAD8E11AA0A5C1004F5E19 /* AACDMessage.h */,
-				25FAD8E21AA0A5C1004F5E19 /* AACDMessage.m */,
-				25FAD8DE1AA0A5C1004F5E19 /* AACDContact.h */,
-				25FAD8DF1AA0A5C1004F5E19 /* AACDContact.m */,
-				25FAD8DB1AA0A5C1004F5E19 /* AACDGroup.h */,
-				25FAD8DC1AA0A5C1004F5E19 /* AACDGroup.m */,
-				25FAD8D81AA0A5C1004F5E19 /* AACDUser.h */,
-				25FAD8D91AA0A5C1004F5E19 /* AACDUser.m */,
-				25FAD8D51AA0A5C1004F5E19 /* AACD_KeyValue.h */,
-				25FAD8D61AA0A5C1004F5E19 /* AACD_KeyValue.m */,
-				25FAD8D21AA0A5C1004F5E19 /* AACDDownload.h */,
-				25FAD8D31AA0A5C1004F5E19 /* AACDDownload.m */,
-				25FAD8CF1AA0A5C1004F5E19 /* AACDDialog.h */,
-				25FAD8D01AA0A5C1004F5E19 /* AACDDialog.m */,
-				25FAD8CC1AA0A5C0004F5E19 /* AACD_List.h */,
-				25FAD8CD1AA0A5C0004F5E19 /* AACD_List.m */,
+				253AF0F31AA76D7E002B57F4 /* gen */,
+				253AF0F41AA76DA4002B57F4 /* AACDMessage+Ext.h */,
+				253AF0F51AA76DA4002B57F4 /* AACDMessage+Ext.m */,
+				253AF0F71AA76F51002B57F4 /* AACDDialog+Ext.h */,
+				253AF0F81AA76F51002B57F4 /* AACDDialog+Ext.m */,
+				253AF0FA1AA770DD002B57F4 /* AACDContact+Ext.h */,
+				253AF0FB1AA770DD002B57F4 /* AACDContact+Ext.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1610,6 +1626,46 @@
 				2537F86B1A9762F6004A02E9 /* ABPhoneFieldCodes.txt */,
 			);
 			name = ABPhoneField;
+			sourceTree = "<group>";
+		};
+		253AF0F31AA76D7E002B57F4 /* gen */ = {
+			isa = PBXGroup;
+			children = (
+				25FAD8E11AA0A5C1004F5E19 /* AACDMessage.h */,
+				25FAD8E21AA0A5C1004F5E19 /* AACDMessage.m */,
+				25FAD8DE1AA0A5C1004F5E19 /* AACDContact.h */,
+				25FAD8DF1AA0A5C1004F5E19 /* AACDContact.m */,
+				25FAD8DB1AA0A5C1004F5E19 /* AACDGroup.h */,
+				25FAD8DC1AA0A5C1004F5E19 /* AACDGroup.m */,
+				25FAD8D81AA0A5C1004F5E19 /* AACDUser.h */,
+				25FAD8D91AA0A5C1004F5E19 /* AACDUser.m */,
+				25FAD8D51AA0A5C1004F5E19 /* AACD_KeyValue.h */,
+				25FAD8D61AA0A5C1004F5E19 /* AACD_KeyValue.m */,
+				25FAD8D21AA0A5C1004F5E19 /* AACDDownload.h */,
+				25FAD8D31AA0A5C1004F5E19 /* AACDDownload.m */,
+				25FAD8CF1AA0A5C1004F5E19 /* AACDDialog.h */,
+				25FAD8D01AA0A5C1004F5E19 /* AACDDialog.m */,
+				25FAD8CC1AA0A5C0004F5E19 /* AACD_List.h */,
+				25FAD8CD1AA0A5C0004F5E19 /* AACD_List.m */,
+			);
+			name = gen;
+			sourceTree = "<group>";
+		};
+		253AF1031AA776CA002B57F4 /* Bubbles */ = {
+			isa = PBXGroup;
+			children = (
+				253AF1071AA777EF002B57F4 /* AABubbleFactory.h */,
+				253AF1081AA777EF002B57F4 /* AABubbleFactory.m */,
+				250BDF631AA7140C00DA014D /* AABubbleView.h */,
+				250BDF641AA7140C00DA014D /* AABubbleView.m */,
+				253AF0FD1AA77521002B57F4 /* AABubbleView+Ext.h */,
+				253AF0FE1AA77521002B57F4 /* AABubbleView+Ext.m */,
+				253AF1001AA7763A002B57F4 /* AATextBubbleView.h */,
+				253AF1011AA7763A002B57F4 /* AATextBubbleView.m */,
+				253AF1041AA776FC002B57F4 /* AATextBubbleView+Ext.h */,
+				253AF1051AA776FC002B57F4 /* AATextBubbleView+Ext.m */,
+			);
+			name = Bubbles;
 			sourceTree = "<group>";
 		};
 		2563889E1A99C09D00A5E0E3 /* Model */ = {
@@ -3235,6 +3291,7 @@
 				25C9C7EB1A9FF06B0061780E /* ActorSelection.m in Sources */,
 				25C9C8A91A9FF06B0061780E /* MessageAck.m in Sources */,
 				25C9C7AA1A9FF06B0061780E /* ServiceExUserAdded.m in Sources */,
+				253AF1091AA777EF002B57F4 /* AABubbleFactory.m in Sources */,
 				25C9C8D41A9FF06B0061780E /* TempKeyValueStorage.m in Sources */,
 				25C9C7E71A9FF06B0061780E /* ActorContext.m in Sources */,
 				25C9C8CE1A9FF06B0061780E /* KeyValueItem.m in Sources */,
@@ -3242,6 +3299,7 @@
 				25C9C8461A9FF06B0061780E /* Sex.m in Sources */,
 				25C9C7E61A9FF06B0061780E /* Actor.m in Sources */,
 				25C9C7AB1A9FF06B0061780E /* ServiceExUserKicked.m in Sources */,
+				253AF0FC1AA770DD002B57F4 /* AACDContact+Ext.m in Sources */,
 				25C9C7D11A9FF06B0061780E /* UpdateUserContactsChanged.m in Sources */,
 				25C9C84F1A9FF06B0061780E /* JavaThreading.m in Sources */,
 				25C9C8D11A9FF06B0061780E /* ListEngine.m in Sources */,
@@ -3322,6 +3380,7 @@
 				25C9C7411A9FF06B0061780E /* Config.m in Sources */,
 				25C9C8811A9FF06B0061780E /* GroupsProcessor.m in Sources */,
 				25C9C7DA1A9FF06B0061780E /* UserKey.m in Sources */,
+				250BDF651AA7140C00DA014D /* AABubbleView.m in Sources */,
 				25C9C8801A9FF06B0061780E /* ContactsProcessor.m in Sources */,
 				25C9C8001A9FF06B0061780E /* Mailbox.m in Sources */,
 				25C9C7E51A9FF06B0061780E /* CryptoProvider.m in Sources */,
@@ -3413,6 +3472,7 @@
 				25C9C74C1A9FF06B0061780E /* FileMessage.m in Sources */,
 				25C9C7F91A9FF06B0061780E /* RunnableExtension.m in Sources */,
 				250BDF4E1AA0B09B00DA014D /* AAContactsViewController.m in Sources */,
+				253AF0F61AA76DA4002B57F4 /* AACDMessage+Ext.m in Sources */,
 				25C9C8791A9FF06B0061780E /* Modules.m in Sources */,
 				25C9C7A51A9FF06B0061780E /* ResponseVoid.m in Sources */,
 				25C9C82B1A9FF06B0061780E /* FileRemoteSource.m in Sources */,
@@ -3517,6 +3577,7 @@
 				25C9C7C01A9FF06B0061780E /* UpdateGroupOnline.m in Sources */,
 				256388C11A99C72D00A5E0E3 /* CocoaTcpConnection.m in Sources */,
 				25C9C8B91A9FF06B0061780E /* RpcInternalError.m in Sources */,
+				253AF1021AA7763A002B57F4 /* AATextBubbleView.m in Sources */,
 				25C9C7971A9FF06B0061780E /* ResponseEditGroupAvatar.m in Sources */,
 				25C9C7E11A9FF06B0061780E /* CommandCallback.m in Sources */,
 				25C9C8B51A9FF06B0061780E /* RequestResend.m in Sources */,
@@ -3599,6 +3660,7 @@
 				256388C71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m in Sources */,
 				25C9C7CA1A9FF06B0061780E /* UpdateMessageSent.m in Sources */,
 				25C9C7541A9FF06B0061780E /* RpcParser.m in Sources */,
+				253AF0FF1AA77521002B57F4 /* AABubbleView+Ext.m in Sources */,
 				25C9C8D81A9FF06B0061780E /* Storage.m in Sources */,
 				25C9C8541A9FF06B0061780E /* JavaThreadLocal.m in Sources */,
 				25C9C8E11A9FF06B0061780E /* ThreadLocalCompat.m in Sources */,
@@ -3642,6 +3704,7 @@
 				25C9C8981A9FF06B0061780E /* ValueChangedListener.m in Sources */,
 				25C9C7D21A9FF06B0061780E /* UpdateUserLastSeen.m in Sources */,
 				25C9C7B61A9FF06B0061780E /* UpdateContactsRemoved.m in Sources */,
+				253AF1061AA776FC002B57F4 /* AATextBubbleView+Ext.m in Sources */,
 				25C9C8091A9FF06B0061780E /* AskCallback.m in Sources */,
 				25C9C7AE1A9FF06B0061780E /* Sex.m in Sources */,
 				25C9C8641A9FF06B0061780E /* Groups.m in Sources */,
@@ -3659,6 +3722,7 @@
 				25C9C7FC1A9FF06B0061780E /* EnvelopeCollection.m in Sources */,
 				25C9C7B81A9FF06B0061780E /* UpdateEmailContactRegistered.m in Sources */,
 				25C9C8351A9FF06B0061780E /* ServiceUserRegistered.m in Sources */,
+				253AF0F91AA76F51002B57F4 /* AACDDialog+Ext.m in Sources */,
 				25C9C80C1A9FF06B0061780E /* AskProgressCallback.m in Sources */,
 				25C9C82D1A9FF06B0061780E /* PhotoContent.m in Sources */,
 				25FAD8B61A9FF8BD004F5E19 /* CocoaCryptoProvider.m in Sources */,
