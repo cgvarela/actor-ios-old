@@ -479,6 +479,7 @@
 		06F755391AA86F3300E1685A /* UserPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F7535F1AA86F3200E1685A /* UserPresence.m */; };
 		06F7553A1AA86F3300E1685A /* UserTypingVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F753611AA86F3200E1685A /* UserTypingVM.m */; };
 		06F7553B1AA86F3300E1685A /* UserVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F753631AA86F3200E1685A /* UserVM.m */; };
+		06F7553E1AA87D2900E1685A /* AADialogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */; };
 		250BDF4E1AA0B09B00DA014D /* AAContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */; };
 		250BDF5A1AA10F1800DA014D /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 250BDF591AA10F1800DA014D /* Messages.storyboard */; };
 		250BDF5D1AA1106D00DA014D /* AAMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */; };
@@ -1497,6 +1498,8 @@
 		06F753611AA86F3200E1685A /* UserTypingVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTypingVM.m; sourceTree = "<group>"; };
 		06F753621AA86F3200E1685A /* UserVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVM.h; sourceTree = "<group>"; };
 		06F753631AA86F3200E1685A /* UserVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserVM.m; sourceTree = "<group>"; };
+		06F7553C1AA87D2900E1685A /* AADialogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AADialogTableViewCell.h; path = Components/AADialogTableViewCell.h; sourceTree = "<group>"; };
+		06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AADialogTableViewCell.m; path = Components/AADialogTableViewCell.m; sourceTree = "<group>"; };
 		08B939F305AF573D79345536 /* libPods-ActorClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ActorClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		250BDF4C1AA0B09B00DA014D /* AAContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAContactsViewController.h; sourceTree = "<group>"; };
 		250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAContactsViewController.m; sourceTree = "<group>"; };
@@ -1639,7 +1642,7 @@
 				06F74F761AA86F3100E1685A /* im */,
 			);
 			name = src;
-			path = "../actor-model/actor-ios/src";
+			path = "../../actor-model/actor-ios/src";
 			sourceTree = "<group>";
 		};
 		06F74F761AA86F3100E1685A /* im */ = {
@@ -3110,7 +3113,6 @@
 		2537F8241A966B9D004A02E9 = {
 			isa = PBXGroup;
 			children = (
-				06F74F751AA86F3100E1685A /* src */,
 				2537F82F1A966B9D004A02E9 /* ActorClient */,
 				2537F84C1A966B9D004A02E9 /* ActorClientTests */,
 				2537F82E1A966B9D004A02E9 /* Products */,
@@ -3243,6 +3245,7 @@
 		2563889E1A99C09D00A5E0E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				06F74F751AA86F3100E1685A /* src */,
 				253AF10A1AA85FC2002B57F4 /* ActorModel.h */,
 				25E179341A9D1A52001CE95B /* resources */,
 				256388D41A99C8A100A5E0E3 /* helpers */,
@@ -3320,6 +3323,8 @@
 				250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */,
 				25C9C38F1A9E09C60061780E /* AAChatsViewController.h */,
 				25C9C3901A9E09C60061780E /* AAChatsViewController.m */,
+				06F7553C1AA87D2900E1685A /* AADialogTableViewCell.h */,
+				06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -3984,6 +3989,7 @@
 				06F753CA1AA86F3200E1685A /* ResponseLoadDialogs.m in Sources */,
 				06F753871AA86F3200E1685A /* PublicKeyRequest.m in Sources */,
 				06F7543F1AA86F3300E1685A /* PoisonPill.m in Sources */,
+				06F7553E1AA87D2900E1685A /* AADialogTableViewCell.m in Sources */,
 				06F753CD1AA86F3200E1685A /* ResponseSendAuthCode.m in Sources */,
 				06F754DE1AA86F3300E1685A /* RandomUtils.m in Sources */,
 				06F753C81AA86F3200E1685A /* ResponseGetPublicKeys.m in Sources */,

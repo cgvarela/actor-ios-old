@@ -27,7 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UIImage *shadow = [UIImage imageNamed:@"CardTop3"];
+    [[UITabBar appearance] setShadowImage:shadow];
 }
 
 - (void)viewDidAppear:(BOOL)animated

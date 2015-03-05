@@ -26,6 +26,7 @@
 #import "AAAvatarImageView.h"
 #import "AAMessagesViewController.h"
 #import "AAChatsViewController.h"
+#import "AADialogTableViewCell.h"
 
 @interface AAChatsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -73,9 +74,11 @@
             if (indexPath.item == [self.tableView numberOfRowsInSection:indexPath.section] - 1){
                 isLast = YES;
             }
-            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withDialog:anObject update:YES last:isLast];
+            
+            AADialogTableViewCell* cell = (AADialogTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+            
+            [cell bindDialog:anObject withLast:isLast];
         }
-            //[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
             break;
     }
 }
@@ -94,7 +97,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell_chat" forIndexPath:indexPath];
+//    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell_chat" forIndexPath:indexPath];
+//    cell.contentView.bounds = CGRectMake(0,0,tableView.bounds.size.width,tableView.rowHeight);
     
     AACDDialog *dialog = [self.frc objectAtIndexPath:indexPath];
     BOOL isLast = NO;
@@ -103,7 +107,17 @@
         isLast = YES;
     }
     
-    [self configureCell:cell withDialog:dialog update:NO last:isLast];
+    AADialogTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dialog_cell"];
+    
+    if (cell == nil){
+        cell = [[AADialogTableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:@"dialog_cell"];
+        [cell awakeFromNib];
+    }
+    
+    [cell bindDialog:dialog.dialog withLast: isLast];
+//    [self configureCell:cell withDialog:dialog update:NO last:isLast];
     
     return cell;
 }
