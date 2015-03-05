@@ -27,6 +27,8 @@
 #import "im/actor/model/entity/User.h"
 #import "im/actor/model/entity/content/AbsContent.h"
 #import "im/actor/model/mvvm/MVVMCollection.h"
+#import "im/actor/model/mvvm/ValueModel.h"
+#import "im/actor/model/viewmodel/UserVM.h"
 
 #import "CocoaStorage.h"
 #import "CocoaMessenger.h"
