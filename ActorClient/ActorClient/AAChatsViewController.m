@@ -22,7 +22,10 @@
 #import "CocoaMessenger.h"
 #import "AAChatsViewController.h"
 #import "AAMessagesViewController.h"
+#import "ActorModel.h"
 #import "AAAvatarImageView.h"
+#import "AAMessagesViewController.h"
+#import "AAChatsViewController.h"
 
 @interface AAChatsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 

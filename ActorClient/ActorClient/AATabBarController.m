@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
+#import "ActorModel.h"
 #import "AATabBarController.h"
-#import "CocoaMessenger.h"
 
 @interface UITabBarItem (SelectedImageName)
 @end

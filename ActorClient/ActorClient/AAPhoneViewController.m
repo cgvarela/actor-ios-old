@@ -6,20 +6,11 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
-#import <SVProgressHUD/SVProgressHUD.h>
-#import <MMMutableMethods/NSObject+MMAnonymousClass.h>
-#import <MMMutableMethods/MMAnonymousClass.h>
-
-#import "J2ObjC_source.h"
-#import "java/lang/Exception.h"
-#import "im/actor/model/concurrency/Command.h"
-#import "im/actor/model/concurrency/CommandCallback.h"
-#import "CocoaMessenger.h"
-
+#import "ActorModel.h"
 #import "ABPhoneField.h"
-#import "AAPhoneViewController.h"
 #import "AACountriesViewController.h"
 #import "AASmsViewController.h"
+#import "AAPhoneViewController.h"
 
 @interface AAPhoneViewController ()
 

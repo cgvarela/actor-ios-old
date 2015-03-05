@@ -877,7 +877,7 @@
                                         </fragment>
                                         <fragment content="2 online">
                                             <attributes>
-                                                <color key="NSColor" red="0.0039215686274509803" green="0.47843137254901957" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="13" name="HelveticaNeue"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
                                             </attributes>

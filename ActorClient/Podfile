@@ -17,7 +17,7 @@ pod 'MagicalRecord', :inhibit_warnings => true
 pod 'SVProgressHUD'
 pod 'PHFComposeBarView'
 pod 'TAPKeyboardPop', '~> 0.1.2'
-
+pod 'DZNPhotoPickerController'
 pod 'HockeySDK'
 
 end

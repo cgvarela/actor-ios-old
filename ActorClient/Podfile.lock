@@ -1,5 +1,41 @@
 PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection (= 2.4.1)
+    - AFNetworking/NSURLSession (= 2.4.1)
+    - AFNetworking/Reachability (= 2.4.1)
+    - AFNetworking/Security (= 2.4.1)
+    - AFNetworking/Serialization (= 2.4.1)
+    - AFNetworking/UIKit (= 2.4.1)
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - CocoaAsyncSocket (7.4.1)
+  - DZNEmptyDataSet (1.3.3)
+  - DZNPhotoPickerController (1.6.1):
+    - DZNPhotoPickerController/Core (= 1.6.1)
+  - DZNPhotoPickerController/Core (1.6.1):
+    - DZNEmptyDataSet (= 1.3.3)
+    - DZNPhotoPickerController/Editor
+    - DZNPhotoPickerController/Services
+    - MBProgressHUD (= 0.9)
+    - SDWebImage (= 3.7)
+  - DZNPhotoPickerController/Editor (1.6.1)
+  - DZNPhotoPickerController/Services (1.6.1):
+    - AFNetworking (= 2.4.1)
+    - GROAuth2SessionManager (= 0.2.3)
+  - GROAuth2SessionManager (0.2.3):
+    - AFNetworking (~> 2.4.1)
   - HockeySDK (3.6.2)
   - J2ObjC (0.9.6):
     - J2ObjC/lib/jre (= 0.9.6)
@@ -7,17 +43,22 @@ PODS:
   - MagicalRecord (2.2):
     - MagicalRecord/Core (= 2.2)
   - MagicalRecord/Core (2.2)
+  - MBProgressHUD (0.9)
   - MMMutableMethods (0.0.7)
   - PHFComposeBarView (2.0.1):
     - PHFDelegateChain (~> 1.0)
   - PHFDelegateChain (1.0.1)
   - RegexKitLite (4.0)
   - RMPhoneFormat (1.0)
+  - SDWebImage (3.7.0):
+    - SDWebImage/Core (= 3.7.0)
+  - SDWebImage/Core (3.7.0)
   - SVProgressHUD (1.1.2)
   - TAPKeyboardPop (0.1.2)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - DZNPhotoPickerController
   - HockeySDK
   - J2ObjC (from `https://github.com/actorapp/j2objc`)
   - MagicalRecord
@@ -51,15 +92,21 @@ CHECKOUT OPTIONS:
     :git: https://github.com/actorapp/RMPhoneFormat
 
 SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   CocoaAsyncSocket: b0a1a89e7ea4c1c0ea4ec83f57d55117d3cdae06
+  DZNEmptyDataSet: aa20600aff620af3d78edbff4bc47282972e815f
+  DZNPhotoPickerController: b160709441243eeed87cd998d2b92da1f6d91840
+  GROAuth2SessionManager: d40e386b9e865806687b4b818964efb3ac6db952
   HockeySDK: bfd1f5ac75938b07499c4ac12932244b72a2e70b
   J2ObjC: 09602b92eb8f18d34a4954eec2af85156480c5e0
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MMMutableMethods: 8528410e0865a83ff5ba75d1c057eeec3b45c82a
   PHFComposeBarView: 0fa52137ecb23725d219dc90cf77c4c95aa29d05
   PHFDelegateChain: f4d5a2847960b3dd16fc2f2196833f3a66704745
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   RMPhoneFormat: e60e142b738b39528bbe586699b3dc5c04b88b2a
+  SDWebImage: 791cb0f588046cb0bb7802ae8ae8f5462947b773
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
   TAPKeyboardPop: 1d57b5b8e7521454164c5e9e9e4e9cf19a375f37
 

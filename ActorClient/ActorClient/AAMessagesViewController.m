@@ -6,22 +6,11 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
-#define MR_SHORTHAND 1
-#import <MagicalRecord/CoreData+MagicalRecord.h>
-#import <TAPKeyboardPop/UIViewController+TAPKeyboardPop.h>
-#import "J2ObjC_source.h"
-#import "im/actor/model/entity/Peer.h"
-#import "im/actor/model/entity/PeerType.h"
-#import "im/actor/model/entity/Message.h"
-#import "im/actor/model/entity/MessageState.h"
-#import "im/actor/model/entity/content/AbsContent.h"
-#import "CocoaMessenger.h"
-#import "CocoaStorage.h"
-#import "AABubbleFactory.h"
 
-#import "AAMessagesViewController.h"
+#import "ActorModel.h"
 #import "AAReverseTableView.h"
-#import "AACDMessage.h"
+#import "AABubbleFactory.h"
+#import "AAMessagesViewController.h"
 
 @interface AAMessagesViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -79,7 +68,7 @@
         cell.transform = CGAffineTransformMakeScale(1,-1);
         
         bubbleView = [[[AABubbleFactory bubbleClassForContentType:contentType] alloc] init];
-        bubbleView.frame = CGRectInset(cell.contentView.bounds,3,3);
+        bubbleView.frame = CGRectOffset(CGRectInset(cell.contentView.bounds,3,3),0,-3);
         bubbleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         bubbleView.tag = 333;
         [cell.contentView addSubview:bubbleView];
