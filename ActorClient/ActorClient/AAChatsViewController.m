@@ -62,7 +62,13 @@
             [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
             break;
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withDialog:anObject update:YES];
+        {
+            BOOL isLast = NO;
+            if (indexPath.item == [self.tableView numberOfRowsInSection:indexPath.section] - 1){
+                isLast = YES;
+            }
+            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withDialog:anObject update:YES last:isLast];
+        }
             //[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
             break;
     }
@@ -85,7 +91,13 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell_chat" forIndexPath:indexPath];
     
     AACDDialog *dialog = [self.frc objectAtIndexPath:indexPath];
-    [self configureCell:cell withDialog:dialog update:NO];
+    BOOL isLast = NO;
+    
+    if (indexPath.item == [tableView numberOfRowsInSection:indexPath.section] - 1) {
+        isLast = YES;
+    }
+    
+    [self configureCell:cell withDialog:dialog update:NO last:isLast];
     
     return cell;
 }
@@ -99,7 +111,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)configureCell:(UITableViewCell *)cell withDialog:(AACDDialog *)dlg update:(BOOL)update
+- (void)configureCell:(UITableViewCell *)cell withDialog:(AACDDialog *)dlg update:(BOOL)update last:(BOOL)isLast
 {
     AMDialog *dialog = dlg.dialog;
     
@@ -111,6 +123,7 @@
     UIView *sentView = (id)[cell.contentView viewWithTag:6];
     UIView *deliveredView = (id)[cell.contentView viewWithTag:7];
     UIView *readView = (id)[cell.contentView viewWithTag:8];
+    UIView *div = (id)[cell.contentView viewWithTag:9];
     
     imageView.image = [AAAvatarImageView imageWithData:nil colorId:dialog.getPeer.getPeerId title:dialog.getDialogTitle size:imageView.bounds.size];
     //dialog.getDialogAvatar.getLargeImage.getFileLocation.get
@@ -128,6 +141,7 @@
     sentView.hidden = !(dialog.getStatus.getValue == AMMessageState_SENT);
     deliveredView.hidden = !(dialog.getStatus.getValue == AMMessageState_RECEIVED);
     readView.hidden = !(dialog.getStatus.getValue == AMMessageState_READ);
+    div.hidden = isLast;
 }
 
 #pragma mark - View
@@ -135,6 +149,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Footer
+    
+    UIView* footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+    
+    UILabel* footerHint = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+    footerHint.textAlignment = NSTextAlignmentCenter;
+    footerHint.font = [UIFont systemFontOfSize:16.];
+    footerHint.textColor = [UIColor colorWithRed:164/255. green:164/255. blue:164/255. alpha:1.0];
+    [footerHint setText:@"Swipe for more options"];
+    footerHint.autoresizingMask= UIViewAutoresizingFlexibleWidth;
+    [footer addSubview:footerHint];
+    
+    UIImageView *shadow = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 4)];
+    [shadow setImage:[UIImage imageNamed:@"CardBottom2"]];
+    shadow.contentMode = UIViewContentModeScaleToFill;
+    shadow.autoresizingMask= UIViewAutoresizingFlexibleWidth;
+    [footer addSubview:shadow];
+    
+    footer.autoresizingMask= UIViewAutoresizingFlexibleWidth;
+    self.tableView.tableFooterView = footer;
+    
+    // Header
+    
+    UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+    
+    UIImageView *headerShadow = [[UIImageView alloc] initWithFrame:CGRectMake(0, -4, 320, 4)];
+    [headerShadow setImage:[UIImage imageNamed:@"CardTop2"]];
+    headerShadow.contentMode = UIViewContentModeScaleToFill;
+    headerShadow.autoresizingMask= UIViewAutoresizingFlexibleWidth;
+    
+    [header addSubview:headerShadow];
+    
+    self.tableView.tableHeaderView=header;
 }
 
 - (void)viewDidAppear:(BOOL)animated

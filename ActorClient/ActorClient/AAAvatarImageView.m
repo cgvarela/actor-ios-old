@@ -107,9 +107,7 @@
 
 + (UIImage *)imageWithColor:(UIColor *)color color2:(UIColor *)color2 letters:(NSString *)letters size:(CGSize)size
 {
-    size.width *= 2;
-    size.height *= 2;
-    
+
     UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextAddPath(context, CGPathCreateWithEllipseInRect((CGRect){CGPointZero,size}, NULL));

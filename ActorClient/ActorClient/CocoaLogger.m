@@ -12,22 +12,22 @@
 
 - (void)w:(NSString *)tag withMessage:(NSString *)message
 {
-    NSLog(@"w:withMessage: %@ %@", tag, message);
+    NSLog(@"[W] %@: %@", tag, message);
 }
 
 - (void)v:(NSString *)tag withError:(JavaLangThrowable *)throwable
 {
-    NSLog(@"v:withError: %@ %@", tag, throwable);
+    NSLog(@"[V] %@: %@", tag, throwable);
 }
 
 - (void)d:(NSString *)tag withMessage:(NSString *)message
 {
-    NSLog(@"d:withMessage: %@ %@", tag, message);
+    NSLog(@"[D] %@: %@", tag, message);
 }
 
 - (void)v:(NSString *)tag withMessage:(NSString *)message
 {
-    NSLog(@"v:withMessage: %@ %@", tag, message);
+    NSLog(@"[V] %@: %@", tag, message);
 }
 
 @end

@@ -24,7 +24,6 @@
             if (tokens.count == 2)
                 [map putWithId:tokens[0] withId:tokens[1]];
         }
-        
     }
     return map;
 }

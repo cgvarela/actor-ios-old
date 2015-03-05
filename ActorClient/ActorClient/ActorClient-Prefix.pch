@@ -13,7 +13,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-    #define BAR_COLOR [UIColor colorWithRed:75/255. green:109/255. blue:153/255. alpha:1.0]
+    #define BAR_COLOR [UIColor colorWithRed:80/255. green:133/255. blue:204/255. alpha:1.0]
 #endif
 
 #endif

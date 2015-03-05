@@ -107,7 +107,7 @@
     self.tableView.contentInset = insets;
     
     self.tableView.transform = CGAffineTransformMakeScale(1,-1);
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wall2"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ChatBackground"]];
 }
 
 /*
