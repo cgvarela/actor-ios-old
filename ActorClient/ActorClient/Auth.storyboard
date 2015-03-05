@@ -686,6 +686,7 @@
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="DCR-82-g87">
                             <connections>
+                                <action selector="doneTapped:" destination="4Ds-UY-Pwz" id="mz8-ek-vez"/>
                                 <segue destination="YBs-BT-StR" kind="unwind" identifier="segue_login" unwindAction="back:" id="Kv7-xP-rFZ"/>
                             </connections>
                         </barButtonItem>

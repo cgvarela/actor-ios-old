@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
+#import "ActorModel.h"
 #import "AARegViewController.h"
 
 @interface AARegViewController () <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -69,6 +70,50 @@
     [actionSheet showInView:self.view];
 }
 
+- (IBAction)doneTapped:(id)sender
+{
+    if (self.firstNameTextField.text.length == 0) {
+        [SVProgressHUD showErrorWithStatus:@"Enter your name"];
+        return;
+    }
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    if (self.firstNameTextField.text.length)
+        [arr addObject:self.firstNameTextField.text];
+    if (self.lastNameTextField.text.length)
+        [arr addObject:self.lastNameTextField.text];
+    NSString *name = [arr componentsJoinedByString:@" "];
+    
+    NSString *avatarPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"avatar.jpg"];
+    [UIImageJPEGRepresentation(self.avatarImageView.image, 0.8) writeToFile:avatarPath atomically:YES];
+    
+    [SVProgressHUD showWithStatus:@"Saving profile"];
+    id<AMCommand> cmd = [[CocoaMessenger messenger] signUpWithNSString:name withNSString:self.avatarImageView.image ? avatarPath : nil withBoolean:NO];
+    [cmd startWithAMCommandCallback:MM_CREATE_ALWAYS(^(Class class){
+        [class addMethod:@selector(onResultWithId:)
+            fromProtocol:@protocol(AMCommandCallback)
+                blockImp:^(id this,id res){
+                    NSLog(@"%@", res);
+                    /*
+                     if (res.ordinal == AMAuthState_LOGGED_IN) {
+                     [SVProgressHUD showSuccessWithStatus:@"LOGGED_IN"];
+                     [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                     } else {
+                     [SVProgressHUD showSuccessWithStatus:[res description]];
+                     [self performSegueWithIdentifier:@"segue_reg" sender:nil];
+                     }*/
+                    [SVProgressHUD dismiss];
+                    [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                }];
+        [class addMethod:@selector(onErrorWithJavaLangException:)
+            fromProtocol:@protocol(AMCommandCallback)
+                blockImp:^(id this,JavaLangException *e){
+                    NSLog(@"onErrorWithJavaLangException: %@",e);
+                    [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Error: %@",e.getLocalizedMessage]];
+                }];
+    })];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -97,46 +142,6 @@
     [super viewWillAppear:animated];
     
     [self.firstNameTextField becomeFirstResponder];
-}
-
-//MARK: - Navigation
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if ([identifier isEqualToString:@"segue_login"]) {
-        if (self.firstNameTextField.text.length == 0) {
-            [AAShow error:@"Enter your name"];
-            return NO;
-        }
-        
-        NSMutableArray *arr = [NSMutableArray array];
-        if (self.firstNameTextField.text.length)
-            [arr addObject:self.firstNameTextField.text];
-        if (self.lastNameTextField.text.length)
-            [arr addObject:self.lastNameTextField.text];
-        NSString *name = [arr componentsJoinedByString:@" "];
-        
-        if (![SAClient sharedClient].connected) {
-            [AAShow error:@"Unable to connect"];
-            return NO;
-        }
-        
-        [AAShow show:@"Saving profile" interaction:YES];
-        self.navigationController.navigationBar.userInteractionEnabled = NO;
-        [[SAClient sharedClient] signUp:self.phone smsCode:self.smsCode name:name success: ^{
-            self.navigationController.navigationBar.userInteractionEnabled = YES;
-            [AAShow dismiss];
-            [self performSegueWithIdentifier:@"segue_login" sender:nil];
-            if (self.avatarImageView.image)
-                [[SAClient sharedClient] editAvatar:self.avatarImageView.image];
-        } failure:^(NSInteger code, NSString *tag, NSString *msg, BOOL canTryAgain, NSData *errorData) {
-            self.navigationController.navigationBar.userInteractionEnabled = YES;
-            [AAShow error:@"Server error"];
-        }];
-        return NO;
-    }
-    
-    return YES;
 }
 
 @end

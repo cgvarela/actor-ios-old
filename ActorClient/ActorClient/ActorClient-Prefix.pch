@@ -15,6 +15,7 @@
 
     #define MR_SHORTHAND 1
     #import <MagicalRecord/CoreData+MagicalRecord.h>
+    #import <DZNPhotoPickerController/DZNPhotoPickerController.h>
     #import <SVProgressHUD/SVProgressHUD.h>
     #import <MMMutableMethods/NSObject+MMAnonymousClass.h>
     #import <MMMutableMethods/MMAnonymousClass.h>
