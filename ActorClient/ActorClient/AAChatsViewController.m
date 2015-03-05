@@ -6,22 +6,6 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
-#define MR_SHORTHAND 1
-#import <MagicalRecord/CoreData+MagicalRecord.h>
-#import "J2ObjC_source.h"
-#import "im/actor/model/entity/Peer.h"
-#import "im/actor/model/entity/PeerType.h"
-#import "im/actor/model/entity/Dialog.h"
-#import "im/actor/model/entity/ContentType.h"
-#import "im/actor/model/entity/MessageState.h"
-#import "im/actor/model/entity/Avatar.h"
-#import "im/actor/model/entity/AvatarImage.h"
-#import "im/actor/model/entity/FileLocation.h"
-#import "im/actor/model/i18n/I18NEngine.h"
-#import "CocoaStorage.h"
-#import "CocoaMessenger.h"
-#import "AAChatsViewController.h"
-#import "AAMessagesViewController.h"
 #import "ActorModel.h"
 #import "AAAvatarImageView.h"
 #import "AAMessagesViewController.h"
@@ -67,16 +51,12 @@
         case NSFetchedResultsChangeMove:
             [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
             break;
-        case NSFetchedResultsChangeUpdate:
-        {
-            BOOL isLast = NO;
-            if (indexPath.item == [self.tableView numberOfRowsInSection:indexPath.section] - 1){
-                isLast = YES;
-            }
-            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withDialog:anObject update:YES last:isLast];
-        }
+        case NSFetchedResultsChangeUpdate: {
             //[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+            BOOL isLast = (indexPath.item == [self.tableView numberOfRowsInSection:indexPath.section] - 1);
+            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] withDialog:anObject update:YES last:isLast];
             break;
+        }
     }
 }
 
@@ -97,12 +77,7 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell_chat" forIndexPath:indexPath];
     
     AACDDialog *dialog = [self.frc objectAtIndexPath:indexPath];
-    BOOL isLast = NO;
-    
-    if (indexPath.item == [tableView numberOfRowsInSection:indexPath.section] - 1) {
-        isLast = YES;
-    }
-    
+    BOOL isLast = (indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1);
     [self configureCell:cell withDialog:dialog update:NO last:isLast];
     
     return cell;
@@ -129,11 +104,11 @@
     UIView *sentView = (id)[cell.contentView viewWithTag:6];
     UIView *deliveredView = (id)[cell.contentView viewWithTag:7];
     UIView *readView = (id)[cell.contentView viewWithTag:8];
-    UIView *div = (id)[cell.contentView viewWithTag:9];
+    UIView *separatorView = (id)[cell.contentView viewWithTag:9];
 
     // Peer Info
-    titleLabel.text = dialog.getDialogTitle;
     
+    titleLabel.text = dialog.getDialogTitle;
     imageView.image = [AAAvatarImageView imageWithData:nil colorId:dialog.getPeer.getPeerId title:dialog.getDialogTitle size:imageView.bounds.size];
 
     // Message Date
@@ -150,7 +125,6 @@
     // Message Content
     
     AMContentType contentType = [[dialog getMessageType] getValue];
-
     if (contentType == AMContentType_TEXT) {
         textLabel.text = dialog.getText;
     } else if (contentType == AMContentType_EMPTY) {
@@ -181,8 +155,9 @@
     
     unreadLabel.text = [@(dialog.getUnreadCount) description];
     
-    // Divider
-    div.hidden = isLast;
+    // Separator
+    
+    separatorView.hidden = isLast;
 }
 
 #pragma mark - View
