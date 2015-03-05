@@ -40,6 +40,12 @@
     [self setNeedsDisplay];
 }
 
+- (void)setAuthorName:(NSString *)authorName
+{
+    _authorName = authorName;
+    [self setNeedsDisplay];
+}
+
 - (void)setDate:(NSDate *)date
 {
     _date = date;
@@ -77,16 +83,22 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect nameRect = CGRectMake(20, 10, self.bounds.size.width-40, 20);
+    CGRect dateRect = CGRectMake(0,self.bounds.size.height-20,self.bounds.size.width-20, 20);
+    if (self.authorName) {
+        dateRect.origin.y += 20;
+        dateRect.size.height -= 20;
+    }
     
     [self.bubbleImage drawInRect:self.bounds];
     
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
-    [style setAlignment:NSTextAlignmentRight];
+    [self.authorName drawInRect:nameRect withAttributes:nil];
     NSString *dateStr = [[self dateFormatter] stringFromDate:self.date];
-    [dateStr drawInRect:CGRectMake(0,self.bounds.size.height-20,self.bounds.size.width-20, 20) withAttributes:@{NSParagraphStyleAttributeName:style}];
-    
-    
+    [dateStr drawInRect:dateRect withAttributes:@{NSParagraphStyleAttributeName:^{
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+        [style setAlignment:NSTextAlignmentRight];
+        return style;
+    }}];
 }
 
 @end

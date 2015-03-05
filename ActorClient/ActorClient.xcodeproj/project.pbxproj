@@ -31,6 +31,7 @@
 		253AF1021AA7763A002B57F4 /* AATextBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF1011AA7763A002B57F4 /* AATextBubbleView.m */; };
 		253AF1061AA776FC002B57F4 /* AATextBubbleView+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF1051AA776FC002B57F4 /* AATextBubbleView+Ext.m */; };
 		253AF1091AA777EF002B57F4 /* AABubbleFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF1081AA777EF002B57F4 /* AABubbleFactory.m */; };
+		253AF10D1AA861D3002B57F4 /* AARegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253AF10C1AA861D3002B57F4 /* AARegViewController.m */; };
 		2563889D1A99BDF200A5E0E3 /* AASmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */; };
 		256388BF1A99C72D00A5E0E3 /* CocoaNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */; };
 		256388C11A99C72D00A5E0E3 /* CocoaTcpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */; };
@@ -558,6 +559,9 @@
 		253AF1051AA776FC002B57F4 /* AATextBubbleView+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AATextBubbleView+Ext.m"; sourceTree = "<group>"; };
 		253AF1071AA777EF002B57F4 /* AABubbleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AABubbleFactory.h; sourceTree = "<group>"; };
 		253AF1081AA777EF002B57F4 /* AABubbleFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AABubbleFactory.m; sourceTree = "<group>"; };
+		253AF10A1AA85FC2002B57F4 /* ActorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActorModel.h; sourceTree = "<group>"; };
+		253AF10B1AA861D3002B57F4 /* AARegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AARegViewController.h; sourceTree = "<group>"; };
+		253AF10C1AA861D3002B57F4 /* AARegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AARegViewController.m; sourceTree = "<group>"; };
 		2563889B1A99BDF200A5E0E3 /* AASmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASmsViewController.h; sourceTree = "<group>"; };
 		2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASmsViewController.m; sourceTree = "<group>"; };
 		256388A51A99C72D00A5E0E3 /* CocoaNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaNetworking.h; sourceTree = "<group>"; };
@@ -1613,6 +1617,8 @@
 				259D452E1A99440400BC2B4D /* AACountriesViewController.m */,
 				2563889B1A99BDF200A5E0E3 /* AASmsViewController.h */,
 				2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */,
+				253AF10B1AA861D3002B57F4 /* AARegViewController.h */,
+				253AF10C1AA861D3002B57F4 /* AARegViewController.m */,
 			);
 			name = AuthUI;
 			sourceTree = "<group>";
@@ -1671,6 +1677,7 @@
 		2563889E1A99C09D00A5E0E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				253AF10A1AA85FC2002B57F4 /* ActorModel.h */,
 				25C9C3A11A9FF06A0061780E /* src */,
 				25E179341A9D1A52001CE95B /* resources */,
 				256388D41A99C8A100A5E0E3 /* helpers */,
@@ -3615,6 +3622,7 @@
 				25C9C38E1A9E07310061780E /* AATabBarController.m in Sources */,
 				25C9C7F71A9FF06B0061780E /* Environment.m in Sources */,
 				25C9C7681A9FF06B0061780E /* RequestEditName.m in Sources */,
+				253AF10D1AA861D3002B57F4 /* AARegViewController.m in Sources */,
 				25C9C74E1A9FF06B0061780E /* GroupOutPeer.m in Sources */,
 				25C9C8131A9FF06B0061780E /* TaskStart.m in Sources */,
 				25C9C7781A9FF06B0061780E /* RequestMessageRead.m in Sources */,

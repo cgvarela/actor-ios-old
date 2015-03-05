@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
+#import "ActorModel.h"
 #import "ABPhoneField.h"
 #import "AAPhoneViewController.h"
 #import "AACountriesViewController.h"

@@ -6,21 +6,10 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
-#define MR_SHORTHAND 1
-#import <MagicalRecord/CoreData+MagicalRecord.h>
-#import "J2ObjC_source.h"
-#import "im/actor/model/entity/Peer.h"
-#import "im/actor/model/entity/PeerType.h"
-#import "im/actor/model/entity/Dialog.h"
-#import "im/actor/model/entity/Contact.h"
-#import "im/actor/model/entity/MessageState.h"
-#import "im/actor/model/entity/Avatar.h"
-#import "im/actor/model/entity/AvatarImage.h"
-#import "im/actor/model/entity/FileLocation.h"
-#import "CocoaStorage.h"
-#import "AAContactsViewController.h"
-#import "AAMessagesViewController.h"
+#import "ActorModel.h"
 #import "AAAvatarImageView.h"
+#import "AAMessagesViewController.h"
+#import "AAContactsViewController.h"
 
 @interface AAContactsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 

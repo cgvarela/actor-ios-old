@@ -11,6 +11,7 @@
 @interface AABubbleView : UIView
 
 @property (nonatomic, strong) UIImage *bubbleImage;
+@property (nonatomic, strong) NSString *authorName;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, assign, getter=isSent) BOOL sent;
 @property (nonatomic, assign, getter=isDelivered) BOOL delivered;

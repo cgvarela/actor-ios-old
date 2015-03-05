@@ -13,6 +13,12 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
+    #define MR_SHORTHAND 1
+    #import <MagicalRecord/CoreData+MagicalRecord.h>
+    #import <SVProgressHUD/SVProgressHUD.h>
+    #import <MMMutableMethods/NSObject+MMAnonymousClass.h>
+    #import <MMMutableMethods/MMAnonymousClass.h>
+
     #define BAR_COLOR [UIColor colorWithRed:75/255. green:109/255. blue:153/255. alpha:1.0]
 #endif
 
