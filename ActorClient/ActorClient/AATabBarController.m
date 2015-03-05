@@ -29,6 +29,8 @@
     [super viewDidLoad];
     UIImage *shadow = [UIImage imageNamed:@"CardTop3"];
     [[UITabBar appearance] setShadowImage:shadow];
+    [self.tabBarItem setTitle:@"Chats"];
+    [self.tabBarItem setImage:[UIImage imageNamed:@"TabIconChats"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -480,6 +480,7 @@
 		06F7553A1AA86F3300E1685A /* UserTypingVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F753611AA86F3200E1685A /* UserTypingVM.m */; };
 		06F7553B1AA86F3300E1685A /* UserVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F753631AA86F3200E1685A /* UserVM.m */; };
 		06F7553E1AA87D2900E1685A /* AADialogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */; };
+		06F755411AA898E500E1685A /* AADialogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F755401AA898E500E1685A /* AADialogsViewController.m */; };
 		250BDF4E1AA0B09B00DA014D /* AAContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */; };
 		250BDF5A1AA10F1800DA014D /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 250BDF591AA10F1800DA014D /* Messages.storyboard */; };
 		250BDF5D1AA1106D00DA014D /* AAMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */; };
@@ -1500,6 +1501,8 @@
 		06F753631AA86F3200E1685A /* UserVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserVM.m; sourceTree = "<group>"; };
 		06F7553C1AA87D2900E1685A /* AADialogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AADialogTableViewCell.h; path = Components/AADialogTableViewCell.h; sourceTree = "<group>"; };
 		06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AADialogTableViewCell.m; path = Components/AADialogTableViewCell.m; sourceTree = "<group>"; };
+		06F7553F1AA898E500E1685A /* AADialogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AADialogsViewController.h; sourceTree = "<group>"; };
+		06F755401AA898E500E1685A /* AADialogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AADialogsViewController.m; sourceTree = "<group>"; };
 		08B939F305AF573D79345536 /* libPods-ActorClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ActorClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		250BDF4C1AA0B09B00DA014D /* AAContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAContactsViewController.h; sourceTree = "<group>"; };
 		250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAContactsViewController.m; sourceTree = "<group>"; };
@@ -3325,6 +3328,8 @@
 				25C9C3901A9E09C60061780E /* AAChatsViewController.m */,
 				06F7553C1AA87D2900E1685A /* AADialogTableViewCell.h */,
 				06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */,
+				06F7553F1AA898E500E1685A /* AADialogsViewController.h */,
+				06F755401AA898E500E1685A /* AADialogsViewController.m */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -3572,6 +3577,7 @@
 				06F755391AA86F3300E1685A /* UserPresence.m in Sources */,
 				06F7539C1AA86F3200E1685A /* RequestGetPublicKeys.m in Sources */,
 				06F754451AA86F3300E1685A /* AskFuture.m in Sources */,
+				06F755411AA898E500E1685A /* AADialogsViewController.m in Sources */,
 				06F753D81AA86F3200E1685A /* ServiceExUserLeft.m in Sources */,
 				06F754FE1AA86F3300E1685A /* ProtoObject.m in Sources */,
 				06F7540C1AA86F3300E1685A /* UserOutPeer.m in Sources */,

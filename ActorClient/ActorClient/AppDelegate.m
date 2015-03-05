@@ -10,6 +10,8 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "CocoaMessenger.h"
 #import "AppDelegate.h"
+#import "AATabBarController.h"
+#import "AADialogsViewController.h"
 
 @interface AppDelegate ()
 
@@ -34,13 +36,54 @@
     [UITabBar appearance].tintColor = BAR_COLOR;
     
     [MagicalRecord setupAutoMigratingCoreDataStack];
-    
+
     [CocoaMessenger messenger];
-    
+
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"f4ffe94973085058c00c3985de4b97e5"]; // Alpha
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
+    // Init View
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    UITabBarController *rootController = [[UITabBarController alloc] init];
+
+    UINavigationController *contactsController = [[UINavigationController alloc] init];
+    contactsController.tabBarItem.title=@"Contacts";
+    contactsController.tabBarItem.image=[UIImage imageNamed:@"TabIconContacts"];
+    contactsController.tabBarItem.selectedImage=[UIImage imageNamed:@"TabIconContactsHighlighted"];
+
+    // AAChatsViewController *dialogsController = [[AAChatsViewController alloc] init];
+    AADialogsViewController *dialogsController = [[AADialogsViewController alloc] init];
+    
+    UINavigationController *chatsController = [[UINavigationController alloc]
+                                               initWithRootViewController:dialogsController];
+    chatsController.tabBarItem.title = @"Chats";
+    chatsController.tabBarItem.image = [UIImage imageNamed:@"TabIconChats"];
+    chatsController.tabBarItem.selectedImage = [UIImage imageNamed:@"TabIconChatsHighlighted"];
+
+    UINavigationController *settingsController = [[UINavigationController alloc] init];
+    settingsController.tabBarItem.title = @"Settings";
+    settingsController.tabBarItem.image = [UIImage imageNamed:@"TabIconSettings"];
+    settingsController.tabBarItem.selectedImage = [UIImage imageNamed:@"TabIconSettingsHighlighted"];
+
+    [rootController addChildViewController:contactsController];
+    [rootController addChildViewController:chatsController];
+    [rootController addChildViewController:settingsController];
+    [rootController setSelectedIndex:1];
+    
+    // AATabBarController *barController = [[AATabBarController alloc] init];
+    
+    // self.window.rootViewController = barController;
+    
+    // AAChatsViewController *chatsController = [[AAChatsViewController alloc] init];
+    
+    // [barController addChildViewController:chatsController];
+    
+    self.window.rootViewController = rootController;
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 

@@ -1,41 +1,24 @@
 //
-//  AAChatsViewController.m
+//  AADialogsViewController.m
 //  ActorClient
 //
-//  Created by Антон Буков on 25.02.15.
+//  Created by Stepan Korshakov on 05.03.15.
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
-#define MR_SHORTHAND 1
+#import "AADialogsViewController.h"
 #import <MagicalRecord/CoreData+MagicalRecord.h>
-#import "J2ObjC_source.h"
-#import "im/actor/model/entity/Peer.h"
-#import "im/actor/model/entity/PeerType.h"
-#import "im/actor/model/entity/Dialog.h"
-#import "im/actor/model/entity/ContentType.h"
-#import "im/actor/model/entity/MessageState.h"
-#import "im/actor/model/entity/Avatar.h"
-#import "im/actor/model/entity/AvatarImage.h"
-#import "im/actor/model/entity/FileLocation.h"
-#import "im/actor/model/i18n/I18NEngine.h"
-#import "CocoaStorage.h"
-#import "CocoaMessenger.h"
-#import "AAChatsViewController.h"
-#import "AAMessagesViewController.h"
 #import "ActorModel.h"
-#import "AAAvatarImageView.h"
-#import "AAMessagesViewController.h"
-#import "AAChatsViewController.h"
 #import "AADialogTableViewCell.h"
 
-@interface AAChatsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
-
-@property (nonatomic, weak) UITableView *tableView;
-@property (nonatomic, strong) NSFetchedResultsController *frc;
-
+@interface AADialogsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+    @property (nonatomic, strong) UITableView *tableView;
+    @property (nonatomic, strong) NSFetchedResultsController *frc;
 @end
 
-@implementation AAChatsViewController
+@implementation AADialogsViewController
+
+#pragma mark - Fethced Results Controller
 
 - (NSFetchedResultsController *)frc
 {
@@ -44,8 +27,6 @@
     }
     return _frc;
 }
-
-#pragma mark - Fethced Results Controller
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
@@ -122,56 +103,32 @@
 {
     AMDialog *dialog = ((AACDDialog *)[self.frc objectAtIndexPath:indexPath]).dialog;
     
-    AAMessagesViewController *controller = [[UIStoryboard storyboardWithName:@"Messages" bundle:nil] instantiateInitialViewController];
-    controller.peer = dialog.getPeer;
-    [self.navigationController pushViewController:controller animated:YES];
+//    AAMessagesViewController *controller = [[UIStoryboard storyboardWithName:@"Messages" bundle:nil] instantiateInitialViewController];
+//    controller.peer = dialog.getPeer;
+//    [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - View
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Footer
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)];
+    self.tableView.rowHeight = 76;
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
     
-    UIView* footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-    
-    UILabel* footerHint = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-    footerHint.textAlignment = NSTextAlignmentCenter;
-    footerHint.font = [UIFont systemFontOfSize:16.];
-    footerHint.textColor = [UIColor colorWithRed:164/255. green:164/255. blue:164/255. alpha:1.0];
-    [footerHint setText:@"Swipe for more options"];
-    footerHint.autoresizingMask= UIViewAutoresizingFlexibleWidth;
-    [footer addSubview:footerHint];
-    
-    UIImageView *shadow = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 4)];
-    [shadow setImage:[UIImage imageNamed:@"CardBottom2"]];
-    shadow.contentMode = UIViewContentModeScaleToFill;
-    shadow.autoresizingMask= UIViewAutoresizingFlexibleWidth;
-    [footer addSubview:shadow];
-    
-    footer.autoresizingMask= UIViewAutoresizingFlexibleWidth;
-    self.tableView.tableFooterView = footer;
-    
-    // Header
-    
-    UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
-    
-    UIImageView *headerShadow = [[UIImageView alloc] initWithFrame:CGRectMake(0, -4, 320, 4)];
-    [headerShadow setImage:[UIImage imageNamed:@"CardTop2"]];
-    headerShadow.contentMode = UIViewContentModeScaleToFill;
-    headerShadow.autoresizingMask= UIViewAutoresizingFlexibleWidth;
-    
-    [header addSubview:headerShadow];
-    
-    self.tableView.tableHeaderView=header;
+    [self.view addSubview:self.tableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*
