@@ -18,6 +18,7 @@
 #import "im/actor/model/entity/Avatar.h"
 #import "im/actor/model/entity/AvatarImage.h"
 #import "im/actor/model/entity/Contact.h"
+#import "im/actor/model/entity/ContentType.h"
 #import "im/actor/model/entity/Dialog.h"
 #import "im/actor/model/entity/FileLocation.h"
 #import "im/actor/model/entity/Message.h"
@@ -29,6 +30,8 @@
 #import "im/actor/model/entity/ContentType.h"
 #import "im/actor/model/mvvm/MVVMCollection.h"
 #import "im/actor/model/i18n/I18NEngine.h"
+#import "im/actor/model/mvvm/ValueModel.h"
+#import "im/actor/model/viewmodel/UserVM.h"
 
 #import "CocoaStorage.h"
 #import "CocoaMessenger.h"

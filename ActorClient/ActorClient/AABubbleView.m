@@ -85,9 +85,10 @@
 {
     CGRect nameRect = CGRectMake(20, 10, self.bounds.size.width-40, 20);
     CGRect dateRect = CGRectMake(0,self.bounds.size.height-20,self.bounds.size.width-20, 20);
+    CGRect textRect = CGRectMake(20, 10, self.bounds.size.height-40, self.bounds.size.height-20);
     if (self.authorName) {
-        dateRect.origin.y += 20;
-        dateRect.size.height -= 20;
+        textRect.origin.y += 20;
+        textRect.size.height -= 20;
     }
     
     [self.bubbleImage drawInRect:self.bounds];
@@ -98,7 +99,7 @@
         NSMutableParagraphStyle *style = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         [style setAlignment:NSTextAlignmentRight];
         return style;
-    }}];
+    }(), NSFontAttributeName:[UIFont italicSystemFontOfSize:13]}];
 }
 
 @end
