@@ -18,12 +18,20 @@
     if (map == nil) {
         map = [[JavaUtilHashMap alloc] init];
         NSError *error = nil;
-        NSString *text = [NSString stringWithContentsOfFile:@"AppText.properties" encoding:NSUTF8StringEncoding error:&error];
+        NSString *text = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"AppText" ofType:@"properties"] encoding:NSUTF8StringEncoding error:&error];
         for (NSString *line in [text componentsSeparatedByString:@"\n"]) {
             NSArray *tokens = [line componentsSeparatedByString:@"="];
             if (tokens.count == 2)
                 [map putWithId:tokens[0] withId:tokens[1]];
         }
+
+        text = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Months" ofType:@"properties"] encoding:NSUTF8StringEncoding error:&error];
+        for (NSString *line in [text componentsSeparatedByString:@"\n"]) {
+            NSArray *tokens = [line componentsSeparatedByString:@"="];
+            if (tokens.count == 2)
+                [map putWithId:tokens[0] withId:tokens[1]];
+        }
+
     }
     return map;
 }

@@ -41,7 +41,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:40" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="O1M-N8-DnE">
-                                                    <rect key="frame" x="246" y="10" width="64" height="24"/>
+                                                    <rect key="frame" x="246" y="16" width="64" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="64" id="7l2-gY-JDf"/>
@@ -127,7 +127,7 @@
                                                 <constraint firstItem="siW-Ym-szn" firstAttribute="top" secondItem="MUv-l5-dO5" secondAttribute="top" constant="14" id="b7f-F5-itf"/>
                                                 <constraint firstItem="Het-gY-CGY" firstAttribute="top" secondItem="MUv-l5-dO5" secondAttribute="top" constant="35" id="cVT-bm-gLG"/>
                                                 <constraint firstItem="uXF-J1-H9K" firstAttribute="leading" secondItem="MUv-l5-dO5" secondAttribute="leading" constant="72" id="h4J-CC-Sqs"/>
-                                                <constraint firstItem="O1M-N8-DnE" firstAttribute="top" secondItem="MUv-l5-dO5" secondAttribute="top" constant="10" id="jUK-L8-42u"/>
+                                                <constraint firstItem="O1M-N8-DnE" firstAttribute="top" secondItem="MUv-l5-dO5" secondAttribute="top" constant="16" id="jUK-L8-42u"/>
                                                 <constraint firstAttribute="bottom" secondItem="Het-gY-CGY" secondAttribute="bottom" constant="10" id="s6L-aR-isy"/>
                                                 <constraint firstAttribute="bottom" secondItem="DSJ-mN-tDB" secondAttribute="bottom" id="ueX-im-DMk"/>
                                                 <constraint firstItem="DGn-9o-J4K" firstAttribute="leading" secondItem="MUv-l5-dO5" secondAttribute="leading" constant="290" id="unZ-Al-Np4"/>

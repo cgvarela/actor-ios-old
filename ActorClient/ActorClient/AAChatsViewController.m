@@ -12,11 +12,14 @@
 #import "im/actor/model/entity/Peer.h"
 #import "im/actor/model/entity/PeerType.h"
 #import "im/actor/model/entity/Dialog.h"
+#import "im/actor/model/entity/ContentType.h"
 #import "im/actor/model/entity/MessageState.h"
 #import "im/actor/model/entity/Avatar.h"
 #import "im/actor/model/entity/AvatarImage.h"
 #import "im/actor/model/entity/FileLocation.h"
+#import "im/actor/model/i18n/I18NEngine.h"
 #import "CocoaStorage.h"
+#import "CocoaMessenger.h"
 #import "AAChatsViewController.h"
 #import "AAMessagesViewController.h"
 #import "AAAvatarImageView.h"
@@ -124,23 +127,58 @@
     UIView *deliveredView = (id)[cell.contentView viewWithTag:7];
     UIView *readView = (id)[cell.contentView viewWithTag:8];
     UIView *div = (id)[cell.contentView viewWithTag:9];
+
+    // Peer Info
+    titleLabel.text = dialog.getDialogTitle;
     
     imageView.image = [AAAvatarImageView imageWithData:nil colorId:dialog.getPeer.getPeerId title:dialog.getDialogTitle size:imageView.bounds.size];
-    //dialog.getDialogAvatar.getLargeImage.getFileLocation.get
-    titleLabel.text = dialog.getDialogTitle;
-    timeLabel.text = [^{
-        static NSDateFormatter *dateFormatter = nil;
-        if (dateFormatter == nil) {
-            dateFormatter = [[NSDateFormatter alloc] init];
-            dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"HH:mm" options:0 locale:[NSLocale currentLocale]];
-        }
-        return dateFormatter;
-    }() stringFromDate:[NSDate dateWithTimeIntervalSince1970:dialog.getDate]];
-    textLabel.text = dialog.getText;
-    unreadLabel.text = [@(dialog.getUnreadCount) description];
+
+    // Message Date
+    
+    if ([dialog getDate] > 0){
+        AMI18nEngine* formatter = [[CocoaMessenger messenger] getFormatter];
+        jlong date = [dialog getDate];
+        timeLabel.text = [formatter formatShortDateWithLong:date];
+        timeLabel.hidden = NO;
+    } else {
+        timeLabel.hidden = YES;
+    }
+
+    // Message Content
+    
+    AMContentType contentType = [[dialog getMessageType] getValue];
+
+    if (contentType == AMContentType_TEXT) {
+        textLabel.text = dialog.getText;
+    } else if (contentType == AMContentType_EMPTY) {
+        textLabel.text = @"";
+    } else if (contentType == AMContentType_DOCUMENT) {
+        textLabel.text = @"Document";
+    } else if (contentType == AMContentType_DOCUMENT_PHOTO) {
+        textLabel.text = @"Photo";
+    } else if (contentType == AMContentType_DOCUMENT_VIDEO) {
+        textLabel.text = @"Video";
+    } else if (contentType == AMContentType_SERVICE) {
+        textLabel.text = dialog.getText;
+    } else if (contentType == AMContentType_SERVICE_ADD) {
+        textLabel.text = @"Added user";
+    } else if (contentType == AMContentType_SERVICE_TITLE) {
+        textLabel.text = @"Changed title";
+    } else {
+        textLabel.text = @"Unknown message";
+    }
+    
+    // Message State
+    
     sentView.hidden = !(dialog.getStatus.getValue == AMMessageState_SENT);
     deliveredView.hidden = !(dialog.getStatus.getValue == AMMessageState_RECEIVED);
     readView.hidden = !(dialog.getStatus.getValue == AMMessageState_READ);
+    
+    // Chat unread count
+    
+    unreadLabel.text = [@(dialog.getUnreadCount) description];
+    
+    // Divider
     div.hidden = isLast;
 }
 
