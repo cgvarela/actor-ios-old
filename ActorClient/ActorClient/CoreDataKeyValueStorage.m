@@ -40,7 +40,7 @@
 - (void)addOrUpdateItemWithLong:(jlong)id_
                   withByteArray:(IOSByteArray *)data
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         id object = [self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context];
         if (object == nil) {
             object = [self.mos MR_createInContext:self.context];
@@ -53,7 +53,7 @@
 
 - (void)addOrUpdateItemsWithJavaUtilList:(id<JavaUtilList>)values
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         for (AMKeyValueRecord *record in values) {
             jlong key = [record getId];
             NSData *value = record.getData.toNSData;
@@ -71,7 +71,7 @@
 
 - (void)removeItemWithLong:(jlong)id_
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         id object = [self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context];
         [object MR_deleteEntity];
         [self.context MR_saveToPersistentStoreWithCompletion:nil];
@@ -83,7 +83,7 @@
     NSMutableArray *keys = [NSMutableArray array];
     for (jint i = 0; i < ids.length; i++)
         [keys addObject:@([ids longAtIndex:i])];
-    @synchronized (self) {
+    @synchronized (self.context) {
         [self.mos MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"key IN %@",keys]];
         [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
@@ -91,7 +91,7 @@
 
 - (void)clear
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         [self.mos MR_truncateAll];
         [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
@@ -99,7 +99,7 @@
 
 - (IOSByteArray *)getValueWithLong:(jlong)id_
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         NSData *data = [[self.mos MR_findFirstByAttribute:@"key" withValue:@(id_) inContext:self.context] valueForKey:@"value"];
         return data ? [IOSByteArray arrayWithBytes:data.bytes count:data.length] : nil;
     }

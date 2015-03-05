@@ -53,7 +53,8 @@
         case NSFetchedResultsChangeUpdate: {
             AADialogCell *cell = (id)[self.tableView cellForRowAtIndexPath:indexPath];
             BOOL isLast = (indexPath.row == [self tableView:self.tableView numberOfRowsInSection:indexPath.section] - 1);
-            [cell bindDialog:anObject withLast:isLast];
+            AACDDialog *dialog = anObject;
+            [cell bindDialog:dialog.dialog withLast:isLast];
             break;
         }
     }

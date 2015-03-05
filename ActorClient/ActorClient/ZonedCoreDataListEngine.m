@@ -52,7 +52,7 @@
     jlong sortKey = [item getListSortKey];
     id value = self.serializer(item);
     
-    @synchronized (self) {
+    @synchronized (self.context) {
         id object = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key = %@", @(self.zone_id), @(key)] inContext:self.context];
         if (object == nil) {
             object = [self.mos MR_createInContext:self.context];
@@ -67,7 +67,7 @@
 
 - (void)addOrUpdateItemsWithJavaUtilList:(id<JavaUtilList>)values
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         for (id<AMListEngineItem> item in values) {
             jlong key = [item getListId];
             jlong sortKey = [item getListSortKey];
@@ -94,7 +94,7 @@
 
 - (void)removeItemWithLong:(jlong)id_
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         id object = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key = %@", @(self.zone_id), @(id_)] inContext:self.context];
         [object MR_deleteEntity];
         [self.context MR_saveToPersistentStoreWithCompletion:nil];
@@ -106,7 +106,7 @@
     NSMutableArray *keys = [NSMutableArray array];
     for (jint i = 0; i < ids.length; i++)
         [keys addObject:@([ids longAtIndex:i])];
-    @synchronized (self) {
+    @synchronized (self.context) {
         [self.mos MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key IN %@", @(self.zone_id), keys] inContext:self.context];
         [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
@@ -114,7 +114,7 @@
 
 - (void)clear
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         [self.mos MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@", @(self.zone_id)] inContext:self.context];
         [self.context MR_saveToPersistentStoreWithCompletion:nil];
     }
@@ -122,7 +122,7 @@
 
 - (id)getValueWithLong:(jlong)id_
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         NSData *data = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key = %@", @(self.zone_id),@(id_)] inContext:self.context];
         return self.deserializer(data);
     }
@@ -130,7 +130,7 @@
 
 - (id)getHeadValue
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         NSData *data = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@", @(self.zone_id)] sortedBy:@"sortKey" ascending:NO inContext:self.context];
         return self.deserializer(data);
     }
@@ -138,7 +138,7 @@
 
 - (jint)getCount
 {
-    @synchronized (self) {
+    @synchronized (self.context) {
         return (jint)[self.mos MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@",@(self.zone_id)]];
     }
 }
