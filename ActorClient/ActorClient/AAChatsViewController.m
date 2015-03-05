@@ -125,25 +125,43 @@
     // Message Content
     
     AMContentType contentType = [[dialog getMessageType] getValue];
-    if (contentType == AMContentType_TEXT) {
-        textLabel.text = dialog.getText;
-    } else if (contentType == AMContentType_EMPTY) {
-        textLabel.text = @"";
-    } else if (contentType == AMContentType_DOCUMENT) {
-        textLabel.text = @"Document";
-    } else if (contentType == AMContentType_DOCUMENT_PHOTO) {
-        textLabel.text = @"Photo";
-    } else if (contentType == AMContentType_DOCUMENT_VIDEO) {
-        textLabel.text = @"Video";
-    } else if (contentType == AMContentType_SERVICE) {
-        textLabel.text = dialog.getText;
-    } else if (contentType == AMContentType_SERVICE_ADD) {
-        textLabel.text = @"Added user";
-    } else if (contentType == AMContentType_SERVICE_TITLE) {
-        textLabel.text = @"Changed title";
-    } else {
-        textLabel.text = @"Unknown message";
-    }
+    textLabel.text = ^{
+        switch (contentType) {
+            case AMContentType_TEXT:
+                return dialog.getText;
+            case AMContentType_EMPTY:
+                return @"";
+            case AMContentType_DOCUMENT:
+                return @"Document";
+            case AMContentType_DOCUMENT_PHOTO:
+                return @"Photo";
+            case AMContentType_DOCUMENT_VIDEO:
+                return @"Video";
+            case AMContentType_SERVICE:
+                return dialog.getText;
+            case AMContentType_SERVICE_ADD:
+                return @"Use added";
+            case AMContentType_SERVICE_KICK:
+                return @"User kicked";
+            case AMContentType_SERVICE_LEAVE:
+                return @"User leaved";
+            case AMContentType_SERVICE_REGISTERED:
+                return @"User was registered";
+            case AMContentType_SERVICE_CREATED:
+                return @"Dialog created";
+            case AMContentType_SERVICE_TITLE:
+                return @"Title changed";
+            case AMContentType_SERVICE_AVATAR:
+                return @"Avatar changed";
+            case AMContentType_SERVICE_AVATAR_REMOVED:
+                return @"Avatar removed";
+            case AMContentType_UNKNOWN_CONTENT:
+                return @"Unknown message";
+                
+            default:
+                return @"";
+        }
+    }();
     
     // Message State
     
