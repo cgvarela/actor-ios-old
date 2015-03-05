@@ -6,14 +6,15 @@
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
-#import "AADialogsViewController.h"
-#import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "ActorModel.h"
-#import "AADialogTableViewCell.h"
+#import "AADialogCell.h"
+#import "AAMessagesViewController.h"
+#import "AADialogsViewController.h"
 
 @interface AADialogsViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
-    @property (nonatomic, strong) UITableView *tableView;
-    @property (nonatomic, strong) NSFetchedResultsController *frc;
+
+@property (nonatomic, strong) NSFetchedResultsController *frc;
+
 @end
 
 @implementation AADialogsViewController
@@ -49,18 +50,12 @@
         case NSFetchedResultsChangeMove:
             [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
             break;
-        case NSFetchedResultsChangeUpdate:
-        {
-            BOOL isLast = NO;
-            if (indexPath.item == [self.tableView numberOfRowsInSection:indexPath.section] - 1) {
-                isLast = YES;
-            }
-            
-            AADialogTableViewCell* cell = (AADialogTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-            
+        case NSFetchedResultsChangeUpdate: {
+            AADialogCell *cell = (id)[self.tableView cellForRowAtIndexPath:indexPath];
+            BOOL isLast = (indexPath.row == [self tableView:self.tableView numberOfRowsInSection:indexPath.section] - 1);
             [cell bindDialog:anObject withLast:isLast];
-        }
             break;
+        }
     }
 }
 
@@ -78,67 +73,36 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AACDDialog *dialog = [self.frc objectAtIndexPath:indexPath];
-    BOOL isLast = NO;
-    
-    if (indexPath.item == [tableView numberOfRowsInSection:indexPath.section] - 1) {
-        isLast = YES;
-    }
-    
-    AADialogTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dialog_cell"];
-    
-    if (cell == nil){
-        cell = [[AADialogTableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:@"dialog_cell"];
+    AADialogCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell_dialog"];
+    if (cell == nil) {
+        cell = [[AADialogCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell_dialog"];
         [cell awakeFromNib];
     }
     
-    [cell bindDialog:dialog.dialog withLast: isLast];
+    AACDDialog *dialog = [self.frc objectAtIndexPath:indexPath];
+    BOOL isLast = (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1);
+    [cell bindDialog:dialog.dialog withLast:isLast];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AMDialog *dialog = ((AACDDialog *)[self.frc objectAtIndexPath:indexPath]).dialog;
+    AACDDialog *dialog = [self.frc objectAtIndexPath:indexPath];
     
-//    AAMessagesViewController *controller = [[UIStoryboard storyboardWithName:@"Messages" bundle:nil] instantiateInitialViewController];
-//    controller.peer = dialog.getPeer;
-//    [self.navigationController pushViewController:controller animated:YES];
+    AAMessagesViewController *controller = [[AAMessagesViewController alloc] init];
+    controller.peer = dialog.dialog.getPeer;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
-
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)];
-    self.tableView.rowHeight = 76;
-    [self.tableView setDelegate:self];
-    [self.tableView setDataSource:self];
+    self.navigationItem.title = self.navigationController.tabBarItem.title;
     
-    [self.view addSubview:self.tableView];
+    self.tableView.rowHeight = 76;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -12,7 +12,6 @@
 
 @interface AABubbleView (Ext)
 
-- (void)configureWithMessage:(AMMessage *)message
-                 isMyMessage:(BOOL)isMyMessage;
+- (void)bindMessage:(AMMessage *)message isMyMessage:(BOOL)isMyMessage;
 
 @end

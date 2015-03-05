@@ -12,8 +12,7 @@
 
 @implementation AABubbleView (Ext)
 
-- (void)configureWithMessage:(AMMessage *)message
-                 isMyMessage:(BOOL)isMyMessage
+- (void)bindMessage:(AMMessage *)message isMyMessage:(BOOL)isMyMessage
 {
     AMUserVM *author = [[CocoaMessenger messenger].getUsers getWithLong:message.getSenderId];
     

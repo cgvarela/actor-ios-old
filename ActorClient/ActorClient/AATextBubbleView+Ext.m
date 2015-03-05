@@ -15,11 +15,10 @@
 
 @implementation AATextBubbleView (Ext)
 
-- (void)configureWithMessage:(AMMessage *)message
-                 isMyMessage:(BOOL)isMyMessage
+- (void)bindMessage:(AMMessage *)message isMyMessage:(BOOL)isMyMessage
 {
-    [super configureWithMessage:message isMyMessage:isMyMessage];
-    self.text = [NSString stringWithBytes:message.getContent.toByteArray];
+    [super bindMessage:message isMyMessage:isMyMessage];
+    self.text = [[NSString alloc] initWithData:message.getContent.toByteArray.toNSData encoding:NSUTF8StringEncoding];
 }
 
 @end

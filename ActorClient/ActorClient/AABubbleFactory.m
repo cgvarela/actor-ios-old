@@ -12,7 +12,7 @@
 
 + (Class)bubbleClassForContentType:(NSString *)contentType
 {
-    if ([contentType isEqualToString:@"TEXT"])
+    if ([contentType isEqualToString:@"cell_bubble_TEXT"])
         return [AATextBubbleView class];
     return [AABubbleView class];
 }

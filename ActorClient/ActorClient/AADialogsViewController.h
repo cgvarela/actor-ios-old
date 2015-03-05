@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AADialogsViewController : UIViewController
+@interface AADialogsViewController : UITableViewController
 
 @end

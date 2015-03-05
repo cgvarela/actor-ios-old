@@ -10,7 +10,7 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "CocoaMessenger.h"
 #import "AppDelegate.h"
-#import "AATabBarController.h"
+#import "AAContactsViewController.h"
 #import "AADialogsViewController.h"
 
 @interface AppDelegate ()
@@ -22,6 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
     [UINavigationBar appearance].barTintColor = BAR_COLOR;
     [UINavigationBar appearance].backgroundColor = BAR_COLOR;
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
@@ -45,45 +46,33 @@
     
     // Init View
     
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [tabBarController addChildViewController:^{
+        UINavigationController *contactsController = [[UINavigationController alloc] initWithRootViewController:[[AAContactsViewController alloc] init]];
+        contactsController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Contacts" image:[UIImage imageNamed:@"TabIconContacts"] selectedImage:[UIImage imageNamed:@"TabIconContactsHighlighted"]];
+        return contactsController;
+    }()];
+    [tabBarController addChildViewController:^{
+        UINavigationController *chatsController = [[UINavigationController alloc] initWithRootViewController:[[AADialogsViewController alloc] init]];
+        chatsController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Chats" image:[UIImage imageNamed:@"TabIconChats"] selectedImage:[UIImage imageNamed:@"TabIconChatsHighlighted"]];
+        return chatsController;
+    }()];
+    [tabBarController addChildViewController:^{
+        UINavigationController *settingsController = [[UINavigationController alloc] init];
+        settingsController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Settings" image:[UIImage imageNamed:@"TabIconSettings"] selectedImage:[UIImage imageNamed:@"TabIconSettingsHighlighted"]];
+        return settingsController;
+    }()];
+    tabBarController.selectedIndex = 1;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    UITabBarController *rootController = [[UITabBarController alloc] init];
-
-    UINavigationController *contactsController = [[UINavigationController alloc] init];
-    contactsController.tabBarItem.title=@"Contacts";
-    contactsController.tabBarItem.image=[UIImage imageNamed:@"TabIconContacts"];
-    contactsController.tabBarItem.selectedImage=[UIImage imageNamed:@"TabIconContactsHighlighted"];
-
-    // AAChatsViewController *dialogsController = [[AAChatsViewController alloc] init];
-    AADialogsViewController *dialogsController = [[AADialogsViewController alloc] init];
-    
-    UINavigationController *chatsController = [[UINavigationController alloc]
-                                               initWithRootViewController:dialogsController];
-    chatsController.tabBarItem.title = @"Chats";
-    chatsController.tabBarItem.image = [UIImage imageNamed:@"TabIconChats"];
-    chatsController.tabBarItem.selectedImage = [UIImage imageNamed:@"TabIconChatsHighlighted"];
-
-    UINavigationController *settingsController = [[UINavigationController alloc] init];
-    settingsController.tabBarItem.title = @"Settings";
-    settingsController.tabBarItem.image = [UIImage imageNamed:@"TabIconSettings"];
-    settingsController.tabBarItem.selectedImage = [UIImage imageNamed:@"TabIconSettingsHighlighted"];
-
-    [rootController addChildViewController:contactsController];
-    [rootController addChildViewController:chatsController];
-    [rootController addChildViewController:settingsController];
-    [rootController setSelectedIndex:1];
-    
-    // AATabBarController *barController = [[AATabBarController alloc] init];
-    
-    // self.window.rootViewController = barController;
-    
-    // AAChatsViewController *chatsController = [[AAChatsViewController alloc] init];
-    
-    // [barController addChildViewController:chatsController];
-    
-    self.window.rootViewController = rootController;
+    self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
 
+    if (![CocoaMessenger messenger].isLoggedIn) {
+        UIViewController *controller = [[UIStoryboard storyboardWithName:@"Auth" bundle:nil] instantiateInitialViewController];
+        [tabBarController presentViewController:controller animated:YES completion:nil];
+    }
+    
     return YES;
 }
 

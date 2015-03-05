@@ -9,21 +9,39 @@
 
 #import "ActorModel.h"
 #import "AAReverseTableView.h"
+#import "AAMessageCell.h"
 #import "AABubbleFactory.h"
 #import "AAMessagesViewController.h"
 
 @interface AAMessagesViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic, strong) IBOutlet AAReverseTableView *tableView;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *statusLabel;
 @property (nonatomic, strong) IBOutlet UIButton *userButton;
-@property (nonatomic, strong) IBOutlet AAReverseTableView *tableView;
 
 @property (nonatomic, strong) NSFetchedResultsController *frc;
 
 @end
 
 @implementation AAMessagesViewController
+
+#pragma mark - Subviews
+
+- (AAReverseTableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[AAReverseTableView alloc] initWithFrame:self.view.bounds];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.transform = CGAffineTransformMakeScale(1,-1);
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
+}
+
+#pragma mark - Fetched Results Controller
 
 - (NSFetchedResultsController *)frc
 {
@@ -32,8 +50,6 @@
     }
     return _frc;
 }
-
-#pragma mark - Fetched Results Controller
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
@@ -54,29 +70,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AMMessage *message = ((AACDMessage *)[self.frc objectAtIndexPath:indexPath]).message;
-    BOOL isMyMessage = (message.getSenderId == [CocoaMessenger messenger].myUid);
-    NSString *contentType = message.getContent.getContentType.name;
+    AACDMessage *message = [self.frc objectAtIndexPath:indexPath];
+    BOOL isMyMessage = (message.message.getSenderId == [CocoaMessenger messenger].myUid);
+    NSString *contentType = message.message.getContent.getContentType.name;
     
     NSString *indentifier = [NSString stringWithFormat:@"cell_bubble_%@",contentType];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
-    AABubbleView *bubbleView = nil;
+    AAMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:indentifier];
-        cell.contentView.backgroundColor = [UIColor clearColor];
-        cell.backgroundColor = [UIColor clearColor];
+        cell = [[AAMessageCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:indentifier];
         cell.transform = CGAffineTransformMakeScale(1,-1);
-        
-        bubbleView = [[[AABubbleFactory bubbleClassForContentType:contentType] alloc] init];
-        bubbleView.frame = CGRectOffset(CGRectInset(cell.contentView.bounds,3,3),0,-3);
-        bubbleView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        bubbleView.tag = 333;
-        [cell.contentView addSubview:bubbleView];
-    } else {
-        bubbleView = (id)[cell.contentView viewWithTag:333];
+        [cell awakeFromNib];
     }
     
-    [bubbleView configureWithMessage:message isMyMessage:isMyMessage];
+    [cell bindMessage:message.message isMyMessage:isMyMessage];
     
     return cell;
 }
@@ -90,23 +96,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-    UIEdgeInsets insets = self.tableView.contentInset;
-    insets.bottom = 44;
-    self.tableView.contentInset = insets;
     
-    self.tableView.transform = CGAffineTransformMakeScale(1,-1);
+    [self.view addSubview:self.tableView];
+ 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ChatBackground"]];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

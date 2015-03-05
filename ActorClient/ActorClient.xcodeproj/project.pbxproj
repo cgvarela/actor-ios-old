@@ -479,10 +479,11 @@
 		06F755391AA86F3300E1685A /* UserPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F7535F1AA86F3200E1685A /* UserPresence.m */; };
 		06F7553A1AA86F3300E1685A /* UserTypingVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F753611AA86F3200E1685A /* UserTypingVM.m */; };
 		06F7553B1AA86F3300E1685A /* UserVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F753631AA86F3200E1685A /* UserVM.m */; };
-		06F7553E1AA87D2900E1685A /* AADialogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */; };
+		06F7553E1AA87D2900E1685A /* AADialogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F7553D1AA87D2900E1685A /* AADialogCell.m */; };
 		06F755411AA898E500E1685A /* AADialogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F755401AA898E500E1685A /* AADialogsViewController.m */; };
+		25078C151AA910EC00D9B2DF /* AAContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25078C141AA910EC00D9B2DF /* AAContactCell.m */; };
+		25078C181AA9170C00D9B2DF /* AAMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25078C171AA9170C00D9B2DF /* AAMessageCell.m */; };
 		250BDF4E1AA0B09B00DA014D /* AAContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */; };
-		250BDF5A1AA10F1800DA014D /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 250BDF591AA10F1800DA014D /* Messages.storyboard */; };
 		250BDF5D1AA1106D00DA014D /* AAMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */; };
 		250BDF601AA128D500DA014D /* AAReverseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF5F1AA128D500DA014D /* AAReverseTableView.m */; };
 		250BDF621AA1EE3E00DA014D /* CocoaStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF611AA1EE3E00DA014D /* CocoaStorage.m */; };
@@ -520,9 +521,6 @@
 		25C9C37B1A9D46D70061780E /* CoreDataKeyValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C37A1A9D46D70061780E /* CoreDataKeyValueStorage.m */; };
 		25C9C3841A9D4A900061780E /* CocoaLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3831A9D4A900061780E /* CocoaLocale.m */; };
 		25C9C3871A9D4B130061780E /* CocoaMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3861A9D4B130061780E /* CocoaMainThread.m */; };
-		25C9C38B1A9E05560061780E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C9C38A1A9E05560061780E /* Main.storyboard */; };
-		25C9C38E1A9E07310061780E /* AATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C38D1A9E07310061780E /* AATabBarController.m */; };
-		25C9C3911A9E09C60061780E /* AAChatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3901A9E09C60061780E /* AAChatsViewController.m */; };
 		25C9C3951A9E117D0061780E /* AAAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3941A9E117D0061780E /* AAAvatarImageView.m */; };
 		25C9C3991A9E15BF0061780E /* RCBlurredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3981A9E15BF0061780E /* RCBlurredImageView.m */; };
 		25C9C39F1A9FEA2C0061780E /* AAUnhighlightableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C39C1A9FEA2C0061780E /* AAUnhighlightableLabel.m */; };
@@ -1499,11 +1497,15 @@
 		06F753611AA86F3200E1685A /* UserTypingVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTypingVM.m; sourceTree = "<group>"; };
 		06F753621AA86F3200E1685A /* UserVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVM.h; sourceTree = "<group>"; };
 		06F753631AA86F3200E1685A /* UserVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserVM.m; sourceTree = "<group>"; };
-		06F7553C1AA87D2900E1685A /* AADialogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AADialogTableViewCell.h; path = Components/AADialogTableViewCell.h; sourceTree = "<group>"; };
-		06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AADialogTableViewCell.m; path = Components/AADialogTableViewCell.m; sourceTree = "<group>"; };
+		06F7553C1AA87D2900E1685A /* AADialogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AADialogCell.h; path = Components/AADialogCell.h; sourceTree = "<group>"; };
+		06F7553D1AA87D2900E1685A /* AADialogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AADialogCell.m; path = Components/AADialogCell.m; sourceTree = "<group>"; };
 		06F7553F1AA898E500E1685A /* AADialogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AADialogsViewController.h; sourceTree = "<group>"; };
 		06F755401AA898E500E1685A /* AADialogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AADialogsViewController.m; sourceTree = "<group>"; };
 		08B939F305AF573D79345536 /* libPods-ActorClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ActorClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25078C131AA910EC00D9B2DF /* AAContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAContactCell.h; sourceTree = "<group>"; };
+		25078C141AA910EC00D9B2DF /* AAContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAContactCell.m; sourceTree = "<group>"; };
+		25078C161AA9170C00D9B2DF /* AAMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAMessageCell.h; sourceTree = "<group>"; };
+		25078C171AA9170C00D9B2DF /* AAMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAMessageCell.m; sourceTree = "<group>"; };
 		250BDF4C1AA0B09B00DA014D /* AAContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAContactsViewController.h; sourceTree = "<group>"; };
 		250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAContactsViewController.m; sourceTree = "<group>"; };
 		250BDF591AA10F1800DA014D /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
@@ -1579,11 +1581,6 @@
 		25C9C3831A9D4A900061780E /* CocoaLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaLocale.m; sourceTree = "<group>"; };
 		25C9C3851A9D4B130061780E /* CocoaMainThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaMainThread.h; sourceTree = "<group>"; };
 		25C9C3861A9D4B130061780E /* CocoaMainThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaMainThread.m; sourceTree = "<group>"; };
-		25C9C38A1A9E05560061780E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		25C9C38C1A9E07310061780E /* AATabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AATabBarController.h; sourceTree = "<group>"; };
-		25C9C38D1A9E07310061780E /* AATabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATabBarController.m; sourceTree = "<group>"; };
-		25C9C38F1A9E09C60061780E /* AAChatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChatsViewController.h; sourceTree = "<group>"; };
-		25C9C3901A9E09C60061780E /* AAChatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAChatsViewController.m; sourceTree = "<group>"; };
 		25C9C3931A9E117D0061780E /* AAAvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAAvatarImageView.h; sourceTree = "<group>"; };
 		25C9C3941A9E117D0061780E /* AAAvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAAvatarImageView.m; sourceTree = "<group>"; };
 		25C9C3971A9E15BF0061780E /* RCBlurredImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCBlurredImageView.h; path = RCBlurredImageView/RCBlurredImageView/RCBlurredImageView.h; sourceTree = SOURCE_ROOT; };
@@ -3094,6 +3091,8 @@
 				250BDF591AA10F1800DA014D /* Messages.storyboard */,
 				250BDF5B1AA1106D00DA014D /* AAMessagesViewController.h */,
 				250BDF5C1AA1106D00DA014D /* AAMessagesViewController.m */,
+				25078C161AA9170C00D9B2DF /* AAMessageCell.h */,
+				25078C171AA9170C00D9B2DF /* AAMessageCell.m */,
 			);
 			name = MessagesUI;
 			sourceTree = "<group>";
@@ -3248,8 +3247,8 @@
 		2563889E1A99C09D00A5E0E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				06F74F751AA86F3100E1685A /* src */,
 				253AF10A1AA85FC2002B57F4 /* ActorModel.h */,
+				06F74F751AA86F3100E1685A /* src */,
 				25E179341A9D1A52001CE95B /* resources */,
 				256388D41A99C8A100A5E0E3 /* helpers */,
 				256388CB1A99C7B500A5E0E3 /* storage */,
@@ -3319,17 +3318,14 @@
 		25C9C3891A9E05400061780E /* MainUI */ = {
 			isa = PBXGroup;
 			children = (
-				25C9C38A1A9E05560061780E /* Main.storyboard */,
-				25C9C38C1A9E07310061780E /* AATabBarController.h */,
-				25C9C38D1A9E07310061780E /* AATabBarController.m */,
 				250BDF4C1AA0B09B00DA014D /* AAContactsViewController.h */,
 				250BDF4D1AA0B09B00DA014D /* AAContactsViewController.m */,
-				25C9C38F1A9E09C60061780E /* AAChatsViewController.h */,
-				25C9C3901A9E09C60061780E /* AAChatsViewController.m */,
-				06F7553C1AA87D2900E1685A /* AADialogTableViewCell.h */,
-				06F7553D1AA87D2900E1685A /* AADialogTableViewCell.m */,
+				25078C131AA910EC00D9B2DF /* AAContactCell.h */,
+				25078C141AA910EC00D9B2DF /* AAContactCell.m */,
 				06F7553F1AA898E500E1685A /* AADialogsViewController.h */,
 				06F755401AA898E500E1685A /* AADialogsViewController.m */,
+				06F7553C1AA87D2900E1685A /* AADialogCell.h */,
+				06F7553D1AA87D2900E1685A /* AADialogCell.m */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -3483,8 +3479,6 @@
 				25E1793B1A9D1A52001CE95B /* Months.properties in Resources */,
 				2537F8441A966B9D004A02E9 /* LaunchScreen.xib in Resources */,
 				2537F8411A966B9D004A02E9 /* Images.xcassets in Resources */,
-				25C9C38B1A9E05560061780E /* Main.storyboard in Resources */,
-				250BDF5A1AA10F1800DA014D /* Messages.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3564,7 +3558,6 @@
 				06F754A61AA86F3300E1685A /* Groups.m in Sources */,
 				06F7540D1AA86F3300E1685A /* UserState.m in Sources */,
 				06F754291AA86F3300E1685A /* FutureCallback.m in Sources */,
-				25C9C3911A9E09C60061780E /* AAChatsViewController.m in Sources */,
 				06F754401AA86F3300E1685A /* StartActor.m in Sources */,
 				06F7546F1AA86F3300E1685A /* ServiceGroupUserLeave.m in Sources */,
 				06F753F81AA86F3200E1685A /* UpdateNewDevice.m in Sources */,
@@ -3645,6 +3638,7 @@
 				06F7552B1AA86F3300E1685A /* DataOutput.m in Sources */,
 				06F754A91AA86F3300E1685A /* DialogsActor.m in Sources */,
 				06F7550A1AA86F3300E1685A /* UnsentResponse.m in Sources */,
+				25078C181AA9170C00D9B2DF /* AAMessageCell.m in Sources */,
 				25C9C3991A9E15BF0061780E /* RCBlurredImageView.m in Sources */,
 				06F754B51AA86F3300E1685A /* OwnReadActor.m in Sources */,
 				06F755191AA86F3300E1685A /* NotificationProvider.m in Sources */,
@@ -3867,6 +3861,7 @@
 				06F7548E1AA86F3300E1685A /* JavaAtomicInteger.m in Sources */,
 				06F754741AA86F3300E1685A /* ContentType.m in Sources */,
 				06F7542D1AA86F3300E1685A /* AbstractDispatchQueue.m in Sources */,
+				25078C151AA910EC00D9B2DF /* AAContactCell.m in Sources */,
 				06F7552F1AA86F3300E1685A /* ThreadLocalCompat.m in Sources */,
 				06F753EF1AA86F3200E1685A /* UpdateGroupUserAdded.m in Sources */,
 				06F753C91AA86F3200E1685A /* ResponseImportContacts.m in Sources */,
@@ -3934,7 +3929,6 @@
 				06F754671AA86F3300E1685A /* FileSource.m in Sources */,
 				06F7536A1AA86F3200E1685A /* SeqUpdate.m in Sources */,
 				06F755251AA86F3300E1685A /* TempStorage.m in Sources */,
-				25C9C38E1A9E07310061780E /* AATabBarController.m in Sources */,
 				253AF10D1AA861D3002B57F4 /* AARegViewController.m in Sources */,
 				06F753B21AA86F3200E1685A /* RequestSignIn.m in Sources */,
 				06F7543D1AA86F3300E1685A /* DeadLetter.m in Sources */,
@@ -3995,7 +3989,7 @@
 				06F753CA1AA86F3200E1685A /* ResponseLoadDialogs.m in Sources */,
 				06F753871AA86F3200E1685A /* PublicKeyRequest.m in Sources */,
 				06F7543F1AA86F3300E1685A /* PoisonPill.m in Sources */,
-				06F7553E1AA87D2900E1685A /* AADialogTableViewCell.m in Sources */,
+				06F7553E1AA87D2900E1685A /* AADialogCell.m in Sources */,
 				06F753CD1AA86F3200E1685A /* ResponseSendAuthCode.m in Sources */,
 				06F754DE1AA86F3300E1685A /* RandomUtils.m in Sources */,
 				06F753C81AA86F3200E1685A /* ResponseGetPublicKeys.m in Sources */,

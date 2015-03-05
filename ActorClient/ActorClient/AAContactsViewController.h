@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AAContactsViewController : UIViewController
+@interface AAContactsViewController : UITableViewController
 
 @end
