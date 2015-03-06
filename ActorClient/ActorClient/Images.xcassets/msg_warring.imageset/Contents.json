@@ -2,17 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "msg_warring.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ChatsIconRead@2x.png"
+      "filename" : "msg_warring@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "ChatsIconRead@3x.png"
+      "filename" : "msg_warring@3x.png"
     }
   ],
   "info" : {

@@ -12,35 +12,43 @@
 
 #pragma mark - Status Image Cache
 
-static UIImage *pendingIcon()
+static UIImage *iconWarring()
 {
     static UIImage *image = nil;
     if (image == nil)
-        image = [UIImage imageNamed:@"ChatsIconDelivered"];
+        image = [[UIImage imageNamed:@"msg_warring"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     return image;
 }
 
-static UIImage *sentIcon()
+static UIImage *iconError()
 {
     static UIImage *image = nil;
     if (image == nil)
-        image = [UIImage imageNamed:@"ChatsIconDelivered"];
+        image = [[UIImage imageNamed:@"msg_error"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     return image;
 }
 
-static UIImage *receivedIcon()
+static UIImage *iconClock()
 {
     static UIImage *image = nil;
     if (image == nil)
-        image = [UIImage imageNamed:@"ChatsIconSent"];
+        image = [[UIImage imageNamed:@"msg_clock"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     return image;
 }
 
-static UIImage *readIcon()
+static UIImage *iconCheck2()
 {
     static UIImage *image = nil;
     if (image == nil)
-        image = [UIImage imageNamed:@"ChatsIconRead"];
+        image = [[UIImage imageNamed:@"msg_check_2"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    return image;
+}
+
+static UIImage *iconCheck1()
+{
+    static UIImage *image = nil;
+    if (image == nil)
+        image = [[UIImage imageNamed:@"msg_check_1"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     return image;
 }
 
@@ -124,7 +132,7 @@ static UIImage *readIcon()
 
     // Message content
     
-    AMContentType contentType = [[dialog getMessageType] getValue];
+    AMContentType contentType = [dialog getMessageType].ordinal;
     if (contentType == AMContentType_TEXT) {
         self.messageView.text = dialog.getText;
     } else if (contentType == AMContentType_EMPTY) {
@@ -158,15 +166,22 @@ static UIImage *readIcon()
     
     // Message state
     
-    AMMessageState state = dialog.getStatus.getValue;
+    AMMessageState state = dialog.getStatus.ordinal;
     if (state == AMMessageState_PENDING) {
-        self.statusView.image = pendingIcon();
+        [self.statusView setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:64/255.]];
+        self.statusView.image = iconClock();
     } else if (state == AMMessageState_READ){
-        self.statusView.image = readIcon();
+        [self.statusView setTintColor:[UIColor colorWithRed:126/255. green:168/255. blue:239/255. alpha:1.]];
+        self.statusView.image = iconCheck2();
     } else if (state == AMMessageState_RECEIVED){
-        self.statusView.image = receivedIcon();
+        [self.statusView setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:64/255.]];
+        self.statusView.image = iconCheck2();
     } else if (state == AMMessageState_SENT){
-        self.statusView.image = sentIcon();
+        [self.statusView setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:64/255.]];
+        self.statusView.image = iconCheck1();
+    } else if (state == AMMessageState_ERROR){
+        [self.statusView setTintColor:[UIColor colorWithRed:210/255. green:74/255. blue:67/255. alpha:1]];
+        self.statusView.image = iconError();
     } else {
         self.statusView.image = nil;
     }
