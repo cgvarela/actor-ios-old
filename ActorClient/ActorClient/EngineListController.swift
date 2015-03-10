@@ -76,6 +76,10 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
         engineTableView.endUpdates();
     }
     
+    func objectAtIndexPath(indexPath: NSIndexPath) -> AACD_List {
+        return fetchedController.objectAtIndexPath(indexPath) as! AACD_List;
+    }
+    
     // Table Delegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -34,7 +34,7 @@ class DialogsViewController: EngineListController {
     }
     
     override func viewDidAppear(animated: Bool) {
-//        MSG.onDialogsOpen();
+        // MSG.onDialogsOpen();
     }
     
     override func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List) -> UITableViewCell {
@@ -55,8 +55,15 @@ class DialogsViewController: EngineListController {
         let isLast = indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1;
         (cell as! AADialogCell).bindDialog(dialog.dialog, withLast: isLast);
     }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var dialog = objectAtIndexPath(indexPath) as! AACDDialog;
+        var messageController = AAMessagesViewController();
+        messageController.peer = dialog.dialog.getPeer();
+        self.navigationController?.pushViewController(messageController, animated: true);
+    }
     
     override func viewDidDisappear(animated: Bool) {
-//        MSG.onDialogsClosed();
+        // MSG.onDialogsClosed();
     }
 }

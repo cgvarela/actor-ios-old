@@ -16,3 +16,4 @@
 #import "CocoaNetworking.h"
 #import "CocoaStorage.h"
 #import "CocoaPhoneBookProvider.h"
+#import "AAMessagesViewController.h"
