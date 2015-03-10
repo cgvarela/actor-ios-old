@@ -10,11 +10,19 @@ import Foundation
 import UIKit
 
 class EngineListController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-    var tableView: UITableView!;
-    var fetchedController: NSFetchedResultsController!;
+    private var engineTableView: UITableView!;
+    private var fetchedController: NSFetchedResultsController!;
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
+    }
+    
+    override init(){
+        super.init();
     }
     
     // Init
@@ -24,8 +32,9 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func bindTable(table: UITableView){
-        self.tableView = table;
-        self.tableView!.delegate = self;
+        self.engineTableView = table;
+        self.engineTableView!.dataSource = self;
+        self.engineTableView!.delegate = self;
     }
     
     override func viewDidLoad() {
@@ -36,24 +45,26 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Controller operation
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates();
+        engineTableView.beginUpdates();
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch(type){
         case NSFetchedResultsChangeType.Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic);
+            engineTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic);
             break;
         case NSFetchedResultsChangeType.Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Automatic);
+            engineTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Automatic);
             break;
         case NSFetchedResultsChangeType.Move:
-            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!);
+            engineTableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!);
             break;
         case NSFetchedResultsChangeType.Update:
-            var cell = tableView.cellForRowAtIndexPath(indexPath!);
-            var item = anObject as! AACD_List;
-            bindCell(tableView, cellForRowAtIndexPath: indexPath!, item: item, cell: cell!);
+            var cell = engineTableView.cellForRowAtIndexPath(indexPath!);
+            if (cell != nil) {
+                var item = anObject as! AACD_List;
+                bindCell(engineTableView, cellForRowAtIndexPath: indexPath!, item: item, cell: cell!);
+            }
             break;
         default:
             // Do nothing
@@ -62,7 +73,7 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates();
+        engineTableView.endUpdates();
     }
     
     // Table Delegate
