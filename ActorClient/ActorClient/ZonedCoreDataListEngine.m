@@ -11,6 +11,7 @@
 #import "J2ObjC_source.h"
 #import "java/util/ArrayList.h"
 #import "ZonedCoreDataListEngine.h"
+#import "AACD_List.h"
 
 @interface ZonedCoreDataListEngine ()
 
@@ -123,16 +124,22 @@
 - (id)getValueWithLong:(jlong)id_
 {
     @synchronized (self.context) {
-        NSData *data = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key = %@", @(self.zone_id),@(id_)] inContext:self.context];
-        return self.deserializer(data);
+        AACD_List *data = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@ AND key = %@", @(self.zone_id),@(id_)] inContext:self.context];
+        if (data == nil || data.value.length == 0){
+            return nil;
+        }
+        return self.deserializer(data.value);
     }
 }
 
 - (id)getHeadValue
 {
     @synchronized (self.context) {
-        NSData *data = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@", @(self.zone_id)] sortedBy:@"sortKey" ascending:NO inContext:self.context];
-        return self.deserializer(data);
+        AACD_List *data = [self.mos MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"zone_id = %@", @(self.zone_id)] sortedBy:@"sortKey" ascending:NO inContext:self.context];
+        if (data == nil || data.value.length == 0){
+            return nil;
+        }
+        return self.deserializer(data.value);
     }
 }
 

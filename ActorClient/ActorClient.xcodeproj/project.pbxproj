@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06147B921AAE6D0400931753 /* DialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06147B911AAE6D0400931753 /* DialogsViewController.swift */; };
 		06147B941AAE76E900931753 /* CocoaMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06147B931AAE76E900931753 /* CocoaMessenger.swift */; };
+		06ABC77B1AAF39B500C1B932 /* EngineListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77A1AAF39B500C1B932 /* EngineListController.swift */; };
+		06E281DE1AAEDDB00070EE18 /* DialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */; };
+		06E281DF1AAEDDB00070EE18 /* DialogsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */; };
 		06F753641AA86F3200E1685A /* Verified.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F7B1AA86F3100E1685A /* Verified.m */; };
 		06F753651AA86F3200E1685A /* AuthHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F7E1AA86F3100E1685A /* AuthHolder.m */; };
 		06F753661AA86F3200E1685A /* AuthSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F801AA86F3100E1685A /* AuthSession.m */; };
@@ -540,7 +542,6 @@
 		25FAD8E01AA0A5C1004F5E19 /* AACDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8DF1AA0A5C1004F5E19 /* AACDContact.m */; };
 		25FAD8E31AA0A5C1004F5E19 /* AACDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8E21AA0A5C1004F5E19 /* AACDMessage.m */; };
 		494FCA96F490BCF15D1DF9C7 /* libPods-ActorClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B939F305AF573D79345536 /* libPods-ActorClient.a */; };
-		B30D508F00FCABE64EFA250A /* DialogsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30D5EA635D2AF0510AFC3E6 /* DialogsViewController.xib */; };
 		B30D54AB211843709344C994 /* CocoaCryptoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D5C08E6A54BCE034D01EA /* CocoaCryptoProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -555,8 +556,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06147B911AAE6D0400931753 /* DialogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogsViewController.swift; sourceTree = "<group>"; };
 		06147B931AAE76E900931753 /* CocoaMessenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMessenger.swift; sourceTree = "<group>"; };
+		06ABC77A1AAF39B500C1B932 /* EngineListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineListController.swift; sourceTree = "<group>"; };
+		06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogsViewController.swift; sourceTree = "<group>"; };
+		06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogsViewController.xib; sourceTree = "<group>"; };
 		06F74F7A1AA86F3100E1685A /* Verified.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Verified.h; sourceTree = "<group>"; };
 		06F74F7B1AA86F3100E1685A /* Verified.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Verified.m; sourceTree = "<group>"; };
 		06F74F7D1AA86F3100E1685A /* AuthHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthHolder.h; sourceTree = "<group>"; };
@@ -1616,7 +1619,6 @@
 		53958141732573CD5EF08D97 /* Pods-ActorClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActorClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActorClient/Pods-ActorClient.release.xcconfig"; sourceTree = "<group>"; };
 		B30D5B68EC3C911BB612D6EA /* ActorClient-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ActorClient-Bridging-Header.h"; sourceTree = "<group>"; };
 		B30D5C08E6A54BCE034D01EA /* CocoaCryptoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaCryptoProvider.swift; sourceTree = "<group>"; };
-		B30D5EA635D2AF0510AFC3E6 /* DialogsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogsViewController.xib; sourceTree = "<group>"; };
 		DB5A2C3EB0E63D94843300E3 /* Pods-ActorClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActorClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActorClient/Pods-ActorClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3328,8 +3330,8 @@
 				06F755401AA898E500E1685A /* AADialogsViewController.m */,
 				06F7553C1AA87D2900E1685A /* AADialogCell.h */,
 				06F7553D1AA87D2900E1685A /* AADialogCell.m */,
-				06147B911AAE6D0400931753 /* DialogsViewController.swift */,
-				B30D5EA635D2AF0510AFC3E6 /* DialogsViewController.xib */,
+				06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */,
+				06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -3348,6 +3350,7 @@
 				25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */,
 				250BDF5E1AA128D500DA014D /* AAReverseTableView.h */,
 				250BDF5F1AA128D500DA014D /* AAReverseTableView.m */,
+				06ABC77A1AAF39B500C1B932 /* EngineListController.swift */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -3475,6 +3478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2537F8611A973A8D004A02E9 /* Auth.storyboard in Resources */,
+				06E281DF1AAEDDB00070EE18 /* DialogsViewController.xib in Resources */,
 				2537F86C1A9762F6004A02E9 /* PhoneFormats.dat in Resources */,
 				25E1793A1A9D1A52001CE95B /* AppText_Ru.properties in Resources */,
 				25E1793C1A9D1A52001CE95B /* Months_Ru.properties in Resources */,
@@ -3483,7 +3487,6 @@
 				25E1793B1A9D1A52001CE95B /* Months.properties in Resources */,
 				2537F8441A966B9D004A02E9 /* LaunchScreen.xib in Resources */,
 				2537F8411A966B9D004A02E9 /* Images.xcassets in Resources */,
-				B30D508F00FCABE64EFA250A /* DialogsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3603,6 +3606,7 @@
 				25C9C3841A9D4A900061780E /* CocoaLocale.m in Sources */,
 				06F753C61AA86F3200E1685A /* ResponseGetDifference.m in Sources */,
 				06F753A01AA86F3200E1685A /* RequestKickUser.m in Sources */,
+				06ABC77B1AAF39B500C1B932 /* EngineListController.swift in Sources */,
 				06F753841AA86F3200E1685A /* Phone.m in Sources */,
 				06F753F61AA86F3200E1685A /* UpdateMessageReceived.m in Sources */,
 				2537F85F1A9730FF004A02E9 /* AAPhoneViewController.m in Sources */,
@@ -3724,7 +3728,6 @@
 				06F754511AA86F3300E1685A /* Bser.m in Sources */,
 				06F753FC1AA86F3200E1685A /* UpdateTyping.m in Sources */,
 				06F754C61AA86F3300E1685A /* OwnTypingActor.m in Sources */,
-				06147B921AAE6D0400931753 /* DialogsViewController.swift in Sources */,
 				06F754E81AA86F3300E1685A /* ActorApiCallback.m in Sources */,
 				06F754711AA86F3300E1685A /* TextContent.m in Sources */,
 				06F754881AA86F3300E1685A /* OutputFile.m in Sources */,
@@ -3980,6 +3983,7 @@
 				06F755081AA86F3300E1685A /* RpcRequest.m in Sources */,
 				06F753F51AA86F3200E1685A /* UpdateMessageReadByMe.m in Sources */,
 				06F754AC1AA86F3300E1685A /* EntityConverter.m in Sources */,
+				06E281DE1AAEDDB00070EE18 /* DialogsViewController.swift in Sources */,
 				06F754111AA86F3300E1685A /* Command.m in Sources */,
 				06F754691AA86F3300E1685A /* ServiceContent.m in Sources */,
 				06F754B11AA86F3300E1685A /* PlainCursor.m in Sources */,
@@ -4206,6 +4210,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActorClient/ActorClient-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;

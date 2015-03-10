@@ -53,7 +53,7 @@
         return contactsController;
     }()];
     [tabBarController addChildViewController:^{
-        UINavigationController *chatsController = [[UINavigationController alloc] initWithRootViewController:[[AADialogsViewController alloc] init]];
+        UINavigationController *chatsController = [[UINavigationController alloc] initWithRootViewController:[[DialogsViewController alloc] init]];
         chatsController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Chats" image:[UIImage imageNamed:@"TabIconChats"] selectedImage:[UIImage imageNamed:@"TabIconChatsHighlighted"]];
         return chatsController;
     }()];

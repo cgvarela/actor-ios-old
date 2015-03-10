@@ -74,7 +74,7 @@
     return [[ZonedCoreDataListEngine alloc] initWithMOS:[AACDMessage class] zone_id:peer.getPeerId serializer:^NSData *(AMMessage *object) {
         return object.toByteArray.toNSData;
     } deserializer:^AMMessage *(NSData *data) {
-        IOSByteArray *byteArray = [IOSByteArray arrayWithBytes:data.bytes count:data.length];
+        IOSByteArray *byteArray = [IOSByteArray arrayWithBytes:[data bytes] count:[data length]];
         return byteArray.length ? [AMMessage fromBytesWithByteArray:byteArray] : nil;
     }];
 }
