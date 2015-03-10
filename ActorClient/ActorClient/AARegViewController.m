@@ -8,6 +8,7 @@
 
 #import "ActorModel.h"
 #import "AARegViewController.h"
+#import "ActorClient-Swift.h"
 
 @interface AARegViewController () <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 

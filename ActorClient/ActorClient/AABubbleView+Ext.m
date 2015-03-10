@@ -9,12 +9,13 @@
 #import "ActorModel.h"
 
 #import "AABubbleView+Ext.h"
+#import "ActorClient-Swift.h"
 
 @implementation AABubbleView (Ext)
 
 - (void)bindMessage:(AMMessage *)message isMyMessage:(BOOL)isMyMessage
 {
-    AMUserVM *author = [[CocoaMessenger messenger].getUsers getWithLong:message.getSenderId];
+    AMUserVM *author = [[[CocoaMessenger messenger] getUsers] getWithLong:message.getSenderId];
     
     self.bubbleImage = isMyMessage ? [UIImage imageNamed:@"BubbleOutgoingFull"] : [UIImage imageNamed:@"BubbleIncomingFull"];
     self.authorName = isMyMessage ? nil : author.getName.get;

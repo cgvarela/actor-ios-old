@@ -8,10 +8,10 @@
 
 #import <HockeySDK/HockeySDK.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
-#import "CocoaMessenger.h"
 #import "AppDelegate.h"
 #import "AAContactsViewController.h"
 #import "AADialogsViewController.h"
+#import "ActorClient-Swift.h"
 
 @interface AppDelegate ()
 

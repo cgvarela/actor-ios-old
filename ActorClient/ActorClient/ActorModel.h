@@ -34,6 +34,5 @@
 #import "im/actor/model/viewmodel/UserVM.h"
 
 #import "CocoaStorage.h"
-#import "CocoaMessenger.h"
 
 #endif

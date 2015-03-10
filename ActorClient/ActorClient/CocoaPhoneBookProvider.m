@@ -14,8 +14,6 @@
 #import "im/actor/model/entity/PhoneBookEmail.h"
 #import "CocoaPhoneBookProvider.h"
 
-#import "CocoaPhoneBookProvider.h"
-
 @implementation CocoaPhoneBookProvider
 
 - (void)loadPhoneBookWithAMPhoneBookProvider_Callback:(id<AMPhoneBookProvider_Callback>)callback

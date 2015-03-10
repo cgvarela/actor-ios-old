@@ -7,6 +7,7 @@
 //
 
 #import "AADialogCell.h"
+#import "ActorClient-Swift.h"
 
 @implementation AADialogCell
 
@@ -76,7 +77,7 @@ static UIImage *iconCheck1()
     if (_messageView == nil) {
         _messageView = [[UILabel alloc] initWithFrame:CGRectMake(76, 36, 320, 20)];
         _messageView.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-        _messageView.textColor = [UIColor colorWithRed:165/255. green:165/255. blue:165/255. alpha:1];
+        _messageView.textColor = [UIColor colorWithRed:165/255.f green:165/255.f blue:165/255.f alpha:1];
     }
     return _messageView;
 }
@@ -86,7 +87,7 @@ static UIImage *iconCheck1()
     if (_dateView == nil) {
         _dateView = [[UILabel alloc] initWithFrame:CGRectMake(260, 14, 50, 20)];
         _dateView.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-        _dateView.textColor = [UIColor colorWithRed:165/255. green:165/255. blue:165/255. alpha:1];
+        _dateView.textColor = [UIColor colorWithRed:165/255.f green:165/255.f blue:165/255.f alpha:1];
         _dateView.textAlignment = NSTextAlignmentRight;
     }
     return _dateView;
@@ -105,7 +106,7 @@ static UIImage *iconCheck1()
 {
     if (_separatorView == nil) {
         _separatorView = [[UIView alloc] initWithFrame:CGRectMake(76, 75.5, 320, 0.5)];
-        _separatorView.backgroundColor = [UIColor colorWithRed:165/255. green:165/255. blue:165/255. alpha:1];
+        _separatorView.backgroundColor = [UIColor colorWithRed:165/255.f green:165/255.f blue:165/255.f alpha:1];
     }
     return _separatorView;
 }

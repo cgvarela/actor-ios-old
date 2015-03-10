@@ -8,6 +8,7 @@
 
 #import "ActorModel.h"
 #import "AASmsViewController.h"
+#import "ActorClient-Swift.h"
 
 @interface AASmsViewController ()
 
@@ -32,7 +33,10 @@
 - (IBAction)nextTapped:(UIBarButtonItem *)button
 {
     [SVProgressHUD showWithMaskType:(SVProgressHUDMaskTypeBlack)];
-    id<AMCommand> cmd = [[CocoaMessenger messenger] sendCodeWithInt:[self.codeTextField.text intValue]];
+    
+    AMMessenger* messenger = [CocoaMessenger messenger];
+    
+    id<AMCommand> cmd = [messenger sendCodeWithInt:[self.codeTextField.text intValue]];
     [cmd startWithAMCommandCallback:MM_CREATE_ALWAYS(^(Class class){
         [class addMethod:@selector(onResultWithId:)
             fromProtocol:@protocol(AMCommandCallback)

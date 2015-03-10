@@ -11,6 +11,8 @@
 #import "AACountriesViewController.h"
 #import "AASmsViewController.h"
 #import "AAPhoneViewController.h"
+#import "AAPhoneViewController.h"
+#import "ActorClient-Swift.h"
 
 @interface AAPhoneViewController ()
 

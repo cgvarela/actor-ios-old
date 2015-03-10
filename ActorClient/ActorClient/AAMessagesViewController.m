@@ -12,6 +12,7 @@
 #import "AAMessageCell.h"
 #import "AABubbleFactory.h"
 #import "AAMessagesViewController.h"
+#import "ActorClient-Swift.h"
 
 @interface AAMessagesViewController () <NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
