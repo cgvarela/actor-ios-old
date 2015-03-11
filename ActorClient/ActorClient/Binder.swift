@@ -14,7 +14,6 @@ class Binder {
     
     func bind<T>(value:AMValueModel, closure: (value: T)->()) {
         var listener = BindListener { (value2) -> () in
-            println(NSStringFromClass(value2?.dynamicType));
             closure(value: value2 as! T);
         };
         var holder = BindHolder(valueModel: value, listener: listener);

@@ -89,6 +89,11 @@ class MessagesViewController: EngineSlackListController {
         }
     }
     
+    override func textWillUpdate() {
+        super.textWillUpdate();
+        MSG.onTyping(peer);
+    }
+    
     override func didPressRightButton(sender: AnyObject!) {
         // Perform auto correct
         textView.refreshFirstResponder();
