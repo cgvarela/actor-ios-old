@@ -3,7 +3,7 @@
 //  ActorClient
 //
 //  Created by Stepan Korshakov on 05.03.15.
-//  Copyright (c) 2015 Anton Bukov. All rights reserved.
+//  Copyright (c) 2015 Actor LLC. All rights reserved.
 //
 
 #import "AADialogCell.h"

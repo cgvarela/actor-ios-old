@@ -38,10 +38,17 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
     
     // Controller operation
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        if (engineTableView == nil){
+            return;
+        }
         engineTableView.beginUpdates();
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        if (engineTableView == nil){
+            return;
+        }
+        
         switch(type){
         case NSFetchedResultsChangeType.Insert:
             engineTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic);
@@ -66,6 +73,10 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        if (engineTableView == nil){
+            return;
+        }
+        
         engineTableView.endUpdates();
     }
     
@@ -76,6 +87,10 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
     // Table Delegate
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (fetchedController == nil){
+            return 0;
+        }
+        
         var sec = fetchedController!.sections as! [NSFetchedResultsSectionInfo];
         
         if (sec.count <= section){

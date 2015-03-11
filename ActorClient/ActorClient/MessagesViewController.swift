@@ -3,7 +3,7 @@
 //  ActorClient
 //
 //  Created by Stepan Korshakov on 11.03.15.
-//  Copyright (c) 2015 Anton Bukov. All rights reserved.
+//  Copyright (c) 2015 Actor LLC. All rights reserved.
 //
 
 import Foundation
@@ -14,11 +14,14 @@ class MessagesViewController: EngineSlackListController {
     var peer: AMPeer!;
     
     init(peer: AMPeer) {
-        super.init(isInverted: false);
+        super.init(isInverted: true);
         self.peer = peer;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
         self.tableView.backgroundColor = UIColor.clearColor();
-//        self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "ChatBackground")!);
+        self.tableView.allowsSelection = false;
+        self.tableView.tableHeaderView = UIView(frame:CGRectMake(0, 0, 100, 6));
+        
+        self.textInputbar.backgroundColor = UIColor.whiteColor();
     }
 
     required init(coder aDecoder: NSCoder) {

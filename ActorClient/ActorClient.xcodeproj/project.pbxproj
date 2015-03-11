@@ -19,6 +19,7 @@
 		06ABC7871AB05C3300C1B932 /* EngineSlackListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC7861AB05C3300C1B932 /* EngineSlackListController.swift */; };
 		06E281DE1AAEDDB00070EE18 /* DialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */; };
 		06E281DF1AAEDDB00070EE18 /* DialogsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */; };
+		06F6B7101AB0CE9600A7DB91 /* Resouces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */; };
 		06F753641AA86F3200E1685A /* Verified.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F7B1AA86F3100E1685A /* Verified.m */; };
 		06F753651AA86F3200E1685A /* AuthHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F7E1AA86F3100E1685A /* AuthHolder.m */; };
 		06F753661AA86F3200E1685A /* AuthSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F801AA86F3100E1685A /* AuthSession.m */; };
@@ -565,6 +566,7 @@
 		06ABC7861AB05C3300C1B932 /* EngineSlackListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineSlackListController.swift; sourceTree = "<group>"; };
 		06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogsViewController.swift; sourceTree = "<group>"; };
 		06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogsViewController.xib; sourceTree = "<group>"; };
+		06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resouces.swift; sourceTree = "<group>"; };
 		06F74F7A1AA86F3100E1685A /* Verified.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Verified.h; sourceTree = "<group>"; };
 		06F74F7B1AA86F3100E1685A /* Verified.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Verified.m; sourceTree = "<group>"; };
 		06F74F7D1AA86F3100E1685A /* AuthHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthHolder.h; sourceTree = "<group>"; };
@@ -3137,6 +3139,7 @@
 				2537F8421A966B9D004A02E9 /* LaunchScreen.xib */,
 				2537F8301A966B9D004A02E9 /* Supporting Files */,
 				06ABC7801AAF4E5A00C1B932 /* AppDelegate.swift */,
+				06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */,
 			);
 			path = ActorClient;
 			sourceTree = "<group>";
@@ -3408,7 +3411,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "Anton Bukov";
+				ORGANIZATIONNAME = "Actor LLC";
 				TargetAttributes = {
 					2537F82C1A966B9D004A02E9 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -3572,6 +3575,7 @@
 				06F753FA1AA86F3200E1685A /* UpdatePhoneTitleChanged.m in Sources */,
 				25C9C3841A9D4A900061780E /* CocoaLocale.m in Sources */,
 				06F753C61AA86F3200E1685A /* ResponseGetDifference.m in Sources */,
+				06F6B7101AB0CE9600A7DB91 /* Resouces.swift in Sources */,
 				06F753A01AA86F3200E1685A /* RequestKickUser.m in Sources */,
 				06ABC77B1AAF39B500C1B932 /* EngineListController.swift in Sources */,
 				06F753841AA86F3200E1685A /* Phone.m in Sources */,

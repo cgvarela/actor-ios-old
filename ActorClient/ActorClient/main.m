@@ -3,7 +3,7 @@
 //  ActorClient
 //
 //  Created by Антон Буков on 19.02.15.
-//  Copyright (c) 2015 Anton Bukov. All rights reserved.
+//  Copyright (c) 2015 Actor LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
