@@ -91,9 +91,7 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
         var item = fetchedController?.objectAtIndexPath(indexPath) as! AACD_List;
         var cell = buildCell(tableView, cellForRowAtIndexPath:indexPath, item:item);
         bindCell(tableView, cellForRowAtIndexPath: indexPath, item: item, cell: cell);
-        if (self.inverted) {
-            cell.transform = CGAffineTransformMakeScale(1, -1);
-        }
+        cell.transform = self.tableView.transform;
         return cell;
     }
     

@@ -9,7 +9,6 @@
 #import "IOSClass.h"
 #import "AADialogCell.h"
 #import "AAContactCell.h"
-#import "AAMessageCell.h"
 #import "ActorModel.h"
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "CocoaLogger.h"

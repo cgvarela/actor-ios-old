@@ -27,6 +27,7 @@
 #import "im/actor/model/entity/PeerType.h"
 #import "im/actor/model/entity/User.h"
 #import "im/actor/model/entity/content/AbsContent.h"
+#import "im/actor/model/entity/content/TextContent.h"
 #import "im/actor/model/entity/ContentType.h"
 #import "im/actor/model/mvvm/MVVMCollection.h"
 #import "im/actor/model/i18n/I18NEngine.h"

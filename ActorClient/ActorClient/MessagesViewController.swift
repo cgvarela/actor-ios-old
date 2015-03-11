@@ -14,8 +14,11 @@ class MessagesViewController: EngineSlackListController {
     var peer: AMPeer!;
     
     init(peer: AMPeer) {
-        super.init(isInverted: true);
+        super.init(isInverted: false);
         self.peer = peer;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
+        self.tableView.backgroundColor = UIColor.clearColor();
+//        self.tableView.backgroundColor = UIColor(patternImage: UIImage(named: "ChatBackground")!);
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -32,6 +35,9 @@ class MessagesViewController: EngineSlackListController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
         textView.text = MSG.loadDraft(peer);
+        var image = UIImage(named: "ChatBackground");
+        var bg = UIImageView(image: UIImage(named: "ChatBackground"));
+        view.insertSubview(bg, atIndex: 0);
     }
     
     override func didPressRightButton(sender: AnyObject!) {
@@ -42,28 +48,30 @@ class MessagesViewController: EngineSlackListController {
         
         super.didPressRightButton(sender);
     }
-
+    
     override func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List) -> UITableViewCell {
         
         var message = (item as! AACDMessage).message;
-        var contentType = message.getContent().getContentType().name();
-        var identifier = String(format: "cell_bubble_%@", contentType);
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! AAMessageCell?;
-        if (cell == nil){
-            cell = AAMessageCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifier);
-            cell?.awakeFromNib();
+        if (message.getContent() is AMTextContent){
+            var cell = tableView.dequeueReusableCellWithIdentifier("bubble_text") as! BubbleTextCell?;
+            if (cell == nil){
+                cell = BubbleTextCell();
+                cell?.awakeFromNib();
+            }
+            return cell!;
+        }else {
+            fatalError("Unsupported content");
         }
-        
-        return cell!;
     }
     
     override func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List, cell: UITableViewCell) {
-        
-        var message = (item as! AACDMessage).message;
-        var isMyMessage = (message.getSenderId() == MSG.myUid());
-        
-        (cell as! AAMessageCell).bindMessage(message, isMyMessage: isMyMessage)
+        (cell as! BubbleCell).bind((item as! AACDMessage).message);
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var item = objectAtIndexPath(indexPath) as! AACDMessage;
+        return BubbleCell.measureHeight(item.message);
     }
     
     override func viewDidDisappear(animated: Bool) {
