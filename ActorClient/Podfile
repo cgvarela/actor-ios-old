@@ -19,6 +19,7 @@ pod 'PHFComposeBarView'
 pod 'TAPKeyboardPop', '~> 0.1.2'
 pod 'DZNPhotoPickerController'
 pod 'HockeySDK'
+pod 'SlackTextViewController'
 
 end
 

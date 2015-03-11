@@ -15,14 +15,22 @@ class DialogsViewController: EngineListController {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
+        
+        tabBarItem = UITabBarItem(title: "Chats",
+            image: UIImage(named: "TabIconChats"),
+            selectedImage: UIImage(named: "TabIconChatsHighlighted"));
     }
     
     override init() {
         super.init(nibName: "DialogsViewController", bundle: nil)
+        
+        tabBarItem = UITabBarItem(title: "Chats",
+            image: UIImage(named: "TabIconChats"),
+            selectedImage: UIImage(named: "TabIconChatsHighlighted"));
     }
     
     override func buildController(delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
-        return AACDDialog.MR_fetchAllSortedBy("sortKey", ascending: false, withPredicate: nil, groupBy: nil, delegate: self);
+        return AACDDialog.MR_fetchAllSortedBy("sortKey", ascending: false, withPredicate: nil, groupBy: nil, delegate: delegate);
     }
     
     override func viewDidLoad() {
@@ -35,6 +43,13 @@ class DialogsViewController: EngineListController {
     
     override func viewDidAppear(animated: Bool) {
         // MSG.onDialogsOpen();
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        var selected = tableView.indexPathForSelectedRow();
+        if (selected != nil){
+            tableView.deselectRowAtIndexPath(selected!, animated: animated);
+        }
     }
     
     override func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List) -> UITableViewCell {
@@ -58,9 +73,9 @@ class DialogsViewController: EngineListController {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var dialog = objectAtIndexPath(indexPath) as! AACDDialog;
-        var messageController = AAMessagesViewController();
-        messageController.peer = dialog.dialog.getPeer();
-        self.navigationController?.pushViewController(messageController, animated: true);
+//        var messageController = AAMessagesViewController();
+//        messageController.peer = dialog.dialog.getPeer();
+        self.navigationController?.pushViewController(MessagesViewController(peer: dialog.dialog.getPeer()), animated: true);
     }
     
     override func viewDidDisappear(animated: Bool) {

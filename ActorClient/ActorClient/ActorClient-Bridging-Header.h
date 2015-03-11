@@ -8,6 +8,8 @@
 #import "J2ObjC_source.h"
 #import "IOSClass.h"
 #import "AADialogCell.h"
+#import "AAContactCell.h"
+#import "AAMessageCell.h"
 #import "ActorModel.h"
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "CocoaLogger.h"
@@ -16,4 +18,5 @@
 #import "CocoaNetworking.h"
 #import "CocoaStorage.h"
 #import "CocoaPhoneBookProvider.h"
-#import "AAMessagesViewController.h"
+
+#import "SLKTextViewController.h"

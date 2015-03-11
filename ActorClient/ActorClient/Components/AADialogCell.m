@@ -106,7 +106,7 @@ static UIImage *iconCheck1()
 {
     if (_separatorView == nil) {
         _separatorView = [[UIView alloc] initWithFrame:CGRectMake(76, 75.5, 320, 0.5)];
-        _separatorView.backgroundColor = [UIColor colorWithRed:165/255.f green:165/255.f blue:165/255.f alpha:1];
+        _separatorView.backgroundColor = [UIColor colorWithRed:200/255.f green:199/255.f blue:204/255.f alpha:1];
     }
     return _separatorView;
 }
@@ -159,7 +159,7 @@ static UIImage *iconCheck1()
     if ([dialog getDate] > 0){
         AMI18nEngine* formatter = [[CocoaMessenger messenger] getFormatter];
         jlong date = [dialog getDate];
-        self.dateView.text = [formatter formatShortDateWithLong:date];
+        self.dateView.text = [[formatter formatShortDateWithLong:date] uppercaseString];
         self.dateView.hidden = NO;
     } else {
         self.dateView.hidden = YES;
@@ -188,6 +188,10 @@ static UIImage *iconCheck1()
     }
     
     self.separatorView.hidden = isLast;
+}
+
+-(void)layoutSubviews {
+    
 }
 
 @end

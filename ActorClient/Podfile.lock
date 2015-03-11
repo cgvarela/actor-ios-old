@@ -53,6 +53,9 @@ PODS:
   - SDWebImage (3.7.0):
     - SDWebImage/Core (= 3.7.0)
   - SDWebImage/Core (3.7.0)
+  - SlackTextViewController (1.5):
+    - SlackTextViewController/Additions (= 1.5)
+  - SlackTextViewController/Additions (1.5)
   - SVProgressHUD (1.1.2)
   - TAPKeyboardPop (0.1.2)
 
@@ -66,6 +69,7 @@ DEPENDENCIES:
   - PHFComposeBarView
   - RegexKitLite
   - RMPhoneFormat (from `https://github.com/actorapp/RMPhoneFormat`)
+  - SlackTextViewController
   - SVProgressHUD
   - TAPKeyboardPop (~> 0.1.2)
 
@@ -107,6 +111,7 @@ SPEC CHECKSUMS:
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   RMPhoneFormat: e60e142b738b39528bbe586699b3dc5c04b88b2a
   SDWebImage: 791cb0f588046cb0bb7802ae8ae8f5462947b773
+  SlackTextViewController: 3109f4edbd90e5294d653bc805957d0d87ea4326
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
   TAPKeyboardPop: 1d57b5b8e7521454164c5e9e9e4e9cf19a375f37
 

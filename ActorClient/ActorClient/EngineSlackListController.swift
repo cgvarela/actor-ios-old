@@ -1,40 +1,33 @@
 //
-//  EngineListController.swift
+//  EngineSlackListController.swift
 //  ActorClient
 //
-//  Created by Stepan Korshakov on 10.03.15.
+//  Created by Stepan Korshakov on 11.03.15.
 //  Copyright (c) 2015 Anton Bukov. All rights reserved.
 //
 
 import Foundation
-import UIKit
+import UIKit;
 
-class EngineListController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+    
     private var engineTableView: UITableView!;
     private var fetchedController: NSFetchedResultsController!;
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
+    init(isInverted:Bool) {
+        super.init(tableViewStyle: UITableViewStyle.Plain);
+        self.engineTableView = tableView;
+        self.engineTableView.dataSource = self;
+        self.engineTableView.delegate = self;
+        self.inverted = isInverted;
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
-    }
-    
-    override init(){
-        super.init();
-    }
-    
-    // Init
-
-    func buildController(delegate:NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
+    required init!(coder decoder: NSCoder!) {
         fatalError("Not implemented");
     }
     
-    func bindTable(table: UITableView){
-        self.engineTableView = table;
-        self.engineTableView!.dataSource = self;
-        self.engineTableView!.delegate = self;
+    func buildController(delegate:NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
+        fatalError("Not implemented");
     }
     
     override func viewDidLoad() {
@@ -45,17 +38,10 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Controller operation
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        if (engineTableView == nil){
-            return;
-        }
         engineTableView.beginUpdates();
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        if (engineTableView == nil){
-            return;
-        }
-
         switch(type){
         case NSFetchedResultsChangeType.Insert:
             engineTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic);
@@ -80,10 +66,6 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        if (engineTableView == nil){
-            return;
-        }
-
         engineTableView.endUpdates();
     }
     
@@ -93,7 +75,7 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Table Delegate
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var sec = fetchedController!.sections as! [NSFetchedResultsSectionInfo];
         
         if (sec.count <= section){
@@ -102,13 +84,16 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return sec[section].numberOfObjects;
     }
-
+    
     // Table Data Source
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var item = fetchedController?.objectAtIndexPath(indexPath) as! AACD_List;
         var cell = buildCell(tableView, cellForRowAtIndexPath:indexPath, item:item);
         bindCell(tableView, cellForRowAtIndexPath: indexPath, item: item, cell: cell);
+        if (self.inverted) {
+            cell.transform = CGAffineTransformMakeScale(1, -1);
+        }
         return cell;
     }
     
