@@ -32,7 +32,10 @@
 #import "im/actor/model/mvvm/MVVMCollection.h"
 #import "im/actor/model/i18n/I18NEngine.h"
 #import "im/actor/model/mvvm/ValueModel.h"
+#import "im/actor/model/mvvm/ValueChangedListener.h"
 #import "im/actor/model/viewmodel/UserVM.h"
+#import "im/actor/model/viewmodel/UserTypingVM.h"
+#import "im/actor/model/viewmodel/GroupTypingVM.h"
 
 #import "CocoaStorage.h"
 

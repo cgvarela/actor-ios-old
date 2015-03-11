@@ -20,6 +20,8 @@
 		06E281DE1AAEDDB00070EE18 /* DialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */; };
 		06E281DF1AAEDDB00070EE18 /* DialogsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */; };
 		06F6B7101AB0CE9600A7DB91 /* Resouces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */; };
+		06F6B7121AB0F53400A7DB91 /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F6B7111AB0F53400A7DB91 /* Binder.swift */; };
+		06F6B7141AB0F56300A7DB91 /* Wrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F6B7131AB0F56300A7DB91 /* Wrappers.swift */; };
 		06F753641AA86F3200E1685A /* Verified.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F7B1AA86F3100E1685A /* Verified.m */; };
 		06F753651AA86F3200E1685A /* AuthHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F7E1AA86F3100E1685A /* AuthHolder.m */; };
 		06F753661AA86F3200E1685A /* AuthSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F74F801AA86F3100E1685A /* AuthSession.m */; };
@@ -567,6 +569,8 @@
 		06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogsViewController.swift; sourceTree = "<group>"; };
 		06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogsViewController.xib; sourceTree = "<group>"; };
 		06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resouces.swift; sourceTree = "<group>"; };
+		06F6B7111AB0F53400A7DB91 /* Binder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
+		06F6B7131AB0F56300A7DB91 /* Wrappers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wrappers.swift; sourceTree = "<group>"; };
 		06F74F7A1AA86F3100E1685A /* Verified.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Verified.h; sourceTree = "<group>"; };
 		06F74F7B1AA86F3100E1685A /* Verified.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Verified.m; sourceTree = "<group>"; };
 		06F74F7D1AA86F3100E1685A /* AuthHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthHolder.h; sourceTree = "<group>"; };
@@ -3232,6 +3236,8 @@
 				256388CB1A99C7B500A5E0E3 /* storage */,
 				256388D31A99C88D00A5E0E3 /* network */,
 				25C9C3881A9D4B860061780E /* cocoa */,
+				06F6B7111AB0F53400A7DB91 /* Binder.swift */,
+				06F6B7131AB0F56300A7DB91 /* Wrappers.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3631,6 +3637,7 @@
 				06F7548C1AA86F3300E1685A /* JavaLocale.m in Sources */,
 				06F7552C1AA86F3300E1685A /* ExponentialBackoff.m in Sources */,
 				06F753CC1AA86F3200E1685A /* ResponseSearchContacts.m in Sources */,
+				06F6B7121AB0F53400A7DB91 /* Binder.swift in Sources */,
 				06F754101AA86F3300E1685A /* CocoaThreading.m in Sources */,
 				06F755161AA86F3300E1685A /* RpcTimeoutException.m in Sources */,
 				06F7543C1AA86F3300E1685A /* MailboxCreator.m in Sources */,
@@ -3971,6 +3978,7 @@
 				06F754DE1AA86F3300E1685A /* RandomUtils.m in Sources */,
 				06F753C81AA86F3200E1685A /* ResponseGetPublicKeys.m in Sources */,
 				06F753ED1AA86F3200E1685A /* UpdateGroupOnline.m in Sources */,
+				06F6B7141AB0F56300A7DB91 /* Wrappers.swift in Sources */,
 				06F7537E1AA86F3200E1685A /* MessageState.m in Sources */,
 				06F753981AA86F3200E1685A /* RequestGetAuthSessions.m in Sources */,
 				253AF0F91AA76F51002B57F4 /* AACDDialog+Ext.m in Sources */,

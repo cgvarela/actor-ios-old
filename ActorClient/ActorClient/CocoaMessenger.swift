@@ -8,9 +8,9 @@
 
 import Foundation
 
-private var holder:AMMessenger?;
+private var holder:CocoaMessenger?;
 
-var MSG : AMMessenger {
+var MSG : CocoaMessenger {
 get{
     if (holder == nil){
         var builder = AMConfigurationBuilder();
@@ -24,12 +24,12 @@ get{
         builder.setPhoneBookProviderWithAMPhoneBookProvider(CocoaPhoneBookProvider());
         builder.setCryptoProviderWithAMCryptoProvider(CocoaCryptoProvider());
         var config = builder.build();
-        holder = AMMessenger(config:config);
+        holder = CocoaMessenger(config:config);
     }
     return holder!;
     }
 }
 
-@objc class CocoaMessenger {
-    class func messenger() -> AMMessenger { return MSG }
+@objc class CocoaMessenger : AMMessenger {
+    class func messenger() -> CocoaMessenger { return MSG }
 }

@@ -4,6 +4,7 @@
 #import "im/actor/model/cocoa/CocoaThreading.h"
 #import "im/actor/model/ConfigurationBuilder.h"
 #import "im/actor/model/Configuration.h"
+#include "java/lang/Boolean.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "J2ObjC_source.h"
 #import "IOSClass.h"

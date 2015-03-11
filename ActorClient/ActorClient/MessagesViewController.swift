@@ -12,6 +12,11 @@ import UIKit
 class MessagesViewController: EngineSlackListController {
 
     var peer: AMPeer!;
+    let binder: Binder = Binder();
+    
+    let titleView: UILabel = UILabel();
+    let subtitleView: UILabel = UILabel();
+    let navigationView: UIView = UIView();
     
     init(peer: AMPeer) {
         super.init(isInverted: true);
@@ -22,6 +27,31 @@ class MessagesViewController: EngineSlackListController {
         self.tableView.tableHeaderView = UIView(frame:CGRectMake(0, 0, 100, 6));
         
         self.textInputbar.backgroundColor = UIColor.whiteColor();
+        
+        navigationView.frame = CGRectMake(0, 0, 200, 44);
+        navigationView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
+        
+        titleView.frame = CGRectMake(0, 0, 200, 24)
+        titleView.font = UIFont.boldSystemFontOfSize(18);
+        titleView.adjustsFontSizeToFitWidth = false;
+        titleView.textColor = UIColor.whiteColor();
+        titleView.textAlignment = NSTextAlignment.Center;
+        titleView.lineBreakMode = NSLineBreakMode.ByTruncatingTail;
+        titleView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
+        
+        subtitleView.frame = CGRectMake(0, 24, 200, 44-24);
+        subtitleView.font = UIFont.systemFontOfSize(14);
+        subtitleView.adjustsFontSizeToFitWidth=false;
+        subtitleView.textColor = UIColor.whiteColor();
+        subtitleView.text = "???";
+        subtitleView.textAlignment = NSTextAlignment.Center;
+        subtitleView.lineBreakMode = NSLineBreakMode.ByTruncatingTail;
+        subtitleView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
+        
+        navigationView.addSubview(titleView);
+        navigationView.addSubview(subtitleView);
+        
+        self.navigationItem.titleView = navigationView;
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -41,6 +71,22 @@ class MessagesViewController: EngineSlackListController {
         var image = UIImage(named: "ChatBackground");
         var bg = UIImageView(image: UIImage(named: "ChatBackground"));
         view.insertSubview(bg, atIndex: 0);
+        
+        if (UInt(peer.getPeerType().ordinal()) == AMPeerType.PRIVATE.rawValue) {
+            var user = MSG.getUsers().getWithLong(jlong(peer.getPeerId())) as! AMUserVM;
+            var nameModel = user.getName() as AMValueModel;
+            binder.bind(nameModel, closure: { (value: NSString) -> () in
+                self.titleView.text = String(value);
+                self.navigationView.sizeToFit();
+            })
+            binder.bind(MSG.getTyping(peer.getPeerId())!.getTyping(), closure: { (value:JavaLangBoolean) -> () in
+                if (value.booleanValue()) {
+                    self.subtitleView.text="typing...";
+                } else {
+                    self.subtitleView.text="...";
+                }
+            })
+        }
     }
     
     override func didPressRightButton(sender: AnyObject!) {
