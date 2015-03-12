@@ -10,23 +10,24 @@ import Foundation
 
 @objc class AppDelegate : UIResponder,  UIApplicationDelegate {
     
-    private let TintColor = UIColor(red: 80/255.0, green: 133/255.0, blue: 204/255.0, alpha: 1.0);
-    
     private var window : UIWindow?;
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
         var navAppearance = UINavigationBar.appearance();
         navAppearance.tintColor = UIColor.whiteColor();
-        navAppearance.barTintColor = TintColor;
-        navAppearance.backgroundColor = TintColor;
+        navAppearance.barTintColor = Resources.TintColor;
+        navAppearance.backgroundColor = Resources.TintColor;
         navAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
         
         var textFieldAppearance = UITextField.appearance();
-        textFieldAppearance.tintColor = TintColor;
+        textFieldAppearance.tintColor = Resources.TintColor;
         
         var searchBarAppearance = UISearchBar.appearance();
-        searchBarAppearance.tintColor = TintColor;
+        searchBarAppearance.tintColor = Resources.TintColor;
+        
+        UITabBar.appearance().tintColor = Resources.BarTintColor;
+        UITabBar.appearance().shadowImage = UIImage();
         
 //        setTitleTextAttributes(NSForegroundColorAttributeName, );
         
@@ -60,6 +61,7 @@ import Foundation
         var rootController = UINavigationController(rootViewController: MainTabController());
     
         window = UIWindow(frame: UIScreen.mainScreen().bounds);
+//        window?.tintColor = TintColor;
         window?.rootViewController = rootController;
         window?.makeKeyAndVisible();
         

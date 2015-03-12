@@ -15,19 +15,23 @@ class ContactsViewController: EngineListController {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
-        
-        tabBarItem = UITabBarItem(title: "Contacts",
-            image: UIImage(named: "TabIconContacts"),
-            selectedImage: UIImage(named: "TabIconContactsHighlighted"));
+        initCommon();
     }
     
     override init() {
         super.init(nibName: "ContactsViewController", bundle: nil)
-        
-        tabBarItem = UITabBarItem(title: "Contacts",
-            image: UIImage(named: "TabIconContacts"),
-            selectedImage: UIImage(named: "TabIconContactsHighlighted"));
+        initCommon();
     }
+    
+    func initCommon(){
+        var icon = UIImage(named: "ic_users_blue_24")!;
+        tabBarItem = UITabBarItem(title: nil,
+            image: icon.tintImage(Resources.BarTintUnselectedColor)
+                .imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal),
+            selectedImage: icon);
+        tabBarItem.imageInsets=UIEdgeInsetsMake(6, 0, -6, 0);
+    }
+    
     
     override func buildController(delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
         return AACDContact.MR_fetchAllSortedBy("sortKey", ascending: false, withPredicate: nil, groupBy: nil, delegate: delegate);

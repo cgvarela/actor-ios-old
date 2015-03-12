@@ -16,17 +16,22 @@ class DialogsViewController: EngineListController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         
-        tabBarItem = UITabBarItem(title: "Chats",
-            image: UIImage(named: "TabIconChats"),
-            selectedImage: UIImage(named: "TabIconChatsHighlighted"));
+        initCommon();
     }
     
     override init() {
         super.init(nibName: "DialogsViewController", bundle: nil)
         
-        tabBarItem = UITabBarItem(title: "Chats",
-            image: UIImage(named: "TabIconChats"),
-            selectedImage: UIImage(named: "TabIconChatsHighlighted"));
+        initCommon();
+    }
+    
+    func initCommon(){
+        var icon = UIImage(named: "ic_letter_blue_24")!;
+        tabBarItem = UITabBarItem(title: nil,
+            image: icon.tintImage(Resources.BarTintUnselectedColor)
+                .imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal),
+            selectedImage: icon);
+        tabBarItem.imageInsets=UIEdgeInsetsMake(6, 0, -6, 0);
     }
     
     override func buildController(delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {

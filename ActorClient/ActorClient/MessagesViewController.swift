@@ -27,6 +27,12 @@ class MessagesViewController: EngineSlackListController {
         self.tableView.tableHeaderView = UIView(frame:CGRectMake(0, 0, 100, 6));
         
         self.textInputbar.backgroundColor = UIColor.whiteColor();
+        self.textInputbar.autoHideRightButton = false;
+        self.textView.placeholder = "Message";
+        
+        self.keyboardPanningEnabled = true;
+        
+        self.leftButton.setImage(UIImage(named: "conv_attach"), forState: UIControlState.Normal)
         
         navigationView.frame = CGRectMake(0, 0, 200, 44);
         navigationView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;

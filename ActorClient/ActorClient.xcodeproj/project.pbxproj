@@ -495,6 +495,12 @@
 		06F7553A1AA86F3300E1685A /* UserTypingVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F753611AA86F3200E1685A /* UserTypingVM.m */; };
 		06F7553B1AA86F3300E1685A /* UserVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F753631AA86F3200E1685A /* UserVM.m */; };
 		06F7553E1AA87D2900E1685A /* AADialogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F7553D1AA87D2900E1685A /* AADialogCell.m */; };
+		06FA655D1AB10D7F00BE0A41 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FA655B1AB10D7F00BE0A41 /* SettingsViewController.swift */; };
+		06FA655E1AB10D7F00BE0A41 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06FA655C1AB10D7F00BE0A41 /* SettingsViewController.xib */; };
+		06FA65611AB1982800BE0A41 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FA655F1AB1982800BE0A41 /* DiscoverViewController.swift */; };
+		06FA65621AB1982800BE0A41 /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06FA65601AB1982800BE0A41 /* DiscoverViewController.xib */; };
+		06FA65641AB19DE000BE0A41 /* Imaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FA65631AB19DE000BE0A41 /* Imaging.swift */; };
+		06FA65661AB1A3E000BE0A41 /* PlaceHolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FA65651AB1A3E000BE0A41 /* PlaceHolderController.swift */; };
 		25078C151AA910EC00D9B2DF /* AAContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25078C141AA910EC00D9B2DF /* AAContactCell.m */; };
 		250BDF621AA1EE3E00DA014D /* CocoaStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF611AA1EE3E00DA014D /* CocoaStorage.m */; };
 		2537F8331A966B9D004A02E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8321A966B9D004A02E9 /* main.m */; };
@@ -1517,6 +1523,12 @@
 		06F753631AA86F3200E1685A /* UserVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserVM.m; sourceTree = "<group>"; };
 		06F7553C1AA87D2900E1685A /* AADialogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AADialogCell.h; path = Components/AADialogCell.h; sourceTree = "<group>"; };
 		06F7553D1AA87D2900E1685A /* AADialogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AADialogCell.m; path = Components/AADialogCell.m; sourceTree = "<group>"; };
+		06FA655B1AB10D7F00BE0A41 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		06FA655C1AB10D7F00BE0A41 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		06FA655F1AB1982800BE0A41 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		06FA65601AB1982800BE0A41 /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
+		06FA65631AB19DE000BE0A41 /* Imaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Imaging.swift; sourceTree = "<group>"; };
+		06FA65651AB1A3E000BE0A41 /* PlaceHolderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderController.swift; sourceTree = "<group>"; };
 		08B939F305AF573D79345536 /* libPods-ActorClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ActorClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25078C131AA910EC00D9B2DF /* AAContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAContactCell.h; sourceTree = "<group>"; };
 		25078C141AA910EC00D9B2DF /* AAContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAContactCell.m; sourceTree = "<group>"; };
@@ -3309,6 +3321,11 @@
 				06ABC77C1AAF458B00C1B932 /* ContactsViewController.swift */,
 				06ABC77D1AAF458B00C1B932 /* ContactsViewController.xib */,
 				06ABC7821AAF57A000C1B932 /* MainTabController.swift */,
+				06FA655B1AB10D7F00BE0A41 /* SettingsViewController.swift */,
+				06FA655C1AB10D7F00BE0A41 /* SettingsViewController.xib */,
+				06FA655F1AB1982800BE0A41 /* DiscoverViewController.swift */,
+				06FA65601AB1982800BE0A41 /* DiscoverViewController.xib */,
+				06FA65651AB1A3E000BE0A41 /* PlaceHolderController.swift */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -3327,6 +3344,7 @@
 				25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */,
 				06ABC77A1AAF39B500C1B932 /* EngineListController.swift */,
 				06ABC7861AB05C3300C1B932 /* EngineSlackListController.swift */,
+				06FA65631AB19DE000BE0A41 /* Imaging.swift */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -3454,12 +3472,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2537F8611A973A8D004A02E9 /* Auth.storyboard in Resources */,
+				06FA65621AB1982800BE0A41 /* DiscoverViewController.xib in Resources */,
 				06E281DF1AAEDDB00070EE18 /* DialogsViewController.xib in Resources */,
 				2537F86C1A9762F6004A02E9 /* PhoneFormats.dat in Resources */,
 				25E1793A1A9D1A52001CE95B /* AppText_Ru.properties in Resources */,
 				06ABC77F1AAF458B00C1B932 /* ContactsViewController.xib in Resources */,
 				25E1793C1A9D1A52001CE95B /* Months_Ru.properties in Resources */,
 				2537F86D1A9762F6004A02E9 /* ABPhoneFieldCodes.txt in Resources */,
+				06FA655E1AB10D7F00BE0A41 /* SettingsViewController.xib in Resources */,
 				25E179391A9D1A52001CE95B /* AppText.properties in Resources */,
 				25E1793B1A9D1A52001CE95B /* Months.properties in Resources */,
 				2537F8441A966B9D004A02E9 /* LaunchScreen.xib in Resources */,
@@ -3602,6 +3622,7 @@
 				06F753A81AA86F3200E1685A /* RequestRemoveAvatar.m in Sources */,
 				2537F8331A966B9D004A02E9 /* main.m in Sources */,
 				06F753B61AA86F3200E1685A /* RequestSubscribeFromGroupOnline.m in Sources */,
+				06FA65661AB1A3E000BE0A41 /* PlaceHolderController.swift in Sources */,
 				06F753D51AA86F3200E1685A /* ServiceExGroupCreated.m in Sources */,
 				06F755151AA86F3300E1685A /* RpcInternalException.m in Sources */,
 				06F754D11AA86F3300E1685A /* MessagesHistoryLoaded.m in Sources */,
@@ -3828,6 +3849,7 @@
 				06F753E91AA86F3200E1685A /* UpdateEncryptedReceived.m in Sources */,
 				06F753961AA86F3200E1685A /* RequestEncryptedRead.m in Sources */,
 				06F753BE1AA86F3200E1685A /* RequestUploadPart.m in Sources */,
+				06FA65641AB19DE000BE0A41 /* Imaging.swift in Sources */,
 				06F755261AA86F3300E1685A /* Storage.m in Sources */,
 				06F7538C1AA86F3200E1685A /* RequestCompleteUpload.m in Sources */,
 				06F754E71AA86F3300E1685A /* ActorApi.m in Sources */,
@@ -3852,6 +3874,7 @@
 				06F753EF1AA86F3200E1685A /* UpdateGroupUserAdded.m in Sources */,
 				06F753C91AA86F3200E1685A /* ResponseImportContacts.m in Sources */,
 				06F754141AA86F3300E1685A /* ConfigurationBuilder.m in Sources */,
+				06FA65611AB1982800BE0A41 /* DiscoverViewController.swift in Sources */,
 				06F753B01AA86F3200E1685A /* RequestSendMessage.m in Sources */,
 				25FAD8B31A9FF38E004F5E19 /* CocoaPhoneBookProvider.m in Sources */,
 				06F755041AA86F3300E1685A /* RpcError.m in Sources */,
@@ -3939,6 +3962,7 @@
 				06F754061AA86F3200E1685A /* UpdateUserPhoneAdded.m in Sources */,
 				06F754791AA86F3300E1685A /* GroupMember.m in Sources */,
 				256388C71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m in Sources */,
+				06FA655D1AB10D7F00BE0A41 /* SettingsViewController.swift in Sources */,
 				06F754A31AA86F3300E1685A /* UploadTask.m in Sources */,
 				06F754481AA86F3300E1685A /* TaskCancel.m in Sources */,
 				06F754201AA86F3300E1685A /* Actor.m in Sources */,

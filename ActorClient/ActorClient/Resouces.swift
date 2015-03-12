@@ -69,4 +69,8 @@ import Foundation
             return _iconClock!;
         }
     }
+    
+    static let TintColor = UIColor(red: 80/255.0, green: 133/255.0, blue: 204/255.0, alpha: 1.0);
+    static let BarTintColor = TintColor;
+    static let BarTintUnselectedColor = UIColor(red: 171/255.0, green: 182/255.0, blue: 202/255.0, alpha: 1);
 }
