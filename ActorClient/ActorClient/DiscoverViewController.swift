@@ -15,7 +15,7 @@ class DiscoverViewController: UIViewController {
         initCommon();
     }
     
-    override init() {
+    init() {
         super.init(nibName: "DiscoverViewController", bundle: nil)
         initCommon();
     }

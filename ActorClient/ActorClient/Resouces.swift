@@ -73,4 +73,22 @@ import Foundation
     static let TintColor = UIColor(red: 80/255.0, green: 133/255.0, blue: 204/255.0, alpha: 1.0);
     static let BarTintColor = TintColor;
     static let BarTintUnselectedColor = UIColor(red: 171/255.0, green: 182/255.0, blue: 202/255.0, alpha: 1);
+    
+    static let placeHolderColors : [UIColor] = [
+        UIColor(red: 0x59/255.0, green: 0xa2/255.0, blue: 0xbe/255.0, alpha: 1),
+        UIColor(red: 0x20/255.0, green: 0x93/255.0, blue: 0xcd/255.0, alpha: 1),
+        UIColor(red: 0xad/255.0, green: 0x62/255.0, blue: 0xa7/255.0, alpha: 1),
+        UIColor(red: 0xf1/255.0, green: 0x63/255.0, blue: 0x64/255.0, alpha: 1),
+        UIColor(red: 0xf9/255.0, green: 0xa4/255.0, blue: 0x3e/255.0, alpha: 1),
+        UIColor(red: 0xe4/255.0, green: 0xc6/255.0, blue: 0x2e/255.0, alpha: 1),
+        UIColor(red: 0x67/255.0, green: 0xbf/255.0, blue: 0x74/255.0, alpha: 1)];
+    
+    static let TextPrimaryColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0xDE/255.0);
+    static let TextSecondaryColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0x8A/255.0);
+    static let SeparatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0x1e/255.0)
 }
+
+
+
+
+

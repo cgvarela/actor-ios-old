@@ -22,7 +22,18 @@ get{
         builder.addEndpoint("tls://mtproto-api.actor.im:443");
         builder.setLocale(CocoaLocale());
         builder.setPhoneBookProviderWithAMPhoneBookProvider(CocoaPhoneBookProvider());
-        builder.setCryptoProviderWithAMCryptoProvider(CocoaCryptoProvider());
+        builder.setCryptoProviderWithAMCryptoProvider(ImActorModelCryptoBouncycastleBouncyCastleProvider());
+        var value: UInt8 = 0xFF
+        var convHash = IOSByteArray.newArrayWithLength(32)
+        var buf = UnsafeMutablePointer<UInt8>(convHash.buffer());
+        for i in 1..<32 {
+            buf.memory = UInt8(arc4random_uniform(255));
+            buf++;
+//            convHash.buffer()[i] = jbyte(0xFF);
+        }
+        
+        builder.setApiConfigurationWithAMApiConfiguration(AMApiConfiguration(NSString: "Actor iOS", withInt: 1, withNSString: "???", withNSString: "My Device", withByteArray: convHash))
+        builder.setFileSystemProviderWithAMFileSystemProvider(CocoaFileSystem())
         var config = builder.build();
         holder = CocoaMessenger(config:config);
     }

@@ -76,7 +76,11 @@
 - (IOSByteArray *)getBytesWithNSString:(NSString *)key
 {
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-    return [IOSByteArray arrayWithBytes:data.bytes count:data.length];
+    if (data == nil) {
+        return nil;
+    } else {
+        return [IOSByteArray arrayWithBytes:data.bytes count:data.length];
+    }
 }
 
 - (void)putStringWithNSString:(NSString *)key

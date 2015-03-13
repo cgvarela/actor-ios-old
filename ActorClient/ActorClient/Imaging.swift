@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Darwin
 
 extension UIImage {
     func tintImage(color:UIColor) -> UIImage{
@@ -27,4 +28,22 @@ extension UIImage {
         
         return image;
     }
+}
+
+class Imaging {
+    
+    class func avatarPlaceholder(index: jint, size: Int) -> UIImage {
+        var color = Resources.placeHolderColors[Int(abs(index)) % Resources.placeHolderColors.count].CGColor;
+        
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: size, height: size), false, UIScreen.mainScreen().scale);
+        var context = UIGraphicsGetCurrentContext();
+//        CGContextBeginPath(context);
+        CGContextSetFillColorWithColor(context, color);
+        CGContextAddArc(context,CGFloat(size)/2, CGFloat(size)/2, CGFloat(size)/2, CGFloat(M_PI * 0), CGFloat(M_PI * 2), 0);
+        CGContextDrawPath(context, kCGPathFill);
+        var image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image;
+    }
+
 }

@@ -38,7 +38,40 @@ class DialogsViewController: EngineListController {
         return AACDDialog.MR_fetchAllSortedBy("sortKey", ascending: false, withPredicate: nil, groupBy: nil, delegate: delegate);
     }
     
+    func toggleEdit() {
+        self.tableView.setEditing(!self.tableView.editing, animated: true);
+    }
+    
     override func viewDidLoad() {
+        
+        tableView.backgroundColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1)
+        
+        // Footer
+        var footer = UIView(frame: CGRectMake(0, 0, 320, 80));
+        
+        var footerHint = UILabel(frame: CGRectMake(0, 0, 320, 60));
+        footerHint.textAlignment = NSTextAlignment.Center;
+        footerHint.font = UIFont.systemFontOfSize(16);
+        footerHint.textColor = UIColor(red: 164/255.0, green: 164/255.0, blue: 164/255.0, alpha: 1)
+        footerHint.text = "Swipe for more options";
+        footer.addSubview(footerHint);
+        
+        var shadow = UIImageView(image: UIImage(named: "CardBottom2"));
+        shadow.frame = CGRectMake(0, 0, 320, 4);
+        shadow.contentMode = UIViewContentMode.ScaleToFill;
+        footer.addSubview(shadow);
+        
+        self.tableView.tableFooterView = footer;
+        
+        var header = UIView(frame: CGRectMake(0, 0, 320, 0))
+        
+        var headerShadow = UIImageView(frame: CGRectMake(0, -4, 320, 4));
+        headerShadow.image = UIImage(named: "CardTop2");
+        headerShadow.contentMode = UIViewContentMode.ScaleToFill;
+        header.addSubview(headerShadow);
+        
+        self.tableView.tableHeaderView = header;
+        
         loadingView.hidden = true;
         
         bindTable(tableView);
@@ -60,10 +93,10 @@ class DialogsViewController: EngineListController {
     override func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List) -> UITableViewCell {
         let reuseKey = "cell_dialog";
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseKey) as! AADialogCell?;
+        var cell = tableView.dequeueReusableCellWithIdentifier(reuseKey) as! DialogCell?;
         
         if (cell == nil){
-            cell = AADialogCell(style: UITableViewCellStyle.Default, reuseIdentifier: reuseKey);
+            cell = DialogCell(reuseIdentifier: reuseKey);
             cell?.awakeFromNib();
         }
         
@@ -73,13 +106,11 @@ class DialogsViewController: EngineListController {
     override func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List, cell: UITableViewCell) {
         var dialog = item as! AACDDialog;
         let isLast = indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1;
-        (cell as! AADialogCell).bindDialog(dialog.dialog, withLast: isLast);
+        (cell as! DialogCell).bindDialog(dialog.dialog, isLast: isLast);
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var dialog = objectAtIndexPath(indexPath) as! AACDDialog;
-//        var messageController = AAMessagesViewController();
-//        messageController.peer = dialog.dialog.getPeer();
         self.navigationController?.pushViewController(MessagesViewController(peer: dialog.dialog.getPeer()), animated: true);
     }
     

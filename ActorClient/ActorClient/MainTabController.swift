@@ -22,8 +22,9 @@ class MainTabController : UITabBarController, UITabBarDelegate {
         initControllers();
     }
     
-    override init(){
-        super.init();
+    init(){
+        super.init(nibName: nil, bundle: nil);
+        initControllers()
     }
     
     func initControllers() {
@@ -37,24 +38,23 @@ class MainTabController : UITabBarController, UITabBarDelegate {
         tabBar.backgroundColor = UIColor.whiteColor();
         tabBar.shadowImage = UIImage();
         
-        // Stupid hack: Drawing border for removing standart border
-//        self.tabBar.layer.borderWidth = 0.50;
-//        self.tabBar.layer.borderColor = UIColor.whiteColor().CGColor;//self.tabBar.tintColor.CGColor;
-//         tabBar.shadowImage=nil;
-        
-        
-//         tabBar.shadowImage = UIImage(named: "CardTop3");
-        
+//        selectedIndex = 0;
         selectedIndex = 1;
-        applyTitle(1);
+        applyTitle(0);
         
         centerButton = UIButton(frame: CGRect(x: 0, y: 0, width: 66, height: 58));
         centerButton!.setBackgroundImage(UIImage(named: "ic_round_button_red"), forState: UIControlState.Normal);
         centerButton!.setImage(UIImage(named: "ic_add_white_24"), forState: UIControlState.Normal);
         centerButton!.imageEdgeInsets = UIEdgeInsetsMake(4, 0, -4, 0);
-        centerButton!.frame = CGRect(x: tabBar.center.x-31, y: tabBar.frame.maxY-58, width: 66, height: 58);
-//        centerButton!.center = tabBar.center;
+//         centerButton!.frame = CGRect(x: tabBar.center.x - 31, y: tabBar.frame.height - 58, width: 66, height: 58);
+        
         self.view.addSubview(centerButton!);
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        centerButton!.frame = CGRectMake(view.center.x-31, view.frame.height-58, 66, 58)
     }
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
@@ -66,22 +66,38 @@ class MainTabController : UITabBarController, UITabBarDelegate {
         switch(item){
         case 0:
             navigationItem.title = "Contacts";
+            navigationItem.leftBarButtonItem = nil;
+            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         case 1:
-            navigationItem.title = "Dialogs";
+            navigationItem.title = "Chats";
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editDialogs");
+            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         case 2:
+            navigationItem.leftBarButtonItem = nil;
             navigationItem.title = "";
+            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         case 3:
+            navigationItem.leftBarButtonItem = nil;
             navigationItem.title = "Discover";
+            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         case 4:
+            navigationItem.leftBarButtonItem = nil;
             navigationItem.title = "";
+            navigationController?.setNavigationBarHidden(true, animated: false)
             break;
         default:
+            navigationItem.leftBarButtonItem = nil;
             navigationItem.title = "";
+            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         }
+    }
+    
+    func editDialogs(){
+        (self.viewControllers![1] as! DialogsViewController).toggleEdit();
     }
 }

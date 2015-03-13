@@ -21,8 +21,8 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
     }
     
-    override init(){
-        super.init();
+    init(){
+       super.init(nibName: nil, bundle: nil);
     }
     
     // Init
@@ -94,6 +94,10 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     // Table Delegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (fetchedController == nil){
+            return 0;
+        }
+        
         var sec = fetchedController!.sections as! [NSFetchedResultsSectionInfo];
         
         if (sec.count <= section){

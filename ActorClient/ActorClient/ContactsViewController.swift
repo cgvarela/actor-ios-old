@@ -10,6 +10,7 @@ import UIKit
 
 class ContactsViewController: EngineListController {
     
+    @IBOutlet var rootView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
     
@@ -43,13 +44,53 @@ class ContactsViewController: EngineListController {
     
         super.viewDidLoad();
     }
+    
+    var firstLoad : Bool = true;
+    
+    override func viewWillAppear(animated: Bool) {
+        var selected = tableView.indexPathForSelectedRow();
+        if (selected != nil){
+            tableView.deselectRowAtIndexPath(selected!, animated: animated);
+        }
+        
+        NSLog("View Top: %f",self.rootView.frame.minY);
+        
+//        self.tableView
+        
+        // self.tableView.contentInset = UIEdgeInsets(top: 44+20, left: 0, bottom: 0, right: 0)
+        
+//        if (firstLoad) {
+//            firstLoad = false;
+//            self.tableView.frame = CGRectMake(0, 44 + 20, self.tableView.frame.size.width, self.tableView.frame.size.height-44 - 20);
+//        } else {
+//            self.tableView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+//        }
+        
+        // self.tableView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        var rect = self.navigationController!.navigationBar.frame;
+//        
+//        var y = rect.size.height + rect.origin.y;
+//        
+//        self.tableView.contentInset = UIEdgeInsetsMake(y ,0,0,0);
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        NSLog("View Top: %f, %f",self.rootView.frame.origin.y, self.tableView.frame.origin.y);
+        
+        self.tableView.setNeedsLayout();
+    }
 
     override func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell_contact") as! AAContactCell?;
+        var cell = tableView.dequeueReusableCellWithIdentifier("cell_contact") as! ContactCell?;
         
         if (cell == nil) {
-            cell = AAContactCell(style: UITableViewCellStyle.Default, reuseIdentifier:"cell_contact");
-            cell!.awakeFromNib();
+            cell = ContactCell(reuseIdentifier:"cell_contact");
         }
         
         return cell!;
@@ -58,7 +99,23 @@ class ContactsViewController: EngineListController {
     override func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List, cell: UITableViewCell) {
         var contact = item as! AACDContact;
         let isLast = indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1;
-        (cell as! AAContactCell).bindContact(contact.contact, withLast: isLast);
+        var shortName : String? = nil;
+        if (indexPath.row == 0) {
+            var name = contact.contact.getName()!;
+            shortName = name.substringToIndex(advance(name.startIndex, 1)).uppercaseString;
+        } else {
+            var prevContact = objectAtIndexPath(NSIndexPath(forRow: indexPath.row-1, inSection: indexPath.section)) as! AACDContact;
+            var prevName = prevContact.contact.getName();
+            var prevShortName = prevName.substringToIndex(advance(prevName.startIndex, 1)).uppercaseString;
+            var name = contact.contact.getName()!;
+            var cShortName = name.substringToIndex(advance(name.startIndex, 1)).uppercaseString;
+
+            if (cShortName != prevShortName){
+                shortName = cShortName;
+            }
+        }
+        
+        (cell as! ContactCell).bindContact(contact.contact, shortValue: shortName);
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

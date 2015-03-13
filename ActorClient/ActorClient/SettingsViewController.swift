@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
         initCommon();
     }
     
-    override init() {
+    init() {
         super.init(nibName: "SettingsViewController", bundle: nil)
         initCommon();
     }

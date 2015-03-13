@@ -19,6 +19,7 @@ import Foundation
         navAppearance.barTintColor = Resources.TintColor;
         navAppearance.backgroundColor = Resources.TintColor;
         navAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
+        navAppearance.translucent = false;
         
         var textFieldAppearance = UITextField.appearance();
         textFieldAppearance.tintColor = Resources.TintColor;
@@ -28,6 +29,8 @@ import Foundation
         
         UITabBar.appearance().tintColor = Resources.BarTintColor;
         UITabBar.appearance().shadowImage = UIImage();
+        //ebedf2
+        UITabBar.appearance().selectionIndicatorImage = getImageWithColor(UIColor(red: 0xeb/255.0, green: 0xed/255.0, blue: 0xf2/255.0, alpha: 1), size: CGSize(width: 1, height: 46)).resizableImageWithCapInsets(UIEdgeInsetsZero);
         
 //        setTitleTextAttributes(NSForegroundColorAttributeName, );
         
@@ -71,6 +74,16 @@ import Foundation
         }
         
         return true;
+    }
+    
+    func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
+        var rect = CGRectMake(0, 0, size.width, size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
