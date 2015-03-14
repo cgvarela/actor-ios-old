@@ -34,6 +34,11 @@ PODS:
   - DZNPhotoPickerController/Services (1.6.1):
     - AFNetworking (= 2.4.1)
     - GROAuth2SessionManager (= 0.2.3)
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
   - GROAuth2SessionManager (0.2.3):
     - AFNetworking (~> 2.4.1)
   - HockeySDK (3.6.2)
@@ -62,6 +67,7 @@ PODS:
 DEPENDENCIES:
   - CocoaAsyncSocket
   - DZNPhotoPickerController
+  - FMDB
   - HockeySDK
   - J2ObjC (from `https://github.com/actorapp/j2objc`)
   - MagicalRecord
@@ -100,6 +106,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: b0a1a89e7ea4c1c0ea4ec83f57d55117d3cdae06
   DZNEmptyDataSet: aa20600aff620af3d78edbff4bc47282972e815f
   DZNPhotoPickerController: b160709441243eeed87cd998d2b92da1f6d91840
+  FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
   GROAuth2SessionManager: d40e386b9e865806687b4b818964efb3ac6db952
   HockeySDK: bfd1f5ac75938b07499c4ac12932244b72a2e70b
   J2ObjC: 09602b92eb8f18d34a4954eec2af85156480c5e0

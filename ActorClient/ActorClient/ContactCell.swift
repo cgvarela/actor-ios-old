@@ -11,7 +11,7 @@ import UIKit
 
 class ContactCell : UITableViewCell {
     
-    let avatarView = UIImageView();
+    let avatarView = AvatarView(frameSize: 40, fontSize: 13);
     let shortNameView = UILabel();
     let titleView = UILabel();
     let separatorView = UIView();
@@ -34,7 +34,8 @@ class ContactCell : UITableViewCell {
     }
     
     func bindContact(contact: AMContact, shortValue: String?) {
-        avatarView.image = Imaging.avatarPlaceholder(contact.getUid(), size: 40);
+        avatarView.bind(contact.getName(), id: contact.getUid(), avatar: contact.getAvatar());
+        
         titleView.text = contact.getName();
         
         if (shortValue == nil){

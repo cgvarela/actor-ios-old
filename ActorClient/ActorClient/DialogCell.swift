@@ -9,7 +9,7 @@
 import UIKit;
 
 class DialogCell: UITableViewCell {
-    let avatarView: AvatarView = AvatarView(size: 48);
+    let avatarView: AvatarView = AvatarView(frameSize: 48,fontSize: 10);
     let titleView: UILabel = UILabel();
     let messageView: UILabel = UILabel();
     let dateView: UILabel = UILabel();
@@ -50,7 +50,7 @@ class DialogCell: UITableViewCell {
     func bindDialog(dialog: AMDialog, isLast:Bool) {
         avatarView.image = Imaging.avatarPlaceholder(dialog.getPeer().getPeerId(), size: 48);
         
-        avatarView.bind(dialog.getDialogAvatar());
+        avatarView.bind(dialog.getDialogTitle(), id: dialog.getPeer().getPeerId(), avatar: dialog.getDialogAvatar());
         
         titleView.text = dialog.getDialogTitle();
         

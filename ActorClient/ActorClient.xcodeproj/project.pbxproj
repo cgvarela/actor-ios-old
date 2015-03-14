@@ -10,6 +10,7 @@
 		06147B941AAE76E900931753 /* CocoaMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06147B931AAE76E900931753 /* CocoaMessenger.swift */; };
 		061F74541AB1E42F00F9DACB /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F74531AB1E42F00F9DACB /* ContactCell.swift */; };
 		063458D31AB3646000985A36 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063458D21AB3646000985A36 /* AvatarView.swift */; };
+		064903791AB38C6200FA7B1C /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064903781AB38C6200FA7B1C /* Strings.swift */; };
 		067144501AB089B000364820 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671444F1AB089B000364820 /* BubbleCell.swift */; };
 		067144521AB0947000364820 /* BubbleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067144511AB0947000364820 /* BubbleTextCell.swift */; };
 		06A92ACC1AB24A740065B2FC /* Verified.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A920AC1AB24A6F0065B2FC /* Verified.m */; };
@@ -1259,6 +1260,10 @@
 		06BFDB551AB1D14900F16E43 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06BFDB521AB1D06B00F16E43 /* Roboto-Bold.ttf */; };
 		06BFDB561AB1D14900F16E43 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06BFDB531AB1D06B00F16E43 /* Roboto-Medium.ttf */; };
 		06BFDB571AB1D14900F16E43 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06BFDB541AB1D06B00F16E43 /* Roboto-Regular.ttf */; };
+		06D8D8BE1AB430EE00A80E40 /* FMDBExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8D8BD1AB430EE00A80E40 /* FMDBExtensions.swift */; };
+		06D8D8C01AB431D800A80E40 /* FMDBKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8D8BF1AB431D800A80E40 /* FMDBKeyValue.swift */; };
+		06D8D8C21AB4390600A80E40 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8D8C11AB4390600A80E40 /* Conversions.swift */; };
+		06D8D8C41AB43BA100A80E40 /* CocoaStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8D8C31AB43BA100A80E40 /* CocoaStorage.swift */; };
 		06E281DE1AAEDDB00070EE18 /* DialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */; };
 		06E281DF1AAEDDB00070EE18 /* DialogsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */; };
 		06ED29861AB2373800719875 /* CocoaFileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ED29851AB2373800719875 /* CocoaFileSystem.swift */; };
@@ -1271,7 +1276,6 @@
 		06FA65621AB1982800BE0A41 /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06FA65601AB1982800BE0A41 /* DiscoverViewController.xib */; };
 		06FA65641AB19DE000BE0A41 /* Imaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FA65631AB19DE000BE0A41 /* Imaging.swift */; };
 		06FA65661AB1A3E000BE0A41 /* PlaceHolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FA65651AB1A3E000BE0A41 /* PlaceHolderController.swift */; };
-		250BDF621AA1EE3E00DA014D /* CocoaStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 250BDF611AA1EE3E00DA014D /* CocoaStorage.m */; };
 		2537F8331A966B9D004A02E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8321A966B9D004A02E9 /* main.m */; };
 		2537F8411A966B9D004A02E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2537F8401A966B9D004A02E9 /* Images.xcassets */; };
 		2537F8441A966B9D004A02E9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2537F8421A966B9D004A02E9 /* LaunchScreen.xib */; };
@@ -1296,7 +1300,6 @@
 		256388D01A99C86400A5E0E3 /* CocoaStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 256388CE1A99C86400A5E0E3 /* CocoaStorage.xcdatamodeld */; };
 		25639B8D1A9A81A500A5E0E3 /* CocoaLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 25639B8C1A9A81A500A5E0E3 /* CocoaLogger.m */; };
 		259D452F1A99440400BC2B4D /* AACountriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259D452E1A99440400BC2B4D /* AACountriesViewController.m */; };
-		25C9C37B1A9D46D70061780E /* CoreDataKeyValueStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C37A1A9D46D70061780E /* CoreDataKeyValueStorage.m */; };
 		25C9C3841A9D4A900061780E /* CocoaLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3831A9D4A900061780E /* CocoaLocale.m */; };
 		25C9C3871A9D4B130061780E /* CocoaMainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3861A9D4B130061780E /* CocoaMainThread.m */; };
 		25C9C3951A9E117D0061780E /* AAAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3941A9E117D0061780E /* AAAvatarImageView.m */; };
@@ -1310,10 +1313,6 @@
 		25FAD8B31A9FF38E004F5E19 /* CocoaPhoneBookProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8B21A9FF38E004F5E19 /* CocoaPhoneBookProvider.m */; };
 		25FAD8CE1AA0A5C0004F5E19 /* AACD_List.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8CD1AA0A5C0004F5E19 /* AACD_List.m */; };
 		25FAD8D11AA0A5C1004F5E19 /* AACDDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8D01AA0A5C1004F5E19 /* AACDDialog.m */; };
-		25FAD8D41AA0A5C1004F5E19 /* AACDDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8D31AA0A5C1004F5E19 /* AACDDownload.m */; };
-		25FAD8D71AA0A5C1004F5E19 /* AACD_KeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8D61AA0A5C1004F5E19 /* AACD_KeyValue.m */; };
-		25FAD8DA1AA0A5C1004F5E19 /* AACDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8D91AA0A5C1004F5E19 /* AACDUser.m */; };
-		25FAD8DD1AA0A5C1004F5E19 /* AACDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8DC1AA0A5C1004F5E19 /* AACDGroup.m */; };
 		25FAD8E01AA0A5C1004F5E19 /* AACDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8DF1AA0A5C1004F5E19 /* AACDContact.m */; };
 		25FAD8E31AA0A5C1004F5E19 /* AACDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FAD8E21AA0A5C1004F5E19 /* AACDMessage.m */; };
 		494FCA96F490BCF15D1DF9C7 /* libPods-ActorClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B939F305AF573D79345536 /* libPods-ActorClient.a */; };
@@ -1333,6 +1332,7 @@
 		06147B931AAE76E900931753 /* CocoaMessenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMessenger.swift; sourceTree = "<group>"; };
 		061F74531AB1E42F00F9DACB /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		063458D21AB3646000985A36 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		064903781AB38C6200FA7B1C /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		0671444F1AB089B000364820 /* BubbleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
 		067144511AB0947000364820 /* BubbleTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTextCell.swift; sourceTree = "<group>"; };
 		06A920AB1AB24A6F0065B2FC /* Verified.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Verified.h; sourceTree = "<group>"; };
@@ -3819,6 +3819,10 @@
 		06BFDB521AB1D06B00F16E43 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		06BFDB531AB1D06B00F16E43 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		06BFDB541AB1D06B00F16E43 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		06D8D8BD1AB430EE00A80E40 /* FMDBExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDBExtensions.swift; sourceTree = "<group>"; };
+		06D8D8BF1AB431D800A80E40 /* FMDBKeyValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDBKeyValue.swift; sourceTree = "<group>"; };
+		06D8D8C11AB4390600A80E40 /* Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
+		06D8D8C31AB43BA100A80E40 /* CocoaStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaStorage.swift; sourceTree = "<group>"; };
 		06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogsViewController.swift; sourceTree = "<group>"; };
 		06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogsViewController.xib; sourceTree = "<group>"; };
 		06ED29851AB2373800719875 /* CocoaFileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFileSystem.swift; sourceTree = "<group>"; };
@@ -3832,7 +3836,6 @@
 		06FA65631AB19DE000BE0A41 /* Imaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Imaging.swift; sourceTree = "<group>"; };
 		06FA65651AB1A3E000BE0A41 /* PlaceHolderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderController.swift; sourceTree = "<group>"; };
 		08B939F305AF573D79345536 /* libPods-ActorClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ActorClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		250BDF611AA1EE3E00DA014D /* CocoaStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaStorage.m; sourceTree = "<group>"; };
 		2537F82D1A966B9D004A02E9 /* ActorClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActorClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2537F8311A966B9D004A02E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2537F8321A966B9D004A02E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -3863,7 +3866,6 @@
 		2563889C1A99BDF200A5E0E3 /* AASmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASmsViewController.m; sourceTree = "<group>"; };
 		256388A51A99C72D00A5E0E3 /* CocoaNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaNetworking.h; sourceTree = "<group>"; };
 		256388A61A99C72D00A5E0E3 /* CocoaNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaNetworking.m; sourceTree = "<group>"; };
-		256388A71A99C72D00A5E0E3 /* CocoaStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaStorage.h; sourceTree = "<group>"; };
 		256388AA1A99C72D00A5E0E3 /* CocoaTcpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaTcpConnection.h; sourceTree = "<group>"; };
 		256388AB1A99C72D00A5E0E3 /* CocoaTcpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaTcpConnection.m; sourceTree = "<group>"; };
 		256388AC1A99C72D00A5E0E3 /* CoreDataListEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataListEngine.h; sourceTree = "<group>"; };
@@ -3879,8 +3881,6 @@
 		25639B8C1A9A81A500A5E0E3 /* CocoaLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaLogger.m; sourceTree = "<group>"; };
 		259D452D1A99440400BC2B4D /* AACountriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACountriesViewController.h; sourceTree = "<group>"; };
 		259D452E1A99440400BC2B4D /* AACountriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACountriesViewController.m; sourceTree = "<group>"; };
-		25C9C3791A9D46D70061780E /* CoreDataKeyValueStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataKeyValueStorage.h; sourceTree = "<group>"; };
-		25C9C37A1A9D46D70061780E /* CoreDataKeyValueStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataKeyValueStorage.m; sourceTree = "<group>"; };
 		25C9C3821A9D4A900061780E /* CocoaLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLocale.h; sourceTree = "<group>"; };
 		25C9C3831A9D4A900061780E /* CocoaLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaLocale.m; sourceTree = "<group>"; };
 		25C9C3851A9D4B130061780E /* CocoaMainThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaMainThread.h; sourceTree = "<group>"; };
@@ -3903,14 +3903,6 @@
 		25FAD8CD1AA0A5C0004F5E19 /* AACD_List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACD_List.m; sourceTree = "<group>"; };
 		25FAD8CF1AA0A5C1004F5E19 /* AACDDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDDialog.h; sourceTree = "<group>"; };
 		25FAD8D01AA0A5C1004F5E19 /* AACDDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACDDialog.m; sourceTree = "<group>"; };
-		25FAD8D21AA0A5C1004F5E19 /* AACDDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDDownload.h; sourceTree = "<group>"; };
-		25FAD8D31AA0A5C1004F5E19 /* AACDDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACDDownload.m; sourceTree = "<group>"; };
-		25FAD8D51AA0A5C1004F5E19 /* AACD_KeyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACD_KeyValue.h; sourceTree = "<group>"; };
-		25FAD8D61AA0A5C1004F5E19 /* AACD_KeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACD_KeyValue.m; sourceTree = "<group>"; };
-		25FAD8D81AA0A5C1004F5E19 /* AACDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDUser.h; sourceTree = "<group>"; };
-		25FAD8D91AA0A5C1004F5E19 /* AACDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACDUser.m; sourceTree = "<group>"; };
-		25FAD8DB1AA0A5C1004F5E19 /* AACDGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDGroup.h; sourceTree = "<group>"; };
-		25FAD8DC1AA0A5C1004F5E19 /* AACDGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACDGroup.m; sourceTree = "<group>"; };
 		25FAD8DE1AA0A5C1004F5E19 /* AACDContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDContact.h; sourceTree = "<group>"; };
 		25FAD8DF1AA0A5C1004F5E19 /* AACDContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACDContact.m; sourceTree = "<group>"; };
 		25FAD8E11AA0A5C1004F5E19 /* AACDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACDMessage.h; sourceTree = "<group>"; };
@@ -7555,14 +7547,6 @@
 				25FAD8E21AA0A5C1004F5E19 /* AACDMessage.m */,
 				25FAD8DE1AA0A5C1004F5E19 /* AACDContact.h */,
 				25FAD8DF1AA0A5C1004F5E19 /* AACDContact.m */,
-				25FAD8DB1AA0A5C1004F5E19 /* AACDGroup.h */,
-				25FAD8DC1AA0A5C1004F5E19 /* AACDGroup.m */,
-				25FAD8D81AA0A5C1004F5E19 /* AACDUser.h */,
-				25FAD8D91AA0A5C1004F5E19 /* AACDUser.m */,
-				25FAD8D51AA0A5C1004F5E19 /* AACD_KeyValue.h */,
-				25FAD8D61AA0A5C1004F5E19 /* AACD_KeyValue.m */,
-				25FAD8D21AA0A5C1004F5E19 /* AACDDownload.h */,
-				25FAD8D31AA0A5C1004F5E19 /* AACDDownload.m */,
 				25FAD8CF1AA0A5C1004F5E19 /* AACDDialog.h */,
 				25FAD8D01AA0A5C1004F5E19 /* AACDDialog.m */,
 				25FAD8CC1AA0A5C0004F5E19 /* AACD_List.h */,
@@ -7581,8 +7565,10 @@
 				256388CB1A99C7B500A5E0E3 /* storage */,
 				256388D31A99C88D00A5E0E3 /* network */,
 				25C9C3881A9D4B860061780E /* cocoa */,
+				06147B931AAE76E900931753 /* CocoaMessenger.swift */,
 				06F6B7111AB0F53400A7DB91 /* Binder.swift */,
 				06F6B7131AB0F56300A7DB91 /* Wrappers.swift */,
+				06D8D8C11AB4390600A80E40 /* Conversions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -7593,14 +7579,13 @@
 				25295CE61A9D357100A54CD0 /* CoreData */,
 				256388B61A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.h */,
 				256388B71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m */,
-				25C9C3791A9D46D70061780E /* CoreDataKeyValueStorage.h */,
-				25C9C37A1A9D46D70061780E /* CoreDataKeyValueStorage.m */,
 				256388AC1A99C72D00A5E0E3 /* CoreDataListEngine.h */,
 				256388AD1A99C72D00A5E0E3 /* CoreDataListEngine.m */,
 				256388BA1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.h */,
 				256388BB1A99C72D00A5E0E3 /* ZonedCoreDataListEngine.m */,
-				256388A71A99C72D00A5E0E3 /* CocoaStorage.h */,
-				250BDF611AA1EE3E00DA014D /* CocoaStorage.m */,
+				06D8D8C31AB43BA100A80E40 /* CocoaStorage.swift */,
+				06D8D8BF1AB431D800A80E40 /* FMDBKeyValue.swift */,
+				06D8D8BD1AB430EE00A80E40 /* FMDBExtensions.swift */,
 			);
 			name = storage;
 			sourceTree = "<group>";
@@ -7636,7 +7621,6 @@
 				25C9C3861A9D4B130061780E /* CocoaMainThread.m */,
 				25FAD8B11A9FF38E004F5E19 /* CocoaPhoneBookProvider.h */,
 				25FAD8B21A9FF38E004F5E19 /* CocoaPhoneBookProvider.m */,
-				06147B931AAE76E900931753 /* CocoaMessenger.swift */,
 				06ED29851AB2373800719875 /* CocoaFileSystem.swift */,
 			);
 			name = cocoa;
@@ -7677,6 +7661,7 @@
 				06ABC7861AB05C3300C1B932 /* EngineSlackListController.swift */,
 				06FA65631AB19DE000BE0A41 /* Imaging.swift */,
 				063458D21AB3646000985A36 /* AvatarView.swift */,
+				064903781AB38C6200FA7B1C /* Strings.swift */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -7887,6 +7872,7 @@
 				06A92C0A1AB24A740065B2FC /* ServiceUserRegistered.m in Sources */,
 				06A92C541AB24A740065B2FC /* SenderActor.m in Sources */,
 				06A92E4E1AB24A750065B2FC /* DSTU4145PointEncoder.m in Sources */,
+				06D8D8BE1AB430EE00A80E40 /* FMDBExtensions.swift in Sources */,
 				06A92E471AB24A750065B2FC /* TimeStampReq.m in Sources */,
 				06A92E331AB24A750065B2FC /* RSAPublicKey.m in Sources */,
 				06A92B841AB24A740065B2FC /* UpdateUserLastSeen.m in Sources */,
@@ -7894,7 +7880,6 @@
 				06A92E531AB24A750065B2FC /* Dump.m in Sources */,
 				06A92F661AB24A750065B2FC /* MontgomeryLadderMultiplier.m in Sources */,
 				06A92E3E1AB24A750065B2FC /* SMIMECapabilitiesAttribute.m in Sources */,
-				250BDF621AA1EE3E00DA014D /* CocoaStorage.m in Sources */,
 				06A92DE41AB24A740065B2FC /* DataGroupHash.m in Sources */,
 				06A92E7F1AB24A750065B2FC /* Holder.m in Sources */,
 				06A92F231AB24A750065B2FC /* RC5Parameters.m in Sources */,
@@ -8606,6 +8591,7 @@
 				06A92B831AB24A740065B2FC /* UpdateUserEmailRemoved.m in Sources */,
 				06A92EA61AB24A750065B2FC /* UserNotice.m in Sources */,
 				06A92BF61AB24A740065B2FC /* Utils.m in Sources */,
+				06D8D8C01AB431D800A80E40 /* FMDBKeyValue.swift in Sources */,
 				06A92CF71AB24A740065B2FC /* BERFactory.m in Sources */,
 				06A92DE11AB24A740065B2FC /* GNUObjectIdentifiers.m in Sources */,
 				06A92E901AB24A750065B2FC /* Iso4217CurrencyCode.m in Sources */,
@@ -8672,7 +8658,6 @@
 				06A92B121AB24A740065B2FC /* RequestEditGroupTitle.m in Sources */,
 				06A92CA11AB24A740065B2FC /* RpcInternalError.m in Sources */,
 				06A92CB81AB24A740065B2FC /* KeyValueRecord.m in Sources */,
-				25FAD8DD1AA0A5C1004F5E19 /* AACDGroup.m in Sources */,
 				06A92C451AB24A740065B2FC /* DialogsHistoryActor.m in Sources */,
 				06A92E551AB24A750065B2FC /* DirectoryString.m in Sources */,
 				06A92B051AB24A740065B2FC /* PublicKey.m in Sources */,
@@ -8690,6 +8675,7 @@
 				06A92BB31AB24A740065B2FC /* RsaEncryptCipher.m in Sources */,
 				06A92CA91AB24A740065B2FC /* HeaderBserObject.m in Sources */,
 				06A92EF91AB24A750065B2FC /* DSAParameterGenerationParameters.m in Sources */,
+				06D8D8C41AB43BA100A80E40 /* CocoaStorage.swift in Sources */,
 				06A92DB01AB24A740065B2FC /* TargetEtcChain.m in Sources */,
 				2537F8671A9753DD004A02E9 /* ABPhoneField.m in Sources */,
 				06A92DEF1AB24A740065B2FC /* AdmissionSyntax.m in Sources */,
@@ -8715,10 +8701,10 @@
 				06A92ADE1AB24A740065B2FC /* Email.m in Sources */,
 				06A92C7C1AB24A740065B2FC /* DoubleValueChangedListener.m in Sources */,
 				06A92F3A1AB24A750065B2FC /* SecP192R1FieldElement.m in Sources */,
+				064903791AB38C6200FA7B1C /* Strings.swift in Sources */,
 				06A92F1D1AB24A750065B2FC /* NaccacheSternPrivateKeyParameters.m in Sources */,
 				06A92DCD1AB24A740065B2FC /* OtherHashAlgAndValue.m in Sources */,
 				06A92CA61AB24A740065B2FC /* MTProto.m in Sources */,
-				25C9C37B1A9D46D70061780E /* CoreDataKeyValueStorage.m in Sources */,
 				06A92D6C1AB24A740065B2FC /* PKIArchiveOptions.m in Sources */,
 				06A92CCD1AB24A740065B2FC /* FileVMCallback.m in Sources */,
 				06A92C5A1AB24A740065B2FC /* Notifications.m in Sources */,
@@ -8813,6 +8799,7 @@
 				06A92EBC1AB24A750065B2FC /* X962NamedCurves.m in Sources */,
 				067144501AB089B000364820 /* BubbleCell.swift in Sources */,
 				06A92D421AB24A740065B2FC /* IssuerAndSerialNumber.m in Sources */,
+				06D8D8C21AB4390600A80E40 /* Conversions.swift in Sources */,
 				06A92F931AB24A750065B2FC /* HexTranslator.m in Sources */,
 				06A92DC91AB24A740065B2FC /* OcspIdentifier.m in Sources */,
 				06A92CE41AB24A740065B2FC /* ASN1Object.m in Sources */,
@@ -8914,7 +8901,6 @@
 				06A92D021AB24A740065B2FC /* BERTaggedObject.m in Sources */,
 				06A92C8F1AB24A740065B2FC /* Container.m in Sources */,
 				06A92F091AB24A750065B2FC /* GOST3410KeyGenerationParameters.m in Sources */,
-				25FAD8D41AA0A5C1004F5E19 /* AACDDownload.m in Sources */,
 				06A92ADC1AB24A740065B2FC /* DocumentExVoice.m in Sources */,
 				256388C21A99C72D00A5E0E3 /* CoreDataListEngine.m in Sources */,
 				06A92C411AB24A740065B2FC /* Groups.m in Sources */,
@@ -8954,7 +8940,6 @@
 				06A92CCF1AB24A740065B2FC /* GroupVM.m in Sources */,
 				06A92C171AB24A740065B2FC /* MessageState.m in Sources */,
 				06A92B691AB24A740065B2FC /* UpdateEncryptedMessage.m in Sources */,
-				25FAD8DA1AA0A5C1004F5E19 /* AACDUser.m in Sources */,
 				06A92B3B1AB24A740065B2FC /* RequestTyping.m in Sources */,
 				06A92DA71AB24A740065B2FC /* DVCSErrorNotice.m in Sources */,
 				06A92E251AB24A750065B2FC /* KeyDerivationFunc.m in Sources */,
@@ -9023,7 +9008,6 @@
 				06A92E731AB24A750065B2FC /* DisplayText.m in Sources */,
 				06A92E621AB24A750065B2FC /* AttCertIssuer.m in Sources */,
 				06A92E111AB24A740065B2FC /* RevokedInfo.m in Sources */,
-				25FAD8D71AA0A5C1004F5E19 /* AACD_KeyValue.m in Sources */,
 				256388C71A99C72D00A5E0E3 /* UserDefaultsPreferencesStorage.m in Sources */,
 				06A92C811AB24A740065B2FC /* ValueModel.m in Sources */,
 				06A92D801AB24A740065B2FC /* DERBoolean.m in Sources */,

@@ -28,6 +28,20 @@ extension UIImage {
         
         return image;
     }
+    
+    func roundImage(newSize: Int) -> UIImage {
+        var nSize = CGSize(width: newSize, height: newSize)
+        UIGraphicsBeginImageContextWithOptions(nSize,false,UIScreen.mainScreen().scale);
+        var context = UIGraphicsGetCurrentContext();
+        CGContextAddPath(context, CGPathCreateWithEllipseInRect(CGRect(origin: CGPointZero, size: nSize),nil));
+        CGContextClip(context);
+        
+        self.drawInRect(CGRect(origin: CGPointZero, size: nSize));
+        
+        var image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image;
+    }
 }
 
 class Imaging {
@@ -37,7 +51,7 @@ class Imaging {
         
         UIGraphicsBeginImageContextWithOptions(CGSize(width: size, height: size), false, UIScreen.mainScreen().scale);
         var context = UIGraphicsGetCurrentContext();
-//        CGContextBeginPath(context);
+
         CGContextSetFillColorWithColor(context, color);
         CGContextAddArc(context,CGFloat(size)/2, CGFloat(size)/2, CGFloat(size)/2, CGFloat(M_PI * 0), CGFloat(M_PI * 2), 0);
         CGContextDrawPath(context, kCGPathFill);

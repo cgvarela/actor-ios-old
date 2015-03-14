@@ -10,15 +10,21 @@ import Foundation
 import UIKit
 
 class AvatarView : UIImageView {
-    let size: Int;
+    let frameSize: Int;
+    let fontSize: Float;
     
     // Request
+    var bindedAvatar: AMAvatar! = nil;
+    var bindedTitle: String! = nil;
+    var bindedId: jint! = nil;
+    
     var requestId: Int = 0;
     var bindedFile: jlong? = nil;
     var callback: CocoaDownloadCallback? = nil;
 
-    init(size: Int) {
-        self.size = size;
+    init(frameSize: Int, fontSize: Float) {
+        self.frameSize = frameSize;
+        self.fontSize = fontSize;
         super.init(image: nil);
     }
 
@@ -26,46 +32,64 @@ class AvatarView : UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(avatar: AMAvatar!) {
+    func bind(title: String, id:jint, avatar: AMAvatar!) {
+
+        // Ignore double-binding
+//        if (bindedAvatar != nil && bindedId != nil && bindedTitle != nil && avatar == bindedAvatar && id == bindedId && title == bindedTitle) {
+//            return
+//        }
+        
+        // Unbind all old data
         unbind()
         
-        if (avatar == nil || avatar.getSmallImage() == nil){
-            return
-        }
+        self.bindedTitle = title;
+        self.bindedAvatar = avatar;
+        self.bindedId = id;
         
-        requestId++;
-        var callbackRequest = requestId;
-        
-        self.bindedFile = avatar.getSmallImage().getFileReference().getFileId();
-        self.callback = CocoaDownloadCallback(notDownloaded: { () -> () in
+        if (avatar == nil || avatar.getSmallImage() == nil) {
+            // Load placeholder
+            self.image = Imaging.avatarPlaceholder(bindedId, size: frameSize);
             
-            }, onDownloading: { (progress) -> () in
-                
-            }, onDownloaded: { (reference) -> () in
-                if (callbackRequest != self.requestId) {
-                    return;
-                }
-                
-                var image = UIImage(contentsOfFile: reference);
-                
-                if (image == nil) {
-                    NSLog("Unable to load image %@", reference);
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), {
+        } else {
+            requestId++;
+            var callbackRequest = requestId;
+            
+            self.bindedFile = avatar.getSmallImage().getFileReference().getFileId();
+            self.callback = CocoaDownloadCallback(onDownloaded: { (reference) -> () in
                     if (callbackRequest != self.requestId) {
+                        NSLog("Ignore result");
                         return;
                     }
                     
-                    self.image = image;
+                    var image = UIImage(contentsOfFile: reference);
                     
-                    self.unbind()
-                });
-        });
-        MSG.bindRawFileWithAMFileReference(avatar.getSmallImage().getFileReference(), withBoolean: true, withImActorModelModulesFileDownloadCallback: self.callback)
+                    if (image == nil) {
+                        NSLog("Unable to load image %@", reference);
+                    }
+                
+                    image = image!.roundImage(Int(Float(self.frameSize) * (Float(UIScreen.mainScreen().scale))));
+                
+                    dispatch_async(dispatch_get_main_queue(), {
+                        if (callbackRequest != self.requestId) {
+                            NSLog("Ignore result: ui %d/%d", callbackRequest, self.requestId);
+                            return;
+                        }
+                        
+                        self.image = image;
+                        
+                        // self.unbind()
+                    });
+            });
+            MSG.bindRawFileWithAMFileReference(avatar.getSmallImage().getFileReference(), withBoolean: true, withImActorModelModulesFileDownloadCallback: self.callback)
+        }
     }
     
     func unbind() {
+        bindedAvatar = nil
+        bindedTitle = nil
+        bindedId = nil
+        self.image = nil
+        
         if (bindedFile != nil && callback != nil){
             MSG.unbindRawFileWithLong(bindedFile!, withBoolean: false, withImActorModelModulesFileDownloadCallback: callback)
             callback = nil;

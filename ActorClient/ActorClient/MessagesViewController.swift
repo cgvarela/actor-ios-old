@@ -113,6 +113,10 @@ class MessagesViewController: EngineSlackListController {
         
         var message = (item as! AACDMessage).message;
         
+        if (message.getSenderId() != MSG.myUid()){
+            MSG.onInMessageShown(peer, withRid: message.getRid(), withDate: message.getDate(), withEncrypted: false);
+        }
+        
         if (message.getContent() is AMTextContent){
             var cell = tableView.dequeueReusableCellWithIdentifier("bubble_text") as! BubbleTextCell?;
             if (cell == nil){

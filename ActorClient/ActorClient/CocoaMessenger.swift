@@ -13,11 +13,15 @@ private var holder:CocoaMessenger?;
 var MSG : CocoaMessenger {
 get{
     if (holder == nil){
+        var dbPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
+            .UserDomainMask, true)[0].stringByAppendingPathComponent("actor.db");
+//        var db = FMDatabase(path: dbPath);
+//        db.open()
         var builder = AMConfigurationBuilder();
         builder.setLog(CocoaLogger());
         builder.setNetworking(CocoaNetworking());
         builder.setThreading(AMCocoaThreading());
-        builder.setStorage(CocoaStorage());
+        builder.setStorage(CocoaStorage(dbPath: dbPath));
         builder.setMainThread(CocoaMainThread());
         builder.addEndpoint("tls://mtproto-api.actor.im:443");
         builder.setLocale(CocoaLocale());

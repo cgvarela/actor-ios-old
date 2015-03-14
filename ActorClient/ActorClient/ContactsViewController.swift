@@ -101,17 +101,15 @@ class ContactsViewController: EngineListController {
         let isLast = indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1;
         var shortName : String? = nil;
         if (indexPath.row == 0) {
-            var name = contact.contact.getName()!;
-            shortName = name.substringToIndex(advance(name.startIndex, 1)).uppercaseString;
+            shortName = contact.contact.getName().smallValue();
         } else {
             var prevContact = objectAtIndexPath(NSIndexPath(forRow: indexPath.row-1, inSection: indexPath.section)) as! AACDContact;
-            var prevName = prevContact.contact.getName();
-            var prevShortName = prevName.substringToIndex(advance(prevName.startIndex, 1)).uppercaseString;
-            var name = contact.contact.getName()!;
-            var cShortName = name.substringToIndex(advance(name.startIndex, 1)).uppercaseString;
+            
+            var prevName = prevContact.contact.getName().smallValue();
+            var name = contact.contact.getName().smallValue();
 
-            if (cShortName != prevShortName){
-                shortName = cShortName;
+            if (prevName != name){
+                shortName = name;
             }
         }
         

@@ -31,27 +31,32 @@ import Foundation
 
 class CocoaDownloadCallback : NSObject, ImActorModelModulesFileDownloadCallback {
     
-    let notDownloaded: ()->()
-    let onDownloading: (progress: Float) -> ()
-    let onDownloaded: (fileName: String) -> ()
+    let notDownloaded: (()->())?
+    let onDownloading: ((progress: Float) -> ())?
+    let onDownloaded: ((fileName: String) -> ())?
     
-    
-    init(notDownloaded: ()->(), onDownloading: (progress: Float) -> (), onDownloaded: (reference: String) -> ()) {
+    init(notDownloaded: (()->())?, onDownloading: ((progress: Float) -> ())?, onDownloaded: ((reference: String) -> ())?) {
         self.notDownloaded = notDownloaded;
         self.onDownloading = onDownloading;
         self.onDownloaded = onDownloaded;
     }
 
+    init(onDownloaded: (reference: String) -> ()) {
+        self.notDownloaded = nil;
+        self.onDownloading = nil;
+        self.onDownloaded = onDownloaded;
+    }
+
     func onNotDownloaded() {
-        self.notDownloaded();
+        self.notDownloaded?();
     }
     
     func onDownloadingWithFloat(progress: jfloat) {
-        self.onDownloading(progress: Float(progress));
+        self.onDownloading?(progress: Float(progress));
     }
     
     func onDownloadedWithImActorModelFilesFileReference(reference: ImActorModelFilesFileReference!) {
-        self.onDownloaded(fileName: reference!.getDescriptor());
+        self.onDownloaded?(fileName: reference!.getDescriptor());
     }
 }
 
@@ -68,7 +73,7 @@ class CocoaFile : NSObject, ImActorModelFilesFileReference {
     }
     
     func isExist() -> Bool {
-        return false;//NSFileManager().fileExistsAtPath(path);
+        return NSFileManager().fileExistsAtPath(path);
     }
     
     func getSize() -> jint {
