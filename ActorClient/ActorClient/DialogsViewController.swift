@@ -22,7 +22,7 @@ class DialogsViewController: EngineListController {
     override init() {
         super.init(nibName: "DialogsViewController", bundle: nil)
         
-        initCommon();
+        initCommon(); 
     }
     
     func initCommon(){
@@ -34,9 +34,13 @@ class DialogsViewController: EngineListController {
         tabBarItem.imageInsets=UIEdgeInsetsMake(6, 0, -6, 0);
     }
     
-    override func buildController(delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
-        return AACDDialog.MR_fetchAllSortedBy("sortKey", ascending: false, withPredicate: nil, groupBy: nil, delegate: delegate);
+    override func getDisplayList() -> AMBindedDisplayList {
+        return MSG.getDialogsGlobalList()
     }
+    
+//    override func buildController(delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
+//        return AACDDialog.MR_fetchAllSortedBy("sortKey", ascending: false, withPredicate: nil, groupBy: nil, delegate: delegate);
+//    }
     
     func toggleEdit() {
         self.tableView.setEditing(!self.tableView.editing, animated: true);
@@ -90,7 +94,7 @@ class DialogsViewController: EngineListController {
         }
     }
     
-    override func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List) -> UITableViewCell {
+    override func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AnyObject?) -> UITableViewCell {
         let reuseKey = "cell_dialog";
         
         var cell = tableView.dequeueReusableCellWithIdentifier(reuseKey) as! DialogCell?;
@@ -103,15 +107,15 @@ class DialogsViewController: EngineListController {
         return cell!;
     }
     
-    override func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List, cell: UITableViewCell) {
-        var dialog = item as! AACDDialog;
+    override func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AnyObject?, cell: UITableViewCell) {
+        var dialog = item as! AMDialog;
         let isLast = indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1;
-        (cell as! DialogCell).bindDialog(dialog.dialog, isLast: isLast);
+        (cell as! DialogCell).bindDialog(dialog, isLast: isLast);
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var dialog = objectAtIndexPath(indexPath) as! AACDDialog;
-        self.navigationController?.pushViewController(MessagesViewController(peer: dialog.dialog.getPeer()), animated: true);
+//        var dialog = objectAtIndexPath(indexPath) as! AMDialog;
+//        self.navigationController?.pushViewController(MessagesViewController(peer: dialog.getPeer()), animated: true);
     }
     
     override func viewDidDisappear(animated: Bool) {

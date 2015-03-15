@@ -18,15 +18,23 @@ get{
 //        var db = FMDatabase(path: dbPath);
 //        db.open()
         var builder = AMConfigurationBuilder();
-        builder.setLog(CocoaLogger());
-        builder.setNetworking(CocoaNetworking());
-        builder.setThreading(AMCocoaThreading());
-        builder.setStorage(CocoaStorage(dbPath: dbPath));
-        builder.setMainThread(CocoaMainThread());
+    
+
+        // Providers
+        
+        builder.setLogProvider(CocoaLogProvider());
+        builder.setNetworkProvider(CocoaNetworking());
+        builder.setThreadingProvider(AMCocoaThreadingProvider());
+        builder.setStorageProvider(CocoaStorage(dbPath: dbPath));
+        builder.setMainThreadProvider(CocoaMainThreadProvider());
+        builder.setLocaleProvider(CocoaLocale());
+        builder.setPhoneBookProvider(CocoaPhoneBookProvider());
+        builder.setCryptoProvider(BCBouncyCastleProvider());
+        builder.setFileSystemProvider(CocoaFileSystem())
+        
+        // Connection
         builder.addEndpoint("tls://mtproto-api.actor.im:443");
-        builder.setLocale(CocoaLocale());
-        builder.setPhoneBookProviderWithAMPhoneBookProvider(CocoaPhoneBookProvider());
-        builder.setCryptoProviderWithAMCryptoProvider(ImActorModelCryptoBouncycastleBouncyCastleProvider());
+        
         var value: UInt8 = 0xFF
         var convHash = IOSByteArray.newArrayWithLength(32)
         var buf = UnsafeMutablePointer<UInt8>(convHash.buffer());
@@ -36,10 +44,9 @@ get{
 //            convHash.buffer()[i] = jbyte(0xFF);
         }
         
-        builder.setApiConfigurationWithAMApiConfiguration(AMApiConfiguration(NSString: "Actor iOS", withInt: 1, withNSString: "???", withNSString: "My Device", withByteArray: convHash))
-        builder.setFileSystemProviderWithAMFileSystemProvider(CocoaFileSystem())
-        var config = builder.build();
-        holder = CocoaMessenger(config:config);
+        builder.setApiConfiguration(AMApiConfiguration(NSString: "Actor iOS", withInt: 1, withNSString: "???", withNSString: "My Device", withByteArray: convHash))
+
+        holder = CocoaMessenger(AMConfiguration: builder.build());
     }
     return holder!;
     }

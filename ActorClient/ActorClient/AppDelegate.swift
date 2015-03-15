@@ -54,9 +54,6 @@ import Foundation
 //        [MagicalRecord setupAutoMigratingCoreDataStack];
 //        
 //        [CocoaMessenger messenger];
-        
-        MagicalRecord.setupAutoMigratingCoreDataStack();
-    
 
         // Starting app
         

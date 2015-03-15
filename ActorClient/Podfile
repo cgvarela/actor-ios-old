@@ -11,7 +11,6 @@ pod 'MMMutableMethods', :git => 'https://github.com/k06a/MMMutableMethods', :bra
 pod 'J2ObjC', :git => 'https://github.com/actorapp/j2objc'
 pod 'RegexKitLite', :inhibit_warnings => true
 pod 'CocoaAsyncSocket'
-pod 'MagicalRecord', :inhibit_warnings => true
 pod 'FMDB'
 
 # UI

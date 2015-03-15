@@ -45,9 +45,6 @@ PODS:
   - J2ObjC (0.9.6):
     - J2ObjC/lib/jre (= 0.9.6)
   - J2ObjC/lib/jre (0.9.6)
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core (= 2.2)
-  - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.9)
   - MMMutableMethods (0.0.7)
   - PHFComposeBarView (2.0.1):
@@ -70,7 +67,6 @@ DEPENDENCIES:
   - FMDB
   - HockeySDK
   - J2ObjC (from `https://github.com/actorapp/j2objc`)
-  - MagicalRecord
   - MMMutableMethods (from `https://github.com/k06a/MMMutableMethods`, branch `dev`, tag `0.0.7`)
   - PHFComposeBarView
   - RegexKitLite
@@ -110,7 +106,6 @@ SPEC CHECKSUMS:
   GROAuth2SessionManager: d40e386b9e865806687b4b818964efb3ac6db952
   HockeySDK: bfd1f5ac75938b07499c4ac12932244b72a2e70b
   J2ObjC: 09602b92eb8f18d34a4954eec2af85156480c5e0
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MMMutableMethods: 8528410e0865a83ff5ba75d1c057eeec3b45c82a
   PHFComposeBarView: 0fa52137ecb23725d219dc90cf77c4c95aa29d05

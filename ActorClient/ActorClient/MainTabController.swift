@@ -28,7 +28,7 @@ class MainTabController : UITabBarController, UITabBarDelegate {
     }
     
     func initControllers() {
-        addChildViewController(ContactsViewController());
+//        addChildViewController(ContactsViewController());
         addChildViewController(DialogsViewController());
         addChildViewController(PlaceHolderController());
         addChildViewController(DiscoverViewController());

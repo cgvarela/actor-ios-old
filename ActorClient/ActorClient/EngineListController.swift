@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-class EngineListController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class EngineListController: UIViewController, UITableViewDelegate, UITableViewDataSource, AMDisplayList_Listener {
+    
     private var engineTableView: UITableView!;
-    private var fetchedController: NSFetchedResultsController!;
+    private var displayList: AMBindedDisplayList!;
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
@@ -24,12 +25,7 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     init(){
        super.init(nibName: nil, bundle: nil);
     }
-    
-    // Init
 
-    func buildController(delegate:NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
-        fatalError("Not implemented");
-    }
     
     func bindTable(table: UITableView){
         self.engineTableView = table;
@@ -38,89 +34,60 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewDidLoad() {
-        if (fetchedController == nil){
-            fetchedController = buildController(self);
+        if (self.displayList == nil) {
+            self.displayList = getDisplayList()
+            self.displayList.addListenerWithAMDisplayList_Listener(self)
+            self.engineTableView.reloadData()
         }
     }
     
-    // Controller operation
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        if (engineTableView == nil){
-            return;
-        }
-        engineTableView.beginUpdates();
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        if (engineTableView == nil){
-            return;
-        }
-
-        switch(type){
-        case NSFetchedResultsChangeType.Insert:
-            engineTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic);
-            break;
-        case NSFetchedResultsChangeType.Delete:
-            engineTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Automatic);
-            break;
-        case NSFetchedResultsChangeType.Move:
-            engineTableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!);
-            break;
-        case NSFetchedResultsChangeType.Update:
-            var cell = engineTableView.cellForRowAtIndexPath(indexPath!);
-            if (cell != nil) {
-                var item = anObject as! AACD_List;
-                bindCell(engineTableView, cellForRowAtIndexPath: indexPath!, item: item, cell: cell!);
-            }
-            break;
-        default:
-            // Do nothing
-            break;
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        if (engineTableView == nil){
-            return;
-        }
-
-        engineTableView.endUpdates();
-    }
-    
-    func objectAtIndexPath(indexPath: NSIndexPath) -> AACD_List {
-        return fetchedController.objectAtIndexPath(indexPath) as! AACD_List;
-    }
-    
-    // Table Delegate
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (fetchedController == nil){
-            return 0;
-        }
-        
-        var sec = fetchedController!.sections as! [NSFetchedResultsSectionInfo];
-        
-        if (sec.count <= section){
-            return 0;
-        }
-        
-        return sec[section].numberOfObjects;
-    }
-
     // Table Data Source
     
+    func onCollectionChanged() {
+        NSLog("onCollectionChanged!!!!!!!!")
+        if (self.engineTableView != nil){
+            self.engineTableView.reloadData()
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (displayList == nil) {
+            return 0;
+        }
+        
+        if (section != 0) {
+            return 0;
+        }
+        
+        return Int(displayList.getSize());
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var item = fetchedController?.objectAtIndexPath(indexPath) as! AACD_List;
+        var item: AnyObject? = objectAtIndexPath(indexPath)
         var cell = buildCell(tableView, cellForRowAtIndexPath:indexPath, item:item);
         bindCell(tableView, cellForRowAtIndexPath: indexPath, item: item, cell: cell);
         return cell;
     }
     
-    func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List)  -> UITableViewCell {
+    func objectAtIndexPath(indexPath: NSIndexPath) -> AnyObject? {
+        if (displayList == nil) {
+            return nil
+        }
+        
+        return displayList.getItemWithInt(jint(indexPath.row));
+    }
+    
+    // Abstract methods
+    
+    func getDisplayList() -> AMBindedDisplayList {
         fatalError("Not implemented");
     }
     
-    func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AACD_List, cell: UITableViewCell) {
+    func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AnyObject?)  -> UITableViewCell {
+        fatalError("Not implemented");
+    }
+    
+    func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AnyObject?, cell: UITableViewCell) {
         fatalError("Not implemented");
     }
 }

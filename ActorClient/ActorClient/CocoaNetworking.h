@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "im/actor/model/Networking.h"
+#import "im/actor/model/NetworkProvider.h"
 
-@interface CocoaNetworking : NSObject <AMNetworking>
+@interface CocoaNetworking : NSObject <AMNetworkProvider>
 
 - (void)createConnection:(jint)connectionId withEndpoint:(AMConnectionEndpoint *)endpoint withCallback:(id<AMConnectionCallback>)callback withCreateCallback:(id<AMCreateConnectionCallback>)createCallback;
 

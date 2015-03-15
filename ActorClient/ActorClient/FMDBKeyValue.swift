@@ -8,8 +8,10 @@
 
 import Foundation
 
-@objc class FMDBKeyValue: NSObject, AMKeyValueStorage {
-    let db :FMDatabase;
+@objc class FMDBKeyValue: NSObject, DKKeyValueStorage {
+    var db :FMDatabase?;
+    
+    let databasePath: String;
     let tableName: String;
     
     let queryCreate: String;
@@ -21,7 +23,7 @@ import Foundation
     var isTableChecked: Bool = false;
     
     init(databasePath: String, tableName: String) {
-        self.db = FMDatabase(path: databasePath)
+        self.databasePath = databasePath
         self.tableName = tableName
         
         // Queries
@@ -29,8 +31,8 @@ import Foundation
             "\"ID\" INTEGER NOT NULL, " +
             "\"BYTES\" BLOB NOT NULL, " +
             "PRIMARY KEY (\"ID\"));";
-        self.queryItem = "SELECT \"BYTES\" FROM " + tableName + " WHERE \"ID\" = ?";
-        self.queryAdd = "INSERT OR REPLACE INTO " + tableName + " (\"ID\", \"BYTES\") VALUES (?, ?);";
+        self.queryItem = "SELECT \"BYTES\" FROM " + tableName + " WHERE \"ID\" = ?;";
+        self.queryAdd = "REPLACE INTO " + tableName + " (\"ID\", \"BYTES\") VALUES (?, ?);";
         self.queryDelete = "DELETE FROM " + tableName + " WHERE \"ID\" = ?;";
         self.queryDeleteAll = "DELETE FROM " + tableName + ";";
         
@@ -43,61 +45,63 @@ import Foundation
         }
         isTableChecked = true;
         
-        if (!db.tableExists(tableName)) {
-            db.executeUpdate(queryCreate)
+        self.db = FMDatabase(path: databasePath)
+        self.db!.open()
+        if (!db!.tableExists(tableName)) {
+            db!.executeUpdate(queryCreate)
         }
     }
     
     func addOrUpdateItemsWithJavaUtilList(values: JavaUtilList!) {
         checkTable();
         
-        db.beginTransaction()
+        db!.beginTransaction()
         for i in 0..<values.size() {
-            let record = values.getWithInt(i) as! AMKeyValueRecord;
-            db.executeUpdate(queryAdd, record.getId().toNSNumber(),record.getData()!.toNSData())
+            let record = values.getWithInt(i) as! DKKeyValueRecord;
+            db!.executeUpdate(queryAdd, record.getId().toNSNumber(),record.getData()!.toNSData())
         }
-        db.commit()
+        db!.commit()
     }
     
     func addOrUpdateItemWithLong(id_: jlong, withByteArray data: IOSByteArray!) {
         checkTable();
         
-        db.beginTransaction()
-        db.executeUpdate(queryAdd, id_.toNSNumber(), data!.toNSData())
-        db.commit()
+        db!.beginTransaction()
+        db!.executeUpdate(queryAdd, id_.toNSNumber(), data!.toNSData())
+        db!.commit()
     }
  
     func removeItemsWithLongArray(ids: IOSLongArray!) {
         checkTable();
         
-        db.beginTransaction()
+        db!.beginTransaction()
         for i in 0..<ids.length() {
             var id_ = ids.longAtIndex(UInt(i));
-            db.executeUpdate(queryDelete, id_.toNSNumber())
+            db!.executeUpdate(queryDelete, id_.toNSNumber())
         }
-        db.commit()
+        db!.commit()
     }
     
     func removeItemWithLong(id_: jlong) {
         checkTable();
         
-        db.beginTransaction()
-        db.executeUpdate(queryDelete, id_.toNSNumber())
-        db.commit()
+        db!.beginTransaction()
+        db!.executeUpdate(queryDelete, id_.toNSNumber())
+        db!.commit()
     }
     
     func clear() {
         checkTable();
         
-        db.beginTransaction()
-        db.executeUpdate(queryDeleteAll);
-        db.commit()
+        db!.beginTransaction()
+        db!.executeUpdate(queryDeleteAll);
+        db!.commit()
     }
     
     func getValueWithLong(id_: jlong) -> IOSByteArray! {
         checkTable();
         
-        var result = db.dataForQuery(queryItem, [id_.toNSNumber()]);
+        var result = db!.dataForQuery(queryItem, id_.toNSNumber());
         if (result == nil) {
             return nil;
         }

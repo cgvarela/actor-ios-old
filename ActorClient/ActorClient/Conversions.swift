@@ -19,3 +19,19 @@ extension jlong {
         return NSNumber(longLong: self)
     }
 }
+
+extension jint {
+    func toNSNumber() -> NSNumber {
+        return NSNumber(int: self)
+    }
+}
+
+extension DKListEngineRecord {
+    func dbQuery() -> AnyObject {
+        if (self.getQuery() == nil) {
+            return NSNull()
+        } else {
+            return self.getQuery()
+        }
+    }
+}

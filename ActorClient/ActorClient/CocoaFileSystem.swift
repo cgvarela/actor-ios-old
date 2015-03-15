@@ -10,18 +10,18 @@ import Foundation
 
 @objc class CocoaFileSystem : NSObject, AMFileSystemProvider {
     
-    func createTempFile() -> ImActorModelFilesFileReference! {
+    func createTempFile() -> AMFileSystemReference! {
         var fileName = NSTemporaryDirectory().stringByAppendingPathComponent(NSUUID().UUIDString);
         NSFileManager.defaultManager().createFileAtPath(fileName, contents: NSData(), attributes: nil);
         return CocoaFile(path: fileName);
     }
     
-    func commitTempFileWithImActorModelFilesFileReference(sourceFile: ImActorModelFilesFileReference!, withAMFileReference fileReference: AMFileReference!) -> ImActorModelFilesFileReference! {
+    func commitTempFile(sourceFile: AMFileSystemReference!, withReference fileReference: AMFileReference!) -> AMFileSystemReference! {
         return sourceFile!;
     }
     
-    func fileFromDescriptorWithNSString(descriptor: String!) -> ImActorModelFilesFileReference! {
-        return CocoaFile(path: descriptor!);
+    func fileFromDescriptor(descriptor: String!) -> AMFileSystemReference! {
+        return CocoaFile(path: descriptor);
     }
     
     func isFsPersistent() -> Bool {
@@ -55,12 +55,12 @@ class CocoaDownloadCallback : NSObject, ImActorModelModulesFileDownloadCallback 
         self.onDownloading?(progress: Float(progress));
     }
     
-    func onDownloadedWithImActorModelFilesFileReference(reference: ImActorModelFilesFileReference!) {
+    func onDownloadedWithAMFileSystemReference(reference: AMFileSystemReference!) {
         self.onDownloaded?(fileName: reference!.getDescriptor());
     }
 }
 
-class CocoaFile : NSObject, ImActorModelFilesFileReference {
+class CocoaFile : NSObject, AMFileSystemReference {
     
     let path:String;
     
@@ -77,52 +77,45 @@ class CocoaFile : NSObject, ImActorModelFilesFileReference {
     }
     
     func getSize() -> jint {
+        
         var error:NSError?;
+        
         var attrs = NSFileManager().attributesOfItemAtPath(path, error: &error);
+        
         if (error != nil) {
             return 0;
         }
         
-        var res = jint(NSDictionary.fileSize(attrs!)());
-        NSLog("File size %@, size: %d", path, res);
-        return res;
+        return jint(NSDictionary.fileSize(attrs!)());
     }
     
-    func openWriteWithInt(size: jint) -> ImActorModelFilesOutputFile! {
-        NSLog("Open file write %@, size: %d", path, size);
+    func openWriteWithSize(size: jint) -> AMOutputFile! {
         
         var fileHandle = NSFileHandle(forWritingAtPath: path);
 
         if (fileHandle == nil) {
-            NSLog("Load error");
             return nil
         }
         
         fileHandle!.seekToFileOffset(UInt64(size))
         fileHandle!.seekToFileOffset(0)
         
-        NSLog("File opened");
         return CocoaOutputFile(fileHandle: fileHandle!);
     }
     
-    func openRead() -> ImActorModelFilesInputFile! {
-        
-        NSLog("Open file read %@", path);
+    func openRead() -> AMInputFile! {
         
         var fileHandle = NSFileHandle(forReadingAtPath: path);
         
         if (fileHandle == nil) {
-            NSLog("Load error");
             return nil
         }
         
-        NSLog("File opened");
-
         return CocoaInputFile(fileHandle: fileHandle!);
     }
 }
 
-class CocoaOutputFile : NSObject, ImActorModelFilesOutputFile {
+class CocoaOutputFile : NSObject, AMOutputFile {
     
     let fileHandle: NSFileHandle;
     
@@ -130,9 +123,7 @@ class CocoaOutputFile : NSObject, ImActorModelFilesOutputFile {
         self.fileHandle = fileHandle;
     }
 
-    func writeWithInt(fileOffset: jint, withByteArray data: IOSByteArray!, withInt dataOffset: jint, withInt dataLen: jint) -> Bool {
-        
-        NSLog("File write size %d, offset: %d", dataLen, fileOffset);
+    func writeWithOffset(fileOffset: jint, withData data: IOSByteArray!, withDataOffset dataOffset: jint, withDataLen dataLen: jint) -> Bool {
         
         var toWrite = NSMutableData(length: Int(dataLen))!;
         var srcBuffer = UnsafeMutablePointer<UInt8>(data.buffer());
@@ -143,12 +134,9 @@ class CocoaOutputFile : NSObject, ImActorModelFilesOutputFile {
             srcBuffer++;
         }
         
-        NSLog("File write toWrite %d, offset: %d", toWrite.length, fileHandle.offsetInFile);
         fileHandle.seekToFileOffset(UInt64(fileOffset));
         fileHandle.writeData(toWrite)
         
-        NSLog("File write success");
-
         return true;
     }
     
@@ -159,16 +147,15 @@ class CocoaOutputFile : NSObject, ImActorModelFilesOutputFile {
     }
 }
 
-class CocoaInputFile :NSObject, ImActorModelFilesInputFile {
+class CocoaInputFile :NSObject, AMInputFile {
     
     let fileHandle:NSFileHandle;
+    
     init(fileHandle:NSFileHandle){
         self.fileHandle = fileHandle;
     }
     
-    func readWithInt(fileOffset: jint, withByteArray data: IOSByteArray!, withInt offset: jint, withInt len: jint) -> Bool {
-        
-        NSLog("File read");
+    func readAtOffset(fileOffset: jint, toArray data: IOSByteArray!, withArrayOffset offset: jint, withArrayLen len: jint) -> Bool {
         
         fileHandle.seekToFileOffset(UInt64(fileOffset));
         var readed:NSData = fileHandle.readDataOfLength(Int(len));
@@ -181,8 +168,6 @@ class CocoaInputFile :NSObject, ImActorModelFilesInputFile {
             destBuffer++;
             srcBuffer++;
         }
-        
-        NSLog("File read success");
         
         return true;
     }
