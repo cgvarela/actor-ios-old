@@ -30,6 +30,11 @@
 		06D8D8C41AB43BA100A80E40 /* CocoaStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D8D8C31AB43BA100A80E40 /* CocoaStorage.swift */; };
 		06E281DE1AAEDDB00070EE18 /* DialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */; };
 		06E281DF1AAEDDB00070EE18 /* DialogsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */; };
+		06E484291AB78D7400AA272F /* SThreadPoolTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E484241AB78D7300AA272F /* SThreadPoolTask.m */; };
+		06E4842A1AB78D7400AA272F /* SThreadPoolQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E484251AB78D7300AA272F /* SThreadPoolQueue.m */; };
+		06E4842B1AB78D7400AA272F /* SThreadPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E484281AB78D7400AA272F /* SThreadPool.m */; };
+		06E4842F1AB7920200AA272F /* SQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E4842D1AB7920100AA272F /* SQueue.m */; };
+		06E484311AB7933100AA272F /* LruCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E484301AB7933100AA272F /* LruCache.swift */; };
 		06ED29861AB2373800719875 /* CocoaFileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ED29851AB2373800719875 /* CocoaFileSystem.swift */; };
 		06F6B7101AB0CE9600A7DB91 /* Resouces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */; };
 		06F6B7121AB0F53400A7DB91 /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F6B7111AB0F53400A7DB91 /* Binder.swift */; };
@@ -786,6 +791,15 @@
 		06D8D8C31AB43BA100A80E40 /* CocoaStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaStorage.swift; sourceTree = "<group>"; };
 		06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogsViewController.swift; sourceTree = "<group>"; };
 		06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogsViewController.xib; sourceTree = "<group>"; };
+		06E484231AB78D7300AA272F /* SThreadPoolTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SThreadPoolTask.h; sourceTree = "<group>"; };
+		06E484241AB78D7300AA272F /* SThreadPoolTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SThreadPoolTask.m; sourceTree = "<group>"; };
+		06E484251AB78D7300AA272F /* SThreadPoolQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SThreadPoolQueue.m; sourceTree = "<group>"; };
+		06E484261AB78D7300AA272F /* SThreadPoolQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SThreadPoolQueue.h; sourceTree = "<group>"; };
+		06E484271AB78D7300AA272F /* SThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SThreadPool.h; sourceTree = "<group>"; };
+		06E484281AB78D7400AA272F /* SThreadPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SThreadPool.m; sourceTree = "<group>"; };
+		06E4842D1AB7920100AA272F /* SQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQueue.m; sourceTree = "<group>"; };
+		06E4842E1AB7920200AA272F /* SQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQueue.h; sourceTree = "<group>"; };
+		06E484301AB7933100AA272F /* LruCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LruCache.swift; sourceTree = "<group>"; };
 		06ED29851AB2373800719875 /* CocoaFileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaFileSystem.swift; sourceTree = "<group>"; };
 		06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resouces.swift; sourceTree = "<group>"; };
 		06F6B7111AB0F53400A7DB91 /* Binder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
@@ -2234,6 +2248,21 @@
 				067144511AB0947000364820 /* BubbleTextCell.swift */,
 			);
 			name = Bubbles;
+			sourceTree = "<group>";
+		};
+		06E4842C1AB78D7E00AA272F /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				06E4842D1AB7920100AA272F /* SQueue.m */,
+				06E4842E1AB7920200AA272F /* SQueue.h */,
+				06E484231AB78D7300AA272F /* SThreadPoolTask.h */,
+				06E484241AB78D7300AA272F /* SThreadPoolTask.m */,
+				06E484251AB78D7300AA272F /* SThreadPoolQueue.m */,
+				06E484261AB78D7300AA272F /* SThreadPoolQueue.h */,
+				06E484271AB78D7300AA272F /* SThreadPool.h */,
+				06E484281AB78D7400AA272F /* SThreadPool.m */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 		06FCE92E1AB600A000422FEC /* src */ = {
@@ -4288,6 +4317,7 @@
 		2537F82F1A966B9D004A02E9 /* ActorClient */ = {
 			isa = PBXGroup;
 			children = (
+				06E4842C1AB78D7E00AA272F /* Tools */,
 				25C9C3961A9E15AD0061780E /* RCBlurredImageView */,
 				2563889E1A99C09D00A5E0E3 /* Model */,
 				25C9C3921A9E11430061780E /* ComponentsUI */,
@@ -4461,6 +4491,7 @@
 				06FA65631AB19DE000BE0A41 /* Imaging.swift */,
 				063458D21AB3646000985A36 /* AvatarView.swift */,
 				064903781AB38C6200FA7B1C /* Strings.swift */,
+				06E484301AB7933100AA272F /* LruCache.swift */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -4676,6 +4707,7 @@
 				06FCEEF41AB600A300422FEC /* Group.m in Sources */,
 				06FCEF5C1AB600A300422FEC /* TypingType.m in Sources */,
 				06FCF0631AB600A400422FEC /* PresenceActor.m in Sources */,
+				06E484311AB7933100AA272F /* LruCache.swift in Sources */,
 				06FCEF3B1AB600A300422FEC /* ResponseAuth.m in Sources */,
 				06FCF0C71AB600A400422FEC /* JavaUtil.m in Sources */,
 				06FCF00E1AB600A400422FEC /* ServiceGroupUserAdded.m in Sources */,
@@ -4726,6 +4758,7 @@
 				06FCF0A41AB600A400422FEC /* ProtoObject.m in Sources */,
 				06FCF08A1AB600A400422FEC /* ValueChangedListener.m in Sources */,
 				06FCEF431AB600A300422FEC /* ResponseGetFile.m in Sources */,
+				06E4842F1AB7920200AA272F /* SQueue.m in Sources */,
 				06FCF04A1AB600A400422FEC /* ConversationHistoryActor.m in Sources */,
 				06FCEF4C1AB600A300422FEC /* ResponseStartUpload.m in Sources */,
 				06FCEFC61AB600A300422FEC /* MailboxCreator.m in Sources */,
@@ -4746,6 +4779,7 @@
 				06FCF0AF1AB600A400422FEC /* UnsentMessage.m in Sources */,
 				06FCF1251AB600A400422FEC /* SecP521R1Field.m in Sources */,
 				06FCF0CC1AB600A400422FEC /* FileVMCallback.m in Sources */,
+				06E4842A1AB78D7400AA272F /* SThreadPoolQueue.m in Sources */,
 				06FCEF661AB600A300422FEC /* UpdateEncryptedMessage.m in Sources */,
 				06FCEF0E1AB600A300422FEC /* RequestEditGroupAvatar.m in Sources */,
 				06FCF1681AB600A400422FEC /* UrlBase64.m in Sources */,
@@ -4860,6 +4894,7 @@
 				06FCF0A91AB600A400422FEC /* Push.m in Sources */,
 				06FCEF681AB600A300422FEC /* UpdateEncryptedReadByMe.m in Sources */,
 				06FCF0C61AB600A400422FEC /* ExponentialBackoff.m in Sources */,
+				06E4842B1AB78D7400AA272F /* SThreadPool.m in Sources */,
 				06FCF0B91AB600A400422FEC /* RpcCallback.m in Sources */,
 				06FCF0691AB600A400422FEC /* TypingActor.m in Sources */,
 				25C9C3991A9E15BF0061780E /* RCBlurredImageView.m in Sources */,
@@ -5005,6 +5040,7 @@
 				06FCEFCC1AB600A300422FEC /* RunnableActor.m in Sources */,
 				06FCF0291AB600A400422FEC /* OutputFile.m in Sources */,
 				06FCEF981AB600A300422FEC /* ASN1BitString.m in Sources */,
+				06E484291AB78D7400AA272F /* SThreadPoolTask.m in Sources */,
 				06FCEF741AB600A300422FEC /* UpdateMessageRead.m in Sources */,
 				06FCEFD11AB600A300422FEC /* AskProgressCallback.m in Sources */,
 				06FCEFFA1AB600A400422FEC /* ListEngineRecord.m in Sources */,
@@ -5524,7 +5560,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2ab60acb-6c9e-47e1-94ca-5649e8e86fe9";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActorClient/ActorClient-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5553,7 +5589,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2ab60acb-6c9e-47e1-94ca-5649e8e86fe9";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActorClient/ActorClient-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

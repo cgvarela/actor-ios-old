@@ -22,7 +22,8 @@ class FMDBList : NSObject, DKListStorage {
     
     let queryAdd: String;
     let queryItem: String;
-    
+
+    let queryDelete: String;
     let queryDeleteAll: String;
     
     let queryForwardFirst: String;
@@ -44,6 +45,7 @@ class FMDBList : NSObject, DKListStorage {
         self.queryItem = "SELECT \"ID\",\"QUERY\",\"SORT_KEY\",\"BYTES\" FROM " + tableName + " WHERE \"ID\" = ?;";
 
         self.queryDeleteAll = "DELETE FROM " + tableName + ";";
+        self.queryDelete = "DELETE FROM " + tableName + " WHERE \"ID\"= ?;";
         
         self.queryForwardFirst = "SELECT \"ID\", \"QUERY\",\"SORT_KEY\", \"BYTES\" FROM " + tableName + " ORDER BY SORT_KEY DESC LIMIT ?";
     }
@@ -87,13 +89,20 @@ class FMDBList : NSObject, DKListStorage {
     func delete__WithLong(key: jlong) {
         checkTable();
         
-        fatalError("Not implemented")
+        db!.beginTransaction()
+        db!.executeUpdate(queryDelete, key.toNSNumber());
+        db!.commit()
     }
     
     func delete__WithLongArray(keys: IOSLongArray!) {
         checkTable();
         
-        fatalError("Not implemented")
+        db!.beginTransaction()
+        for i in 0..<keys.length() {
+        var k = keys.longAtIndex(UInt(i));
+           db!.executeUpdate(queryDelete, k.toNSNumber());
+        }
+        db!.commit()
     }
     
     func getCount() -> jint {
@@ -105,8 +114,6 @@ class FMDBList : NSObject, DKListStorage {
     func clear() {
         checkTable();
         
-        NSLog("clear");
-        
         db!.beginTransaction()
         db!.executeUpdate(queryDeleteAll);
         db!.commit()
@@ -115,26 +122,26 @@ class FMDBList : NSObject, DKListStorage {
     func loadItemWithLong(key: jlong) -> DKListEngineRecord! {
         checkTable();
         
-        NSLog("loadItemWithLong");
         var result = db!.executeQuery(queryItem, key.toNSNumber());
         if (result == nil) {
             return nil
         }
-        
         if (result!.next()) {
             var query: AnyObject! = result!.objectForColumnName("QUERY");
             if (query is NSNull){
                 query = nil
             }
-            return DKListEngineRecord(long: jlong(result!.longForColumn("ID")), withLong: jlong(result!.longForColumn("SORT_KEY")), withNSString: query as! String?, withByteArray: result!.dataForColumn("BYTES").toJavaBytes())
+            var res = DKListEngineRecord(long: jlong(result!.longForColumn("ID")), withLong: jlong(result!.longForColumn("SORT_KEY")), withNSString: query as! String?, withByteArray: result!.dataForColumn("BYTES").toJavaBytes())
+            result?.close()
+            return res;
         } else {
+            result?.close()
             return nil
         }
     }
     
     func loadForwardWithJavaLangLong(sortingKey: JavaLangLong!, withInt limit: jint) -> JavaUtilList! {
         checkTable();
-        NSLog("loadForwardWithJavaLangLong");
         
         var result = db!.executeQuery(queryForwardFirst, limit.toNSNumber());
         if (result == nil) {
@@ -146,12 +153,12 @@ class FMDBList : NSObject, DKListStorage {
         
         while(result!.next()) {
             var query: AnyObject! = result!.objectForColumnName("QUERY");
-            if (query is NSNull){
+            if (query is NSNull) {
                 query = nil
             }
             res.addWithId(DKListEngineRecord(long: jlong(result!.longForColumn("ID")), withLong: jlong(result!.longForColumn("SORT_KEY")), withNSString: query as! String?, withByteArray: result!.dataForColumn("BYTES").toJavaBytes()))
         }
-        
+        result!.close()
         return res;
     }
     

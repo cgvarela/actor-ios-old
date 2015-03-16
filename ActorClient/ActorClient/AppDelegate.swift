@@ -29,7 +29,6 @@ import Foundation
         
         UITabBar.appearance().tintColor = Resources.BarTintColor;
         UITabBar.appearance().shadowImage = UIImage();
-        //ebedf2
         UITabBar.appearance().selectionIndicatorImage = getImageWithColor(UIColor(red: 0xeb/255.0, green: 0xed/255.0, blue: 0xf2/255.0, alpha: 1), size: CGSize(width: 1, height: 46)).resizableImageWithCapInsets(UIEdgeInsetsZero);
         
 //        setTitleTextAttributes(NSForegroundColorAttributeName, );

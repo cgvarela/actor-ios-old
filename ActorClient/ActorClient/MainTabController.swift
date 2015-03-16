@@ -12,14 +12,10 @@ import UIKit
 class MainTabController : UITabBarController, UITabBarDelegate {
 
     var centerButton:UIButton? = nil;
+    var isInited = false;
     
     required init(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil);
-        initControllers();
     }
     
     init(){
@@ -28,27 +24,34 @@ class MainTabController : UITabBarController, UITabBarDelegate {
     }
     
     func initControllers() {
-//        addChildViewController(ContactsViewController());
-        addChildViewController(DialogsViewController());
-        addChildViewController(PlaceHolderController());
-        addChildViewController(DiscoverViewController());
-        addChildViewController(SettingsViewController());
         
         tabBar.translucent = false;
         tabBar.backgroundColor = UIColor.whiteColor();
         tabBar.shadowImage = UIImage();
         
-//        selectedIndex = 0;
-        selectedIndex = 1;
-        applyTitle(0);
-        
         centerButton = UIButton(frame: CGRect(x: 0, y: 0, width: 66, height: 58));
         centerButton!.setBackgroundImage(UIImage(named: "ic_round_button_red"), forState: UIControlState.Normal);
         centerButton!.setImage(UIImage(named: "ic_add_white_24"), forState: UIControlState.Normal);
         centerButton!.imageEdgeInsets = UIEdgeInsetsMake(4, 0, -4, 0);
-//         centerButton!.frame = CGRect(x: tabBar.center.x - 31, y: tabBar.frame.height - 58, width: 66, height: 58);
         
         self.view.addSubview(centerButton!);
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if (!isInited) {
+            if (MSG.isLoggedIn()) {
+                isInited = true
+                
+                viewControllers = [ContactsViewController(),
+                                   DialogsViewController(),
+                                   PlaceHolderController(),
+                                   DiscoverViewController(),
+                                   SettingsViewController()];
+        
+                selectedIndex = 1;
+                applyTitle(1);
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,7 +68,7 @@ class MainTabController : UITabBarController, UITabBarDelegate {
     func applyTitle(item: Int){
         switch(item){
         case 0:
-            navigationItem.title = "Contacts";
+            navigationItem.title = "People";
             navigationItem.leftBarButtonItem = nil;
             navigationController?.setNavigationBarHidden(false, animated: false)
             break;

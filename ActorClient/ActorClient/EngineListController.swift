@@ -44,7 +44,6 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     // Table Data Source
     
     func onCollectionChanged() {
-        NSLog("onCollectionChanged!!!!!!!!")
         if (self.engineTableView != nil){
             self.engineTableView.reloadData()
         }

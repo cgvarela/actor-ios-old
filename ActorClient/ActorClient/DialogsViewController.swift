@@ -38,10 +38,6 @@ class DialogsViewController: EngineListController {
         return MSG.getDialogsGlobalList()
     }
     
-//    override func buildController(delegate: NSFetchedResultsControllerDelegate) -> NSFetchedResultsController {
-//        return AACDDialog.MR_fetchAllSortedBy("sortKey", ascending: false, withPredicate: nil, groupBy: nil, delegate: delegate);
-//    }
-    
     func toggleEdit() {
         self.tableView.setEditing(!self.tableView.editing, animated: true);
     }
@@ -84,7 +80,7 @@ class DialogsViewController: EngineListController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        // MSG.onDialogsOpen();
+        MSG.onDialogsOpen();
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -119,6 +115,6 @@ class DialogsViewController: EngineListController {
     }
     
     override func viewDidDisappear(animated: Bool) {
-        // MSG.onDialogsClosed();
+        MSG.onDialogsClosed();
     }
 }

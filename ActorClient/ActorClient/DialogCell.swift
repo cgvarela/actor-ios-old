@@ -47,9 +47,7 @@ class DialogCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bindDialog(dialog: AMDialog, isLast:Bool) {
-        avatarView.image = Imaging.avatarPlaceholder(dialog.getPeer().getPeerId(), size: 48);
-        
+    func bindDialog(dialog: AMDialog, isLast:Bool) {        
         avatarView.bind(dialog.getDialogTitle(), id: dialog.getPeer().getPeerId(), avatar: dialog.getDialogAvatar());
         
         titleView.text = dialog.getDialogTitle();

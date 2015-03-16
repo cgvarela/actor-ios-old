@@ -38,6 +38,10 @@ extension UIImage {
         
         self.drawInRect(CGRect(origin: CGPointZero, size: nSize));
         
+        CGContextSetStrokeColorWithColor(context, UIColor(red: 0, green: 0, blue: 0, alpha: 0x19/255.0).CGColor);
+        CGContextAddArc(context,CGFloat(newSize)/2, CGFloat(newSize)/2, CGFloat(newSize)/2, CGFloat(M_PI * 0), CGFloat(M_PI * 2), 0);
+        CGContextDrawPath(context, kCGPathStroke);
+        
         var image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         return image;
@@ -52,9 +56,18 @@ class Imaging {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: size, height: size), false, UIScreen.mainScreen().scale);
         var context = UIGraphicsGetCurrentContext();
 
+        // Background
         CGContextSetFillColorWithColor(context, color);
         CGContextAddArc(context,CGFloat(size)/2, CGFloat(size)/2, CGFloat(size)/2, CGFloat(M_PI * 0), CGFloat(M_PI * 2), 0);
         CGContextDrawPath(context, kCGPathFill);
+        
+        
+        
+        
+        CGContextSetStrokeColorWithColor(context, UIColor(red: 0, green: 0, blue: 0, alpha: 0x10/255.0).CGColor);
+        CGContextAddArc(context,CGFloat(size)/2, CGFloat(size)/2, CGFloat(size)/2, CGFloat(M_PI * 0), CGFloat(M_PI * 2), 0);
+        CGContextDrawPath(context, kCGPathStroke);
+        
         var image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         return image;
