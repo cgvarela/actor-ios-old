@@ -110,8 +110,8 @@ class DialogsViewController: EngineListController {
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var dialog = objectAtIndexPath(indexPath) as! AMDialog;
-//        self.navigationController?.pushViewController(MessagesViewController(peer: dialog.getPeer()), animated: true);
+        var dialog = objectAtIndexPath(indexPath) as! AMDialog;
+        self.navigationController?.pushViewController(MessagesViewController(peer: dialog.getPeer()), animated: true);
     }
     
     override func viewDidDisappear(animated: Bool) {

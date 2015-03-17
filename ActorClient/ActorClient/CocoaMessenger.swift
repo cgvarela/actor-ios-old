@@ -22,15 +22,16 @@ get{
 
         // Providers
         
-        builder.setLogProvider(CocoaLogProvider());
-        builder.setNetworkProvider(CocoaNetworking());
-        builder.setThreadingProvider(AMCocoaThreadingProvider());
-        builder.setStorageProvider(CocoaStorage(dbPath: dbPath));
-        builder.setMainThreadProvider(CocoaMainThreadProvider());
-        builder.setLocaleProvider(CocoaLocale());
-        builder.setPhoneBookProvider(CocoaPhoneBookProvider());
-        builder.setCryptoProvider(BCBouncyCastleProvider());
+        builder.setLogProvider(CocoaLogProvider())
+        builder.setNetworkProvider(CocoaNetworking())
+        builder.setThreadingProvider(AMCocoaThreadingProvider())
+        builder.setStorageProvider(CocoaStorage(dbPath: dbPath))
+        builder.setMainThreadProvider(CocoaMainThreadProvider())
+        builder.setLocaleProvider(CocoaLocale())
+        builder.setPhoneBookProvider(CocoaPhoneBookProvider())
+        builder.setCryptoProvider(BCBouncyCastleProvider())
         builder.setFileSystemProvider(CocoaFileSystem())
+        builder.setNotificationProvider(iOSNotificationProvider())
         
         // Connection
         builder.addEndpoint("tls://mtproto-api.actor.im:443");

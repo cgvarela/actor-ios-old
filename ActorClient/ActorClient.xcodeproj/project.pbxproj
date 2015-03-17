@@ -10,9 +10,11 @@
 		06147B941AAE76E900931753 /* CocoaMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06147B931AAE76E900931753 /* CocoaMessenger.swift */; };
 		061F74541AB1E42F00F9DACB /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F74531AB1E42F00F9DACB /* ContactCell.swift */; };
 		063458D31AB3646000985A36 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063458D21AB3646000985A36 /* AvatarView.swift */; };
+		063BCF311AB7AC0F00D469AB /* iOSNotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BCF301AB7AC0F00D469AB /* iOSNotificationProvider.swift */; };
 		064903791AB38C6200FA7B1C /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064903781AB38C6200FA7B1C /* Strings.swift */; };
 		067144501AB089B000364820 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671444F1AB089B000364820 /* BubbleCell.swift */; };
 		067144521AB0947000364820 /* BubbleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067144511AB0947000364820 /* BubbleTextCell.swift */; };
+		06A907D11AB7AE8200E087EA /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 06A907D01AB7AE8200E087EA /* notification.aiff */; };
 		06ABC77B1AAF39B500C1B932 /* EngineListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77A1AAF39B500C1B932 /* EngineListController.swift */; };
 		06ABC77E1AAF458B00C1B932 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77C1AAF458B00C1B932 /* ContactsViewController.swift */; };
 		06ABC77F1AAF458B00C1B932 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06ABC77D1AAF458B00C1B932 /* ContactsViewController.xib */; };
@@ -770,9 +772,11 @@
 		06147B931AAE76E900931753 /* CocoaMessenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMessenger.swift; sourceTree = "<group>"; };
 		061F74531AB1E42F00F9DACB /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		063458D21AB3646000985A36 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		063BCF301AB7AC0F00D469AB /* iOSNotificationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSNotificationProvider.swift; sourceTree = "<group>"; };
 		064903781AB38C6200FA7B1C /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		0671444F1AB089B000364820 /* BubbleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
 		067144511AB0947000364820 /* BubbleTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTextCell.swift; sourceTree = "<group>"; };
+		06A907D01AB7AE8200E087EA /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
 		06A92FA01AB24B2A0065B2FC /* ActorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorModel.h; sourceTree = "<group>"; };
 		06ABC77A1AAF39B500C1B932 /* EngineListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineListController.swift; sourceTree = "<group>"; };
 		06ABC77C1AAF458B00C1B932 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -4336,6 +4340,7 @@
 		2537F8301A966B9D004A02E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06A907D01AB7AE8200E087EA /* notification.aiff */,
 				06BFDB521AB1D06B00F16E43 /* Roboto-Bold.ttf */,
 				06BFDB531AB1D06B00F16E43 /* Roboto-Medium.ttf */,
 				06BFDB541AB1D06B00F16E43 /* Roboto-Regular.ttf */,
@@ -4408,6 +4413,7 @@
 				06F6B7111AB0F53400A7DB91 /* Binder.swift */,
 				06F6B7131AB0F56300A7DB91 /* Wrappers.swift */,
 				06D8D8C11AB4390600A80E40 /* Conversions.swift */,
+				063BCF301AB7AC0F00D469AB /* iOSNotificationProvider.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -4628,6 +4634,7 @@
 				25E1793A1A9D1A52001CE95B /* AppText_Ru.properties in Resources */,
 				06ABC77F1AAF458B00C1B932 /* ContactsViewController.xib in Resources */,
 				25E1793C1A9D1A52001CE95B /* Months_Ru.properties in Resources */,
+				06A907D11AB7AE8200E087EA /* notification.aiff in Resources */,
 				2537F86D1A9762F6004A02E9 /* ABPhoneFieldCodes.txt in Resources */,
 				06FA655E1AB10D7F00BE0A41 /* SettingsViewController.xib in Resources */,
 				25E179391A9D1A52001CE95B /* AppText.properties in Resources */,
@@ -4843,6 +4850,7 @@
 				061F74541AB1E42F00F9DACB /* ContactCell.swift in Sources */,
 				06FCF04C1AB600A400422FEC /* DialogsHistoryActor.m in Sources */,
 				06FCEFB91AB600A300422FEC /* DispatchResult.m in Sources */,
+				063BCF311AB7AC0F00D469AB /* iOSNotificationProvider.swift in Sources */,
 				2537F8331A966B9D004A02E9 /* main.m in Sources */,
 				06FCF0281AB600A400422FEC /* InputFile.m in Sources */,
 				06FCF1071AB600A400422FEC /* Curve25519Point.m in Sources */,

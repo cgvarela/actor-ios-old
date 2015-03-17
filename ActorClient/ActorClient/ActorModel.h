@@ -30,6 +30,7 @@
 #import "im/actor/model/FileSystemProvider.h"
 #import "im/actor/model/LogProvider.h"
 #import "im/actor/model/MainThreadProvider.h"
+#import "im/actor/model/NotificationProvider.h"
 
 #import "im/actor/model/storage/BaseStorageProvider.h"
 #import "im/actor/model/crypto/bouncycastle/BouncyCastleProvider.h"

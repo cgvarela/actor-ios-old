@@ -52,6 +52,8 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
         var item: AnyObject? = objectAtIndexPath(indexPath)
         var cell = buildCell(tableView, cellForRowAtIndexPath:indexPath, item:item);
         bindCell(tableView, cellForRowAtIndexPath: indexPath, item: item, cell: cell);
+        displayList.touchWithInt(jint(indexPath.row))
+        cell.transform = tableView.transform
         return cell;
     }
     
