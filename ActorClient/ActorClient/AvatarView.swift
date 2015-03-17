@@ -90,7 +90,7 @@ class AvatarView : UIImageView {
         
         if (fileLocation == nil) {
             // No avatar: Apply placeholder
-            self.image = Imaging.avatarPlaceholder(bindedId, size: frameSize);
+            self.image = Imaging.avatarPlaceholder(bindedId, size: frameSize, title: title.smallValue());
             
             return
         }

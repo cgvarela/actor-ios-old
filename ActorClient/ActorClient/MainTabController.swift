@@ -70,32 +70,26 @@ class MainTabController : UITabBarController, UITabBarDelegate {
         case 0:
             navigationItem.title = "People";
             navigationItem.leftBarButtonItem = nil;
-            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         case 1:
             navigationItem.title = "Chats";
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editDialogs");
-            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         case 2:
             navigationItem.leftBarButtonItem = nil;
             navigationItem.title = "";
-            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         case 3:
             navigationItem.leftBarButtonItem = nil;
             navigationItem.title = "Discover";
-            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         case 4:
             navigationItem.leftBarButtonItem = nil;
-            navigationItem.title = "";
-            navigationController?.setNavigationBarHidden(true, animated: false)
+            navigationItem.title = "You";
             break;
         default:
             navigationItem.leftBarButtonItem = nil;
             navigationItem.title = "";
-            navigationController?.setNavigationBarHidden(false, animated: false)
             break;
         }
     }
