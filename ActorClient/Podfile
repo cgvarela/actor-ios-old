@@ -15,6 +15,7 @@ pod 'FMDB'
 
 # UI
 pod 'SVProgressHUD'
+pod 'MBProgressHUD'
 pod 'PHFComposeBarView'
 pod 'TAPKeyboardPop', '~> 0.1.2'
 pod 'DZNPhotoPickerController'

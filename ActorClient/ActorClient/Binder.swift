@@ -12,9 +12,9 @@ class Binder {
     
     var bindings : [BindHolder] = [];
     
-    func bind<T>(value:AMValueModel, closure: (value: T)->()) {
+    func bind<T>(value:AMValueModel, closure: (value: T?)->()) {
         var listener = BindListener { (value2) -> () in
-            closure(value: value2 as! T);
+            closure(value: value2 as? T);
         };
         var holder = BindHolder(valueModel: value, listener: listener);
         bindings.append(holder);

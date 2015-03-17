@@ -31,7 +31,7 @@ class BubbleTextCell : BubbleCell {
     }
 
     
-    let bubblePadding:CGFloat = 6;
+    
     
     let textPaddingStart:CGFloat = 10.0;
     let textPaddingEnd:CGFloat = 8.0;
@@ -58,10 +58,7 @@ class BubbleTextCell : BubbleCell {
     init() {
         super.init(reuseId: "bubble_text");
         
-        //        self.layer.shouldRasterize=true;
-        //        self.layer.rasterizationScale = UIScreen.mainScreen().scale;
-        
-        messageText.font = UIFont(name: "HelveticaNeue", size: 16);
+        messageText.font = UIFont(name: "Roboto", size: 16);
         messageText.lineBreakMode = .ByWordWrapping;
         messageText.numberOfLines = 0;
         messageText.textColor = messageTextColor;
@@ -73,10 +70,10 @@ class BubbleTextCell : BubbleCell {
         
         statusView.contentMode = UIViewContentMode.Center;
         
-        addSubview(bubble);
-        addSubview(messageText);
-        addSubview(dateText);
-        addSubview(statusView);
+        contentView.addSubview(bubble);
+        contentView.addSubview(messageText);
+        contentView.addSubview(dateText);
+        contentView.addSubview(statusView);
         
         self.backgroundColor = UIColor.clearColor();
     }

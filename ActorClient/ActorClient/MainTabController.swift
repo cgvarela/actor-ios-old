@@ -25,19 +25,19 @@ class MainTabController : UITabBarController, UITabBarDelegate {
     
     func initControllers() {
         
-        tabBar.translucent = false;
-        tabBar.backgroundColor = UIColor.whiteColor();
-        tabBar.shadowImage = UIImage();
-        
         centerButton = UIButton(frame: CGRect(x: 0, y: 0, width: 66, height: 58));
         centerButton!.setBackgroundImage(UIImage(named: "ic_round_button_red"), forState: UIControlState.Normal);
         centerButton!.setImage(UIImage(named: "ic_add_white_24"), forState: UIControlState.Normal);
         centerButton!.imageEdgeInsets = UIEdgeInsetsMake(4, 0, -4, 0);
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
         self.view.addSubview(centerButton!);
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if (!isInited) {
             if (MSG.isLoggedIn()) {
                 isInited = true
@@ -70,26 +70,32 @@ class MainTabController : UITabBarController, UITabBarDelegate {
         case 0:
             navigationItem.title = "People";
             navigationItem.leftBarButtonItem = nil;
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: nil, action: nil)
+            navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         case 1:
             navigationItem.title = "Chats";
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editDialogs");
-            break;
-        case 2:
-            navigationItem.leftBarButtonItem = nil;
-            navigationItem.title = "";
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: nil, action: nil)
+            navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         case 3:
             navigationItem.leftBarButtonItem = nil;
+            navigationItem.rightBarButtonItem = nil;
             navigationItem.title = "Discover";
+            navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         case 4:
-            navigationItem.leftBarButtonItem = nil;
             navigationItem.title = "You";
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editDialogs");
+            navigationItem.rightBarButtonItem = nil;
+//            navigationController?.navigationBar.shadowImage = UIImage()
             break;
         default:
             navigationItem.leftBarButtonItem = nil;
+            navigationItem.rightBarButtonItem = nil;
             navigationItem.title = "";
+            navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         }
     }

@@ -16,6 +16,7 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
     init(isInverted:Bool) {
         super.init(tableViewStyle: UITableViewStyle.Plain);
         self.inverted = isInverted;
+        self.tableView.contentInset = UIEdgeInsetsZero;
     }
     
     required init!(coder decoder: NSCoder!) {
@@ -26,11 +27,12 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
         if (self.displayList == nil) {
             self.displayList = getDisplayList()
             self.displayList.addListenerWithAMDisplayList_Listener(self)
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
         }
     }
 
     func onCollectionChanged() {
+        NSLog("🇯🇵 onCollcetionChanged")
         if (self.tableView != nil){
             self.tableView.reloadData()
         }
@@ -53,6 +55,7 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
         var cell = buildCell(tableView, cellForRowAtIndexPath:indexPath, item:item);
         bindCell(tableView, cellForRowAtIndexPath: indexPath, item: item, cell: cell);
         displayList.touchWithInt(jint(indexPath.row))
+        NSLog("🇯🇵 touch %d", indexPath.row)
         cell.transform = tableView.transform
         return cell;
     }

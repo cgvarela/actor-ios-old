@@ -36,8 +36,7 @@ private func putToCache(size: Int, id: Int64, image: UIImage) {
 
 class AvatarView : UIImageView {
     
-    let frameSize: Int;
-    let fontSize: Float;
+    var frameSize: Int = 0;
     
     // Request
     var bindedFileId: jlong! = nil;
@@ -47,14 +46,14 @@ class AvatarView : UIImageView {
     var requestId: Int = 0;
     var callback: CocoaDownloadCallback? = nil;
 
-    init(frameSize: Int, fontSize: Float) {
+    init(frameSize: Int) {
         self.frameSize = frameSize;
-        self.fontSize = fontSize;
         super.init(image: nil);
     }
 
     required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder);
+        self.frameSize = Int(min(frame.width, frame.height))
     }
     
     func bind(title: String, id:jint, avatar: AMAvatar!) {

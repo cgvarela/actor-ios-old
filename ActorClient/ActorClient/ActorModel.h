@@ -89,6 +89,10 @@
 #import "im/actor/model/entity/User.h"
 #import "im/actor/model/entity/content/AbsContent.h"
 #import "im/actor/model/entity/content/TextContent.h"
+#import "im/actor/model/entity/content/DocumentContent.h"
+#import "im/actor/model/entity/content/PhotoContent.h"
+#import "im/actor/model/entity/content/VideoContent.h"
+#import "im/actor/model/entity/content/FastThumb.h"
 #import "im/actor/model/entity/ContentType.h"
 #import "im/actor/model/entity/FileReference.h"
 
@@ -97,6 +101,7 @@
 #import "im/actor/model/viewmodel/UserVM.h"
 #import "im/actor/model/viewmodel/UserTypingVM.h"
 #import "im/actor/model/viewmodel/GroupTypingVM.h"
+#import "im/actor/model/viewmodel/UserPhone.h"
 
 // Misc
 

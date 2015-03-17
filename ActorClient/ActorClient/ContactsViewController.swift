@@ -34,13 +34,46 @@ class ContactsViewController: EngineListController {
     }
     
     override func viewDidLoad() {
-        emptyView.hidden = true;
+        
+        // Footer
+        var footer = UIView(frame: CGRectMake(0, 0, 320, 80));
+        
+        //        var footerHint = UILabel(frame: CGRectMake(0, 0, 320, 60));
+        //        footerHint.textAlignment = NSTextAlignment.Center;
+        //        footerHint.font = UIFont.systemFontOfSize(16);
+        //        footerHint.textColor = UIColor(red: 164/255.0, green: 164/255.0, blue: 164/255.0, alpha: 1)
+        //        footerHint.text = "Swipe for more options";
+        //        footer.addSubview(footerHint);
+        
+        var shadow = UIImageView(image: UIImage(named: "CardBottom2"));
+        shadow.frame = CGRectMake(0, 0, 320, 4);
+        shadow.contentMode = UIViewContentMode.ScaleToFill;
+        footer.addSubview(shadow);
+        
+        // Header
+        
+        var header = UIView(frame: CGRectMake(0, 0, 320, 0))
+        
+        var headerShadow = UIImageView(frame: CGRectMake(0, -4, 320, 4));
+        headerShadow.image = UIImage(named: "CardTop2");
+        headerShadow.contentMode = UIViewContentMode.ScaleToFill;
+        header.addSubview(headerShadow);
+        
+        self.tableView.tableFooterView = footer;
+        self.tableView.tableHeaderView = header;
+        self.tableView.backgroundColor = Resources.BackyardColor
         bindTable(tableView);
+        
+        emptyView.hidden = true;
     
         super.viewDidLoad();
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        
         var selected = tableView.indexPathForSelectedRow();
         if (selected != nil){
             tableView.deselectRowAtIndexPath(selected!, animated: animated);
@@ -83,6 +116,11 @@ class ContactsViewController: EngineListController {
             }
         }
                 
-        (cell as! ContactCell).bindContact(contact, shortValue: shortName);
+        (cell as! ContactCell).bindContact(contact, shortValue: shortName, isLast: indexPath.row == tableView.numberOfRowsInSection(0) - 1);
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var contact = objectAtIndexPath(indexPath) as! AMContact;
+        self.navigationController?.pushViewController(MessagesViewController(peer: AMPeer.userWithInt(contact.getUid())), animated: true);
     }
 }

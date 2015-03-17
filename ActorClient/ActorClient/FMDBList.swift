@@ -27,6 +27,7 @@ class FMDBList : NSObject, DKListStorage {
     let queryDeleteAll: String;
     
     let queryForwardFirst: String;
+    let queryForwardMore: String;
     
     init (databasePath: String, tableName: String){
         self.databasePath = databasePath
@@ -48,6 +49,8 @@ class FMDBList : NSObject, DKListStorage {
         self.queryDelete = "DELETE FROM " + tableName + " WHERE \"ID\"= ?;";
         
         self.queryForwardFirst = "SELECT \"ID\", \"QUERY\",\"SORT_KEY\", \"BYTES\" FROM " + tableName + " ORDER BY SORT_KEY DESC LIMIT ?";
+        self.queryForwardMore = "SELECT \"ID\", \"QUERY\",\"SORT_KEY\", \"BYTES\" FROM " + tableName + " WHERE \"SORT_KEY\" < ? ORDER BY SORT_KEY DESC LIMIT ?";
+
     }
     
     func checkTable() {
@@ -142,8 +145,12 @@ class FMDBList : NSObject, DKListStorage {
     
     func loadForwardWithJavaLangLong(sortingKey: JavaLangLong!, withInt limit: jint) -> JavaUtilList! {
         checkTable();
-        
-        var result = db!.executeQuery(queryForwardFirst, limit.toNSNumber());
+        var result : FMResultSet? = nil;
+        if (sortingKey == nil) {
+            result = db!.executeQuery(queryForwardFirst, limit.toNSNumber());
+        } else {
+            result = db!.executeQuery(queryForwardMore, sortingKey!.longValue, limit.toNSNumber());
+        }
         if (result == nil) {
             NSLog(db!.lastErrorMessage())
             return nil

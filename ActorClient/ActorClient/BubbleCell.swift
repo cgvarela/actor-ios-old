@@ -9,17 +9,22 @@
 import Foundation
 import UIKit;
 
-
 class BubbleCell: UITableViewCell {
 
     class func measureHeight(message: AMMessage) -> CGFloat {
         var content = message.getContent()!;
         if (content is AMTextContent){
-            return BubbleTextCell.measureTextHeight(message);
+            return BubbleTextCell.measureTextHeight(message)
+        } else if (content is AMPhotoContent) {
+            return BubbleMediaCell.measureMediaHeight(message)
+        } else if (content is AMVideoContent) {
+            return BubbleMediaCell.measureMediaHeight(message)
         } else {
-            fatalError("Unsupported content");
+            fatalError("Unsupported content")
         }
     }
+    
+    let bubblePadding:CGFloat = 6;
     
     init(reuseId: String){
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId);

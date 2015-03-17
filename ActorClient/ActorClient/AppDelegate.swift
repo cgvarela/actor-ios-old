@@ -18,6 +18,9 @@ import Foundation
         navAppearance.tintColor = UIColor.whiteColor();
         navAppearance.barTintColor = Resources.TintColor;
         navAppearance.backgroundColor = Resources.TintColor;
+        navAppearance.setBackgroundImage(Imaging.imageWithColor(Resources.TintColor, size: CGSize(width: 1, height: 46)), forBarMetrics: UIBarMetrics.Default)
+        navAppearance.shadowImage = UIImage(named: "CardBottom2")
+        
         navAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
         navAppearance.translucent = false;
         
@@ -27,9 +30,11 @@ import Foundation
         var searchBarAppearance = UISearchBar.appearance();
         searchBarAppearance.tintColor = Resources.TintColor;
         
+        UITabBar.appearance().translucent = false
         UITabBar.appearance().tintColor = Resources.BarTintColor;
-        UITabBar.appearance().shadowImage = UIImage();
-        UITabBar.appearance().selectionIndicatorImage = getImageWithColor(UIColor(red: 0xeb/255.0, green: 0xed/255.0, blue: 0xf2/255.0, alpha: 1), size: CGSize(width: 1, height: 46)).resizableImageWithCapInsets(UIEdgeInsetsZero);
+        UITabBar.appearance().backgroundImage = Imaging.imageWithColor(UIColor.whiteColor(), size: CGSize(width: 1, height: 46))
+        UITabBar.appearance().shadowImage = UIImage(named: "CardTop2");
+        UITabBar.appearance().selectionIndicatorImage = Imaging.imageWithColor(UIColor(red: 0xeb/255.0, green: 0xed/255.0, blue: 0xf2/255.0, alpha: 1), size: CGSize(width: 1, height: 46)).resizableImageWithCapInsets(UIEdgeInsetsZero);
         
 //        setTitleTextAttributes(NSForegroundColorAttributeName, );
         
@@ -70,16 +75,6 @@ import Foundation
         }
         
         return true;
-    }
-    
-    func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
-        var rect = CGRectMake(0, 0, size.width, size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        color.setFill()
-        UIRectFill(rect)
-        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
     }
     
     func applicationWillEnterForeground(application: UIApplication) {

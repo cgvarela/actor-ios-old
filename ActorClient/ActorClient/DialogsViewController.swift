@@ -44,7 +44,7 @@ class DialogsViewController: EngineListController {
     
     override func viewDidLoad() {
         
-        tableView.backgroundColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1)
+        tableView.backgroundColor = Resources.BackyardColor
         
         // Footer
         var footer = UIView(frame: CGRectMake(0, 0, 320, 80));
@@ -80,10 +80,16 @@ class DialogsViewController: EngineListController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
         MSG.onDialogsOpen();
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        self.edgesForExtendedLayout = UIRectEdge.All;
+        
         var selected = tableView.indexPathForSelectedRow();
         if (selected != nil){
             tableView.deselectRowAtIndexPath(selected!, animated: animated);

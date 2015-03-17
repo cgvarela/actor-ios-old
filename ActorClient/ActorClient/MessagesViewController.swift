@@ -18,8 +18,14 @@ class MessagesViewController: EngineSlackListController {
     let subtitleView: UILabel = UILabel();
     let navigationView: UIView = UIView();
     
+    let avatarView = AvatarView(frameSize: 42)
+    
     init(peer: AMPeer) {
         super.init(isInverted: true);
+        
+        // Hack for fixing top offsets
+        self.edgesForExtendedLayout = UIRectEdge.All ^ UIRectEdge.Top;
+        
         self.peer = peer;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
         self.tableView.backgroundColor = UIColor.clearColor();
@@ -58,6 +64,9 @@ class MessagesViewController: EngineSlackListController {
         navigationView.addSubview(subtitleView);
         
         self.navigationItem.titleView = navigationView;
+        
+        avatarView.frame = CGRectMake(0, 0, 30, 30)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: avatarView)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -72,18 +81,21 @@ class MessagesViewController: EngineSlackListController {
         view.insertSubview(bg, atIndex: 0);
         
         if (UInt(peer.getPeerType().ordinal()) == AMPeerType.PRIVATE.rawValue) {
-            var user = MSG.getUsers().getWithLong(jlong(peer.getPeerId())) as! AMUserVM;
+            let user = MSG.getUsers().getWithLong(jlong(peer.getPeerId())) as! AMUserVM;
             var nameModel = user.getName() as AMValueModel;
-            binder.bind(nameModel, closure: { (value: NSString) -> () in
-                self.titleView.text = String(value);
+            binder.bind(nameModel, closure: { (value: NSString?) -> () in
+                self.titleView.text = String(value!);
                 self.navigationView.sizeToFit();
             })
-            binder.bind(MSG.getTyping(peer.getPeerId())!.getTyping(), closure: { (value:JavaLangBoolean) -> () in
-                if (value.booleanValue()) {
+            binder.bind(MSG.getTyping(peer.getPeerId())!.getTyping(), closure: { (value:JavaLangBoolean?) -> () in
+                if (value!.booleanValue()) {
                     self.subtitleView.text="typing...";
                 } else {
                     self.subtitleView.text="...";
                 }
+            })
+            binder.bind(user.getAvatar(), closure: { (value: AMAvatar?) -> () in
+                self.avatarView.bind(user.getName().get() as! String, id: user.getId(), avatar: value)
             })
         }
         
@@ -119,14 +131,20 @@ class MessagesViewController: EngineSlackListController {
         }
         
         if (message.getContent() is AMTextContent){
-            var cell = tableView.dequeueReusableCellWithIdentifier("bubble_text") as! BubbleTextCell?;
-            if (cell == nil){
-                cell = BubbleTextCell();
-                cell?.awakeFromNib();
+            var cell = tableView.dequeueReusableCellWithIdentifier("bubble_text") as! BubbleTextCell?
+            if (cell == nil) {
+                cell = BubbleTextCell()
             }
-            return cell!;
-        }else {
-            fatalError("Unsupported content");
+            return cell!
+        } else if (message.getContent() is AMPhotoContent || message.getContent() is AMVideoContent) {
+            var cell = tableView.dequeueReusableCellWithIdentifier("bubble_media") as! BubbleMediaCell?
+            if (cell == nil) {
+                cell = BubbleMediaCell()
+            }
+            return cell!
+            
+        } else {
+            fatalError("Unsupported content")
         }
     }
     

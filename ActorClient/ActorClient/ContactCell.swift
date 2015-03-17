@@ -11,7 +11,7 @@ import UIKit
 
 class ContactCell : UITableViewCell {
     
-    let avatarView = AvatarView(frameSize: 40, fontSize: 13);
+    let avatarView = AvatarView(frameSize: 40);
     let shortNameView = UILabel();
     let titleView = UILabel();
     let separatorView = UIView();
@@ -33,7 +33,7 @@ class ContactCell : UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bindContact(contact: AMContact, shortValue: String?) {
+    func bindContact(contact: AMContact, shortValue: String?, isLast: Bool) {
         avatarView.bind(contact.getName(), id: contact.getUid(), avatar: contact.getAvatar());
         
         titleView.text = contact.getName();
@@ -44,6 +44,8 @@ class ContactCell : UITableViewCell {
             shortNameView.text = shortValue!;
             shortNameView.hidden = false;
         }
+        
+        separatorView.hidden = isLast
     }
     
     override func layoutSubviews() {

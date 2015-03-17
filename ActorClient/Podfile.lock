@@ -67,6 +67,7 @@ DEPENDENCIES:
   - FMDB
   - HockeySDK
   - J2ObjC (from `https://github.com/actorapp/j2objc`)
+  - MBProgressHUD
   - MMMutableMethods (from `https://github.com/k06a/MMMutableMethods`, branch `dev`, tag `0.0.7`)
   - PHFComposeBarView
   - RegexKitLite

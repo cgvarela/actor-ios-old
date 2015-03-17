@@ -9,7 +9,7 @@
 import UIKit;
 
 class DialogCell: UITableViewCell {
-    let avatarView: AvatarView = AvatarView(frameSize: 48,fontSize: 10);
+    let avatarView: AvatarView = AvatarView(frameSize: 48);
     let titleView: UILabel = UILabel();
     let messageView: UILabel = UILabel();
     let dateView: UILabel = UILabel();
