@@ -112,7 +112,7 @@ class AvatarView : UIImageView {
                 return;
             }
         
-            var image = UIImage(contentsOfFile: reference);
+            var image = UIImage(contentsOfFile: CocoaFiles.pathFromDescriptor(reference));
         
             if (image == nil) {
                 return

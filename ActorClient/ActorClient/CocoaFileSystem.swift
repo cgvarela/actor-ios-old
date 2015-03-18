@@ -8,20 +8,69 @@
 
 import Foundation
 
+class CocoaFiles {
+    class func pathFromDescriptor(path: String) -> String {
+        var manager = NSFileManager.defaultManager();
+        var documentsFolders = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)!;
+        if (documentsFolders.count > 0) {
+            var appPath = (documentsFolders[0] as! String).stringByDeletingLastPathComponent
+            return appPath + path
+        } else {
+            fatalError("Unable to load Application path")
+        }
+    }
+}
+
 @objc class CocoaFileSystem : NSObject, AMFileSystemProvider {
     
+    var appPath: String = ""
+    
+    override init() {
+        super.init()
+        
+        var manager = NSFileManager.defaultManager();
+        var documentsFolders = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)!;
+        if (documentsFolders.count > 0) {
+            appPath = (documentsFolders[0] as! String).stringByDeletingLastPathComponent
+        } else {
+            fatalError("Unable to load Application path")
+        }
+    }
+    
     func createTempFile() -> AMFileSystemReference! {
-        var fileName = NSTemporaryDirectory().stringByAppendingPathComponent(NSUUID().UUIDString);
-        NSFileManager.defaultManager().createFileAtPath(fileName, contents: NSData(), attributes: nil);
-        return CocoaFile(path: fileName);
+        var fileName = "/tmp/\(NSUUID().UUIDString)"
+        NSLog("CreatingTempFile: \(appPath + fileName)" )
+        NSFileManager.defaultManager().createFileAtPath(appPath + fileName, contents: NSData(), attributes: nil);
+        return CocoaFile(path: fileName, appPath: appPath);
     }
     
     func commitTempFile(sourceFile: AMFileSystemReference!, withReference fileReference: AMFileReference!) -> AMFileSystemReference! {
-        return sourceFile!;
+        var manager = NSFileManager.defaultManager();
+        
+        
+        var baseName = fileReference.getFileName();
+        
+        var index = 0;
+        while(manager.fileExistsAtPath("\(appPath)/Documents/\(index)_\(baseName)")) {
+            index = index + 1;
+        }
+        
+        var resultPath = "/Documents/\(index)_\(baseName)";
+        
+        NSLog("CommitingFile: \(appPath + resultPath)" )
+        
+        var error : NSError?;
+        manager.moveItemAtPath(appPath + sourceFile.getDescriptor()!, toPath: appPath + resultPath, error: &error)
+        
+        if (error == nil) {
+            return CocoaFile(path: resultPath, appPath: appPath)
+        }
+    
+        return nil
     }
     
     func fileFromDescriptor(descriptor: String!) -> AMFileSystemReference! {
-        return CocoaFile(path: descriptor);
+        return CocoaFile(path: descriptor, appPath: appPath);
     }
     
     func isFsPersistent() -> Bool {
@@ -62,10 +111,12 @@ class CocoaDownloadCallback : NSObject, ImActorModelModulesFileDownloadCallback 
 
 class CocoaFile : NSObject, AMFileSystemReference {
     
-    let path:String;
+    let path: String;
+    let appPath: String;
     
-    init(path:String) {
-        self.path = path;
+    init(path:String, appPath:String) {
+        self.path = path
+        self.appPath = appPath
     }
     
     func getDescriptor() -> String! {
@@ -73,14 +124,15 @@ class CocoaFile : NSObject, AMFileSystemReference {
     }
     
     func isExist() -> Bool {
-        return NSFileManager().fileExistsAtPath(path);
+        NSLog("DownloadManager: CheckFileExist: \(path)")
+        return NSFileManager().fileExistsAtPath(appPath + path);
     }
     
     func getSize() -> jint {
         
         var error:NSError?;
         
-        var attrs = NSFileManager().attributesOfItemAtPath(path, error: &error);
+        var attrs = NSFileManager().attributesOfItemAtPath(appPath + path, error: &error);
         
         if (error != nil) {
             return 0;
@@ -91,7 +143,7 @@ class CocoaFile : NSObject, AMFileSystemReference {
     
     func openWriteWithSize(size: jint) -> AMOutputFile! {
         
-        var fileHandle = NSFileHandle(forWritingAtPath: path);
+        var fileHandle = NSFileHandle(forWritingAtPath: appPath + path);
 
         if (fileHandle == nil) {
             return nil
@@ -105,7 +157,7 @@ class CocoaFile : NSObject, AMFileSystemReference {
     
     func openRead() -> AMInputFile! {
         
-        var fileHandle = NSFileHandle(forReadingAtPath: path);
+        var fileHandle = NSFileHandle(forReadingAtPath: appPath + path);
         
         if (fileHandle == nil) {
             return nil
