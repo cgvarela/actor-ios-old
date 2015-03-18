@@ -55,7 +55,6 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
         var cell = buildCell(tableView, cellForRowAtIndexPath:indexPath, item:item);
         bindCell(tableView, cellForRowAtIndexPath: indexPath, item: item, cell: cell);
         displayList.touchWithInt(jint(indexPath.row))
-        NSLog("🇯🇵 touch %d", indexPath.row)
         cell.transform = tableView.transform
         return cell;
     }

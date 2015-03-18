@@ -70,7 +70,7 @@ class MainTabController : UITabBarController, UITabBarDelegate {
         case 0:
             navigationItem.title = "People";
             navigationItem.leftBarButtonItem = nil;
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: nil, action: nil)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self.viewControllers![0], action: "addContact")
             navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         case 1:

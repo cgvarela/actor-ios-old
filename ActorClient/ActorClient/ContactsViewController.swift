@@ -97,9 +97,15 @@ class ContactsViewController: EngineListController {
         return cell!;
     }
     
+    func addContact() {
+        var alertView = UIAlertView(title: "Add Contact", message: "Please, specify phone number", delegate: nil, cancelButtonTitle: "Cancel")
+        alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
+        alertView.show()
+    }
+    
     override func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AnyObject?, cell: UITableViewCell) {
         var contact = item as! AMContact;
-//        let isLast = indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1;
+        let isLast = indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1;
         
         // Building short name
         var shortName : String? = nil;
@@ -116,7 +122,7 @@ class ContactsViewController: EngineListController {
             }
         }
                 
-        (cell as! ContactCell).bindContact(contact, shortValue: shortName, isLast: indexPath.row == tableView.numberOfRowsInSection(0) - 1);
+        (cell as! ContactCell).bindContact(contact, shortValue: shortName, isLast: isLast);
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
