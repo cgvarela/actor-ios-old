@@ -41,7 +41,7 @@ class BubbleCell: UITableViewCell {
     func formatDate(date:Int64) -> String {
         var dateFormatter = NSDateFormatter();
         dateFormatter.dateFormat = "HH:mm";
-        return dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(date)));
+        return dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(Double(date) / 1000.0)));
     }
 }
 
