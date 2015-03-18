@@ -10,8 +10,22 @@ import Foundation
 
 class BubbleMediaCell : BubbleCell {
     
+    class func measureMedia(w: Int, h: Int) -> CGSize {
+        var screenScale = UIScreen.mainScreen().scale;
+        var scaleW = 240 / CGFloat(w)
+        var scaleH = 340 / CGFloat(h)
+        var scale = min(scaleW, scaleH)
+        return CGSize(width: scale * CGFloat(w), height: scale * CGFloat(h))
+    }
+    
     class func measureMediaHeight(message: AMMessage) -> CGFloat {
-        return 100
+        var content = message.getContent() as! AMDocumentContent;
+        if (message.getContent() is AMPhotoContent){
+            var photo = message.getContent() as! AMPhotoContent;
+            return measureMedia(Int(photo.getW()), h: Int(photo.getH())).height + 8;
+        }
+        
+        fatalError("???")
     }
     
     let bubble = UIImageView();
@@ -26,7 +40,7 @@ class BubbleMediaCell : BubbleCell {
     init() {
         super.init(reuseId: "bubble_media")
         
-        bubble.image = UIImage(named: "BubbleIncomingPartial")
+        bubble.image = UIImage(named: "conv_media_bg")
         
         contentView.addSubview(bubble)
         contentView.addSubview(preview)
@@ -58,31 +72,36 @@ class BubbleMediaCell : BubbleCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let padding = CGFloat(8)
+        let padding = CGFloat(10)
         
         var width = contentView.frame.width
         var height = contentView.frame.height
         
-        var bubbleHeight = height - padding * 2
+//        var bubbleRect = BubbleMediaCell.measureMedia(contentWidth, h: contentHeight)
+        
+        var bubbleHeight = height - 8
         var bubbleWidth = bubbleHeight * CGFloat(contentWidth) / CGFloat(contentHeight)
         
         if (self.isOut) {
-            self.bubble.frame = CGRectMake(width - bubbleWidth - padding, 0, bubbleWidth, bubbleHeight)
+            self.bubble.frame = CGRectMake(width - bubbleWidth - padding, 4, bubbleWidth, bubbleHeight)
         } else {
-            self.bubble.frame = CGRectMake(padding, 0, bubbleWidth, bubbleHeight)
+            self.bubble.frame = CGRectMake(padding, 4, bubbleWidth, bubbleHeight)
         }
         
-        preview.frame = CGRectMake(bubble.frame.origin.x + 6, bubble.frame.origin.y + 1,
-            bubble.frame.width - 4, bubble.frame.height - 2);
+        preview.frame = CGRectMake(bubble.frame.origin.x + 1, bubble.frame.origin.y + 1,
+            bubble.frame.width - 2, bubble.frame.height - 2);
         if (thumb != nil) {
-            preview.image = UIImage(data: thumb!.getImage().toNSData()!)?.roundCorners(bubbleWidth-2, h: bubbleHeight-2, roundSize: 16)
+            preview.image = UIImage(data: thumb!.getImage().toNSData()!)?.roundCorners(bubbleWidth-2, h: bubbleHeight-2, roundSize: 14)
         } else {
             preview.image = nil
         }
-        circullarView.frame = CGRectMake(
-            preview.frame.origin.x +
-            preview.frame.width/2 - 32,
-            preview.frame.origin.y +
-            preview.frame.height/2 - 32, 64, 64)
+        
+//        circullarView.frame = CGRectMake(
+//            preview.frame.origin.x +
+//            preview.frame.width/2 - 32,
+//            preview.frame.origin.y +
+//            preview.frame.height/2 - 32, 64, 64)
+        
+        circullarView.hidden = true
     }
 }
