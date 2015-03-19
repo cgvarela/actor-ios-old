@@ -92,6 +92,7 @@
 #import "im/actor/model/entity/content/AbsContent.h"
 #import "im/actor/model/entity/content/TextContent.h"
 #import "im/actor/model/entity/content/DocumentContent.h"
+#import "im/actor/model/entity/content/ServiceContent.h"
 #import "im/actor/model/entity/content/PhotoContent.h"
 #import "im/actor/model/entity/content/VideoContent.h"
 #import "im/actor/model/entity/content/FastThumb.h"

@@ -51,20 +51,16 @@ class DialogCell: UITableViewCell {
         
         titleView.text = dialog.getDialogTitle();
         
-        var contentType = UInt(dialog.getMessageType().ordinal());
-        
-        if (contentType == AMContentType.TEXT.rawValue) {
-            self.messageView.text = dialog.getText();
-        } else if (contentType == AMContentType.EMPTY.rawValue) {
-            self.messageView.text = "";
-        } else if (contentType == AMContentType.DOCUMENT.rawValue){
-            self.messageView.text = "Document";
-        } else if (contentType == AMContentType.DOCUMENT_PHOTO.rawValue){
-            self.messageView.text = "Photo";
-        } else if (contentType == AMContentType.DOCUMENT_VIDEO.rawValue) {
-            self.messageView.text = "Video";
+        var text = MSG.getFormatter().formatContentDialogTextWithInt(dialog.getSenderId(), withAMContentTypeEnum: dialog.getMessageType(), withNSString: dialog.getText(), withInt: dialog.getRelatedUid());
+
+        if (UInt(dialog.getPeer().getPeerType().ordinal()) == AMPeerType.GROUP.rawValue){
+            if (MSG.getFormatter().isLargeDialogMessageWithAMContentTypeEnum(dialog.getMessageType())) {
+                self.messageView.text = text
+            } else {
+                self.messageView.text = MSG.getFormatter().formatPerformerNameWithInt(dialog.getSenderId()) + ": " + text
+            }
         } else {
-            self.messageView.text = "Unknown message";
+           self.messageView.text = text
         }
         
         if (dialog.getDate() > 0) {

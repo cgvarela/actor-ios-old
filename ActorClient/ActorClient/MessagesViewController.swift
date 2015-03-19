@@ -255,6 +255,12 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
             }
             return cell!
             
+        } else if (message.getContent() is AMServiceContent){
+            var cell = tableView.dequeueReusableCellWithIdentifier("bubble_service") as! BubbleServiceCell?
+            if (cell == nil) {
+                cell = BubbleServiceCell()
+            }
+            return cell!
         } else {
             fatalError("Unsupported content")
         }

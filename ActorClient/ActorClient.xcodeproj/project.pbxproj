@@ -691,6 +691,7 @@
 		0655C6361AB86A5E000F3DA3 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0655C3901AB86A5D000F3DA3 /* Strings.m */; };
 		065A51C81ABA185100B48088 /* ABActionShit.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A51C71ABA185100B48088 /* ABActionShit.m */; };
 		065A51CA1ABA5A9100B48088 /* TableViewSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */; };
+		065A51CC1ABB441E00B48088 /* BubbleServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */; };
 		067144501AB089B000364820 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671444F1AB089B000364820 /* BubbleCell.swift */; };
 		067144521AB0947000364820 /* BubbleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067144511AB0947000364820 /* BubbleTextCell.swift */; };
 		06A907D11AB7AE8200E087EA /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 06A907D01AB7AE8200E087EA /* notification.aiff */; };
@@ -2139,6 +2140,7 @@
 		065A51C61ABA185100B48088 /* ABActionShit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABActionShit.h; path = ../../../../Documents/icons/ABActionShit.h; sourceTree = "<group>"; };
 		065A51C71ABA185100B48088 /* ABActionShit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABActionShit.m; path = ../../../../Documents/icons/ABActionShit.m; sourceTree = "<group>"; };
 		065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSeparator.swift; sourceTree = "<group>"; };
+		065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleServiceCell.swift; sourceTree = "<group>"; };
 		0671444F1AB089B000364820 /* BubbleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
 		067144511AB0947000364820 /* BubbleTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTextCell.swift; sourceTree = "<group>"; };
 		06A907D01AB7AE8200E087EA /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
@@ -4297,6 +4299,7 @@
 				0671444F1AB089B000364820 /* BubbleCell.swift */,
 				067144511AB0947000364820 /* BubbleTextCell.swift */,
 				06BC45141AB87ECB0003F59E /* BubbleMediaCell.swift */,
+				065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */,
 			);
 			name = MessagesUI;
 			sourceTree = "<group>";
@@ -4726,6 +4729,7 @@
 				0655C6211AB86A5E000F3DA3 /* Base64.m in Sources */,
 				0655C4711AB86A5D000F3DA3 /* ActorRef.m in Sources */,
 				0655C46E1AB86A5D000F3DA3 /* Actor.m in Sources */,
+				065A51CC1ABB441E00B48088 /* BubbleServiceCell.swift in Sources */,
 				0655C44C1AB86A5D000F3DA3 /* UpdateUserStateChanged.m in Sources */,
 				0655C5F61AB86A5E000F3DA3 /* GLVTypeBEndomorphism.m in Sources */,
 				0655C4F61AB86A5E000F3DA3 /* JavaDispatcherThreads.m in Sources */,
