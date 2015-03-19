@@ -18,6 +18,7 @@
 #import "java/lang/Long.h"
 #import "java/util/List.h"
 #import "java/util/ArrayList.h"
+#import "java/util/HashSet.h"
 
 // Messenger
 
@@ -87,6 +88,7 @@
 #import "im/actor/model/entity/Peer.h"
 #import "im/actor/model/entity/PeerType.h"
 #import "im/actor/model/entity/User.h"
+#import "im/actor/model/entity/Sex.h"
 #import "im/actor/model/entity/content/AbsContent.h"
 #import "im/actor/model/entity/content/TextContent.h"
 #import "im/actor/model/entity/content/DocumentContent.h"

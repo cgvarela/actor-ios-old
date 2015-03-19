@@ -12,4 +12,6 @@
 
 - (JavaUtilHashMap *)loadLocale;
 
+- (jboolean)is24Hours;
+
 @end

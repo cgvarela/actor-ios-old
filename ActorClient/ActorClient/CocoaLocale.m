@@ -36,4 +36,9 @@
     return map;
 }
 
+- (jboolean)is24Hours
+{
+    return true;
+}
+
 @end

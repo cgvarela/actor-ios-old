@@ -98,23 +98,17 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
             binder.bind(MSG.getTyping(peer.getPeerId())!.getTyping(), valueModel2: user.getPresence()!, closure:{ (typing:JavaLangBoolean?, presence:AMUserPresence?) -> () in
                 
                 if (typing != nil && typing!.booleanValue()) {
-                    self.subtitleView.text="typing...";
+                    self.subtitleView.text = MSG.getFormatter().formatTyping();
                     self.subtitleView.textColor = Resources.PrimaryLightText
-                } else if (presence != nil) {
+                } else {
+                    var stateText = MSG.getFormatter().formatPresenceWithAMUserPresence(presence, withAMSexEnum: user.getSex())
+                    self.subtitleView.text = stateText;
                     var state = UInt(presence!.getState().ordinal())
-                    if (state == AMUserPresence_State.UNKNOWN.rawValue) {
-                        self.subtitleView.text="...";
-                        self.subtitleView.textColor = Resources.SecondaryLightText
-                    } else if (state == AMUserPresence_State.ONLINE.rawValue){
-                        self.subtitleView.text="online";
+                    if (state == AMUserPresence_State.ONLINE.rawValue) {
                         self.subtitleView.textColor = Resources.PrimaryLightText
-                    } else if (state == AMUserPresence_State.OFFLINE.rawValue){
-                        self.subtitleView.text="offline";
+                    } else {
                         self.subtitleView.textColor = Resources.SecondaryLightText
                     }
-                } else {
-                    self.subtitleView.text = "...";
-                    self.subtitleView.textColor = Resources.SecondaryLightText
                 }
             })
         } else if (UInt(peer.getPeerType().ordinal()) == AMPeerType.GROUP.rawValue) {
@@ -127,6 +121,21 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
             })
             binder.bind(group.getAvatar(), closure: { (value: AMAvatar?) -> () in
                 self.avatarView.bind(group.getName().get() as! String, id: group.getId(), avatar: value)
+            })
+            binder.bind(MSG.getGroupTyping(group.getId()).getActive()!, valueModel2: group.getMembers(), closure: { (value1:IOSIntArray?, value2:JavaUtilHashSet?) -> () in
+                if (value1!.length() > 0) {
+                    if (value1!.length() == 1) {
+                        var uid = value1!.intAtIndex(0);
+                        var user = MSG.getUsers().getWithLong(jlong(uid));
+                        self.subtitleView.text = MSG.getFormatter().formatTypingWithNSString(user.getName().get() as!String)
+                    } else {
+                        self.subtitleView.text = MSG.getFormatter().formatTypingWithInt(value1!.length());
+                    }
+                    self.subtitleView.textColor = Resources.PrimaryLightText
+                } else {
+                    self.subtitleView.text = MSG.getFormatter().formatGroupMembersWithInt(value2!.size());
+                    self.subtitleView.textColor = Resources.PrimaryLightText
+                }
             })
         }
         
