@@ -45,16 +45,16 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         navigationView.frame = CGRectMake(0, 0, 190, 44);
         navigationView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
         
-        titleView.frame = CGRectMake(0, 0, 190, 24)
-        titleView.font = UIFont.boldSystemFontOfSize(18);
+        titleView.frame = CGRectMake(0, 4, 190, 20)
+        titleView.font = UIFont(name: "HelveticaNeue-Medium", size: 17)!
         titleView.adjustsFontSizeToFitWidth = false;
         titleView.textColor = UIColor.whiteColor();
         titleView.textAlignment = NSTextAlignment.Center;
         titleView.lineBreakMode = NSLineBreakMode.ByTruncatingTail;
         titleView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
         
-        subtitleView.frame = CGRectMake(0, 22, 190, 44-24);
-        subtitleView.font = UIFont.systemFontOfSize(14);
+        subtitleView.frame = CGRectMake(0, 22, 190, 20);
+        subtitleView.font = UIFont.systemFontOfSize(13);
         subtitleView.adjustsFontSizeToFitWidth=false;
         subtitleView.textColor = Resources.SecondaryLightText
         subtitleView.textAlignment = NSTextAlignment.Center;
@@ -122,19 +122,28 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
             binder.bind(group.getAvatar(), closure: { (value: AMAvatar?) -> () in
                 self.avatarView.bind(group.getName().get() as! String, id: group.getId(), avatar: value)
             })
-            binder.bind(MSG.getGroupTyping(group.getId()).getActive()!, valueModel2: group.getMembers(), closure: { (value1:IOSIntArray?, value2:JavaUtilHashSet?) -> () in
+            binder.bind(MSG.getGroupTyping(group.getId()).getActive()!, valueModel2: group.getMembers(), valueModel3: group.getPresence(), closure: { (value1:IOSIntArray?, value2:JavaUtilHashSet?, value3:JavaLangInteger?) -> () in
                 if (value1!.length() > 0) {
+                    self.subtitleView.textColor = Resources.PrimaryLightText
                     if (value1!.length() == 1) {
                         var uid = value1!.intAtIndex(0);
-                        var user = MSG.getUsers().getWithLong(jlong(uid));
+                        var user = MSG.getUsers().getWithLong(jlong(uid)) as! AMUserVM;
                         self.subtitleView.text = MSG.getFormatter().formatTypingWithNSString(user.getName().get() as!String)
                     } else {
                         self.subtitleView.text = MSG.getFormatter().formatTypingWithInt(value1!.length());
                     }
-                    self.subtitleView.textColor = Resources.PrimaryLightText
                 } else {
-                    self.subtitleView.text = MSG.getFormatter().formatGroupMembersWithInt(value2!.size());
-                    self.subtitleView.textColor = Resources.PrimaryLightText
+                    var membersString = MSG.getFormatter().formatGroupMembersWithInt(value2!.size())
+                    if (value3 == nil || value3!.integerValue == 0) {
+                        self.subtitleView.textColor = Resources.SecondaryLightText
+                        self.subtitleView.text = membersString;
+                    } else {
+                        membersString = membersString + ", ";
+                        var onlineString = MSG.getFormatter().formatGroupOnlineWithInt(value3!.intValue());
+                        var attributedString = NSMutableAttributedString(string: (membersString + onlineString))
+                        attributedString.addAttribute(NSForegroundColorAttributeName, value: Resources.PrimaryLightText, range: NSMakeRange(membersString.size(), onlineString.size()))
+                        self.subtitleView.attributedText = attributedString
+                    }
                 }
             })
         }

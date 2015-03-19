@@ -20,7 +20,7 @@ class BubbleCell: UITableViewCell {
         } else if (content is AMVideoContent) {
             return BubbleMediaCell.measureMediaHeight(message)
         } else if (content is AMServiceContent){
-            return 100;
+            return BubbleServiceCell.measureServiceHeight(message);
         } else {
             fatalError("Unsupported content")
         }

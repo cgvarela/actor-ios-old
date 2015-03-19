@@ -16,6 +16,7 @@
 #import "java/lang/Exception.h"
 #import "java/lang/Boolean.h"
 #import "java/lang/Long.h"
+#import "java/lang/Integer.h"
 #import "java/util/List.h"
 #import "java/util/ArrayList.h"
 #import "java/util/HashSet.h"
