@@ -14,7 +14,7 @@ class DialogCell: UITableViewCell {
     let messageView: UILabel = UILabel();
     let dateView: UILabel = UILabel();
     let statusView: UIImageView = UIImageView();
-    let separatorView: UIView = UIView();
+    let separatorView = TableViewSeparator(color: Resources.SeparatorColor);
     
     var bindedFile: jlong? = nil;
     var avatarCallback: CocoaDownloadCallback? = nil;
@@ -33,7 +33,6 @@ class DialogCell: UITableViewCell {
         
         dateView.textAlignment = NSTextAlignment.Right;
         statusView.contentMode = UIViewContentMode.Center;
-        separatorView.backgroundColor = Resources.SeparatorColor;
         
         self.contentView.addSubview(avatarView)
         self.contentView.addSubview(titleView)
@@ -114,7 +113,7 @@ class DialogCell: UITableViewCell {
         
         avatarView.frame = CGRectMake(padding, padding, 48, 48);
         
-        titleView.frame = CGRectMake(leftPadding, 18, width - leftPadding - /*paddingRight*/(padding + 40), 18);
+        titleView.frame = CGRectMake(leftPadding, 18, width - leftPadding - /*paddingRight*/(padding + 50), 18);
         
         var messagePadding:CGFloat = 0;
         if (!self.statusView.hidden) {
@@ -123,7 +122,7 @@ class DialogCell: UITableViewCell {
         }
         messageView.frame = CGRectMake(leftPadding+messagePadding, 44, width - leftPadding - /*paddingRight*/padding - messagePadding, 18);
         
-        dateView.frame = CGRectMake(width - /*width*/50 - /*paddingRight*/padding , 18, 50, 18);        
+        dateView.frame = CGRectMake(width - /*width*/60 - /*paddingRight*/padding , 18, 60, 18);
         separatorView.frame = CGRectMake(leftPadding, 75.5, width, 0.5);
     }
 }

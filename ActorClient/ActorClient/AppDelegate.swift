@@ -14,9 +14,11 @@ import Foundation
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
+        application.statusBarStyle = UIStatusBarStyle.LightContent
+        
         var navAppearance = UINavigationBar.appearance();
         navAppearance.tintColor = UIColor.whiteColor();
-        navAppearance.barTintColor = Resources.TintColor;
+        navAppearance.barTintColor = UIColor.whiteColor();
         navAppearance.backgroundColor = Resources.TintColor;
         navAppearance.setBackgroundImage(Imaging.imageWithColor(Resources.TintColor, size: CGSize(width: 1, height: 46)), forBarMetrics: UIBarMetrics.Default)
         navAppearance.shadowImage = UIImage(named: "CardBottom2")

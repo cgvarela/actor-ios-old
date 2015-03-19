@@ -96,12 +96,15 @@
 #import "im/actor/model/entity/ContentType.h"
 #import "im/actor/model/entity/FileReference.h"
 
+
 // Entities View Model
 
 #import "im/actor/model/viewmodel/UserVM.h"
 #import "im/actor/model/viewmodel/UserTypingVM.h"
+#import "im/actor/model/viewmodel/GroupVM.h"
 #import "im/actor/model/viewmodel/GroupTypingVM.h"
 #import "im/actor/model/viewmodel/UserPhone.h"
+#import "im/actor/model/viewmodel/UserPresence.h"
 
 // Misc
 

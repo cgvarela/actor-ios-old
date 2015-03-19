@@ -689,6 +689,8 @@
 		0655C6341AB86A5E000F3DA3 /* Pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0655C38C1AB86A5D000F3DA3 /* Pack.m */; };
 		0655C6351AB86A5E000F3DA3 /* Shorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 0655C38E1AB86A5D000F3DA3 /* Shorts.m */; };
 		0655C6361AB86A5E000F3DA3 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0655C3901AB86A5D000F3DA3 /* Strings.m */; };
+		065A51C81ABA185100B48088 /* ABActionShit.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A51C71ABA185100B48088 /* ABActionShit.m */; };
+		065A51CA1ABA5A9100B48088 /* TableViewSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */; };
 		067144501AB089B000364820 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671444F1AB089B000364820 /* BubbleCell.swift */; };
 		067144521AB0947000364820 /* BubbleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067144511AB0947000364820 /* BubbleTextCell.swift */; };
 		06A907D11AB7AE8200E087EA /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 06A907D01AB7AE8200E087EA /* notification.aiff */; };
@@ -743,7 +745,6 @@
 		2537F8501A966B9D004A02E9 /* ActorClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F84F1A966B9D004A02E9 /* ActorClientTests.m */; };
 		2537F85F1A9730FF004A02E9 /* AAPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F85E1A9730FF004A02E9 /* AAPhoneViewController.m */; };
 		2537F8611A973A8D004A02E9 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2537F8601A973A8D004A02E9 /* Auth.storyboard */; };
-		2537F8641A974160004A02E9 /* AAHiddenNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8631A974160004A02E9 /* AAHiddenNavigationBar.m */; };
 		2537F8671A9753DD004A02E9 /* ABPhoneField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2537F8661A9753DD004A02E9 /* ABPhoneField.m */; };
 		2537F86C1A9762F6004A02E9 /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = 2537F86A1A9762F6004A02E9 /* PhoneFormats.dat */; };
 		2537F86D1A9762F6004A02E9 /* ABPhoneFieldCodes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2537F86B1A9762F6004A02E9 /* ABPhoneFieldCodes.txt */; };
@@ -754,10 +755,7 @@
 		256388C61A99C72D00A5E0E3 /* AASerializationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B51A99C72D00A5E0E3 /* AASerializationHelpers.m */; };
 		259D452F1A99440400BC2B4D /* AACountriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259D452E1A99440400BC2B4D /* AACountriesViewController.m */; };
 		25C9C3841A9D4A900061780E /* CocoaLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3831A9D4A900061780E /* CocoaLocale.m */; };
-		25C9C3951A9E117D0061780E /* AAAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3941A9E117D0061780E /* AAAvatarImageView.m */; };
 		25C9C3991A9E15BF0061780E /* RCBlurredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3981A9E15BF0061780E /* RCBlurredImageView.m */; };
-		25C9C39F1A9FEA2C0061780E /* AAUnhighlightableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C39C1A9FEA2C0061780E /* AAUnhighlightableLabel.m */; };
-		25C9C3A01A9FEA2C0061780E /* AAUnhighlightableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */; };
 		25E179391A9D1A52001CE95B /* AppText.properties in Resources */ = {isa = PBXBuildFile; fileRef = 25E179351A9D1A52001CE95B /* AppText.properties */; };
 		25E1793A1A9D1A52001CE95B /* AppText_Ru.properties in Resources */ = {isa = PBXBuildFile; fileRef = 25E179361A9D1A52001CE95B /* AppText_Ru.properties */; };
 		25E1793B1A9D1A52001CE95B /* Months.properties in Resources */ = {isa = PBXBuildFile; fileRef = 25E179371A9D1A52001CE95B /* Months.properties */; };
@@ -2137,6 +2135,10 @@
 		0655C38E1AB86A5D000F3DA3 /* Shorts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shorts.m; sourceTree = "<group>"; };
 		0655C38F1AB86A5D000F3DA3 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
 		0655C3901AB86A5D000F3DA3 /* Strings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Strings.m; sourceTree = "<group>"; };
+		065A51C51ABA0BA200B48088 /* ActorClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ActorClient.entitlements; sourceTree = "<group>"; };
+		065A51C61ABA185100B48088 /* ABActionShit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABActionShit.h; path = ../../../../Documents/icons/ABActionShit.h; sourceTree = "<group>"; };
+		065A51C71ABA185100B48088 /* ABActionShit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABActionShit.m; path = ../../../../Documents/icons/ABActionShit.m; sourceTree = "<group>"; };
+		065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSeparator.swift; sourceTree = "<group>"; };
 		0671444F1AB089B000364820 /* BubbleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
 		067144511AB0947000364820 /* BubbleTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTextCell.swift; sourceTree = "<group>"; };
 		06A907D01AB7AE8200E087EA /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
@@ -2203,8 +2205,6 @@
 		2537F85D1A9730FF004A02E9 /* AAPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPhoneViewController.h; sourceTree = "<group>"; };
 		2537F85E1A9730FF004A02E9 /* AAPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPhoneViewController.m; sourceTree = "<group>"; };
 		2537F8601A973A8D004A02E9 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
-		2537F8621A974160004A02E9 /* AAHiddenNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAHiddenNavigationBar.h; sourceTree = "<group>"; };
-		2537F8631A974160004A02E9 /* AAHiddenNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAHiddenNavigationBar.m; sourceTree = "<group>"; };
 		2537F8651A9753DD004A02E9 /* ABPhoneField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPhoneField.h; sourceTree = "<group>"; };
 		2537F8661A9753DD004A02E9 /* ABPhoneField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPhoneField.m; sourceTree = "<group>"; };
 		2537F86A1A9762F6004A02E9 /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhoneFormats.dat; sourceTree = "<group>"; };
@@ -2223,14 +2223,8 @@
 		259D452E1A99440400BC2B4D /* AACountriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACountriesViewController.m; sourceTree = "<group>"; };
 		25C9C3821A9D4A900061780E /* CocoaLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLocale.h; sourceTree = "<group>"; };
 		25C9C3831A9D4A900061780E /* CocoaLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaLocale.m; sourceTree = "<group>"; };
-		25C9C3931A9E117D0061780E /* AAAvatarImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAAvatarImageView.h; sourceTree = "<group>"; };
-		25C9C3941A9E117D0061780E /* AAAvatarImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAAvatarImageView.m; sourceTree = "<group>"; };
 		25C9C3971A9E15BF0061780E /* RCBlurredImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCBlurredImageView.h; path = RCBlurredImageView/RCBlurredImageView/RCBlurredImageView.h; sourceTree = SOURCE_ROOT; };
 		25C9C3981A9E15BF0061780E /* RCBlurredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCBlurredImageView.m; path = RCBlurredImageView/RCBlurredImageView/RCBlurredImageView.m; sourceTree = SOURCE_ROOT; };
-		25C9C39B1A9FEA2C0061780E /* AAUnhighlightableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAUnhighlightableLabel.h; sourceTree = "<group>"; };
-		25C9C39C1A9FEA2C0061780E /* AAUnhighlightableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAUnhighlightableLabel.m; sourceTree = "<group>"; };
-		25C9C39D1A9FEA2C0061780E /* AAUnhighlightableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAUnhighlightableView.h; sourceTree = "<group>"; };
-		25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAUnhighlightableView.m; sourceTree = "<group>"; };
 		25E179351A9D1A52001CE95B /* AppText.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppText.properties; sourceTree = "<group>"; };
 		25E179361A9D1A52001CE95B /* AppText_Ru.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppText_Ru.properties; sourceTree = "<group>"; };
 		25E179371A9D1A52001CE95B /* Months.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Months.properties; sourceTree = "<group>"; };
@@ -4281,16 +4275,6 @@
 			path = io;
 			sourceTree = "<group>";
 		};
-		0671444E1AB0899700364820 /* Bubbles */ = {
-			isa = PBXGroup;
-			children = (
-				0671444F1AB089B000364820 /* BubbleCell.swift */,
-				067144511AB0947000364820 /* BubbleTextCell.swift */,
-				06BC45141AB87ECB0003F59E /* BubbleMediaCell.swift */,
-			);
-			name = Bubbles;
-			sourceTree = "<group>";
-		};
 		06E4842C1AB78D7E00AA272F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -4309,8 +4293,10 @@
 		250BDF581AA10EF000DA014D /* MessagesUI */ = {
 			isa = PBXGroup;
 			children = (
-				0671444E1AB0899700364820 /* Bubbles */,
 				06ABC7841AB05C0600C1B932 /* MessagesViewController.swift */,
+				0671444F1AB089B000364820 /* BubbleCell.swift */,
+				067144511AB0947000364820 /* BubbleTextCell.swift */,
+				06BC45141AB87ECB0003F59E /* BubbleMediaCell.swift */,
 			);
 			name = MessagesUI;
 			sourceTree = "<group>";
@@ -4338,6 +4324,7 @@
 		2537F82F1A966B9D004A02E9 /* ActorClient */ = {
 			isa = PBXGroup;
 			children = (
+				065A51C51ABA0BA200B48088 /* ActorClient.entitlements */,
 				06E4842C1AB78D7E00AA272F /* Tools */,
 				25C9C3961A9E15AD0061780E /* RCBlurredImageView */,
 				2563889E1A99C09D00A5E0E3 /* Model */,
@@ -4507,14 +4494,8 @@
 			isa = PBXGroup;
 			children = (
 				2537F8691A9762DB004A02E9 /* ABPhoneField */,
-				2537F8621A974160004A02E9 /* AAHiddenNavigationBar.h */,
-				2537F8631A974160004A02E9 /* AAHiddenNavigationBar.m */,
-				25C9C3931A9E117D0061780E /* AAAvatarImageView.h */,
-				25C9C3941A9E117D0061780E /* AAAvatarImageView.m */,
-				25C9C39B1A9FEA2C0061780E /* AAUnhighlightableLabel.h */,
-				25C9C39C1A9FEA2C0061780E /* AAUnhighlightableLabel.m */,
-				25C9C39D1A9FEA2C0061780E /* AAUnhighlightableView.h */,
-				25C9C39E1A9FEA2C0061780E /* AAUnhighlightableView.m */,
+				065A51C61ABA185100B48088 /* ABActionShit.h */,
+				065A51C71ABA185100B48088 /* ABActionShit.m */,
 				06ABC77A1AAF39B500C1B932 /* EngineListController.swift */,
 				06ABC7861AB05C3300C1B932 /* EngineSlackListController.swift */,
 				06FA65631AB19DE000BE0A41 /* Imaging.swift */,
@@ -4522,6 +4503,7 @@
 				064903781AB38C6200FA7B1C /* Strings.swift */,
 				06E484301AB7933100AA272F /* LruCache.swift */,
 				06BC45161AB889110003F59E /* CircullarProgress.swift */,
+				065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -4617,6 +4599,11 @@
 					2537F82C1A966B9D004A02E9 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = WBZ2456W25;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					2537F8481A966B9D004A02E9 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -4974,6 +4961,7 @@
 				0655C55A1AB86A5E000F3DA3 /* ManagerActor.m in Sources */,
 				0655C54A1AB86A5E000F3DA3 /* DisplayWindow.m in Sources */,
 				0655C5581AB86A5E000F3DA3 /* CreateConnectionCallback.m in Sources */,
+				065A51CA1ABA5A9100B48088 /* TableViewSeparator.swift in Sources */,
 				063BCF311AB7AC0F00D469AB /* iOSNotificationProvider.swift in Sources */,
 				0655C49B1AB86A5D000F3DA3 /* TaskResult.m in Sources */,
 				0655C4B41AB86A5D000F3DA3 /* AsyncStorageInt.m in Sources */,
@@ -5167,7 +5155,6 @@
 				0655C57D1AB86A5E000F3DA3 /* RpcCallback.m in Sources */,
 				0655C40D1AB86A5D000F3DA3 /* ResponseSendAuthCode.m in Sources */,
 				0655C61C1AB86A5E000F3DA3 /* Nat256.m in Sources */,
-				2537F8641A974160004A02E9 /* AAHiddenNavigationBar.m in Sources */,
 				0655C3B91AB86A5D000F3DA3 /* GroupOutPeer.m in Sources */,
 				0655C4721AB86A5D000F3DA3 /* ActorScope.m in Sources */,
 				0655C4591AB86A5D000F3DA3 /* ConfigurationBuilder.m in Sources */,
@@ -5179,7 +5166,6 @@
 				0655C3D21AB86A5D000F3DA3 /* RequestEditGroupAvatar.m in Sources */,
 				0655C5921AB86A5E000F3DA3 /* GroupVM.m in Sources */,
 				0655C3C61AB86A5D000F3DA3 /* PublicKey.m in Sources */,
-				25C9C39F1A9FEA2C0061780E /* AAUnhighlightableLabel.m in Sources */,
 				0655C6111AB86A5E000F3DA3 /* FiniteFields.m in Sources */,
 				0655C5F91AB86A5E000F3DA3 /* FixedPointPreCompInfo.m in Sources */,
 				0655C5161AB86A5E000F3DA3 /* PendingMessagesStorage.m in Sources */,
@@ -5197,7 +5183,6 @@
 				0655C45E1AB86A5D000F3DA3 /* ASN1Null.m in Sources */,
 				0655C3F91AB86A5D000F3DA3 /* RequestSubscribeToOnline.m in Sources */,
 				0655C5241AB86A5E000F3DA3 /* PendingStorage.m in Sources */,
-				25C9C3A01A9FEA2C0061780E /* AAUnhighlightableView.m in Sources */,
 				0655C4571AB86A5D000F3DA3 /* CommandCallback.m in Sources */,
 				0655C42D1AB86A5D000F3DA3 /* UpdateEncryptedReceived.m in Sources */,
 				0655C5BA1AB86A5E000F3DA3 /* AsymmetricKeyParameter.m in Sources */,
@@ -5238,7 +5223,6 @@
 				0655C6131AB86A5E000F3DA3 /* GF2Polynomial.m in Sources */,
 				0655C5E91AB86A5E000F3DA3 /* SecP521R1Field.m in Sources */,
 				0655C4DF1AB86A5E000F3DA3 /* GroupState.m in Sources */,
-				25C9C3951A9E117D0061780E /* AAAvatarImageView.m in Sources */,
 				0655C4AF1AB86A5D000F3DA3 /* SparseArray.m in Sources */,
 				0655C5701AB86A5E000F3DA3 /* RpcInternalError.m in Sources */,
 				0655C4521AB86A5D000F3DA3 /* WrongKeysErrorData.m in Sources */,
@@ -5342,6 +5326,7 @@
 				0655C4EF1AB86A5E000F3DA3 /* I18nEngine.m in Sources */,
 				0655C48A1AB86A5D000F3DA3 /* MailboxCreator.m in Sources */,
 				0655C5A91AB86A5E000F3DA3 /* SHA256Digest.m in Sources */,
+				065A51C81ABA185100B48088 /* ABActionShit.m in Sources */,
 				0655C5F81AB86A5E000F3DA3 /* FixedPointCombMultiplier.m in Sources */,
 				0655C4641AB86A5D000F3DA3 /* BcRsaCipher.m in Sources */,
 				0655C5661AB86A5E000F3DA3 /* Pong.m in Sources */,
@@ -5584,8 +5569,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = ActorClient/ActorClient.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PREFIX_HEADER = "ActorClient/ActorClient-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5600,7 +5587,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2ab60acb-6c9e-47e1-94ca-5649e8e86fe9";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActorClient/ActorClient-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5613,6 +5600,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = ActorClient/ActorClient.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "ActorClient/ActorClient-Prefix.pch";
@@ -5629,7 +5617,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2ab60acb-6c9e-47e1-94ca-5649e8e86fe9";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActorClient/ActorClient-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

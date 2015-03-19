@@ -135,7 +135,7 @@
         self.endpoint = endpoint;
         self.callback = callback;
         self.createCallback = createCallback;
-        self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+        self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
         NSError *error;
         NSLog(@"connectToHost:onPort: %@ %@",self.endpoint.getHost,@(self.endpoint.getPort));
         [self.socket connectToHost:self.endpoint.getHost onPort:self.endpoint.getPort error:&error];

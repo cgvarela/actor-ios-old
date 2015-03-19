@@ -89,6 +89,9 @@ import Foundation
     
     static let BackyardColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1)
     static let SecondaryTint = UIColor(red: 0xb5/255.0, green: 0xb6/255.0, blue: 0xb7/255.0, alpha: 1)
+    
+    static let SecondaryLightText = UIColor(red: 1, green: 1, blue: 1, alpha: 220/255.0)
+    static let PrimaryLightText = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 }
 
 

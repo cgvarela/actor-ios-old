@@ -14,7 +14,7 @@ class ContactCell : UITableViewCell {
     let avatarView = AvatarView(frameSize: 40);
     let shortNameView = UILabel();
     let titleView = UILabel();
-    let separatorView = UIView();
+    let separatorView = TableViewSeparator(color: Resources.SeparatorColor)
     
     init(reuseIdentifier:String) {
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
@@ -22,7 +22,6 @@ class ContactCell : UITableViewCell {
         titleView.font = UIFont(name: "HelveticaNeue", size: 18);
         shortNameView.font = UIFont(name: "HelveticaNeue-Bold", size: 18);
         shortNameView.textAlignment = NSTextAlignment.Center
-        separatorView.backgroundColor = Resources.SeparatorColor;
         self.contentView.addSubview(avatarView);
         self.contentView.addSubview(shortNameView);
         self.contentView.addSubview(titleView);

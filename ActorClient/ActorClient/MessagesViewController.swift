@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import MobileCoreServices
 
-class MessagesViewController: EngineSlackListController {
+class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegate, ABActionShitDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var peer: AMPeer!;
     let binder: Binder = Binder();
@@ -18,7 +19,7 @@ class MessagesViewController: EngineSlackListController {
     let subtitleView: UILabel = UILabel();
     let navigationView: UIView = UIView();
     
-    let avatarView = AvatarView(frameSize: 42)
+    let avatarView = BarAvatarView(frameSize: 36)
     
     init(peer: AMPeer) {
         super.init(isInverted: true);
@@ -35,15 +36,16 @@ class MessagesViewController: EngineSlackListController {
         self.textInputbar.backgroundColor = UIColor.whiteColor();
         self.textInputbar.autoHideRightButton = false;
         self.textView.placeholder = "Message";
+        self.rightButton.titleLabel?.text = "Send"
         
         self.keyboardPanningEnabled = true;
         
         self.leftButton.setImage(UIImage(named: "conv_attach"), forState: UIControlState.Normal)
         
-        navigationView.frame = CGRectMake(0, 0, 200, 44);
+        navigationView.frame = CGRectMake(0, 0, 190, 44);
         navigationView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
         
-        titleView.frame = CGRectMake(0, 0, 200, 24)
+        titleView.frame = CGRectMake(0, 0, 190, 24)
         titleView.font = UIFont.boldSystemFontOfSize(18);
         titleView.adjustsFontSizeToFitWidth = false;
         titleView.textColor = UIColor.whiteColor();
@@ -51,11 +53,10 @@ class MessagesViewController: EngineSlackListController {
         titleView.lineBreakMode = NSLineBreakMode.ByTruncatingTail;
         titleView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
         
-        subtitleView.frame = CGRectMake(0, 24, 200, 44-24);
+        subtitleView.frame = CGRectMake(0, 22, 190, 44-24);
         subtitleView.font = UIFont.systemFontOfSize(14);
         subtitleView.adjustsFontSizeToFitWidth=false;
-        subtitleView.textColor = UIColor.whiteColor();
-        subtitleView.text = "???";
+        subtitleView.textColor = Resources.SecondaryLightText
         subtitleView.textAlignment = NSTextAlignment.Center;
         subtitleView.lineBreakMode = NSLineBreakMode.ByTruncatingTail;
         subtitleView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
@@ -65,8 +66,10 @@ class MessagesViewController: EngineSlackListController {
         
         self.navigationItem.titleView = navigationView;
         
-        avatarView.frame = CGRectMake(0, 0, 30, 30)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: avatarView)
+        avatarView.frame = CGRectMake(0, 0, 36, 36)
+        var barItem = UIBarButtonItem(customView: avatarView)
+        // barItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -40)
+        self.navigationItem.rightBarButtonItem = barItem
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -83,19 +86,47 @@ class MessagesViewController: EngineSlackListController {
         if (UInt(peer.getPeerType().ordinal()) == AMPeerType.PRIVATE.rawValue) {
             let user = MSG.getUsers().getWithLong(jlong(peer.getPeerId())) as! AMUserVM;
             var nameModel = user.getName() as AMValueModel;
+            
             binder.bind(nameModel, closure: { (value: NSString?) -> () in
                 self.titleView.text = String(value!);
                 self.navigationView.sizeToFit();
             })
-            binder.bind(MSG.getTyping(peer.getPeerId())!.getTyping(), closure: { (value:JavaLangBoolean?) -> () in
-                if (value!.booleanValue()) {
-                    self.subtitleView.text="typing...";
-                } else {
-                    self.subtitleView.text="...";
-                }
-            })
             binder.bind(user.getAvatar(), closure: { (value: AMAvatar?) -> () in
                 self.avatarView.bind(user.getName().get() as! String, id: user.getId(), avatar: value)
+            })
+            
+            binder.bind(MSG.getTyping(peer.getPeerId())!.getTyping(), valueModel2: user.getPresence()!, closure:{ (typing:JavaLangBoolean?, presence:AMUserPresence?) -> () in
+                
+                if (typing != nil && typing!.booleanValue()) {
+                    self.subtitleView.text="typing...";
+                    self.subtitleView.textColor = Resources.PrimaryLightText
+                } else if (presence != nil) {
+                    var state = UInt(presence!.getState().ordinal())
+                    if (state == AMUserPresence_State.UNKNOWN.rawValue) {
+                        self.subtitleView.text="...";
+                        self.subtitleView.textColor = Resources.SecondaryLightText
+                    } else if (state == AMUserPresence_State.ONLINE.rawValue){
+                        self.subtitleView.text="online";
+                        self.subtitleView.textColor = Resources.PrimaryLightText
+                    } else if (state == AMUserPresence_State.OFFLINE.rawValue){
+                        self.subtitleView.text="offline";
+                        self.subtitleView.textColor = Resources.SecondaryLightText
+                    }
+                } else {
+                    self.subtitleView.text = "...";
+                    self.subtitleView.textColor = Resources.SecondaryLightText
+                }
+            })
+        } else if (UInt(peer.getPeerType().ordinal()) == AMPeerType.GROUP.rawValue) {
+            let group = MSG.getGroups().getWithLong(jlong(peer.getPeerId())) as! AMGroupVM;
+            var nameModel = group.getName() as AMValueModel;
+            
+            binder.bind(nameModel, closure: { (value: NSString?) -> () in
+                self.titleView.text = String(value!);
+                self.navigationView.sizeToFit();
+            })
+            binder.bind(group.getAvatar(), closure: { (value: AMAvatar?) -> () in
+                self.avatarView.bind(group.getName().get() as! String, id: group.getId(), avatar: value)
             })
         }
         
@@ -114,12 +145,84 @@ class MessagesViewController: EngineSlackListController {
     }
     
     override func didPressRightButton(sender: AnyObject!) {
+        
         // Perform auto correct
         textView.refreshFirstResponder();
         
         MSG.sendMessage(peer, withText: textView.text);
         
         super.didPressRightButton(sender);
+    }
+    
+    override func didPressLeftButton(sender: AnyObject!) {
+        super.didPressLeftButton(sender)
+        
+        var actionShit = ABActionShit()
+        actionShit.buttonTitles = ["Take Photo","Record Video", "Media Library", "Document"]
+        actionShit.cancelButtonTitle = "Cancel"
+        actionShit.delegate = self
+        actionShit.showWithCompletion(nil)
+    }
+    
+    func actionShit(actionShit: ABActionShit!, clickedButtonAtIndex buttonIndex: Int) {
+        if (buttonIndex == 0) {
+            var pickerController = UIImagePickerController()
+            pickerController.sourceType = UIImagePickerControllerSourceType.Camera
+            pickerController.mediaTypes = [kUTTypeImage]
+            pickerController.view.backgroundColor = UIColor.blackColor()
+            pickerController.navigationBar.tintColor = Resources.TintColor
+            pickerController.delegate = self
+            pickerController.navigationBar.tintColor = UIColor.whiteColor()
+            pickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
+            self.presentViewController(pickerController, animated: true, completion: nil)
+        } else if (buttonIndex == 1) {
+            var pickerController = UIImagePickerController()
+            pickerController.sourceType = UIImagePickerControllerSourceType.Camera
+            pickerController.mediaTypes = [kUTTypeVideo, kUTTypeMovie]
+            pickerController.view.backgroundColor = UIColor.blackColor()
+            pickerController.navigationBar.tintColor = Resources.TintColor
+            pickerController.delegate = self
+            pickerController.navigationBar.tintColor = UIColor.whiteColor()
+            pickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
+            self.presentViewController(pickerController, animated: true, completion: nil)
+        } else if (buttonIndex == 2) {
+            var pickerController = UIImagePickerController()
+            pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            pickerController.mediaTypes = [kUTTypeImage, kUTTypeVideo, kUTTypeMovie]
+            pickerController.view.backgroundColor = UIColor.blackColor()
+            pickerController.navigationBar.tintColor = Resources.TintColor
+            pickerController.delegate = self
+            pickerController.navigationBar.tintColor = UIColor.whiteColor()
+            pickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()];
+            self.presentViewController(pickerController, animated: true, completion: nil)
+        } else if (buttonIndex == 3) {
+            var documentView = UIDocumentPickerViewController(documentTypes: [kUTTypeText as NSString, "com.apple.iwork.pages.pages", "com.apple.iwork.numbers.numbers", "com.apple.iwork.keynote.key"], inMode: UIDocumentPickerMode.Import)
+            documentView.delegate = self
+            documentView.view.backgroundColor = UIColor.whiteColor()
+            self.presentViewController(documentView, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        // TODO: Implement
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        // TODO: Implement
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
+        var path = url.path;
+        
+        // TODO: Implement
     }
     
     override func buildCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AnyObject?) -> UITableViewCell {
@@ -164,5 +267,19 @@ class MessagesViewController: EngineSlackListController {
     
     override func getDisplayList() -> AMBindedDisplayList {
         return MSG.getMessagesGlobalListWithAMPeer(peer)
+    }
+}
+
+class BarAvatarView : AvatarView {
+    override init(frameSize: Int) {
+        super.init(frameSize: frameSize)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func alignmentRectInsets() -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 36, bottom: 0, right: 8)
     }
 }

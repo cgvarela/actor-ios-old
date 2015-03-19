@@ -12,6 +12,7 @@ import UIKit;
 class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UITableViewDataSource, AMDisplayList_Listener {
 
     private var displayList: AMBindedDisplayList!;
+    private var emptyLock: Bool = true;
     
     init(isInverted:Bool) {
         super.init(tableViewStyle: UITableViewStyle.Plain);
@@ -27,18 +28,29 @@ class EngineSlackListController: SLKTextViewController, UITableViewDelegate, UIT
         if (self.displayList == nil) {
             self.displayList = getDisplayList()
             self.displayList.addListenerWithAMDisplayList_Listener(self)
-//            self.tableView.reloadData()
         }
+        
+        dispatch_async(dispatch_get_main_queue(),{
+            self.emptyLock = false
+            self.tableView.reloadData()
+        });
     }
 
     func onCollectionChanged() {
         NSLog("🇯🇵 onCollcetionChanged")
+        if (self.emptyLock) {
+            return
+        }
         if (self.tableView != nil){
             self.tableView.reloadData()
         }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (emptyLock) {
+            return 0
+        }
+        
         if (displayList == nil) {
             return 0;
         }
