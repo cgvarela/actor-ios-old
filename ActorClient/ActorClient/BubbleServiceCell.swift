@@ -9,7 +9,7 @@
 import Foundation
 
 private let maxServiceTextWidth = 260
-private let serviceBubbleFont = UIFont(name: "HelveticaNeue", size: 13)!
+private let serviceBubbleFont = UIFont(name: "HelveticaNeue-Medium", size: 12)!
 
 private func measureText(message: String) -> CGRect {
     var messageValue = message as NSString;
@@ -30,11 +30,12 @@ class BubbleServiceCell : BubbleCell {
 
     
     var serviceText = UILabel()
+    var serviceBg = UIImageView()
     
     init() {
         super.init(reuseId: "bubble_service")
         
-        self.contentView.addSubview(serviceText)
+        
         
         serviceText.lineBreakMode = .ByWordWrapping;
         serviceText.numberOfLines = 0;
@@ -42,6 +43,11 @@ class BubbleServiceCell : BubbleCell {
         serviceText.contentMode = UIViewContentMode.Center
         serviceText.textAlignment = NSTextAlignment.Center
         serviceText.font = serviceBubbleFont;
+        
+        serviceBg.image = UIImage(named: "bubble_service_bg");
+
+        self.contentView.addSubview(serviceBg)
+        self.contentView.addSubview(serviceText)
         
         self.backgroundColor = UIColor.clearColor();
     }
@@ -56,5 +62,10 @@ class BubbleServiceCell : BubbleCell {
     
     override func layoutSubviews() {
         serviceText.frame = CGRectMake((self.contentView.frame.width - CGFloat(maxServiceTextWidth)) / 2.0, 0.0, CGFloat(maxServiceTextWidth), self.contentView.frame.height);
+        serviceText.sizeToFit()
+        serviceText.frame = CGRectMake( (self.contentView.frame.width - serviceText.frame.width) / 2, (self.contentView.frame.height - serviceText.frame.height) / 2, serviceText.frame.width, serviceText.frame.height)
+        
+        serviceBg.frame = CGRectMake(serviceText.frame.origin.x - 8, serviceText.frame.origin.y - 3,
+                                    serviceText.frame.width + 16, serviceText.frame.height + 6)
     }
 }
