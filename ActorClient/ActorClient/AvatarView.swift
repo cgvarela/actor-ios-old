@@ -71,6 +71,10 @@ class AvatarView : UIImageView {
                 if (bindedFileId != nil) {
                     notChanged = false
                 }
+            } else if (bindedFileId == nil) {
+                if (fileLocation != nil) {
+                    notChanged = false
+                }
             } else {
                 if (bindedFileId != fileLocation?.getFileId()) {
                     notChanged = false
