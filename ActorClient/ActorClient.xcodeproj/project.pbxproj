@@ -694,6 +694,7 @@
 		065A51CC1ABB441E00B48088 /* BubbleServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */; };
 		067144501AB089B000364820 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671444F1AB089B000364820 /* BubbleCell.swift */; };
 		067144521AB0947000364820 /* BubbleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067144511AB0947000364820 /* BubbleTextCell.swift */; };
+		0671592C1ABBC49D00D95719 /* CircullarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671592B1ABBC49D00D95719 /* CircullarNode.swift */; };
 		06A907D11AB7AE8200E087EA /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 06A907D01AB7AE8200E087EA /* notification.aiff */; };
 		06ABC77B1AAF39B500C1B932 /* EngineListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77A1AAF39B500C1B932 /* EngineListController.swift */; };
 		06ABC77E1AAF458B00C1B932 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77C1AAF458B00C1B932 /* ContactsViewController.swift */; };
@@ -2142,6 +2143,7 @@
 		065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleServiceCell.swift; sourceTree = "<group>"; };
 		0671444F1AB089B000364820 /* BubbleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
 		067144511AB0947000364820 /* BubbleTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTextCell.swift; sourceTree = "<group>"; };
+		0671592B1ABBC49D00D95719 /* CircullarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircullarNode.swift; sourceTree = "<group>"; };
 		06A907D01AB7AE8200E087EA /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
 		06A92FA01AB24B2A0065B2FC /* ActorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorModel.h; sourceTree = "<group>"; };
 		06ABC77A1AAF39B500C1B932 /* EngineListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineListController.swift; sourceTree = "<group>"; };
@@ -4503,6 +4505,7 @@
 				06E484301AB7933100AA272F /* LruCache.swift */,
 				06BC45161AB889110003F59E /* CircullarProgress.swift */,
 				065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */,
+				0671592B1ABBC49D00D95719 /* CircullarNode.swift */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -4916,6 +4919,7 @@
 				0655C3FA1AB86A5D000F3DA3 /* RequestTerminateAllSessions.m in Sources */,
 				0655C52B1AB86A5E000F3DA3 /* Settings.m in Sources */,
 				0655C3E01AB86A5D000F3DA3 /* RequestKickUser.m in Sources */,
+				0671592C1ABBC49D00D95719 /* CircullarNode.swift in Sources */,
 				0655C3C91AB86A5D000F3DA3 /* RequestChangeEmailTitle.m in Sources */,
 				0655C4ED1AB86A5E000F3DA3 /* OutputFile.m in Sources */,
 				0655C3A41AB86A5D000F3DA3 /* Email.m in Sources */,

@@ -30,7 +30,8 @@ class BubbleMediaCell : BubbleCell {
     
     let bubble = UIImageView();
     let preview = UIImageView();
-    let circullarView = CircullarProgress()
+    let circullarNode = CircullarNode()
+//    let circullarView = CircullarProgress()
     
     var isOut:Bool = false;
     var contentWidth = 0
@@ -44,7 +45,8 @@ class BubbleMediaCell : BubbleCell {
         
         contentView.addSubview(bubble)
         contentView.addSubview(preview)
-        contentView.addSubview(circullarView)
+        contentView.addSubview(circullarNode.view)
+//        contentView.addSubview(circullarView)
         
         self.backgroundColor = UIColor.clearColor();
     }
@@ -54,11 +56,17 @@ class BubbleMediaCell : BubbleCell {
     }
     
     override func bind(message: AMMessage) {
+        
+        NSLog("Bind media \(message.getRid())@\(self.hashValue)");
+        
         self.isOut = message.getSenderId() == MSG.myUid()
-        UIView.animateWithDuration(0, animations: { () -> Void in
-            self.circullarView.resetProgress(0)
-            self.circullarView.alpha = 0
-        })
+        
+        circullarNode.setProgress(0, animated: false)
+        
+//        UIView.animateWithDuration(0, animations: { () -> Void in
+//            self.circullarView.resetProgress(0)
+//            self.circullarView.alpha = 0
+//        })
 
         if (message.getContent() is AMPhotoContent) {
             var photo = message.getContent() as! AMPhotoContent;
@@ -80,6 +88,8 @@ class BubbleMediaCell : BubbleCell {
         var bubbleHeight = BubbleMediaCell.measureMediaHeight(message) - 8
         var bubbleWidth = bubbleHeight * CGFloat(contentWidth) / CGFloat(contentHeight)
         
+        if (document.getSource() is AMFileRemoteSource) {
+        
         var fastThumbLoaded = false
         var callback = CocoaDownloadCallback(notDownloaded: { () -> () in
             if (fastThumbLoaded) {
@@ -91,13 +101,14 @@ class BubbleMediaCell : BubbleCell {
             dispatch_async(dispatch_get_main_queue(), {
                 self.preview.image = img
                 // self.circullarView.hidden = true
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.circullarView.alpha = 0
-                })
+//                UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                    self.circullarView.alpha = 0
+//                })
             })
         }, onDownloading: { (progress) -> () in
             
-            self.circullarView.setProgress(Double(progress))
+            self.circullarNode.postProgress(Double(progress), animated: true)
+            // self.circullarView.setProgress(Double(progress))
             
             if (fastThumbLoaded) {
                 return
@@ -106,26 +117,28 @@ class BubbleMediaCell : BubbleCell {
             var img = UIImage(data: self.thumb!.getImage().toNSData()!)?.roundCorners(bubbleWidth - 2, h: bubbleHeight - 2, roundSize: 14)
             dispatch_async(dispatch_get_main_queue(), {
                 self.preview.image = img
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.circullarView.alpha = 1
-                })
+//                UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                    self.circullarView.alpha = 1
+//                })
             })
         }) { (reference) -> () in
             var img = UIImage(contentsOfFile: CocoaFiles.pathFromDescriptor(reference))?.roundCorners(bubbleWidth - 2, h: bubbleHeight - 2, roundSize: 14)
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.preview.image = img
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.circullarView.alpha = 0
-                })
+//                UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                    self.circullarView.alpha = 0
+//                })
             })
         }
         
         MSG.bindRawFileWithAMFileReference((document.getSource() as! AMFileRemoteSource).getFileReference(), withBoolean: true, withImActorModelModulesFileDownloadCallback: callback)
+        }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        NSLog("prepareForReuse media @\(self.hashValue)");
     }
     
     override func layoutSubviews() {
@@ -144,11 +157,17 @@ class BubbleMediaCell : BubbleCell {
             self.bubble.frame = CGRectMake(padding, 4, bubbleWidth, bubbleHeight)
         }
         
-        circullarView.frame = CGRectMake(
-            preview.frame.origin.x +
-                preview.frame.width/2 - 32,
-            preview.frame.origin.y +
-                preview.frame.height/2 - 32, 64, 64)
         preview.frame = CGRectMake(bubble.frame.origin.x + 1, bubble.frame.origin.y + 1, bubble.frame.width - 2, bubble.frame.height - 2);
+        
+        circullarNode.frame = CGRectMake(
+                        preview.frame.origin.x + preview.frame.width/2 - 32,
+                        preview.frame.origin.y + preview.frame.height/2 - 32,
+                        64, 64)
+        
+//        circullarView.frame = CGRectMake(
+//            preview.frame.origin.x +
+//                preview.frame.width/2 - 32,
+//            preview.frame.origin.y +
+//                preview.frame.height/2 - 32, 64, 64)
     }
 }

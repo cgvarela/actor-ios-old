@@ -111,7 +111,7 @@ class Imaging {
         
         var font = UIFont.systemFontOfSize(CGFloat(size / 2));
         var rect = CGRectMake(0, 0, CGFloat(size), CGFloat(size))
-        rect.origin.y = CGFloat(size * 47 / 100) - font.pointSize / 2;
+        rect.origin.y = round(CGFloat(size * 47 / 100) - font.pointSize / 2);
         
         var style : NSMutableParagraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         style.alignment = NSTextAlignment.Center

@@ -20,6 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AsyncDisplayKit (1.1.1):
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.1.1)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
   - CocoaAsyncSocket (7.4.1)
   - DZNEmptyDataSet (1.3.3)
   - DZNPhotoPickerController (1.6.1):
@@ -60,9 +63,9 @@ PODS:
     - SlackTextViewController/Additions (= 1.5)
   - SlackTextViewController/Additions (1.5)
   - SVProgressHUD (1.1.2)
-  - TAPKeyboardPop (0.1.2)
 
 DEPENDENCIES:
+  - AsyncDisplayKit
   - CocoaAsyncSocket
   - DZNPhotoPickerController
   - FMDB
@@ -76,7 +79,6 @@ DEPENDENCIES:
   - RMPhoneFormat (from `https://github.com/actorapp/RMPhoneFormat`)
   - SlackTextViewController (from `https://github.com/actorapp/SlackTextViewController`)
   - SVProgressHUD
-  - TAPKeyboardPop (~> 0.1.2)
 
 EXTERNAL SOURCES:
   J2ObjC:
@@ -107,6 +109,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  AsyncDisplayKit: 897b28140c6c73fbe8d6168f19ce7cbd87c94ee8
   CocoaAsyncSocket: b0a1a89e7ea4c1c0ea4ec83f57d55117d3cdae06
   DZNEmptyDataSet: aa20600aff620af3d78edbff4bc47282972e815f
   DZNPhotoPickerController: b160709441243eeed87cd998d2b92da1f6d91840
@@ -124,6 +127,5 @@ SPEC CHECKSUMS:
   SDWebImage: 791cb0f588046cb0bb7802ae8ae8f5462947b773
   SlackTextViewController: 845c047813ca52f7bc25f034bd145d6a15dd614c
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
-  TAPKeyboardPop: 1d57b5b8e7521454164c5e9e9e4e9cf19a375f37
 
 COCOAPODS: 0.35.0
