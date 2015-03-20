@@ -67,6 +67,18 @@ extension UIImage {
         UIGraphicsEndImageContext();
         return image;
     }
+    
+    func resize(w: CGFloat, h: CGFloat) -> UIImage {
+        var nSize = CGSize(width: w, height: h)
+        UIGraphicsBeginImageContextWithOptions(nSize,false,UIScreen.mainScreen().scale);
+        var context = UIGraphicsGetCurrentContext();
+        
+        self.drawInRect(CGRect(origin: CGPointZero, size: nSize));
+        
+        var image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image;
+    }
 }
 
 class Imaging {

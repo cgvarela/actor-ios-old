@@ -97,6 +97,9 @@
 #import "im/actor/model/entity/content/PhotoContent.h"
 #import "im/actor/model/entity/content/VideoContent.h"
 #import "im/actor/model/entity/content/FastThumb.h"
+#import "im/actor/model/entity/content/FileSource.h"
+#import "im/actor/model/entity/content/FileLocalSource.h"
+#import "im/actor/model/entity/content/FileRemoteSource.h"
 #import "im/actor/model/entity/ContentType.h"
 #import "im/actor/model/entity/FileReference.h"
 

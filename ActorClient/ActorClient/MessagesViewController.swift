@@ -224,13 +224,32 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         picker.dismissViewControllerAnimated(true, completion: nil)
         
-        // TODO: Implement
+        var thumb = image.resize(90, h: 90);
+        var thumbData = UIImageJPEGRepresentation(thumb, 65);
+        
+        var descriptor = "/tmp/"+NSUUID().UUIDString
+        var path = CocoaFiles.pathFromDescriptor(descriptor);
+        
+        UIImageJPEGRepresentation(thumb, 70).writeToFile(path, atomically: true)
+        
+        MSG.sendPhotoWithAMPeer(peer, withNSString: "image.jpg", withInt: jint(image.size.width), withInt: jint(image.size.height), withAMFastThumb: AMFastThumb(int: 90, withInt: 90, withByteArray: thumbData.toJavaBytes()), withAMFileSystemReference: CocoaFile(path: descriptor))
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         picker.dismissViewControllerAnimated(true, completion: nil)
         
-        // TODO: Implement
+        var image = info[UIImagePickerControllerOriginalImage] as! UIImage;
+        
+        var thumb = image.resize(90, h: 90);
+        var thumbData = UIImageJPEGRepresentation(thumb, 65);
+        
+        var descriptor = "/tmp/"+NSUUID().UUIDString
+        var path = CocoaFiles.pathFromDescriptor(descriptor);
+        
+        UIImageJPEGRepresentation(thumb, 70).writeToFile(path, atomically: true)
+        
+        MSG.sendPhotoWithAMPeer(peer, withNSString: "image.jpg", withInt: jint(image.size.width), withInt: jint(image.size.height), withAMFastThumb: AMFastThumb(int: 90, withInt: 90, withByteArray: thumbData.toJavaBytes()), withAMFileSystemReference: CocoaFile(path: descriptor))
+
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

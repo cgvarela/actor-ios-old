@@ -29,10 +29,17 @@ class MainTabController : UITabBarController, UITabBarDelegate {
         centerButton!.setBackgroundImage(UIImage(named: "ic_round_button_red"), forState: UIControlState.Normal);
         centerButton!.setImage(UIImage(named: "ic_add_white_24"), forState: UIControlState.Normal);
         centerButton!.imageEdgeInsets = UIEdgeInsetsMake(4, 0, -4, 0);
+        centerButton!.addTarget(self, action: "centerButtonTap", forControlEvents: UIControlEvents.TouchUpInside)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         self.view.addSubview(centerButton!);
+    }
+    
+    func centerButtonTap() {
+        var actionShit = ABActionShit()
+        actionShit.buttonTitles = ["Add Contact", "Create group", "Write to..."];
+        actionShit.showWithCompletion(nil)
     }
     
     override func viewWillAppear(animated: Bool) {

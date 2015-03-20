@@ -8,6 +8,10 @@
 
 import Foundation
 
+func materialInterpolate(x: Double) -> Double {
+    return(6 * pow(x, 2) - 8 * pow(x, 3) + 3 * pow(x, 4));
+}
+
 class CircullarProgress : UIView {
     
     init() {
@@ -15,12 +19,43 @@ class CircullarProgress : UIView {
         
         self.backgroundColor = UIColor.clearColor()
     }
+    
+    var startRawValue: Double = 0
+    var endRawValue: Double = 0
+    var rawValue: Double = 0
+    var lastValueChange: Double = 0
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func resetProgress(value: Double) {
+        self.lastValueChange = 0;
+        self.startRawValue = value
+        self.endRawValue = value
+        self.setNeedsDisplay()
+    }
+    
+    func setProgress(value: Double) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.lastValueChange = Double(CFAbsoluteTimeGetCurrent())
+            self.startRawValue = self.rawValue
+            self.endRawValue = value
+            self.setNeedsDisplay()
+        });
+    }
+    
     override func drawRect(rect: CGRect) {
+        
+        var valueChangeTime = CFAbsoluteTimeGetCurrent() - lastValueChange;
+        
+        if (valueChangeTime >= 0.3) {
+            rawValue = endRawValue
+        } else {
+            var p = materialInterpolate(valueChangeTime / 0.3)
+            rawValue = startRawValue + (endRawValue - startRawValue) * p;
+        }
+        
         let context = UIGraphicsGetCurrentContext()
         let strokeW : CGFloat = 3
         let rotationSpeed : Double = 1600
@@ -32,9 +67,7 @@ class CircullarProgress : UIView {
         var baseAngle : Double = 2 * M_PI * ((CFAbsoluteTimeGetCurrent() * 1000) % rotationSpeed);
         let angle : CGFloat = CGFloat(baseAngle) / CGFloat(rotationSpeed);
         
-        var isAnimated = true
-        
-        var angle2 = CGFloat(0.1 * 2 * M_PI);
+        var angle2 = CGFloat(rawValue * 2 * M_PI);
         
         // Draw panel
         UIColor.whiteColor().set()
@@ -54,10 +87,8 @@ class CircullarProgress : UIView {
         CGContextAddArc(context, centerX + endX, centerY + endY, strokeW / 2, CGFloat(M_PI * 0), CGFloat(M_PI * 2), 0);
         CGContextDrawPath(context, kCGPathFill);
         
-        if (isAnimated) {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.setNeedsDisplay()
-            });
-        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 16 * Int64(NSEC_PER_MSEC)), dispatch_get_main_queue(), {
+            self.setNeedsDisplay()
+        });
     }
 }

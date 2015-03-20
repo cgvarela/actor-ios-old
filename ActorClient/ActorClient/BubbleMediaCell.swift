@@ -55,6 +55,11 @@ class BubbleMediaCell : BubbleCell {
     
     override func bind(message: AMMessage) {
         self.isOut = message.getSenderId() == MSG.myUid()
+        UIView.animateWithDuration(0, animations: { () -> Void in
+            self.circullarView.resetProgress(0)
+            self.circullarView.alpha = 0
+        })
+
         if (message.getContent() is AMPhotoContent) {
             var photo = message.getContent() as! AMPhotoContent;
             thumb = photo.getFastThumb()
@@ -68,6 +73,59 @@ class BubbleMediaCell : BubbleCell {
         } else {
             fatalError("Unsupported content")
         }
+        
+        var document = message.getContent() as! AMDocumentContent;
+        
+        // circullarView.hidden = true
+        var bubbleHeight = BubbleMediaCell.measureMediaHeight(message) - 8
+        var bubbleWidth = bubbleHeight * CGFloat(contentWidth) / CGFloat(contentHeight)
+        
+        var fastThumbLoaded = false
+        var callback = CocoaDownloadCallback(notDownloaded: { () -> () in
+            if (fastThumbLoaded) {
+                return
+            }
+            fastThumbLoaded = true
+            
+            var img = UIImage(data: self.thumb!.getImage().toNSData()!)?.roundCorners(bubbleWidth - 2, h: bubbleHeight - 2, roundSize: 14)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.preview.image = img
+                // self.circullarView.hidden = true
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.circullarView.alpha = 0
+                })
+            })
+        }, onDownloading: { (progress) -> () in
+            
+            self.circullarView.setProgress(Double(progress))
+            
+            if (fastThumbLoaded) {
+                return
+            }
+            fastThumbLoaded = true
+            var img = UIImage(data: self.thumb!.getImage().toNSData()!)?.roundCorners(bubbleWidth - 2, h: bubbleHeight - 2, roundSize: 14)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.preview.image = img
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.circullarView.alpha = 1
+                })
+            })
+        }) { (reference) -> () in
+            var img = UIImage(contentsOfFile: CocoaFiles.pathFromDescriptor(reference))?.roundCorners(bubbleWidth - 2, h: bubbleHeight - 2, roundSize: 14)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.preview.image = img
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.circullarView.alpha = 0
+                })
+            })
+        }
+        
+        MSG.bindRawFileWithAMFileReference((document.getSource() as! AMFileRemoteSource).getFileReference(), withBoolean: true, withImActorModelModulesFileDownloadCallback: callback)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
     
     override func layoutSubviews() {
@@ -76,8 +134,6 @@ class BubbleMediaCell : BubbleCell {
         
         var width = contentView.frame.width
         var height = contentView.frame.height
-        
-//        var bubbleRect = BubbleMediaCell.measureMedia(contentWidth, h: contentHeight)
         
         var bubbleHeight = height - 8
         var bubbleWidth = bubbleHeight * CGFloat(contentWidth) / CGFloat(contentHeight)
@@ -88,20 +144,11 @@ class BubbleMediaCell : BubbleCell {
             self.bubble.frame = CGRectMake(padding, 4, bubbleWidth, bubbleHeight)
         }
         
-        preview.frame = CGRectMake(bubble.frame.origin.x + 1, bubble.frame.origin.y + 1,
-            bubble.frame.width - 2, bubble.frame.height - 2);
-        if (thumb != nil) {
-            preview.image = UIImage(data: thumb!.getImage().toNSData()!)?.roundCorners(bubbleWidth-2, h: bubbleHeight-2, roundSize: 14)
-        } else {
-            preview.image = nil
-        }
-        
-//        circullarView.frame = CGRectMake(
-//            preview.frame.origin.x +
-//            preview.frame.width/2 - 32,
-//            preview.frame.origin.y +
-//            preview.frame.height/2 - 32, 64, 64)
-        
-        circullarView.hidden = true
+        circullarView.frame = CGRectMake(
+            preview.frame.origin.x +
+                preview.frame.width/2 - 32,
+            preview.frame.origin.y +
+                preview.frame.height/2 - 32, 64, 64)
+        preview.frame = CGRectMake(bubble.frame.origin.x + 1, bubble.frame.origin.y + 1, bubble.frame.width - 2, bubble.frame.height - 2);
     }
 }

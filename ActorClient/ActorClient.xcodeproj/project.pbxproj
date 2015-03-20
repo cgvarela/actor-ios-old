@@ -756,7 +756,6 @@
 		256388C61A99C72D00A5E0E3 /* AASerializationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 256388B51A99C72D00A5E0E3 /* AASerializationHelpers.m */; };
 		259D452F1A99440400BC2B4D /* AACountriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259D452E1A99440400BC2B4D /* AACountriesViewController.m */; };
 		25C9C3841A9D4A900061780E /* CocoaLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3831A9D4A900061780E /* CocoaLocale.m */; };
-		25C9C3991A9E15BF0061780E /* RCBlurredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C9C3981A9E15BF0061780E /* RCBlurredImageView.m */; };
 		25E179391A9D1A52001CE95B /* AppText.properties in Resources */ = {isa = PBXBuildFile; fileRef = 25E179351A9D1A52001CE95B /* AppText.properties */; };
 		25E1793A1A9D1A52001CE95B /* AppText_Ru.properties in Resources */ = {isa = PBXBuildFile; fileRef = 25E179361A9D1A52001CE95B /* AppText_Ru.properties */; };
 		25E1793B1A9D1A52001CE95B /* Months.properties in Resources */ = {isa = PBXBuildFile; fileRef = 25E179371A9D1A52001CE95B /* Months.properties */; };
@@ -2225,8 +2224,6 @@
 		259D452E1A99440400BC2B4D /* AACountriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACountriesViewController.m; sourceTree = "<group>"; };
 		25C9C3821A9D4A900061780E /* CocoaLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLocale.h; sourceTree = "<group>"; };
 		25C9C3831A9D4A900061780E /* CocoaLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaLocale.m; sourceTree = "<group>"; };
-		25C9C3971A9E15BF0061780E /* RCBlurredImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCBlurredImageView.h; path = RCBlurredImageView/RCBlurredImageView/RCBlurredImageView.h; sourceTree = SOURCE_ROOT; };
-		25C9C3981A9E15BF0061780E /* RCBlurredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCBlurredImageView.m; path = RCBlurredImageView/RCBlurredImageView/RCBlurredImageView.m; sourceTree = SOURCE_ROOT; };
 		25E179351A9D1A52001CE95B /* AppText.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppText.properties; sourceTree = "<group>"; };
 		25E179361A9D1A52001CE95B /* AppText_Ru.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppText_Ru.properties; sourceTree = "<group>"; };
 		25E179371A9D1A52001CE95B /* Months.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Months.properties; sourceTree = "<group>"; };
@@ -4329,7 +4326,6 @@
 			children = (
 				065A51C51ABA0BA200B48088 /* ActorClient.entitlements */,
 				06E4842C1AB78D7E00AA272F /* Tools */,
-				25C9C3961A9E15AD0061780E /* RCBlurredImageView */,
 				2563889E1A99C09D00A5E0E3 /* Model */,
 				25C9C3921A9E11430061780E /* ComponentsUI */,
 				2537F8591A972AF6004A02E9 /* AuthUI */,
@@ -4509,15 +4505,6 @@
 				065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */,
 			);
 			name = ComponentsUI;
-			sourceTree = "<group>";
-		};
-		25C9C3961A9E15AD0061780E /* RCBlurredImageView */ = {
-			isa = PBXGroup;
-			children = (
-				25C9C3971A9E15BF0061780E /* RCBlurredImageView.h */,
-				25C9C3981A9E15BF0061780E /* RCBlurredImageView.m */,
-			);
-			name = RCBlurredImageView;
 			sourceTree = "<group>";
 		};
 		25E179341A9D1A52001CE95B /* resources */ = {
@@ -5032,7 +5019,6 @@
 				0655C5861AB86A5E000F3DA3 /* StorageProvider.m in Sources */,
 				0655C4D21AB86A5E000F3DA3 /* ServiceGroupUserAdded.m in Sources */,
 				0655C4691AB86A5D000F3DA3 /* PKS8RsaPrivateKey.m in Sources */,
-				25C9C3991A9E15BF0061780E /* RCBlurredImageView.m in Sources */,
 				0655C5841AB86A5E000F3DA3 /* PhoneBookProvider.m in Sources */,
 				0655C4BE1AB86A5E000F3DA3 /* ListEngineRecord.m in Sources */,
 				0655C53D1AB86A5E000F3DA3 /* UpdateProcessor.m in Sources */,
