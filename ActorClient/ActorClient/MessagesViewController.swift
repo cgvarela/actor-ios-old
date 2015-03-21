@@ -225,12 +225,13 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         picker.dismissViewControllerAnimated(true, completion: nil)
         
         var thumb = image.resize(90, h: 90);
-        var thumbData = UIImageJPEGRepresentation(thumb, 65);
+        var thumbData = UIImageJPEGRepresentation(thumb, 55);
+        NSLog("Thumb size \(thumbData.length)");
         
         var descriptor = "/tmp/"+NSUUID().UUIDString
         var path = CocoaFiles.pathFromDescriptor(descriptor);
         
-        UIImageJPEGRepresentation(thumb, 70).writeToFile(path, atomically: true)
+        UIImageJPEGRepresentation(image, 70).writeToFile(path, atomically: true)
         
         MSG.sendPhotoWithAMPeer(peer, withNSString: "image.jpg", withInt: jint(image.size.width), withInt: jint(image.size.height), withAMFastThumb: AMFastThumb(int: 90, withInt: 90, withByteArray: thumbData.toJavaBytes()), withAMFileSystemReference: CocoaFile(path: descriptor))
     }
@@ -241,12 +242,14 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         var image = info[UIImagePickerControllerOriginalImage] as! UIImage;
         
         var thumb = image.resize(90, h: 90);
-        var thumbData = UIImageJPEGRepresentation(thumb, 65);
+        var thumbData = UIImageJPEGRepresentation(thumb, 55);
+        
+        NSLog("Thumb size \(thumbData.length), \(thumb.size.width)x\(thumb.size.height)");
         
         var descriptor = "/tmp/"+NSUUID().UUIDString
         var path = CocoaFiles.pathFromDescriptor(descriptor);
         
-        UIImageJPEGRepresentation(thumb, 70).writeToFile(path, atomically: true)
+        UIImageJPEGRepresentation(image, 70).writeToFile(path, atomically: true)
         
         MSG.sendPhotoWithAMPeer(peer, withNSString: "image.jpg", withInt: jint(image.size.width), withInt: jint(image.size.height), withAMFastThumb: AMFastThumb(int: 90, withInt: 90, withByteArray: thumbData.toJavaBytes()), withAMFileSystemReference: CocoaFile(path: descriptor))
 

@@ -23,7 +23,7 @@ get{
         // Providers
         
         builder.setLogProvider(CocoaLogProvider())
-        builder.setNetworkProvider(CocoaNetworking())
+        builder.setNetworkProvider(SwiftCocoaNetworkProvider())
         builder.setThreadingProvider(AMCocoaThreadingProvider())
         builder.setStorageProvider(CocoaStorage(dbPath: dbPath))
         builder.setMainThreadProvider(CocoaMainThreadProvider())
@@ -32,6 +32,7 @@ get{
         builder.setCryptoProvider(BCBouncyCastleProvider())
         builder.setFileSystemProvider(CocoaFileSystem())
         builder.setNotificationProvider(iOSNotificationProvider())
+        builder.setEnableNetworkLogging(true)
         
         // Connection
         builder.addEndpoint("tls://mtproto-api.actor.im:443");

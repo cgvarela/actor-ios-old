@@ -33,10 +33,15 @@
 #import "im/actor/model/LogProvider.h"
 #import "im/actor/model/MainThreadProvider.h"
 #import "im/actor/model/NotificationProvider.h"
+#import "im/actor/model/NetworkProvider.h"
 
 #import "im/actor/model/storage/BaseStorageProvider.h"
 #import "im/actor/model/crypto/bouncycastle/BouncyCastleProvider.h"
 #import "im/actor/model/cocoa/CocoaThreadingProvider.h"
+#import "im/actor/model/network/Connection.h"
+#import "im/actor/model/network/CreateConnectionCallback.h"
+#import "im/actor/model/network/ConnectionEndpoint.h"
+#import "im/actor/model/network/ConnectionCallback.h"
 
 // DroidKit Engine
 

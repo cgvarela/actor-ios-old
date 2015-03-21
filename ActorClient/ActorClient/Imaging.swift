@@ -69,8 +69,8 @@ extension UIImage {
     }
     
     func resize(w: CGFloat, h: CGFloat) -> UIImage {
-        var nSize = CGSize(width: w, height: h)
-        UIGraphicsBeginImageContextWithOptions(nSize,false,UIScreen.mainScreen().scale);
+        var nSize = CGSize(width: w / UIScreen.mainScreen().scale, height: h / UIScreen.mainScreen().scale)
+        UIGraphicsBeginImageContextWithOptions(nSize, false, 1);
         var context = UIGraphicsGetCurrentContext();
         
         self.drawInRect(CGRect(origin: CGPointZero, size: nSize));

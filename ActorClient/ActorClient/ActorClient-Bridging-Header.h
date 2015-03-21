@@ -5,7 +5,6 @@
 #import "ActorModel.h"
 #import <FMDB/FMDB.h>
 #import "CocoaLocale.h"
-#import "CocoaNetworking.h"
 #import "CocoaPhoneBookProvider.h"
 #import "SThreadPoolTask.h"
 #import "SThreadPool.h"
@@ -16,5 +15,6 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
+#import <CocoaAsyncSocket/GCDAsyncSocket.h>
 
 #import "SLKTextViewController.h"
