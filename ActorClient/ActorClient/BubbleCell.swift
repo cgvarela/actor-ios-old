@@ -22,7 +22,7 @@ class BubbleCell: UITableViewCell {
         } else if (content is AMServiceContent){
             return BubbleServiceCell.measureServiceHeight(message);
         } else {
-            fatalError("Unsupported content")
+            return BubbleUnsupportedCell.measureUnsupportedHeight(message)
         }
     }
     

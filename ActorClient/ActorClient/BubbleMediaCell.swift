@@ -49,8 +49,8 @@ class BubbleMediaCell : BubbleCell {
     
     var generation = 0;
     
-    init() {
-        super.init(reuseId: "bubble_media")
+    override init(reuseId: String) {
+        super.init(reuseId: reuseId)
         
         bubble.image = UIImage(named: "conv_media_bg")
         

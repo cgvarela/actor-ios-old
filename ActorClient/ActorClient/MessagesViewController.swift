@@ -83,6 +83,7 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         var bg = UIImageView(image: UIImage(named: "ChatBackground"));
         view.insertSubview(bg, atIndex: 0);
         
+        // Installing bindings
         if (UInt(peer.getPeerType().ordinal()) == AMPeerType.PRIVATE.rawValue) {
             let user = MSG.getUsers().getWithLong(jlong(peer.getPeerId())) as! AMUserVM;
             var nameModel = user.getName() as AMValueModel;
@@ -221,43 +222,25 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         }
     }
     
+    // Image picker
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         picker.dismissViewControllerAnimated(true, completion: nil)
         
-        var thumb = image.resize(90, h: 90);
-        var thumbData = UIImageJPEGRepresentation(thumb, 55);
-        NSLog("Thumb size \(thumbData.length)");
-        
-        var descriptor = "/tmp/"+NSUUID().UUIDString
-        var path = CocoaFiles.pathFromDescriptor(descriptor);
-        
-        UIImageJPEGRepresentation(image, 70).writeToFile(path, atomically: true)
-        
-        MSG.sendPhotoWithAMPeer(peer, withNSString: "image.jpg", withInt: jint(image.size.width), withInt: jint(image.size.height), withAMFastThumb: AMFastThumb(int: 90, withInt: 90, withByteArray: thumbData.toJavaBytes()), withAMFileSystemReference: CocoaFile(path: descriptor))
+        MSG.sendUIImage(image, peer: peer!)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         picker.dismissViewControllerAnimated(true, completion: nil)
         
-        var image = info[UIImagePickerControllerOriginalImage] as! UIImage;
-        
-        var thumb = image.resize(90, h: 90);
-        var thumbData = UIImageJPEGRepresentation(thumb, 55);
-        
-        NSLog("Thumb size \(thumbData.length), \(thumb.size.width)x\(thumb.size.height)");
-        
-        var descriptor = "/tmp/"+NSUUID().UUIDString
-        var path = CocoaFiles.pathFromDescriptor(descriptor);
-        
-        UIImageJPEGRepresentation(image, 70).writeToFile(path, atomically: true)
-        
-        MSG.sendPhotoWithAMPeer(peer, withNSString: "image.jpg", withInt: jint(image.size.width), withInt: jint(image.size.height), withAMFastThumb: AMFastThumb(int: 90, withInt: 90, withByteArray: thumbData.toJavaBytes()), withAMFileSystemReference: CocoaFile(path: descriptor))
-
+        MSG.sendUIImage(info[UIImagePickerControllerOriginalImage] as! UIImage, peer: peer!)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    // Document picker
     
     func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
         var path = url.path;
@@ -276,24 +259,28 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         if (message.getContent() is AMTextContent){
             var cell = tableView.dequeueReusableCellWithIdentifier("bubble_text") as! BubbleTextCell?
             if (cell == nil) {
-                cell = BubbleTextCell()
+                cell = BubbleTextCell(reuseId: "bubble_text")
             }
             return cell!
         } else if (message.getContent() is AMPhotoContent || message.getContent() is AMVideoContent) {
             var cell = tableView.dequeueReusableCellWithIdentifier("bubble_media") as! BubbleMediaCell?
             if (cell == nil) {
-                cell = BubbleMediaCell()
+                cell = BubbleMediaCell(reuseId: "bubble_media")
             }
             return cell!
             
         } else if (message.getContent() is AMServiceContent){
             var cell = tableView.dequeueReusableCellWithIdentifier("bubble_service") as! BubbleServiceCell?
             if (cell == nil) {
-                cell = BubbleServiceCell()
+                cell = BubbleServiceCell(reuseId: "bubble_service")
             }
             return cell!
         } else {
-            fatalError("Unsupported content")
+            var cell = tableView.dequeueReusableCellWithIdentifier("bubble_unsupported") as! BubbleUnsupportedCell?
+            if (cell == nil) {
+                cell = BubbleUnsupportedCell(reuseId: "bubble_unsupported")
+            }
+            return cell!
         }
     }
     

@@ -187,7 +187,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pwu-LS-EJc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ws3-Kt-j5p" customClass="AAHiddenNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ws3-Kt-j5p">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

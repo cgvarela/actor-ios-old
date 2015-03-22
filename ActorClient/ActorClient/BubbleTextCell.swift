@@ -63,8 +63,8 @@ class BubbleTextCell : BubbleCell {
     var messageState: UInt = AMMessageState.UNKNOWN.rawValue;
     var needRelayout = true
     
-    init() {
-        super.init(reuseId: "bubble_text");
+    override init(reuseId: String) {
+        super.init(reuseId: reuseId)
         
         messageText.font = bubbleFont;
         messageText.lineBreakMode = .ByWordWrapping;

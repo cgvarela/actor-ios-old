@@ -32,10 +32,8 @@ class BubbleServiceCell : BubbleCell {
     var serviceText = UILabel()
     var serviceBg = UIImageView()
     
-    init() {
-        super.init(reuseId: "bubble_service")
-        
-        
+    override init(reuseId: String) {
+        super.init(reuseId: reuseId)
         
         serviceText.lineBreakMode = .ByWordWrapping;
         serviceText.numberOfLines = 0;

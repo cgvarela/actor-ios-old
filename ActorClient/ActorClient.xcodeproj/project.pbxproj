@@ -696,6 +696,7 @@
 		0672A2341ABE512000E6E42E /* Pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 06729F8C1ABE512000E6E42E /* Pack.m */; };
 		0672A2351ABE512000E6E42E /* Shorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 06729F8E1ABE512000E6E42E /* Shorts.m */; };
 		0672A2361ABE512000E6E42E /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = 06729F901ABE512000E6E42E /* Strings.m */; };
+		0672A2381ABE56E900E6E42E /* BubbleUnsupportedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0672A2371ABE56E900E6E42E /* BubbleUnsupportedCell.swift */; };
 		06A907D11AB7AE8200E087EA /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 06A907D01AB7AE8200E087EA /* notification.aiff */; };
 		06ABC77B1AAF39B500C1B932 /* EngineListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77A1AAF39B500C1B932 /* EngineListController.swift */; };
 		06ABC77E1AAF458B00C1B932 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77C1AAF458B00C1B932 /* ContactsViewController.swift */; };
@@ -2143,6 +2144,7 @@
 		06729F8E1ABE512000E6E42E /* Shorts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shorts.m; sourceTree = "<group>"; };
 		06729F8F1ABE512000E6E42E /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
 		06729F901ABE512000E6E42E /* Strings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Strings.m; sourceTree = "<group>"; };
+		0672A2371ABE56E900E6E42E /* BubbleUnsupportedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleUnsupportedCell.swift; sourceTree = "<group>"; };
 		06A907D01AB7AE8200E087EA /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
 		06A92FA01AB24B2A0065B2FC /* ActorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorModel.h; sourceTree = "<group>"; };
 		06ABC77A1AAF39B500C1B932 /* EngineListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineListController.swift; sourceTree = "<group>"; };
@@ -4292,6 +4294,7 @@
 				067144511AB0947000364820 /* BubbleTextCell.swift */,
 				06BC45141AB87ECB0003F59E /* BubbleMediaCell.swift */,
 				065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */,
+				0672A2371ABE56E900E6E42E /* BubbleUnsupportedCell.swift */,
 			);
 			name = MessagesUI;
 			sourceTree = "<group>";
@@ -5270,6 +5273,7 @@
 				0672A1E31ABE512000E6E42E /* SecP256R1Point.m in Sources */,
 				0672A0E81ABE512000E6E42E /* ReadState.m in Sources */,
 				0672A1241ABE512000E6E42E /* OwnPresenceActor.m in Sources */,
+				0672A2381ABE56E900E6E42E /* BubbleUnsupportedCell.swift in Sources */,
 				0672A12A1ABE512000E6E42E /* OwnTypingActor.m in Sources */,
 				0672A0631ABE512000E6E42E /* BcAesCipher.m in Sources */,
 				0672A0081ABE512000E6E42E /* ResponseGetPublicKeys.m in Sources */,

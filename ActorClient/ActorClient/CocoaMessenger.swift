@@ -56,4 +56,20 @@ get{
 
 @objc class CocoaMessenger : AMMessenger {
     class func messenger() -> CocoaMessenger { return MSG }
+    
+    func sendUIImage(image: UIImage, peer: AMPeer) {
+        var thumb = image.resize(90, h: 90);
+        var resized = image.resize(800, h: 800);
+        
+        var thumbData = UIImageJPEGRepresentation(thumb, 0.55);
+        
+        NSLog("Thumb size \(thumbData.length), \(thumb.size.width)x\(thumb.size.height)");
+        
+        var descriptor = "/tmp/"+NSUUID().UUIDString
+        var path = CocoaFiles.pathFromDescriptor(descriptor);
+        
+        UIImageJPEGRepresentation(resized, 0.80).writeToFile(path, atomically: true)
+        
+        MSG.sendPhotoWithAMPeer(peer, withNSString: "image.jpg", withInt: jint(resized.size.width), withInt: jint(resized.size.height), withAMFastThumb: AMFastThumb(int: jint(thumb.size.width), withInt: jint(thumb.size.height), withByteArray: thumbData.toJavaBytes()), withAMFileSystemReference: CocoaFile(path: descriptor))
+    }
 }
