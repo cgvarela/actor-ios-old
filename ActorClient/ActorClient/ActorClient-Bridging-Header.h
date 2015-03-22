@@ -6,6 +6,7 @@
 #import <FMDB/FMDB.h>
 #import "CocoaLocale.h"
 #import "CocoaPhoneBookProvider.h"
+#import "CocoaTcpConnection.h"
 #import "SThreadPoolTask.h"
 #import "SThreadPool.h"
 #import "SThreadPoolQueue.h"

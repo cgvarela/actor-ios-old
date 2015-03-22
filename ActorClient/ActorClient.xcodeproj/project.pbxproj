@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06047D061ABF85FD002091CC /* AASerializationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 06047D051ABF85FD002091CC /* AASerializationHelpers.m */; };
+		06047D081ABF8611002091CC /* CocoaTcpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 06047D071ABF8611002091CC /* CocoaTcpConnection.m */; };
 		06147B941AAE76E900931753 /* CocoaMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06147B931AAE76E900931753 /* CocoaMessenger.swift */; };
 		063458D31AB3646000985A36 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063458D21AB3646000985A36 /* AvatarView.swift */; };
 		063BCF311AB7AC0F00D469AB /* iOSNotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BCF301AB7AC0F00D469AB /* iOSNotificationProvider.swift */; };
@@ -779,6 +781,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06047D041ABF85E9002091CC /* AASerializationHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AASerializationHelpers.h; sourceTree = "<group>"; };
+		06047D051ABF85FD002091CC /* AASerializationHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASerializationHelpers.m; sourceTree = "<group>"; };
+		06047D071ABF8611002091CC /* CocoaTcpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaTcpConnection.m; sourceTree = "<group>"; };
+		06047D091ABF8621002091CC /* CocoaTcpConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaTcpConnection.h; sourceTree = "<group>"; };
 		06147B931AAE76E900931753 /* CocoaMessenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMessenger.swift; sourceTree = "<group>"; };
 		063458D21AB3646000985A36 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		063BCF301AB7AC0F00D469AB /* iOSNotificationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSNotificationProvider.swift; sourceTree = "<group>"; };
@@ -2259,6 +2265,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06047D031ABF85CD002091CC /* network */ = {
+			isa = PBXGroup;
+			children = (
+				06047D041ABF85E9002091CC /* AASerializationHelpers.h */,
+				06047D051ABF85FD002091CC /* AASerializationHelpers.m */,
+				06047D071ABF8611002091CC /* CocoaTcpConnection.m */,
+				06047D091ABF8621002091CC /* CocoaTcpConnection.h */,
+			);
+			name = network;
+			sourceTree = "<group>";
+		};
 		067299F21ABE511D00E6E42E /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -4418,6 +4435,7 @@
 		2563889E1A99C09D00A5E0E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				06047D031ABF85CD002091CC /* network */,
 				06A92FA01AB24B2A0065B2FC /* ActorModel.h */,
 				067299F21ABE511D00E6E42E /* src */,
 				25E179341A9D1A52001CE95B /* resources */,
@@ -4801,6 +4819,7 @@
 				0672A21D1ABE512000E6E42E /* Nat384.m in Sources */,
 				0672A2111ABE512000E6E42E /* FiniteFields.m in Sources */,
 				0672A05C1ABE512000E6E42E /* ASN1BitString.m in Sources */,
+				06047D061ABF85FD002091CC /* AASerializationHelpers.m in Sources */,
 				0672A0171ABE512000E6E42E /* ServiceExUnsupported.m in Sources */,
 				0672A1831ABE512000E6E42E /* BaseStorageProvider.m in Sources */,
 				0672A0241ABE512000E6E42E /* UpdateContactRegistered.m in Sources */,
@@ -5404,6 +5423,7 @@
 				0672A1A01ABE512000E6E42E /* CryptoException.m in Sources */,
 				06729FD11ABE512000E6E42E /* RequestEditAvatar.m in Sources */,
 				0672A06A1ABE512000E6E42E /* X509RsaPublicKey.m in Sources */,
+				06047D081ABF8611002091CC /* CocoaTcpConnection.m in Sources */,
 				06E281DE1AAEDDB00070EE18 /* DialogsViewController.swift in Sources */,
 				0672A1CE1ABE512000E6E42E /* SecP192K1FieldElement.m in Sources */,
 				0672A0571ABE512000E6E42E /* CommandCallback.m in Sources */,
