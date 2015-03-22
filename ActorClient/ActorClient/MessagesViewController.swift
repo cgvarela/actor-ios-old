@@ -224,6 +224,10 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
     
     // Image picker
     
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+    }
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         picker.dismissViewControllerAnimated(true, completion: nil)
         
