@@ -35,7 +35,7 @@ get{
         builder.setEnableNetworkLogging(true)
         
         // Connection
-        builder.addEndpoint("tls://mtproto-api.actor.im:443");
+        builder.addEndpoint("tcp://mtproto-api.actor.im:8080");
         
         var value: UInt8 = 0xFF
         var convHash = IOSByteArray.newArrayWithLength(32)
