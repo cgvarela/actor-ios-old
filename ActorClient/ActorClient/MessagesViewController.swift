@@ -298,7 +298,7 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
     }
     
     override func bindCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, item: AnyObject?, cell: UITableViewCell) {
-        (cell as! BubbleCell).bind((item as! AMMessage));
+        (cell as! BubbleCell).performBind(item as! AMMessage);
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -134,8 +134,7 @@ class AvatarView : UIImageView {
                 
             });
         });
-        
-        MSG.bindRawFileWithAMFileReference(fileLocation, withBoolean: true, withImActorModelModulesFileDownloadCallback: self.callback)
+        MSG.bindRawFileWith(fileLocation, withAutoStart: true, withCallback: self.callback)
     }
     
     func unbind() {
@@ -144,7 +143,7 @@ class AvatarView : UIImageView {
         self.bindedTitle = nil
         
         if (bindedFileId != nil) {
-            MSG.unbindRawFileWithLong(bindedFileId!, withBoolean: false, withImActorModelModulesFileDownloadCallback: callback)
+            MSG.unbindRawFile(bindedFileId!, withAutoCancel: false, withCallback: callback)
             bindedFileId = nil
             callback = nil
             requestId++;

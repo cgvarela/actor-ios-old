@@ -56,7 +56,7 @@ class BubbleServiceCell : BubbleCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func bind(message: AMMessage) {
+    override func bind(message: AMMessage, reuse: Bool) {
         serviceText.text = MSG.getFormatter().formatFullServiceMessageWithInt(message.getSenderId(), withAMServiceContent: message.getContent() as! AMServiceContent)
     }
     

@@ -27,6 +27,7 @@ class BubbleCell: UITableViewCell {
     }
     
     let bubblePadding:CGFloat = 6;
+    var bindedMessage: AMMessage? = nil
     
     init(reuseId: String){
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseId);
@@ -36,7 +37,16 @@ class BubbleCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(message: AMMessage){
+    func performBind(message: AMMessage) {
+        var reuse = false
+        if (bindedMessage != nil && bindedMessage?.getRid() == message.getRid()) {
+            reuse = true
+        }
+        bindedMessage = message
+        bind(message, reuse: reuse)
+    }
+    
+    func bind(message: AMMessage, reuse: Bool){
         fatalError("bind(message:) has not been implemented")
     }
     

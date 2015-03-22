@@ -78,13 +78,13 @@ class CocoaFiles {
     }
 }
 
-class CocoaDownloadCallback : NSObject, ImActorModelModulesFileDownloadCallback {
+class CocoaDownloadCallback : NSObject, AMDownloadCallback {
     
     let notDownloaded: (()->())?
-    let onDownloading: ((progress: Float) -> ())?
+    let onDownloading: ((progress: Double) -> ())?
     let onDownloaded: ((fileName: String) -> ())?
     
-    init(notDownloaded: (()->())?, onDownloading: ((progress: Float) -> ())?, onDownloaded: ((reference: String) -> ())?) {
+    init(notDownloaded: (()->())?, onDownloading: ((progress: Double) -> ())?, onDownloaded: ((reference: String) -> ())?) {
         self.notDownloaded = notDownloaded;
         self.onDownloading = onDownloading;
         self.onDownloaded = onDownloaded;
@@ -101,11 +101,36 @@ class CocoaDownloadCallback : NSObject, ImActorModelModulesFileDownloadCallback 
     }
     
     func onDownloadingWithFloat(progress: jfloat) {
-        self.onDownloading?(progress: Float(progress));
+        self.onDownloading?(progress: Double(progress));
     }
     
     func onDownloadedWithAMFileSystemReference(reference: AMFileSystemReference!) {
         self.onDownloaded?(fileName: reference!.getDescriptor());
+    }
+}
+
+class CocoaUploadCallback : NSObject, AMUploadCallback {
+    
+    let notUploaded: (()->())?
+    let onUploading: ((progress: Double) -> ())?
+    let onUploadedClosure: (() -> ())?
+
+    init(notUploaded: (()->())?, onUploading: ((progress: Double) -> ())?, onUploadedClosure: (() -> ())?) {
+        self.onUploading = onUploading
+        self.notUploaded = notUploaded
+        self.onUploadedClosure = onUploadedClosure;
+    }
+    
+    func onNotUploading() {
+        notUploaded?();
+    }
+    
+    func onUploaded() {
+        onUploadedClosure?()
+    }
+    
+    func onUploadingWithFloat(progress: jfloat) {
+        onUploading?(progress: Double(progress))
     }
 }
 

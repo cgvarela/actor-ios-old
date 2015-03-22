@@ -79,8 +79,6 @@
 #import "im/actor/model/files/InputFile.h"
 #import "im/actor/model/files/OutputFile.h"
 
-#import "im/actor/model/modules/file/DownloadCallback.h"
-
 // Entities
 
 #import "im/actor/model/entity/Avatar.h"
@@ -117,6 +115,10 @@
 #import "im/actor/model/viewmodel/GroupTypingVM.h"
 #import "im/actor/model/viewmodel/UserPhone.h"
 #import "im/actor/model/viewmodel/UserPresence.h"
+#import "im/actor/model/viewmodel/UploadFileVMCallback.h"
+#import "im/actor/model/viewmodel/UploadFileVM.h"
+#import "im/actor/model/viewmodel/DownloadCallback.h"
+#import "im/actor/model/viewmodel/UploadCallback.h"
 
 // Misc
 

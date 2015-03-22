@@ -44,6 +44,7 @@ class BubbleTextCell : BubbleCell {
     let textPaddingEnd:CGFloat = 8.0;
     let datePaddingOut:CGFloat = 66.0;
     let datePaddingIn:CGFloat = 20.0;
+    
 //    let dateColorOut = UIColor(red: 45/255.0, green: 163/255.0, blue: 47/255.0, alpha: 1.0);
     let dateColorOut = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.27);
     
@@ -52,7 +53,6 @@ class BubbleTextCell : BubbleCell {
     
     let statusActive = UIColor(red: 52/255.0, green: 151/255.0, blue: 249/255.0, alpha: 1.0);
     
-    // 9aad8a
     let statusPassive = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.27);
     
     let bubble = UIImageView();
@@ -61,6 +61,7 @@ class BubbleTextCell : BubbleCell {
     let statusView = UIImageView();
     var isOut:Bool = false;
     var messageState: UInt = AMMessageState.UNKNOWN.rawValue;
+    var needRelayout = true
     
     init() {
         super.init(reuseId: "bubble_text");
@@ -90,15 +91,20 @@ class BubbleTextCell : BubbleCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func bind(message: AMMessage) {
-        messageText.text = (message.getContent() as! AMTextContent).getText();
-        dateText.text = formatDate(message.getDate());
-        isOut = message.getSenderId() == MSG.myUid();
-        if (isOut) {
-            bubble.image =  UIImage(named: "BubbleOutgoingFull");
-        } else {
-            bubble.image =  UIImage(named: "BubbleIncomingFull");
+    override func bind(message: AMMessage, reuse: Bool) {
+        if (!reuse) {
+            needRelayout = true
+            messageText.text = (message.getContent() as! AMTextContent).getText();
+            isOut = message.getSenderId() == MSG.myUid();
+            if (isOut) {
+                bubble.image =  UIImage(named: "BubbleOutgoingFull");
+            } else {
+                bubble.image =  UIImage(named: "BubbleIncomingFull");
+            }
         }
+        
+        // Always update date and state
+        dateText.text = formatDate(message.getDate());
         messageState = UInt(message.getMessageState().ordinal());
     }
     
