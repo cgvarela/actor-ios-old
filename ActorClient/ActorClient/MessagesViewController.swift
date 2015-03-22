@@ -42,6 +42,8 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         
         self.leftButton.setImage(UIImage(named: "conv_attach"), forState: UIControlState.Normal)
         
+        // Title
+        
         navigationView.frame = CGRectMake(0, 0, 190, 44);
         navigationView.autoresizingMask = UIViewAutoresizing.FlexibleWidth;
         
@@ -66,9 +68,15 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         
         self.navigationItem.titleView = navigationView;
         
+        // Avatar
+        
         avatarView.frame = CGRectMake(0, 0, 36, 36)
+        var tapGesture = UITapGestureRecognizer(target: self, action: "onAvatarTap");
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        avatarView.addGestureRecognizer(tapGesture)
+        
         var barItem = UIBarButtonItem(customView: avatarView)
-        // barItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, -40)
         self.navigationItem.rightBarButtonItem = barItem
     }
 
@@ -150,6 +158,12 @@ class MessagesViewController: EngineSlackListController, UIDocumentPickerDelegat
         }
         
         MSG.onConversationOpen(peer)
+    }
+    
+    func onAvatarTap() {
+        if (UInt(peer.getPeerType().ordinal()) == AMPeerType.PRIVATE.rawValue) {
+            self.navigationController?.pushViewController(ProfileController(uid: Int(peer.getPeerId())), animated: true)
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {

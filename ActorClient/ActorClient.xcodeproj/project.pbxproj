@@ -712,6 +712,10 @@
 		06B356F61AB8C7BB00405472 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B356F51AB8C7BB00405472 /* ContactCell.swift */; };
 		06B356F91AB8CF5700405472 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B356F71AB8CF5700405472 /* MenuItemCell.swift */; };
 		06B356FA1AB8CF5700405472 /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B356F81AB8CF5700405472 /* MenuItemCell.xib */; };
+		06B99A101ABE845A0066CA08 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B99A0E1ABE845A0066CA08 /* ProfileController.swift */; };
+		06B99A111ABE845A0066CA08 /* ProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B99A0F1ABE845A0066CA08 /* ProfileController.xib */; };
+		06B99A131ABF45DA0066CA08 /* UIButtonTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B99A121ABF45DA0066CA08 /* UIButtonTable.swift */; };
+		06B99A151ABF4EB60066CA08 /* CocoaExecution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B99A141ABF4EB60066CA08 /* CocoaExecution.swift */; };
 		06BC45151AB87ECB0003F59E /* BubbleMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC45141AB87ECB0003F59E /* BubbleMediaCell.swift */; };
 		06BC45171AB889110003F59E /* CircullarProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC45161AB889110003F59E /* CircullarProgress.swift */; };
 		06BFDB511AB1AD3800F16E43 /* DialogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFDB501AB1AD3800F16E43 /* DialogCell.swift */; };
@@ -2161,6 +2165,10 @@
 		06B356F51AB8C7BB00405472 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		06B356F71AB8CF5700405472 /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		06B356F81AB8CF5700405472 /* MenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItemCell.xib; sourceTree = "<group>"; };
+		06B99A0E1ABE845A0066CA08 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		06B99A0F1ABE845A0066CA08 /* ProfileController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileController.xib; sourceTree = "<group>"; };
+		06B99A121ABF45DA0066CA08 /* UIButtonTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonTable.swift; sourceTree = "<group>"; };
+		06B99A141ABF4EB60066CA08 /* CocoaExecution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaExecution.swift; sourceTree = "<group>"; };
 		06BC45141AB87ECB0003F59E /* BubbleMediaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleMediaCell.swift; sourceTree = "<group>"; };
 		06BC45161AB889110003F59E /* CircullarProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircullarProgress.swift; sourceTree = "<group>"; };
 		06BFDB501AB1AD3800F16E43 /* DialogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogCell.swift; sourceTree = "<group>"; };
@@ -4271,6 +4279,15 @@
 			path = io;
 			sourceTree = "<group>";
 		};
+		06B99A0D1ABE84160066CA08 /* ProfileUI */ = {
+			isa = PBXGroup;
+			children = (
+				06B99A0E1ABE845A0066CA08 /* ProfileController.swift */,
+				06B99A0F1ABE845A0066CA08 /* ProfileController.xib */,
+			);
+			name = ProfileUI;
+			sourceTree = "<group>";
+		};
 		06E4842C1AB78D7E00AA272F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -4322,18 +4339,19 @@
 		2537F82F1A966B9D004A02E9 /* ActorClient */ = {
 			isa = PBXGroup;
 			children = (
-				065A51C51ABA0BA200B48088 /* ActorClient.entitlements */,
-				06E4842C1AB78D7E00AA272F /* Tools */,
 				2563889E1A99C09D00A5E0E3 /* Model */,
 				25C9C3921A9E11430061780E /* ComponentsUI */,
 				2537F8591A972AF6004A02E9 /* AuthUI */,
 				25C9C3891A9E05400061780E /* MainUI */,
 				250BDF581AA10EF000DA014D /* MessagesUI */,
-				2537F8401A966B9D004A02E9 /* Images.xcassets */,
-				2537F8421A966B9D004A02E9 /* LaunchScreen.xib */,
+				06B99A0D1ABE84160066CA08 /* ProfileUI */,
 				2537F8301A966B9D004A02E9 /* Supporting Files */,
+				06E4842C1AB78D7E00AA272F /* Tools */,
 				06ABC7801AAF4E5A00C1B932 /* AppDelegate.swift */,
 				06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */,
+				2537F8401A966B9D004A02E9 /* Images.xcassets */,
+				2537F8421A966B9D004A02E9 /* LaunchScreen.xib */,
+				065A51C51ABA0BA200B48088 /* ActorClient.entitlements */,
 			);
 			path = ActorClient;
 			sourceTree = "<group>";
@@ -4414,6 +4432,7 @@
 				06D8D8C11AB4390600A80E40 /* Conversions.swift */,
 				063BCF301AB7AC0F00D469AB /* iOSNotificationProvider.swift */,
 				0671592D1ABC830E00D95719 /* CocoaNetworking.swift */,
+				06B99A141ABF4EB60066CA08 /* CocoaExecution.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -4481,6 +4500,7 @@
 				06BC45161AB889110003F59E /* CircullarProgress.swift */,
 				065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */,
 				0671592B1ABBC49D00D95719 /* CircullarNode.swift */,
+				06B99A121ABF45DA0066CA08 /* UIButtonTable.swift */,
 			);
 			name = ComponentsUI;
 			sourceTree = "<group>";
@@ -4622,6 +4642,7 @@
 				25E1793B1A9D1A52001CE95B /* Months.properties in Resources */,
 				06B356F41AB8C50500405472 /* ContactRecordCell.xib in Resources */,
 				2537F8441A966B9D004A02E9 /* LaunchScreen.xib in Resources */,
+				06B99A111ABE845A0066CA08 /* ProfileController.xib in Resources */,
 				2537F8411A966B9D004A02E9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5014,6 +5035,7 @@
 				0672A0AF1ABE512000E6E42E /* SparseArray.m in Sources */,
 				0672A13B1ABE512000E6E42E /* UpdateProcessor.m in Sources */,
 				0672A21C1ABE512000E6E42E /* Nat256.m in Sources */,
+				06B99A101ABE845A0066CA08 /* ProfileController.swift in Sources */,
 				0672A11C1ABE512000E6E42E /* PlainReceiverActor.m in Sources */,
 				0672A1F51ABE512000E6E42E /* GLVEndomorphism.m in Sources */,
 				0672A0C91ABE512000E6E42E /* FastThumb.m in Sources */,
@@ -5174,6 +5196,7 @@
 				0672A1311ABE512000E6E42E /* ExecuteAfter.m in Sources */,
 				0672A10A1ABE512000E6E42E /* Groups.m in Sources */,
 				06ABC7831AAF57A000C1B932 /* MainTabController.swift in Sources */,
+				06B99A151ABF4EB60066CA08 /* CocoaExecution.swift in Sources */,
 				0672A0601ABE512000E6E42E /* ASN1OctetString.m in Sources */,
 				0672A0701ABE512000E6E42E /* ActorCreator.m in Sources */,
 				0672A0531ABE512000E6E42E /* ApiConfiguration.m in Sources */,
@@ -5332,6 +5355,7 @@
 				0672A1A71ABE512000E6E42E /* MD5Digest.m in Sources */,
 				0672A1EE1ABE512000E6E42E /* ECConstants.m in Sources */,
 				0672A1401ABE512000E6E42E /* ModuleActor.m in Sources */,
+				06B99A131ABF45DA0066CA08 /* UIButtonTable.swift in Sources */,
 				0672A1EB1ABE512000E6E42E /* SecP521R1Point.m in Sources */,
 				06FA65611AB1982800BE0A41 /* DiscoverViewController.swift in Sources */,
 				0672A0D51ABE512000E6E42E /* ServiceUserRegistered.m in Sources */,
