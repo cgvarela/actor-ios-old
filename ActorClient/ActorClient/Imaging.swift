@@ -53,7 +53,7 @@ extension UIImage {
     
     func roundCorners(w: CGFloat, h: CGFloat, roundSize: CGFloat) -> UIImage {
         var nSize = CGSize(width: w, height: h)
-        UIGraphicsBeginImageContextWithOptions(nSize,false,UIScreen.mainScreen().scale);
+        UIGraphicsBeginImageContextWithOptions(nSize, false, UIScreen.mainScreen().scale);
         var context = UIGraphicsGetCurrentContext();
         
         // Background
@@ -68,9 +68,24 @@ extension UIImage {
         return image;
     }
     
+    func resizeSquare(maxW: CGFloat, maxH: CGFloat) -> UIImage {
+        var realW = self.size.width / self.scale;
+        var realH = self.size.height / self.scale;
+        var factor = min(maxW/realW, maxH/realH)
+        return resize(factor * realW, h: factor * realH)
+    }
+    
+    func resizeOptimize(maxPixels: Int) -> UIImage {
+        var realW = self.size.width / self.scale;
+        var realH = self.size.height / self.scale;
+        var factor =  min(1.0,   CGFloat(maxPixels) / (realW * realH));
+        return resize(factor * realW, h: factor * realH)
+    }
+    
     func resize(w: CGFloat, h: CGFloat) -> UIImage {
-        var nSize = CGSize(width: w / UIScreen.mainScreen().scale, height: h / UIScreen.mainScreen().scale)
-        UIGraphicsBeginImageContextWithOptions(nSize, false, 1);
+        var nSize = CGSize(width: w, height: h)
+        
+        UIGraphicsBeginImageContextWithOptions(nSize, false, 1.0);
         var context = UIGraphicsGetCurrentContext();
         
         self.drawInRect(CGRect(origin: CGPointZero, size: nSize));

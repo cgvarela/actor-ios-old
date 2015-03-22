@@ -58,12 +58,12 @@ get{
     class func messenger() -> CocoaMessenger { return MSG }
     
     func sendUIImage(image: UIImage, peer: AMPeer) {
-        var thumb = image.resize(90, h: 90);
-        var resized = image.resize(800, h: 800);
+        var thumb = image.resizeSquare(90, maxH: 90);
+        var resized = image.resizeOptimize(1200 * 1200);
         
         var thumbData = UIImageJPEGRepresentation(thumb, 0.55);
         
-        NSLog("Thumb size \(thumbData.length), \(thumb.size.width)x\(thumb.size.height)");
+        NSLog("Thumb size \(thumbData.length), \(thumb.size.width * thumb.scale)x\(thumb.size.height * thumb.scale)");
         
         var descriptor = "/tmp/"+NSUUID().UUIDString
         var path = CocoaFiles.pathFromDescriptor(descriptor);
