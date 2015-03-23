@@ -23,6 +23,8 @@ class ProfileController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var addToContactButton: UIButtonTable!
     @IBOutlet weak var writeMessageButton: UIButtonTable!
+    @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var contactsView: UIView!
     
     init(uid:Int) {
         self.uid = uid
@@ -86,7 +88,40 @@ class ProfileController: UIViewController, UIAlertViewDelegate {
             }
         })
         
+        binder.bind(userVm!.getPhones(), closure: { (value:JavaUtilArrayList?) -> () in
+            self.updateLayout(value!);
+        })
+        
         contentScroll.contentSize = CGSize(width: 0, height: contentScroll.frame.height + 1.0)
+    }
+    
+    func updateLayout(phones: JavaUtilArrayList) {
+        while(contactsView.subviews.count > 0){
+            (contactsView.subviews[0] as! UIView).removeFromSuperview()
+        }
+        
+        for i in 0..<phones.size() {
+            var phone = phones.getWithInt(i) as! AMUserPhone;
+            if (i == 0) {
+                var iconView = UIImageView(frame: CGRectMake(0, CGFloat(i*48), 66, 48))
+                iconView.image = UIImage(named: "ic_profile_phone")?.tintImage(Resources.TintColor)
+                iconView.contentMode = UIViewContentMode.Center
+                contactsView.addSubview(iconView)
+            }
+            
+            var phoneView = UILabel(frame: CGRectMake(66, CGFloat(i*48 + 22), 320 - 66, 22))
+            phoneView.textColor = Resources.TextPrimaryColor
+            phoneView.font = UIFont.systemFontOfSize(18)
+            phoneView.text = "+\(phone.getPhone())";
+            
+            var titleView = UILabel(frame: CGRectMake(66, CGFloat(i*48), 320 - 66, 22))
+            titleView.textColor = Resources.TintColor
+            titleView.font = UIFont.systemFontOfSize(14)
+            titleView.text = phone.getTitle();
+            
+            contactsView.addSubview(titleView)
+            contactsView.addSubview(phoneView)
+        }
     }
     
     func addContact() {

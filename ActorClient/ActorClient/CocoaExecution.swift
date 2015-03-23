@@ -10,11 +10,11 @@ import Foundation
 
 extension UIViewController {
     func execute(command: AMCommand) {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        MBProgressHUD.showHUDAddedTo(UIApplication.sharedApplication().keyWindow, animated: true)
         command.startWithAMCommandCallback(CocoaCallback(result: { (val:Any?) -> () in
-            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+            MBProgressHUD.hideAllHUDsForView(UIApplication.sharedApplication().keyWindow, animated: true)
             }, error: { (val) -> () in
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                MBProgressHUD.hideAllHUDsForView(UIApplication.sharedApplication().keyWindow, animated: true)
         }))
     }
 }
