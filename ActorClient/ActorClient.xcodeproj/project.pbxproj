@@ -10,6 +10,8 @@
 		06047D061ABF85FD002091CC /* AASerializationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 06047D051ABF85FD002091CC /* AASerializationHelpers.m */; };
 		06047D081ABF8611002091CC /* CocoaTcpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 06047D071ABF8611002091CC /* CocoaTcpConnection.m */; };
 		06147B941AAE76E900931753 /* CocoaMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06147B931AAE76E900931753 /* CocoaMessenger.swift */; };
+		062774371AC070F700A4A8B3 /* SearchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062774361AC070F700A4A8B3 /* SearchSource.swift */; };
+		062774391AC073D700A4A8B3 /* ContactsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062774381AC073D700A4A8B3 /* ContactsSource.swift */; };
 		063458D31AB3646000985A36 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063458D21AB3646000985A36 /* AvatarView.swift */; };
 		063BCF311AB7AC0F00D469AB /* iOSNotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063BCF301AB7AC0F00D469AB /* iOSNotificationProvider.swift */; };
 		064903791AB38C6200FA7B1C /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064903781AB38C6200FA7B1C /* Strings.swift */; };
@@ -793,6 +795,8 @@
 		06047D071ABF8611002091CC /* CocoaTcpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaTcpConnection.m; sourceTree = "<group>"; };
 		06047D091ABF8621002091CC /* CocoaTcpConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaTcpConnection.h; sourceTree = "<group>"; };
 		06147B931AAE76E900931753 /* CocoaMessenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMessenger.swift; sourceTree = "<group>"; };
+		062774361AC070F700A4A8B3 /* SearchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSource.swift; sourceTree = "<group>"; };
+		062774381AC073D700A4A8B3 /* ContactsSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsSource.swift; sourceTree = "<group>"; };
 		063458D21AB3646000985A36 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		063BCF301AB7AC0F00D469AB /* iOSNotificationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSNotificationProvider.swift; sourceTree = "<group>"; };
 		064903781AB38C6200FA7B1C /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -4326,6 +4330,7 @@
 				065CFFF01ABFB2AE00257E68 /* GroupMembersController.xib */,
 				069FE6CD1AC01A6300C6C033 /* ComposeController.swift */,
 				069FE6CE1AC01A6300C6C033 /* ComposeController.xib */,
+				06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -4350,6 +4355,8 @@
 				06ABC7861AB05C3300C1B932 /* EngineSlackListController.swift */,
 				069FE6CB1AC017BC00C6C033 /* ContactsBaseController.swift */,
 				06B356F51AB8C7BB00405472 /* ContactCell.swift */,
+				062774361AC070F700A4A8B3 /* SearchSource.swift */,
+				062774381AC073D700A4A8B3 /* ContactsSource.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -4439,7 +4446,6 @@
 				06E4842C1AB78D7E00AA272F /* Utils */,
 				2537F8301A966B9D004A02E9 /* Supporting Files */,
 				06ABC7801AAF4E5A00C1B932 /* AppDelegate.swift */,
-				06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */,
 				2537F8401A966B9D004A02E9 /* Images.xcassets */,
 				2537F8421A966B9D004A02E9 /* LaunchScreen.xib */,
 				065A51C51ABA0BA200B48088 /* ActorClient.entitlements */,
@@ -4868,6 +4874,7 @@
 				06729F981ABE512000E6E42E /* SeqUpdate.m in Sources */,
 				0672A1261ABE512000E6E42E /* Presence.m in Sources */,
 				0672A1051ABE512000E6E42E /* DownloadTask.m in Sources */,
+				062774371AC070F700A4A8B3 /* SearchSource.swift in Sources */,
 				0672A0C71ABE512000E6E42E /* AbsContent.m in Sources */,
 				0672A1C01ABE512000E6E42E /* RSABlindingParameters.m in Sources */,
 				0672A0E71ABE512000E6E42E /* PhoneBookPhone.m in Sources */,
@@ -4916,6 +4923,7 @@
 				0672A1AD1ABE512000E6E42E /* RSABlindedEngine.m in Sources */,
 				0672A1FC1ABE512000E6E42E /* LongArray.m in Sources */,
 				0672A1DC1ABE512000E6E42E /* SecP256K1Curve.m in Sources */,
+				062774391AC073D700A4A8B3 /* ContactsSource.swift in Sources */,
 				0672A20D1ABE512000E6E42E /* ZSignedDigitR2LMultiplier.m in Sources */,
 				0672A0B91ABE512000E6E42E /* ListEngine.m in Sources */,
 				06729FAA1ABE512000E6E42E /* EncryptedDocumentV1Ex.m in Sources */,
