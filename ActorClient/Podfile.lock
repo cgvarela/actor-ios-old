@@ -42,6 +42,7 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - FrameAccessor (1.3.2)
   - GROAuth2SessionManager (0.2.3):
     - AFNetworking (~> 2.4.1)
   - HockeySDK (3.6.2)
@@ -63,6 +64,8 @@ PODS:
     - SlackTextViewController/Additions (= 1.5)
   - SlackTextViewController/Additions (1.5)
   - SVProgressHUD (1.1.2)
+  - VENTokenField (2.3.0):
+    - FrameAccessor (~> 1.0)
 
 DEPENDENCIES:
   - AsyncDisplayKit
@@ -79,6 +82,7 @@ DEPENDENCIES:
   - RMPhoneFormat (from `https://github.com/actorapp/RMPhoneFormat`)
   - SlackTextViewController (from `https://github.com/actorapp/SlackTextViewController`)
   - SVProgressHUD
+  - VENTokenField
 
 EXTERNAL SOURCES:
   J2ObjC:
@@ -114,6 +118,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: aa20600aff620af3d78edbff4bc47282972e815f
   DZNPhotoPickerController: b160709441243eeed87cd998d2b92da1f6d91840
   FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
+  FrameAccessor: 5eec95b29b5e9a3afe72a7a2e9ed25b000d3bcc3
   GROAuth2SessionManager: d40e386b9e865806687b4b818964efb3ac6db952
   HockeySDK: bfd1f5ac75938b07499c4ac12932244b72a2e70b
   J2ObjC: 09602b92eb8f18d34a4954eec2af85156480c5e0
@@ -127,5 +132,6 @@ SPEC CHECKSUMS:
   SDWebImage: 791cb0f588046cb0bb7802ae8ae8f5462947b773
   SlackTextViewController: 845c047813ca52f7bc25f034bd145d6a15dd614c
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  VENTokenField: fb3cee03bab62e8d7d501f987ac5a7316ccbd8fe
 
 COCOAPODS: 0.35.0

@@ -41,6 +41,14 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func filter(val: String) {
+        if (val.size() == 0) {
+            self.displayList.initTopWithBoolean(false)
+        } else {
+            self.displayList.initSearchWithNSString(val, withBoolean: false)
+        }
+    }
+    
     // Table Data Source
     
     func onCollectionChanged() {

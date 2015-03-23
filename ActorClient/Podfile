@@ -14,6 +14,7 @@ pod 'CocoaAsyncSocket'
 pod 'FMDB'
 
 # UI
+pod 'VENTokenField'
 pod 'AsyncDisplayKit'
 pod 'SVProgressHUD'
 pod 'MBProgressHUD'

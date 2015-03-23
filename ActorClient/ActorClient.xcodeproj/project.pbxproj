@@ -16,6 +16,10 @@
 		065A51C81ABA185100B48088 /* ABActionShit.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A51C71ABA185100B48088 /* ABActionShit.m */; };
 		065A51CA1ABA5A9100B48088 /* TableViewSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */; };
 		065A51CC1ABB441E00B48088 /* BubbleServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */; };
+		065CFFED1ABF992000257E68 /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065CFFEB1ABF992000257E68 /* GroupController.swift */; };
+		065CFFEE1ABF992000257E68 /* GroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 065CFFEC1ABF992000257E68 /* GroupController.xib */; };
+		065CFFF11ABFB2AE00257E68 /* GroupMembersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065CFFEF1ABFB2AE00257E68 /* GroupMembersController.swift */; };
+		065CFFF21ABFB2AE00257E68 /* GroupMembersController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 065CFFF01ABFB2AE00257E68 /* GroupMembersController.xib */; };
 		067144501AB089B000364820 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671444F1AB089B000364820 /* BubbleCell.swift */; };
 		067144521AB0947000364820 /* BubbleTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067144511AB0947000364820 /* BubbleTextCell.swift */; };
 		0671592C1ABBC49D00D95719 /* CircullarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0671592B1ABBC49D00D95719 /* CircullarNode.swift */; };
@@ -794,6 +798,10 @@
 		065A51C71ABA185100B48088 /* ABActionShit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABActionShit.m; path = ../../../../Documents/icons/ABActionShit.m; sourceTree = "<group>"; };
 		065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSeparator.swift; sourceTree = "<group>"; };
 		065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleServiceCell.swift; sourceTree = "<group>"; };
+		065CFFEB1ABF992000257E68 /* GroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
+		065CFFEC1ABF992000257E68 /* GroupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupController.xib; sourceTree = "<group>"; };
+		065CFFEF1ABFB2AE00257E68 /* GroupMembersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersController.swift; sourceTree = "<group>"; };
+		065CFFF01ABFB2AE00257E68 /* GroupMembersController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupMembersController.xib; sourceTree = "<group>"; };
 		0671444F1AB089B000364820 /* BubbleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
 		067144511AB0947000364820 /* BubbleTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTextCell.swift; sourceTree = "<group>"; };
 		0671592B1ABBC49D00D95719 /* CircullarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircullarNode.swift; sourceTree = "<group>"; };
@@ -2274,6 +2282,15 @@
 				06047D091ABF8621002091CC /* CocoaTcpConnection.h */,
 			);
 			name = network;
+			sourceTree = "<group>";
+		};
+		065CFFF31AC0091400257E68 /* ComposeUI */ = {
+			isa = PBXGroup;
+			children = (
+				065CFFEF1ABFB2AE00257E68 /* GroupMembersController.swift */,
+				065CFFF01ABFB2AE00257E68 /* GroupMembersController.xib */,
+			);
+			name = ComposeUI;
 			sourceTree = "<group>";
 		};
 		067299F21ABE511D00E6E42E /* src */ = {
@@ -4301,6 +4318,8 @@
 			children = (
 				06B99A0E1ABE845A0066CA08 /* ProfileController.swift */,
 				06B99A0F1ABE845A0066CA08 /* ProfileController.xib */,
+				065CFFEB1ABF992000257E68 /* GroupController.swift */,
+				065CFFEC1ABF992000257E68 /* GroupController.xib */,
 			);
 			name = ProfileUI;
 			sourceTree = "<group>";
@@ -4360,6 +4379,7 @@
 				25C9C3921A9E11430061780E /* ComponentsUI */,
 				2537F8591A972AF6004A02E9 /* AuthUI */,
 				25C9C3891A9E05400061780E /* MainUI */,
+				065CFFF31AC0091400257E68 /* ComposeUI */,
 				250BDF581AA10EF000DA014D /* MessagesUI */,
 				06B99A0D1ABE84160066CA08 /* ProfileUI */,
 				2537F8301A966B9D004A02E9 /* Supporting Files */,
@@ -4657,6 +4677,8 @@
 				2537F86D1A9762F6004A02E9 /* ABPhoneFieldCodes.txt in Resources */,
 				06FA655E1AB10D7F00BE0A41 /* SettingsViewController.xib in Resources */,
 				25E179391A9D1A52001CE95B /* AppText.properties in Resources */,
+				065CFFF21ABFB2AE00257E68 /* GroupMembersController.xib in Resources */,
+				065CFFEE1ABF992000257E68 /* GroupController.xib in Resources */,
 				25E1793B1A9D1A52001CE95B /* Months.properties in Resources */,
 				06B356F41AB8C50500405472 /* ContactRecordCell.xib in Resources */,
 				2537F8441A966B9D004A02E9 /* LaunchScreen.xib in Resources */,
@@ -5340,6 +5362,7 @@
 				0672A0EF1ABE512000E6E42E /* I18nEngine.m in Sources */,
 				0672A2181ABE512000E6E42E /* Mont256.m in Sources */,
 				067144501AB089B000364820 /* BubbleCell.swift in Sources */,
+				065CFFED1ABF992000257E68 /* GroupController.swift in Sources */,
 				0672A0511ABE512000E6E42E /* UserState.m in Sources */,
 				0672A1E61ABE512000E6E42E /* SecP384R1FieldElement.m in Sources */,
 				06729FED1ABE512000E6E42E /* RequestSendAuthCode.m in Sources */,
@@ -5412,6 +5435,7 @@
 				0672A09D1ABE512000E6E42E /* TaskTimeout.m in Sources */,
 				06729FDD1ABE512000E6E42E /* RequestGetState.m in Sources */,
 				0672A0B01ABE512000E6E42E /* Utils.m in Sources */,
+				065CFFF11ABFB2AE00257E68 /* GroupMembersController.swift in Sources */,
 				0672A2311ABE512000E6E42E /* IPAddress.m in Sources */,
 				06FA655D1AB10D7F00BE0A41 /* SettingsViewController.swift in Sources */,
 				06729FB21ABE512000E6E42E /* EncryptedPackageV2.m in Sources */,

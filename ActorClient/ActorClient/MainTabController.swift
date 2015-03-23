@@ -37,9 +37,10 @@ class MainTabController : UITabBarController, UITabBarDelegate {
     }
     
     func centerButtonTap() {
-        var actionShit = ABActionShit()
-        actionShit.buttonTitles = ["Add Contact", "Create group", "Write to..."];
-        actionShit.showWithCompletion(nil)
+//        var actionShit = ABActionShit()
+//        actionShit.buttonTitles = ["Add Contact", "Create group", "Write to..."];
+//        actionShit.showWithCompletion(nil)
+        navigationController?.pushViewController(GroupMembersController(), animated: true)
     }
     
     override func viewWillAppear(animated: Bool) {

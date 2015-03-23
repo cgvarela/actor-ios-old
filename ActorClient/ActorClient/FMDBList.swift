@@ -29,6 +29,9 @@ class FMDBList : NSObject, DKListStorage {
     let queryForwardFirst: String;
     let queryForwardMore: String;
     
+    let queryForwardFilterFirst: String;
+    let queryForwardFilterMore: String;
+    
     init (databasePath: String, tableName: String){
         self.databasePath = databasePath
         self.tableName = tableName;
@@ -50,7 +53,9 @@ class FMDBList : NSObject, DKListStorage {
         
         self.queryForwardFirst = "SELECT \"ID\", \"QUERY\",\"SORT_KEY\", \"BYTES\" FROM " + tableName + " ORDER BY SORT_KEY DESC LIMIT ?";
         self.queryForwardMore = "SELECT \"ID\", \"QUERY\",\"SORT_KEY\", \"BYTES\" FROM " + tableName + " WHERE \"SORT_KEY\" < ? ORDER BY SORT_KEY DESC LIMIT ?";
-
+        
+        self.queryForwardFilterFirst = "SELECT \"ID\", \"QUERY\",\"SORT_KEY\", \"BYTES\" FROM " + tableName + " WHERE \"QUERY\" LIKE ? OR \"QUERY\" LIKE ? ORDER BY SORT_KEY DESC LIMIT ?";
+        self.queryForwardFilterMore = "SELECT \"ID\", \"QUERY\",\"SORT_KEY\", \"BYTES\" FROM " + tableName + " WHERE (\"QUERY\" LIKE ? OR \"QUERY\" LIKE ?) AND \"SORT_KEY\" < ? ORDER BY SORT_KEY DESC LIMIT ?";
     }
     
     func checkTable() {
@@ -172,7 +177,29 @@ class FMDBList : NSObject, DKListStorage {
     func loadForwardWithNSString(query: String!, withJavaLangLong sortingKey: JavaLangLong!, withInt limit: jint) -> JavaUtilList! {
         checkTable();
         
-        fatalError("Not implemented")
+        checkTable();
+        var result : FMResultSet? = nil;
+        if (sortingKey == nil) {
+            result = db!.executeQuery(queryForwardFilterFirst, query + "%", "% " + query + "%", limit.toNSNumber());
+        } else {
+            result = db!.executeQuery(queryForwardFilterMore, query + "%", "% " + query + "%", sortingKey!.longValue, limit.toNSNumber());
+        }
+        if (result == nil) {
+            NSLog(db!.lastErrorMessage())
+            return nil
+        }
+        
+        var res: JavaUtilArrayList = JavaUtilArrayList();
+        
+        while(result!.next()) {
+            var query: AnyObject! = result!.objectForColumnName("QUERY");
+            if (query is NSNull) {
+                query = nil
+            }
+            res.addWithId(DKListEngineRecord(long: jlong(result!.longForColumn("ID")), withLong: jlong(result!.longForColumn("SORT_KEY")), withNSString: query as! String?, withByteArray: result!.dataForColumn("BYTES").toJavaBytes()))
+        }
+        result!.close()
+        return res;
     }
     
     func loadBackwardWithJavaLangLong(sortingKey: JavaLangLong!, withInt limit: jint) -> JavaUtilList! {
