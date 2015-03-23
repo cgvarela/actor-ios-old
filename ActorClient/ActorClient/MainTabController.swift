@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainTabController : UITabBarController, UITabBarDelegate {
+class MainTabController : UITabBarController, UITabBarDelegate, ABActionShitDelegate {
 
     var centerButton:UIButton? = nil;
     var isInited = false;
@@ -37,10 +37,30 @@ class MainTabController : UITabBarController, UITabBarDelegate {
     }
     
     func centerButtonTap() {
-//        var actionShit = ABActionShit()
-//        actionShit.buttonTitles = ["Add Contact", "Create group", "Write to..."];
-//        actionShit.showWithCompletion(nil)
-        navigationController?.pushViewController(GroupMembersController(), animated: true)
+        var actionShit = ABActionShit()
+        actionShit.buttonTitles = ["Add Contact", "Create group", "Write to..."];
+        actionShit.delegate = self
+        actionShit.showWithCompletion(nil)
+    }
+    
+    func actionShit(actionShit: ABActionShit!, clickedButtonAtIndex buttonIndex: Int) {
+        if (buttonIndex == 0) {
+            doAddContact()
+        } else if (buttonIndex == 1) {
+            navigationController?.pushViewController(GroupMembersController(), animated: true)
+        } else if (buttonIndex == 2) {
+            doCompose()
+        }
+    }
+    
+    func doCompose() {
+        navigationController?.pushViewController(ComposeController(), animated: true)
+    }
+    
+    func doAddContact() {
+        var alertView = UIAlertView(title: "Add Contact", message: "Please, specify phone number", delegate: nil, cancelButtonTitle: "Cancel")
+        alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
+        alertView.show()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -78,13 +98,18 @@ class MainTabController : UITabBarController, UITabBarDelegate {
         case 0:
             navigationItem.title = "People";
             navigationItem.leftBarButtonItem = nil;
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self.viewControllers![0], action: "addContact")
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "doAddContact")
             navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         case 1:
             navigationItem.title = "Chats";
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editDialogs");
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: nil, action: nil)
+            if ((self.viewControllers![1] as! DialogsViewController).isTableEditing()) {
+                navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "editDialogs");
+                navigationItem.rightBarButtonItem = nil
+            } else {
+                navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editDialogs");
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "doCompose")
+            }
             navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         case 3:
@@ -110,5 +135,6 @@ class MainTabController : UITabBarController, UITabBarDelegate {
     
     func editDialogs(){
         (self.viewControllers![1] as! DialogsViewController).toggleEdit();
+        applyTitle(1)
     }
 }

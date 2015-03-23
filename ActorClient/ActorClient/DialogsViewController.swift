@@ -34,12 +34,16 @@ class DialogsViewController: EngineListController {
         tabBarItem.imageInsets=UIEdgeInsetsMake(6, 0, -6, 0);
     }
     
-    override func getDisplayList() -> AMBindedDisplayList {
+    override func buildDisplayList() -> AMBindedDisplayList {
         return MSG.getDialogsGlobalList()
     }
     
     func toggleEdit() {
         self.tableView.setEditing(!self.tableView.editing, animated: true);
+    }
+    
+    func isTableEditing() -> Bool {
+        return self.tableView.editing;
     }
     
     override func viewDidLoad() {
@@ -85,14 +89,11 @@ class DialogsViewController: EngineListController {
         MSG.onDialogsOpen();
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        self.edgesForExtendedLayout = UIRectEdge.All;
-        
-        var selected = tableView.indexPathForSelectedRow();
-        if (selected != nil){
-            tableView.deselectRowAtIndexPath(selected!, animated: animated);
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            var dialog = objectAtIndexPath(indexPath) as! AMDialog
+            
+            execute(MSG.deleteChatWithAMPeer(dialog.getPeer()));
         }
     }
     

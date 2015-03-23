@@ -703,6 +703,9 @@
 		0672A2351ABE512000E6E42E /* Shorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 06729F8E1ABE512000E6E42E /* Shorts.m */; };
 		0672A2361ABE512000E6E42E /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = 06729F901ABE512000E6E42E /* Strings.m */; };
 		0672A2381ABE56E900E6E42E /* BubbleUnsupportedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0672A2371ABE56E900E6E42E /* BubbleUnsupportedCell.swift */; };
+		069FE6CC1AC017BC00C6C033 /* ContactsBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069FE6CB1AC017BC00C6C033 /* ContactsBaseController.swift */; };
+		069FE6CF1AC01A6300C6C033 /* ComposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069FE6CD1AC01A6300C6C033 /* ComposeController.swift */; };
+		069FE6D01AC01A6300C6C033 /* ComposeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069FE6CE1AC01A6300C6C033 /* ComposeController.xib */; };
 		06A907D11AB7AE8200E087EA /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 06A907D01AB7AE8200E087EA /* notification.aiff */; };
 		06ABC77B1AAF39B500C1B932 /* EngineListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77A1AAF39B500C1B932 /* EngineListController.swift */; };
 		06ABC77E1AAF458B00C1B932 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ABC77C1AAF458B00C1B932 /* ContactsViewController.swift */; };
@@ -2163,6 +2166,9 @@
 		06729F8F1ABE512000E6E42E /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
 		06729F901ABE512000E6E42E /* Strings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Strings.m; sourceTree = "<group>"; };
 		0672A2371ABE56E900E6E42E /* BubbleUnsupportedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleUnsupportedCell.swift; sourceTree = "<group>"; };
+		069FE6CB1AC017BC00C6C033 /* ContactsBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsBaseController.swift; sourceTree = "<group>"; };
+		069FE6CD1AC01A6300C6C033 /* ComposeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeController.swift; sourceTree = "<group>"; };
+		069FE6CE1AC01A6300C6C033 /* ComposeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeController.xib; sourceTree = "<group>"; };
 		06A907D01AB7AE8200E087EA /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
 		06A92FA01AB24B2A0065B2FC /* ActorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorModel.h; sourceTree = "<group>"; };
 		06ABC77A1AAF39B500C1B932 /* EngineListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineListController.swift; sourceTree = "<group>"; };
@@ -2282,15 +2288,6 @@
 				06047D091ABF8621002091CC /* CocoaTcpConnection.h */,
 			);
 			name = network;
-			sourceTree = "<group>";
-		};
-		065CFFF31AC0091400257E68 /* ComposeUI */ = {
-			isa = PBXGroup;
-			children = (
-				065CFFEF1ABFB2AE00257E68 /* GroupMembersController.swift */,
-				065CFFF01ABFB2AE00257E68 /* GroupMembersController.xib */,
-			);
-			name = ComposeUI;
 			sourceTree = "<group>";
 		};
 		067299F21ABE511D00E6E42E /* src */ = {
@@ -4313,33 +4310,27 @@
 			path = io;
 			sourceTree = "<group>";
 		};
-		06B99A0D1ABE84160066CA08 /* ProfileUI */ = {
+		069FE6CA1AC017AA00C6C033 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				069FE6D21AC0203100C6C033 /* Common */,
+				2537F8591A972AF6004A02E9 /* Auth */,
+				069FE6D31AC0204A00C6C033 /* Main */,
+				069FE6D11AC0201000C6C033 /* Conversation */,
+				069FE6D41AC0207A00C6C033 /* Views */,
 				06B99A0E1ABE845A0066CA08 /* ProfileController.swift */,
 				06B99A0F1ABE845A0066CA08 /* ProfileController.xib */,
 				065CFFEB1ABF992000257E68 /* GroupController.swift */,
 				065CFFEC1ABF992000257E68 /* GroupController.xib */,
+				065CFFEF1ABFB2AE00257E68 /* GroupMembersController.swift */,
+				065CFFF01ABFB2AE00257E68 /* GroupMembersController.xib */,
+				069FE6CD1AC01A6300C6C033 /* ComposeController.swift */,
+				069FE6CE1AC01A6300C6C033 /* ComposeController.xib */,
 			);
-			name = ProfileUI;
+			name = Screens;
 			sourceTree = "<group>";
 		};
-		06E4842C1AB78D7E00AA272F /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				06E4842D1AB7920100AA272F /* SQueue.m */,
-				06E4842E1AB7920200AA272F /* SQueue.h */,
-				06E484231AB78D7300AA272F /* SThreadPoolTask.h */,
-				06E484241AB78D7300AA272F /* SThreadPoolTask.m */,
-				06E484251AB78D7300AA272F /* SThreadPoolQueue.m */,
-				06E484261AB78D7300AA272F /* SThreadPoolQueue.h */,
-				06E484271AB78D7300AA272F /* SThreadPool.h */,
-				06E484281AB78D7400AA272F /* SThreadPool.m */,
-			);
-			name = Tools;
-			sourceTree = "<group>";
-		};
-		250BDF581AA10EF000DA014D /* MessagesUI */ = {
+		069FE6D11AC0201000C6C033 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
 				06ABC7841AB05C0600C1B932 /* MessagesViewController.swift */,
@@ -4349,7 +4340,75 @@
 				065A51CB1ABB441E00B48088 /* BubbleServiceCell.swift */,
 				0672A2371ABE56E900E6E42E /* BubbleUnsupportedCell.swift */,
 			);
-			name = MessagesUI;
+			name = Conversation;
+			sourceTree = "<group>";
+		};
+		069FE6D21AC0203100C6C033 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				06ABC77A1AAF39B500C1B932 /* EngineListController.swift */,
+				06ABC7861AB05C3300C1B932 /* EngineSlackListController.swift */,
+				069FE6CB1AC017BC00C6C033 /* ContactsBaseController.swift */,
+				06B356F51AB8C7BB00405472 /* ContactCell.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		069FE6D31AC0204A00C6C033 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */,
+				06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */,
+				06ABC77C1AAF458B00C1B932 /* ContactsViewController.swift */,
+				06ABC77D1AAF458B00C1B932 /* ContactsViewController.xib */,
+				06ABC7821AAF57A000C1B932 /* MainTabController.swift */,
+				06FA655B1AB10D7F00BE0A41 /* SettingsViewController.swift */,
+				06FA655C1AB10D7F00BE0A41 /* SettingsViewController.xib */,
+				06FA655F1AB1982800BE0A41 /* DiscoverViewController.swift */,
+				06FA65601AB1982800BE0A41 /* DiscoverViewController.xib */,
+				06FA65651AB1A3E000BE0A41 /* PlaceHolderController.swift */,
+				06BFDB501AB1AD3800F16E43 /* DialogCell.swift */,
+				06B356E91AB8BFD700405472 /* AvatarCell.swift */,
+				06B356EA1AB8BFD700405472 /* AvatarCell.xib */,
+				06B356F11AB8C50500405472 /* ContactRecordCell.swift */,
+				06B356F21AB8C50500405472 /* ContactRecordCell.xib */,
+				06B356F71AB8CF5700405472 /* MenuItemCell.swift */,
+				06B356F81AB8CF5700405472 /* MenuItemCell.xib */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		069FE6D41AC0207A00C6C033 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2537F8691A9762DB004A02E9 /* ABPhoneField */,
+				065A51C61ABA185100B48088 /* ABActionShit.h */,
+				065A51C71ABA185100B48088 /* ABActionShit.m */,
+				063458D21AB3646000985A36 /* AvatarView.swift */,
+				06BC45161AB889110003F59E /* CircullarProgress.swift */,
+				0671592B1ABBC49D00D95719 /* CircullarNode.swift */,
+				06B99A121ABF45DA0066CA08 /* UIButtonTable.swift */,
+				065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		06E4842C1AB78D7E00AA272F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				06FA65631AB19DE000BE0A41 /* Imaging.swift */,
+				064903781AB38C6200FA7B1C /* Strings.swift */,
+				06E484301AB7933100AA272F /* LruCache.swift */,
+				06E4842D1AB7920100AA272F /* SQueue.m */,
+				06E4842E1AB7920200AA272F /* SQueue.h */,
+				06E484231AB78D7300AA272F /* SThreadPoolTask.h */,
+				06E484241AB78D7300AA272F /* SThreadPoolTask.m */,
+				06E484251AB78D7300AA272F /* SThreadPoolQueue.m */,
+				06E484261AB78D7300AA272F /* SThreadPoolQueue.h */,
+				06E484271AB78D7300AA272F /* SThreadPool.h */,
+				06E484281AB78D7400AA272F /* SThreadPool.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		2537F8241A966B9D004A02E9 = {
@@ -4375,15 +4434,10 @@
 		2537F82F1A966B9D004A02E9 /* ActorClient */ = {
 			isa = PBXGroup;
 			children = (
+				069FE6CA1AC017AA00C6C033 /* Screens */,
 				2563889E1A99C09D00A5E0E3 /* Model */,
-				25C9C3921A9E11430061780E /* ComponentsUI */,
-				2537F8591A972AF6004A02E9 /* AuthUI */,
-				25C9C3891A9E05400061780E /* MainUI */,
-				065CFFF31AC0091400257E68 /* ComposeUI */,
-				250BDF581AA10EF000DA014D /* MessagesUI */,
-				06B99A0D1ABE84160066CA08 /* ProfileUI */,
+				06E4842C1AB78D7E00AA272F /* Utils */,
 				2537F8301A966B9D004A02E9 /* Supporting Files */,
-				06E4842C1AB78D7E00AA272F /* Tools */,
 				06ABC7801AAF4E5A00C1B932 /* AppDelegate.swift */,
 				06F6B70F1AB0CE9600A7DB91 /* Resouces.swift */,
 				2537F8401A966B9D004A02E9 /* Images.xcassets */,
@@ -4425,7 +4479,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2537F8591A972AF6004A02E9 /* AuthUI */ = {
+		2537F8591A972AF6004A02E9 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				2537F8601A973A8D004A02E9 /* Auth.storyboard */,
@@ -4438,7 +4492,7 @@
 				253AF10B1AA861D3002B57F4 /* AARegViewController.h */,
 				253AF10C1AA861D3002B57F4 /* AARegViewController.m */,
 			);
-			name = AuthUI;
+			name = Auth;
 			sourceTree = "<group>";
 		};
 		2537F8691A9762DB004A02E9 /* ABPhoneField */ = {
@@ -4496,51 +4550,6 @@
 				25FAD8B21A9FF38E004F5E19 /* CocoaPhoneBookProvider.m */,
 			);
 			name = cocoa;
-			sourceTree = "<group>";
-		};
-		25C9C3891A9E05400061780E /* MainUI */ = {
-			isa = PBXGroup;
-			children = (
-				06E281DC1AAEDDB00070EE18 /* DialogsViewController.swift */,
-				06E281DD1AAEDDB00070EE18 /* DialogsViewController.xib */,
-				06ABC77C1AAF458B00C1B932 /* ContactsViewController.swift */,
-				06ABC77D1AAF458B00C1B932 /* ContactsViewController.xib */,
-				06ABC7821AAF57A000C1B932 /* MainTabController.swift */,
-				06FA655B1AB10D7F00BE0A41 /* SettingsViewController.swift */,
-				06FA655C1AB10D7F00BE0A41 /* SettingsViewController.xib */,
-				06FA655F1AB1982800BE0A41 /* DiscoverViewController.swift */,
-				06FA65601AB1982800BE0A41 /* DiscoverViewController.xib */,
-				06FA65651AB1A3E000BE0A41 /* PlaceHolderController.swift */,
-				06B356F51AB8C7BB00405472 /* ContactCell.swift */,
-				06BFDB501AB1AD3800F16E43 /* DialogCell.swift */,
-				06B356E91AB8BFD700405472 /* AvatarCell.swift */,
-				06B356EA1AB8BFD700405472 /* AvatarCell.xib */,
-				06B356F11AB8C50500405472 /* ContactRecordCell.swift */,
-				06B356F21AB8C50500405472 /* ContactRecordCell.xib */,
-				06B356F71AB8CF5700405472 /* MenuItemCell.swift */,
-				06B356F81AB8CF5700405472 /* MenuItemCell.xib */,
-			);
-			name = MainUI;
-			sourceTree = "<group>";
-		};
-		25C9C3921A9E11430061780E /* ComponentsUI */ = {
-			isa = PBXGroup;
-			children = (
-				2537F8691A9762DB004A02E9 /* ABPhoneField */,
-				065A51C61ABA185100B48088 /* ABActionShit.h */,
-				065A51C71ABA185100B48088 /* ABActionShit.m */,
-				06ABC77A1AAF39B500C1B932 /* EngineListController.swift */,
-				06ABC7861AB05C3300C1B932 /* EngineSlackListController.swift */,
-				06FA65631AB19DE000BE0A41 /* Imaging.swift */,
-				063458D21AB3646000985A36 /* AvatarView.swift */,
-				064903781AB38C6200FA7B1C /* Strings.swift */,
-				06E484301AB7933100AA272F /* LruCache.swift */,
-				06BC45161AB889110003F59E /* CircullarProgress.swift */,
-				065A51C91ABA5A9100B48088 /* TableViewSeparator.swift */,
-				0671592B1ABBC49D00D95719 /* CircullarNode.swift */,
-				06B99A121ABF45DA0066CA08 /* UIButtonTable.swift */,
-			);
-			name = ComponentsUI;
 			sourceTree = "<group>";
 		};
 		25E179341A9D1A52001CE95B /* resources */ = {
@@ -4677,6 +4686,7 @@
 				2537F86D1A9762F6004A02E9 /* ABPhoneFieldCodes.txt in Resources */,
 				06FA655E1AB10D7F00BE0A41 /* SettingsViewController.xib in Resources */,
 				25E179391A9D1A52001CE95B /* AppText.properties in Resources */,
+				069FE6D01AC01A6300C6C033 /* ComposeController.xib in Resources */,
 				065CFFF21ABFB2AE00257E68 /* GroupMembersController.xib in Resources */,
 				065CFFEE1ABF992000257E68 /* GroupController.xib in Resources */,
 				25E1793B1A9D1A52001CE95B /* Months.properties in Resources */,
@@ -5079,6 +5089,7 @@
 				06B99A101ABE845A0066CA08 /* ProfileController.swift in Sources */,
 				0672A11C1ABE512000E6E42E /* PlainReceiverActor.m in Sources */,
 				0672A1F51ABE512000E6E42E /* GLVEndomorphism.m in Sources */,
+				069FE6CC1AC017BC00C6C033 /* ContactsBaseController.swift in Sources */,
 				0672A0C91ABE512000E6E42E /* FastThumb.m in Sources */,
 				0672A0771ABE512000E6E42E /* FutureCallback.m in Sources */,
 				0672A13E1ABE512000E6E42E /* Users.m in Sources */,
@@ -5211,6 +5222,7 @@
 				0672A1141ABE512000E6E42E /* PendingMessagesStorage.m in Sources */,
 				06729F9D1ABE512000E6E42E /* DifferenceUpdate.m in Sources */,
 				0672A0F81ABE512000E6E42E /* LocaleProvider.m in Sources */,
+				069FE6CF1AC01A6300C6C033 /* ComposeController.swift in Sources */,
 				0672A1861ABE512000E6E42E /* AtomicIntegerCompat.m in Sources */,
 				06729FC71ABE512000E6E42E /* PublicKeyRequest.m in Sources */,
 				0672A07A1ABE512000E6E42E /* AbstractDispatcher.m in Sources */,

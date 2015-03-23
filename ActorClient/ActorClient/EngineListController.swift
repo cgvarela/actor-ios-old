@@ -35,9 +35,20 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         if (self.displayList == nil) {
-            self.displayList = getDisplayList()
+            self.displayList = buildDisplayList()
             self.displayList.addListenerWithAMDisplayList_Listener(self)
             self.engineTableView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (self.engineTableView != nil) {
+            var selected = self.engineTableView.indexPathForSelectedRow();
+            if (selected != nil){
+                self.engineTableView.deselectRowAtIndexPath(selected!, animated: animated);
+            }
         }
     }
     
@@ -87,7 +98,7 @@ class EngineListController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Abstract methods
     
-    func getDisplayList() -> AMBindedDisplayList {
+    func buildDisplayList() -> AMBindedDisplayList {
         fatalError("Not implemented");
     }
     
