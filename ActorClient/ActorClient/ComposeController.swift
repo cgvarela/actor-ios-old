@@ -67,13 +67,20 @@ class ComposeController: ContactsBaseController, UISearchBarDelegate, UISearchDi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var contact = objectAtIndexPath(indexPath) as! AMContact
-        var controllers = NSMutableArray(array: navigationController!.viewControllers)
-        controllers.removeLastObject()
-        controllers.addObject(MessagesViewController(peer: AMPeer.userWithInt(contact.getUid())))
-        navigationController!.setViewControllers(controllers as [AnyObject], animated: true)
+        if (tableView == self.tableView) {
+            var contact = objectAtIndexPath(indexPath) as! AMContact
+            var controllers = NSMutableArray(array: navigationController!.viewControllers)
+            controllers.removeLastObject()
+            controllers.addObject(MessagesViewController(peer: AMPeer.userWithInt(contact.getUid())))
+            navigationController!.setViewControllers(controllers as [AnyObject], animated: true)
+        } else {
+            var contact = searchSource!.objectAtIndexPath(indexPath) as! AMContact
+            var controllers = NSMutableArray(array: navigationController!.viewControllers)
+            controllers.removeLastObject()
+            controllers.addObject(MessagesViewController(peer: AMPeer.userWithInt(contact.getUid())))
+            navigationController!.setViewControllers(controllers as [AnyObject], animated: true)
+        }
     }
-    
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
