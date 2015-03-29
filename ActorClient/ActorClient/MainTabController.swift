@@ -25,15 +25,15 @@ class MainTabController : UITabBarController, UITabBarDelegate, ABActionShitDele
     
     func initControllers() {
         
-        centerButton = UIButton(frame: CGRect(x: 0, y: 0, width: 66, height: 58));
-        centerButton!.setBackgroundImage(UIImage(named: "ic_round_button_red"), forState: UIControlState.Normal);
-        centerButton!.setImage(UIImage(named: "ic_add_white_24"), forState: UIControlState.Normal);
-        centerButton!.imageEdgeInsets = UIEdgeInsetsMake(4, 0, -4, 0);
-        centerButton!.addTarget(self, action: "centerButtonTap", forControlEvents: UIControlEvents.TouchUpInside)
+//        centerButton = UIButton(frame: CGRect(x: 0, y: 0, width: 66, height: 58));
+//        centerButton!.setBackgroundImage(UIImage(named: "ic_round_button_red"), forState: UIControlState.Normal);
+//        centerButton!.setImage(UIImage(named: "ic_add_white_24"), forState: UIControlState.Normal);
+//        centerButton!.imageEdgeInsets = UIEdgeInsetsMake(4, 0, -4, 0);
+//        centerButton!.addTarget(self, action: "centerButtonTap", forControlEvents: UIControlEvents.TouchUpInside)
+//        self.view.addSubview(centerButton!);
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        
-        self.view.addSubview(centerButton!);
+
     }
     
     func centerButtonTap() {
@@ -72,8 +72,6 @@ class MainTabController : UITabBarController, UITabBarDelegate, ABActionShitDele
                 
                 viewControllers = [ContactsViewController(),
                                    DialogsViewController(),
-                                   PlaceHolderController(),
-                                   DiscoverViewController(),
                                    SettingsViewController()];
         
                 selectedIndex = 1;
@@ -85,7 +83,7 @@ class MainTabController : UITabBarController, UITabBarDelegate, ABActionShitDele
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        centerButton!.frame = CGRectMake(view.center.x-31, view.frame.height-58, 66, 58)
+        // centerButton!.frame = CGRectMake(view.center.x-31, view.frame.height-58, 66, 58)
     }
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
@@ -99,7 +97,6 @@ class MainTabController : UITabBarController, UITabBarDelegate, ABActionShitDele
             navigationItem.title = "People";
             navigationItem.leftBarButtonItem = nil;
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "doAddContact")
-            navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         case 1:
             navigationItem.title = "Chats";
@@ -110,31 +107,25 @@ class MainTabController : UITabBarController, UITabBarDelegate, ABActionShitDele
                 navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editDialogs");
                 navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "doCompose")
             }
-            navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
-            break;
-        case 3:
-            navigationItem.leftBarButtonItem = nil;
-            navigationItem.rightBarButtonItem = nil;
-            navigationItem.title = "Discover";
-            navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
-            break;
-        case 4:
+        case 2:
             navigationItem.title = "You";
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editDialogs");
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editProfile");
             navigationItem.rightBarButtonItem = nil;
-//            navigationController?.navigationBar.shadowImage = UIImage()
             break;
         default:
             navigationItem.leftBarButtonItem = nil;
             navigationItem.rightBarButtonItem = nil;
             navigationItem.title = "";
-            navigationController?.navigationBar.shadowImage = UIImage(named: "CardBottom3")
             break;
         }
     }
     
-    func editDialogs(){
+    func editDialogs() {
         (self.viewControllers![1] as! DialogsViewController).toggleEdit();
         applyTitle(1)
+    }
+    
+    func editProfile() {
+        
     }
 }
